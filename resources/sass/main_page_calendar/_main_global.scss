@@ -1,0 +1,275 @@
+
+/* NAV BAR AND A SIDE RULES FOR MAIN PAGE CALENDAR */
+@import "main_media";
+
+
+
+.header_co { grid-area: header; }
+.leftmenu { grid-area: menu; }
+.main_co { grid-area: main; }
+
+
+.grid-container {
+  display: grid;
+  height: 100vh;
+  grid-template-areas:
+    'menu header header header header header'
+    'menu  main main main main main'
+    'menu  main main main main main';
+    grid-template-columns: 220px;
+    grid-template-rows: 50px;
+   
+ 
+  
+}
+
+.header_co{
+  background-color:#fff;
+}
+
+.main_co{
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(255, 255, 255, 0) 100%), #FFFFFF; 
+
+  
+}
+.left_menu-container{
+  width:80%;
+  margin: 0 auto;
+}
+
+.burger__menu-item{
+  width: 25px;
+  height: 4px;
+  background-color: black;
+  margin: 3px 0;  
+  border-radius: 3px;
+}
+
+
+.leftmenu{
+    background-color: #000000;
+    padding-top: 20px;
+    color:  #FFFFFF;
+    &__pages{
+      padding-top: 30px;
+     
+    }
+    &_p-header{
+        @extend %rb-regular;
+      
+        font-size: 20px;
+         line-height: 21px;
+    }
+    &_p-list{
+        padding-top: 10px;
+        display: inline-block; 
+        text-align: left; 
+        padding-left: 50px;
+    }
+    &_p-list-item{
+        @extend %rb-regular;
+        font-size: 16px;
+        line-height: 21px;
+
+    }
+    &_p-list-item + .leftmenu_p-list-item{
+        padding-top: 6px;
+    }
+  }
+
+  /*       NAV BAR      */
+
+  .header_co{
+  
+    &__inner{
+      display:flex;
+      justify-content: space-between;
+      
+    }
+    
+    &__leftside{
+        display:flex;
+    }
+    &__leftside-burgermenu{
+        padding-top: 12px;
+     }
+    &__leftside-clname{
+        padding-left: 50px;
+        @extend %rb-regular;
+        font-size: 18px;
+        
+        line-height: 50px;
+        letter-spacing: 0.155em;
+
+    }
+    &__rightside-menu{
+        display:flex;
+       
+    }
+    &__profile{
+        display: flex;
+        padding-left: 20px;
+    }
+
+    &__rside-menu-ddown{
+        padding-right: 10px;
+        display: flex;
+        line-height: 50px;
+    }
+    &__rside-menu-ddown p{
+        font-size: 14px;
+        @extend %rb-regular;
+     
+        color: #898787;
+
+    }
+ 
+    &__profile img{
+        padding-right: 10px;
+        padding-top: 10px;
+    }
+    &__profile-ddown{
+        font-size: 14px;
+        @extend %rb-Medium;
+        
+    }
+    &__profile{
+        line-height: 50px;
+    }
+  
+  }
+
+  
+.main_co{
+    display: flex;
+    padding-top: 30px;
+     &__month-name{
+       text-align: center;
+     }
+     &__month-name{
+        @extend %rb-regular;
+        font-size: 16px;
+        line-height: 19px;
+     }
+     &__month-left{
+         padding-right: 15px;
+     }
+     &__month-right{
+        padding-left: 15px;
+    }
+  }
+
+ /* A SIDE MENU */
+ 
+.leftmenu{
+  background-color: #000000;
+  padding-top: 20px;
+  color:  #FFFFFF;
+  &__pages{
+    padding-top: 30px;
+   
+  }
+  &_p-header{
+      @extend %rb-regular;
+    
+      font-size: 20px;
+       line-height: 21px;
+  }
+  &_p-list{
+      padding-top: 10px;
+      display: inline-block; 
+      text-align: left; 
+      padding-left: 50px;
+  }
+  &_p-list-item{
+      @extend %rb-regular;
+      font-size: 16px;
+      line-height: 21px;
+
+  }
+  &_p-list-item + .leftmenu_p-list-item{
+      padding-top: 6px;
+  }
+}
+
+/*       NAV BAR      */
+
+.header_co{
+
+  &__inner{
+    display:flex;
+    justify-content: space-between;
+    
+  }
+  
+  &__leftside{
+      display:flex;
+  }
+  &__leftside-burgermenu{
+      padding-top: 12px;
+   }
+  &__leftside-clname{
+      padding-left: 50px;
+      @extend %rb-regular;
+      font-size: 18px;
+      
+      line-height: 50px;
+      letter-spacing: 0.155em;
+
+  }
+  &__rightside-menu{
+      display:flex;
+     
+  }
+  &__profile{
+      display: flex;
+      padding-left: 20px;
+  }
+
+  &__rside-menu-ddown{
+      padding-right: 10px;
+      display: flex;
+      line-height: 50px;
+  }
+  &__rside-menu-ddown p{
+      font-size: 14px;
+      @extend %rb-regular;
+   
+      color: #898787;
+
+  }
+
+  &__profile img{
+      padding-right: 10px;
+      padding-top: 10px;
+  }
+  &__profile-ddown{
+      font-size: 14px;
+      @extend %rb-Medium;
+      
+  }
+  &__profile{
+      line-height: 50px;
+  }
+
+}
+
+
+.main_co{
+  display: flex;
+  padding-top: 30px;
+   &__month-name{
+     text-align: center;
+   }
+   &__month-name{
+      @extend %rb-regular;
+      font-size: 16px;
+      line-height: 19px;
+   }
+   &__month-left{
+       padding-right: 15px;
+   }
+   &__month-right{
+      padding-left: 15px;
+  }
+}

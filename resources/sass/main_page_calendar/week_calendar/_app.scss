@@ -1,0 +1,349 @@
+/* 
+  // generator
+for (let i = 0 ; i < 24; i++){
+  
+  //console.log(`.weekday7_main${i} {grid-area: weekday7_main${i};}`)
+  //console.log(`.menu${i} { grid-area: menu${i}; }`)
+  //console.log(`menu${i} weekday1_main${i} weekday2_main${i} weekday3_main${i} weekday4_main${i}  weekday5_main${i} weekday6_main${i}  weekday7_main${i}`)
+  console.log(` <div class='weekday7_main${i}'>weekday7 main</div>`)
+
+
+}*/
+
+
+.weekday1 {grid-area: weekday1;}
+.weekday2 {grid-area: weekday2;}
+.weekday3 {grid-area: weekday3;}
+.weekday4 {grid-area: weekday4;}
+.weekday5 {grid-area: weekday5;}
+.weekday6 {grid-area: weekday6;}
+.weekday7 {grid-area: weekday7;}
+.main1 {grid-area:main1 ;}
+.main2 {grid-area: main2 ;}
+.main3 {grid-area: main3;}
+.main4 {grid-area: main4;}
+.main5 {grid-area: main5;}
+.main6 {grid-area: main6;}
+.main7 {grid-area: main7;}
+
+.weekday1_main0 {grid-area: weekday1_main0;}
+.weekday1_main1 {grid-area: weekday1_main1;}
+.weekday1_main2 {grid-area: weekday1_main2;}
+.weekday1_main3 {grid-area: weekday1_main3;}
+.weekday1_main4 {grid-area: weekday1_main4;}
+.weekday1_main5 {grid-area: weekday1_main5;}
+.weekday1_main6 {grid-area: weekday1_main6;}
+.weekday1_main7 {grid-area: weekday1_main7;}
+.weekday1_main8 {grid-area: weekday1_main8;}
+.weekday1_main9 {grid-area: weekday1_main9;}
+.weekday1_main10 {grid-area: weekday1_main10;}
+.weekday1_main11 {grid-area: weekday1_main11;}
+.weekday1_main12 {grid-area: weekday1_main12;}
+.weekday1_main13 {grid-area: weekday1_main13;}
+.weekday1_main14 {grid-area: weekday1_main14;}
+.weekday1_main15 {grid-area: weekday1_main15;}
+.weekday1_main16 {grid-area: weekday1_main16;}
+.weekday1_main17 {grid-area: weekday1_main17;}
+.weekday1_main18 {grid-area: weekday1_main18;}
+.weekday1_main19 {grid-area: weekday1_main19;}
+.weekday1_main20 {grid-area: weekday1_main20;}
+.weekday1_main21 {grid-area: weekday1_main21;}
+.weekday1_main22 {grid-area: weekday1_main22;}
+.weekday1_main23 {grid-area: weekday1_main23;}
+
+.weekday2_main0 {grid-area: weekday2_main0;}
+.weekday2_main1 {grid-area: weekday2_main1;}
+.weekday2_main2 {grid-area: weekday2_main2;}
+.weekday2_main3 {grid-area: weekday2_main3;}
+.weekday2_main4 {grid-area: weekday2_main4;}
+.weekday2_main5 {grid-area: weekday2_main5;}
+.weekday2_main6 {grid-area: weekday2_main6;}
+.weekday2_main7 {grid-area: weekday2_main7;}
+.weekday2_main8 {grid-area: weekday2_main8;}
+.weekday2_main9 {grid-area: weekday2_main9;}
+.weekday2_main10 {grid-area: weekday2_main10;}
+.weekday2_main11 {grid-area: weekday2_main11;}
+.weekday2_main12 {grid-area: weekday2_main12;}
+.weekday2_main13 {grid-area: weekday2_main13;}
+.weekday2_main14 {grid-area: weekday2_main14;}
+.weekday2_main15 {grid-area: weekday2_main15;}
+.weekday2_main16 {grid-area: weekday2_main16;}
+.weekday2_main17 {grid-area: weekday2_main17;}
+.weekday2_main18 {grid-area: weekday2_main18;}
+.weekday2_main19 {grid-area: weekday2_main19;}
+.weekday2_main20 {grid-area: weekday2_main20;}
+.weekday2_main21 {grid-area: weekday2_main21;}
+.weekday2_main22 {grid-area: weekday2_main22;}
+.weekday2_main23 {grid-area: weekday2_main23;}
+
+.weekday3_main0 {grid-area: weekday3_main0;}
+.weekday3_main1 {grid-area: weekday3_main1;}
+.weekday3_main2 {grid-area: weekday3_main2;}
+.weekday3_main3 {grid-area: weekday3_main3;}
+.weekday3_main4 {grid-area: weekday3_main4;}
+.weekday3_main5 {grid-area: weekday3_main5;}
+.weekday3_main6 {grid-area: weekday3_main6;}
+.weekday3_main7 {grid-area: weekday3_main7;}
+.weekday3_main8 {grid-area: weekday3_main8;}
+.weekday3_main9 {grid-area: weekday3_main9;}
+.weekday3_main10 {grid-area: weekday3_main10;}
+.weekday3_main11 {grid-area: weekday3_main11;}
+.weekday3_main12 {grid-area: weekday3_main12;}
+.weekday3_main13 {grid-area: weekday3_main13;}
+.weekday3_main14 {grid-area: weekday3_main14;}
+.weekday3_main15 {grid-area: weekday3_main15;}
+.weekday3_main16 {grid-area: weekday3_main16;}
+.weekday3_main17 {grid-area: weekday3_main17;}
+.weekday3_main18 {grid-area: weekday3_main18;}
+.weekday3_main19 {grid-area: weekday3_main19;}
+.weekday3_main20 {grid-area: weekday3_main20;}
+.weekday3_main21 {grid-area: weekday3_main21;}
+.weekday3_main22 {grid-area: weekday3_main22;}
+.weekday3_main23 {grid-area: weekday3_main23;}
+
+.weekday4_main0 {grid-area: weekday4_main0;}
+.weekday4_main1 {grid-area: weekday4_main1;}
+.weekday4_main2 {grid-area: weekday4_main2;}
+.weekday4_main3 {grid-area: weekday4_main3;}
+.weekday4_main4 {grid-area: weekday4_main4;}
+.weekday4_main5 {grid-area: weekday4_main5;}
+.weekday4_main6 {grid-area: weekday4_main6;}
+.weekday4_main7 {grid-area: weekday4_main7;}
+.weekday4_main8 {grid-area: weekday4_main8;}
+.weekday4_main9 {grid-area: weekday4_main9;}
+.weekday4_main10 {grid-area: weekday4_main10;}
+.weekday4_main11 {grid-area: weekday4_main11;}
+.weekday4_main12 {grid-area: weekday4_main12;}
+.weekday4_main13 {grid-area: weekday4_main13;}
+.weekday4_main14 {grid-area: weekday4_main14;}
+.weekday4_main15 {grid-area: weekday4_main15;}
+.weekday4_main16 {grid-area: weekday4_main16;}
+.weekday4_main17 {grid-area: weekday4_main17;}
+.weekday4_main18 {grid-area: weekday4_main18;}
+.weekday4_main19 {grid-area: weekday4_main19;}
+.weekday4_main20 {grid-area: weekday4_main20;}
+.weekday4_main21 {grid-area: weekday4_main21;}
+.weekday4_main22 {grid-area: weekday4_main22;}
+.weekday4_main23 {grid-area: weekday4_main23;}
+
+.weekday5_main0 {grid-area: weekday5_main0;}
+.weekday5_main1 {grid-area: weekday5_main1;}
+.weekday5_main2 {grid-area: weekday5_main2;}
+.weekday5_main3 {grid-area: weekday5_main3;}
+.weekday5_main4 {grid-area: weekday5_main4;}
+.weekday5_main5 {grid-area: weekday5_main5;}
+.weekday5_main6 {grid-area: weekday5_main6;}
+.weekday5_main7 {grid-area: weekday5_main7;}
+.weekday5_main8 {grid-area: weekday5_main8;}
+.weekday5_main9 {grid-area: weekday5_main9;}
+.weekday5_main10 {grid-area: weekday5_main10;}
+.weekday5_main11 {grid-area: weekday5_main11;}
+.weekday5_main12 {grid-area: weekday5_main12;}
+.weekday5_main13 {grid-area: weekday5_main13;}
+.weekday5_main14 {grid-area: weekday5_main14;}
+.weekday5_main15 {grid-area: weekday5_main15;}
+.weekday5_main16 {grid-area: weekday5_main16;}
+.weekday5_main17 {grid-area: weekday5_main17;}
+.weekday5_main18 {grid-area: weekday5_main18;}
+.weekday5_main19 {grid-area: weekday5_main19;}
+.weekday5_main20 {grid-area: weekday5_main20;}
+.weekday5_main21 {grid-area: weekday5_main21;}
+.weekday5_main22 {grid-area: weekday5_main22;}
+.weekday5_main23 {grid-area: weekday5_main23;}
+
+.weekday6_main0 {grid-area: weekday6_main0;}
+.weekday6_main1 {grid-area: weekday6_main1;}
+.weekday6_main2 {grid-area: weekday6_main2;}
+.weekday6_main3 {grid-area: weekday6_main3;}
+.weekday6_main4 {grid-area: weekday6_main4;}
+.weekday6_main5 {grid-area: weekday6_main5;}
+.weekday6_main6 {grid-area: weekday6_main6;}
+.weekday6_main7 {grid-area: weekday6_main7;}
+.weekday6_main8 {grid-area: weekday6_main8;}
+.weekday6_main9 {grid-area: weekday6_main9;}
+.weekday6_main10 {grid-area: weekday6_main10;}
+.weekday6_main11 {grid-area: weekday6_main11;}
+.weekday6_main12 {grid-area: weekday6_main12;}
+.weekday6_main13 {grid-area: weekday6_main13;}
+.weekday6_main14 {grid-area: weekday6_main14;}
+.weekday6_main15 {grid-area: weekday6_main15;}
+.weekday6_main16 {grid-area: weekday6_main16;}
+.weekday6_main17 {grid-area: weekday6_main17;}
+.weekday6_main18 {grid-area: weekday6_main18;}
+.weekday6_main19 {grid-area: weekday6_main19;}
+.weekday6_main20 {grid-area: weekday6_main20;}
+.weekday6_main21 {grid-area: weekday6_main21;}
+.weekday6_main22 {grid-area: weekday6_main22;}
+.weekday6_main23 {grid-area: weekday6_main23;}
+
+.weekday7_main0 {grid-area: weekday7_main0;}
+.weekday7_main1 {grid-area: weekday7_main1;}
+.weekday7_main2 {grid-area: weekday7_main2;}
+.weekday7_main3 {grid-area: weekday7_main3;}
+.weekday7_main4 {grid-area: weekday7_main4;}
+.weekday7_main5 {grid-area: weekday7_main5;}
+.weekday7_main6 {grid-area: weekday7_main6;}
+.weekday7_main7 {grid-area: weekday7_main7;}
+.weekday7_main8 {grid-area: weekday7_main8;}
+.weekday7_main9 {grid-area: weekday7_main9;}
+.weekday7_main10 {grid-area: weekday7_main10;}
+.weekday7_main11 {grid-area: weekday7_main11;}
+.weekday7_main12 {grid-area: weekday7_main12;}
+.weekday7_main13 {grid-area: weekday7_main13;}
+.weekday7_main14 {grid-area: weekday7_main14;}
+.weekday7_main15 {grid-area: weekday7_main15;}
+.weekday7_main16 {grid-area: weekday7_main16;}
+.weekday7_main17 {grid-area: weekday7_main17;}
+.weekday7_main18 {grid-area: weekday7_main18;}
+.weekday7_main19 {grid-area: weekday7_main19;}
+.weekday7_main20 {grid-area: weekday7_main20;}
+.weekday7_main21 {grid-area: weekday7_main21;}
+.weekday7_main22 {grid-area: weekday7_main22;}
+.weekday7_main23 {grid-area: weekday7_main23;}
+
+
+.empty { grid-area: empty; }
+.menu0 { grid-area: menu0; }
+.menu1 { grid-area: menu1; }
+.menu2 { grid-area: menu2; }
+.menu3 { grid-area: menu3; }
+.menu4 { grid-area: menu4; }
+.menu5 { grid-area: menu5; }
+.menu6 { grid-area: menu6; }
+.menu7 { grid-area: menu7; }
+.menu8 { grid-area: menu8; }
+.menu9 { grid-area: menu9; }
+.menu10 { grid-area: menu10; }
+.menu11 { grid-area: menu11; }
+.menu12 { grid-area: menu12; }
+.menu13 { grid-area: menu13; }
+.menu14 { grid-area: menu14; }
+.menu15 { grid-area: menu15; }
+.menu16 { grid-area: menu16; }
+.menu17 { grid-area: menu17; }
+.menu18 { grid-area: menu18; }
+.menu19 { grid-area: menu19; }
+.menu20 { grid-area: menu20; }
+.menu21 { grid-area: menu21; }
+.menu22 { grid-area: menu22; }
+.menu23 { grid-area: menu23; }
+
+
+
+.grid-container3 {
+  display: grid;
+  grid-template-areas:
+    "empty weekday1      weekday2 weekday3 weekday4 weekday5 weekday6 weekday7"
+    "menu0 weekday1_main0 weekday2_main0 weekday3_main0 weekday4_main0  weekday5_main0 weekday6_main0  weekday7_main0"
+    "menu1 weekday1_main1 weekday2_main1 weekday3_main1 weekday4_main1  weekday5_main1 weekday6_main1  weekday7_main1"
+    "menu2 weekday1_main2 weekday2_main2 weekday3_main2 weekday4_main2  weekday5_main2 weekday6_main2  weekday7_main2"
+    "menu3 weekday1_main3 weekday2_main3 weekday3_main3 weekday4_main3  weekday5_main3 weekday6_main3  weekday7_main3"
+    "menu4 weekday1_main4 weekday2_main4 weekday3_main4 weekday4_main4  weekday5_main4 weekday6_main4  weekday7_main4"
+    "menu5 weekday1_main5 weekday2_main5 weekday3_main5 weekday4_main5  weekday5_main5 weekday6_main5  weekday7_main5"
+    "menu6 weekday1_main6 weekday2_main6 weekday3_main6 weekday4_main6  weekday5_main6 weekday6_main6  weekday7_main6"
+    "menu7 weekday1_main7 weekday2_main7 weekday3_main7 weekday4_main7  weekday5_main7 weekday6_main7  weekday7_main7"
+    "menu8 weekday1_main8 weekday2_main8 weekday3_main8 weekday4_main8  weekday5_main8 weekday6_main8  weekday7_main8"
+    "menu9 weekday1_main9 weekday2_main9 weekday3_main9 weekday4_main9  weekday5_main9 weekday6_main9  weekday7_main9"
+    "menu10 weekday1_main10 weekday2_main10 weekday3_main10 weekday4_main10  weekday5_main10 weekday6_main10  weekday7_main10"
+    "menu11 weekday1_main11 weekday2_main11 weekday3_main11 weekday4_main11  weekday5_main11 weekday6_main11  weekday7_main11"
+    "menu12 weekday1_main12 weekday2_main12 weekday3_main12 weekday4_main12  weekday5_main12 weekday6_main12  weekday7_main12"
+    "menu13 weekday1_main13 weekday2_main13 weekday3_main13 weekday4_main13  weekday5_main13 weekday6_main13  weekday7_main13"
+    "menu14 weekday1_main14 weekday2_main14 weekday3_main14 weekday4_main14  weekday5_main14 weekday6_main14  weekday7_main14"
+    "menu15 weekday1_main15 weekday2_main15 weekday3_main15 weekday4_main15  weekday5_main15 weekday6_main15  weekday7_main15"
+    "menu16 weekday1_main16 weekday2_main16 weekday3_main16 weekday4_main16  weekday5_main16 weekday6_main16  weekday7_main16"
+    "menu17 weekday1_main17 weekday2_main17 weekday3_main17 weekday4_main17  weekday5_main17 weekday6_main17  weekday7_main17"
+    "menu18 weekday1_main18 weekday2_main18 weekday3_main18 weekday4_main18  weekday5_main18 weekday6_main18  weekday7_main18"
+    "menu19 weekday1_main19 weekday2_main19 weekday3_main19 weekday4_main19  weekday5_main19 weekday6_main19  weekday7_main19"
+    "menu20 weekday1_main20 weekday2_main20 weekday3_main20 weekday4_main20  weekday5_main20 weekday6_main20  weekday7_main20"
+    "menu21 weekday1_main21 weekday2_main21 weekday3_main21 weekday4_main21  weekday5_main21 weekday6_main21  weekday7_main21"
+    "menu22 weekday1_main22 weekday2_main22 weekday3_main22 weekday4_main22  weekday5_main22 weekday6_main22  weekday7_main22"
+    "menu23 weekday1_main23 weekday2_main23 weekday3_main23 weekday4_main23  weekday5_main23 weekday6_main23  weekday7_main23";
+    grid-column-gap: 10px;
+
+  // background-color: yellowgreen;
+  padding: 5px;
+  height: 100vh;
+ 
+}
+
+.weekday1,.weekday2,.weekday3,.weekday4,.weekday5
+,.weekday6,.weekday7{
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+   font-size: 15px;
+  width: 120px; 
+  height: 60px; 
+ 
+}
+
+.week__day_h{
+  @extend %rb-bold;
+  font-size: 16px;
+  padding-top: 20px;
+}
+
+.week__day_p {
+
+  @extend %rb-regular;
+  font-size: 11px;
+  padding-top: 5px;
+  color: #D7D7D7;
+}
+
+.cell__bg_color{
+ 
+  background-color: #F2F0F0;
+}
+
+.menu__p {
+  @extend %rb-bold;
+
+}
+.selected {
+  &__user-name{
+    @extend %rb-regular;
+    font-size: 11px;
+    padding-left: 5px;
+  }
+  &__user-time{
+    @extend %rb-regular;
+  font-size: 11px;
+  padding-left: 5px;
+  opacity: 0.2;
+  font-size: 10px;
+  
+  }
+}
+
+
+/* selected part for privew only */
+
+.selected_1 {
+  background-color: $selected-time-cl1;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 100%;
+  color: white;
+
+  cursor: pointer;
+}
+
+.selected_2 {
+  background-color: $selected-time-cl2;
+  height: 100%;
+  color: white;
+  margin-left: 10px;
+  margin-right: 10px;
+ 
+  cursor: pointer;
+}
+
+.selected_3 {
+  background-color: $selected-time-cl3;
+  height: 100%;
+  color: white;
+  margin-left: 10px;
+  margin-right: 10px;
+  
+  cursor: pointer;
+}

@@ -1,0 +1,28 @@
+%rb-regular {
+    font-family: 'Roboto-Regular';
+    font-weight: 400;
+}
+
+%rb-bold {
+    font-family: 'Roboto-Bold';
+    font-weight: bold;
+}
+
+%rb-Medium {
+    font-family: 'Roboto-Medium';
+    font-weight: 500;
+}
+
+$global-red: #E70C0C;
+$global-blue-regular: #4AA7FD;
+$global-blue-reg-hover: #2792f7;
+
+$global-blue-weekend:#0370D6;
+$global-blue-weekend-hover: #0259aa;
+
+/* SELECTED WEEK CALENDAR */
+
+
+$selected-time-cl1: #5DC0CC;
+$selected-time-cl2:  #4AA7FD;
+$selected-time-cl3: #312D2D;
