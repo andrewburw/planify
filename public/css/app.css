@@ -2119,7 +2119,7 @@ ul .chart-li-seven {
   padding-left: 40px;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1400px) {
   .page__section-onehalf {
     height: 100vh;
   }
