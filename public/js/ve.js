@@ -7,8 +7,6 @@
 * Site Visual Vannila JS effects
 *
 ************************************************************************/
-console.log('test');
-
 window.onscroll = function () {
   myFunction();
 };

@@ -126,6 +126,10 @@ button:focus {
   padding-top: 15px;
 }
 
+.hide {
+  display: none;
+}
+
 /* BUTTONS */
 .btn {
   border-radius: 8px;
@@ -179,7 +183,7 @@ button:focus {
   padding: 0;
   border: 1px solid #888;
   width: 750px;
-  height: 572px;
+  height: 580px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
@@ -190,6 +194,7 @@ button:focus {
 .modal-reg {
   /* "-reg" used both LOGIN & REGISTER modals its looks the same */
   /*  ============  Right side =========== */
+  /* The Close Button */
 }
 .modal-reg__container {
   display: flex;
@@ -242,6 +247,22 @@ button:focus {
 .modal-reg__footer img:hover {
   opacity: 1;
 }
+.modal-reg__right-close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+}
+.modal-reg__right-close:hover {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal-reg__right-close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
 .modal-reg__right-side {
   flex: 0 1 50%;
   min-height: 100%;
@@ -249,11 +270,12 @@ button:focus {
 }
 .modal-reg__right__logo {
   text-align: center;
+  padding-top: 30px;
   padding-bottom: 10px;
 }
 .modal-reg__right-container {
   margin: 0 auto;
-  padding: 30px;
+  padding: 10px 30px 10px 30px;
 }
 .modal-reg__right-form {
   padding-top: 10px;
@@ -263,7 +285,7 @@ button:focus {
   /* Error msg for input */
 }
 .modal-reg__form-group {
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 }
 .modal-reg__form-group label {
   font-size: 15px;
@@ -380,10 +402,6 @@ button:focus {
   display: flex;
   justify-content: space-around;
   padding-top: 50px;
-}
-
-.hide {
-  display: none;
 }
 
 @font-face {
@@ -1809,7 +1827,8 @@ ul .chart-li-seven {
 .top {
   padding-top: 152px;
   background-position: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("/images/main-background.jpg");
+  /* background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+   url("/images/main-background.jpg");  */
   background-repeat: no-repeat;
   background-size: cover;
 }

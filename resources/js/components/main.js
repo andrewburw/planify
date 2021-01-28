@@ -1,3 +1,17 @@
+/* *************************************************************
+|
+|
+|                      Main JS file
+|
+|       *  Main page of the project.
+|
+|      My page: https://andrewburw.github.io/personalpage/
+|
+|
+| **************************************************************/
+
+
+
 import React, { useState } from 'react';
 import RegisterModal from "./modals/main_page/register";
 
@@ -8,6 +22,7 @@ const  MainPage = () => {
 
     return (
         <div>
+          <RegisterModal />
             {modalIsOpen ? <RegisterModal />: ''}
               <header className="header">
       <div className="container">
@@ -28,7 +43,10 @@ const  MainPage = () => {
                 <a className="menu__list-link" href="#">Learn More</a>
               </li>
               <li className="menu__list-item">
-                <a className="menu__list-link" href="#">Log in</a>
+                <a className="menu__list-link" href="#">Register</a>
+              </li>
+              <li className="menu__list-item">
+                <a className="menu__list-link" onClick={() => showModal(true)} href="#">Log in</a>
               </li>
               <li className="menu__list-item">
                 <button className="header__try-button" onClick={() => showModal(true)}>Try Product</button>

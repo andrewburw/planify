@@ -100,6 +100,9 @@ button:focus {
   line-height: 18px;
   padding-top: 15px;
 }
+.hide{
+  display: none;
+}
 
 /* BUTTONS */
 
@@ -154,7 +157,7 @@ button:focus {
     padding: 0;
     border: 1px solid #888;
     width: 750px;
-    height: 572px;
+    height: 580px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -220,6 +223,29 @@ button:focus {
   }
 
   /*  ============  Right side =========== */
+
+
+ 
+
+  /* The Close Button */
+ &__right-close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+ &__right-close:hover {
+ color: #000;
+  text-decoration: none;
+  cursor: pointer;
+ }  
+ &__right-close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
   &__right-side {
     flex: 0 1 50%;
     min-height: 100%;
@@ -227,11 +253,12 @@ button:focus {
   }
   &__right__logo {
     text-align: center;
+    padding-top: 30px;
     padding-bottom: 10px;
   }
   &__right-container {
     margin: 0 auto;
-    padding: 30px;
+    padding: 10px 30px 10px 30px;
   }
   &__right-form {
     padding-top: 10px;
@@ -241,7 +268,7 @@ button:focus {
     @extend %rb-regular;
   }
   &__form-group {
-    padding-bottom: 30px;
+    padding-bottom: 20px;
   }
   &__form-group label {
     @extend %rb-regular;
@@ -361,6 +388,3 @@ button:focus {
   }
 }
 
-.hide{
-  display: none;
-}
