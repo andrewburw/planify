@@ -18,16 +18,15 @@ import React from 'react';
 
 const Modal = ({ isShowing, hide }) => isShowing ? ReactDOM.createPortal(
   <React.Fragment>
-  
-      <div id="myModal" className="modal">
+     <div className="modal">
      
      <div className="modal-content">
        <div className="modal-reg__container">
-         <div className="modal-reg__left-side">
+         <div className="modal-log__left-side">
            <div className="modal-reg__header"><h1>Planify</h1></div>
            <div className="modal-reg__headindn-cont">
-             <h1 className="modal-reg__heading-welcome">Welcome to Planify.</h1>
-             <h4 className="modal-reg__heading-subwelcome">Ready to Join?</h4>
+             <h1 className="modal-reg__heading-welcome">Welcome Back.</h1>
+             <h4 className="modal-reg__heading-subwelcome">Ready to Login?</h4>
            </div>
            <div className="modal-reg__footer">
              <img src="images/social_icons/fbng1.png" alt="planify" />
@@ -35,25 +34,15 @@ const Modal = ({ isShowing, hide }) => isShowing ? ReactDOM.createPortal(
              <img src="images/social_icons/insta.png" alt="planify" />
            </div>
          </div>
-
-
          <div className="modal-reg__right-side">
            <div className="modal-reg__right-container">
            <span className="modal-reg__right-close" onClick={hide}>&times;</span>
              <div className="modal-reg__right__logo">
                <img src="images/big-logo_login.png" alt="planify" />
              </div>
-             <form  className="modal-reg__right-form">
-               <div className="modal-reg__form-group">
-                 <label htmlFor="username">USERNAME</label>
-                 <input
-                   type="text"
-                   className="form-control"
-                   id="username"
-                   placeholder="Enter username"
-                 />
-                 <small  className="">We'll never share your email with anyone else.</small>
-               </div>
+               
+             <form  className="modal-log__right-form">
+              
                <div className="modal-reg__form-group">
                  <label htmlFor="email">EMAIL</label>
                  <input
@@ -62,7 +51,7 @@ const Modal = ({ isShowing, hide }) => isShowing ? ReactDOM.createPortal(
                    id="email"
                    placeholder="Enter email"
                  />
-                 <small  className="">We'll never share your email with anyone else.</small>
+                 <small  className="hide">We'll never share your email with anyone else.</small>
                </div>
                <div className="modal-reg__form-group">
                  <label htmlFor="pass1">PSSWORD</label>
@@ -72,21 +61,12 @@ const Modal = ({ isShowing, hide }) => isShowing ? ReactDOM.createPortal(
                    id="pass1"
                    placeholder="Enter password"
                  />
-               <small  className="">We'll never share your email with anyone else.</small>
+               <small className="hide">We'll never share your email with anyone else.</small>
                </div>
-               <div className="modal-reg__form-group">
-                 <label htmlFor="pass2">REAPEAT PASSWORD</label>
-                 <input
-                   type="password"
-                   className="form-control"
-                   id="pass2"
-                   placeholder="Repeat password"
-                 />
-                  <small  className="">We'll never share your email with anyone else.</small>
-               </div>
-               <div className="modal-reg__right-form-footer">
-                 <button className="modal-reg__right-buttn-reg">Register</button>
-                 <p className="modal-reg__right-f-f-registred">I am alredy a member</p>
+              
+               <div className="modal-log__right-form-footer">
+                 <button className="modal-reg__right-buttn-reg">Login</button>
+                 <p className="modal-reg__right-f-f-registred"><a href="#">I am not a member</a></p>
                </div>
              </form>
            </div>

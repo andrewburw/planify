@@ -10,20 +10,29 @@
 |
 | **************************************************************/
 
+/* 
 
 
-import React, { useState } from 'react';
+   <LoginModal
+        isShowing={isShowingLog}
+        hide={toggleLog}
+      />*/
+
+import React from 'react';
 import RegisterModal from "./modals/main_page/register";
-
+import LoginModal from "./modals/main_page/login";
+import useModal from "./hooks/useModal";
 
 const  MainPage = () => {
-    const [modalIsOpen,  showModal] = useState(false)
-
+ // const [isShowing, toggle] = useModal();
+  const [isShowingReg, toggleReg] = useModal();
+  const [isShowingLog, toggleLog] = useModal();
 
     return (
         <div>
-          <RegisterModal />
-            {modalIsOpen ? <RegisterModal />: ''}
+          <RegisterModal isShowing={isShowingReg} hide={toggleReg} />
+          <LoginModal    isShowing={isShowingLog} hide={toggleLog} />
+  
               <header className="header">
       <div className="container">
         <div className="header__inner">
@@ -46,10 +55,10 @@ const  MainPage = () => {
                 <a className="menu__list-link" href="#">Register</a>
               </li>
               <li className="menu__list-item">
-                <a className="menu__list-link" onClick={() => showModal(true)} href="#">Log in</a>
+                <a className="menu__list-link" onClick={ toggleLog} href="#">Log in</a>
               </li>
               <li className="menu__list-item">
-                <button className="header__try-button" onClick={() => showModal(true)}>Try Product</button>
+                <button className="header__try-button" onClick={ toggleReg}>Try Product</button>
               </li>
             </ul>
           </nav>

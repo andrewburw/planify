@@ -101,6 +101,49 @@ __webpack_require__(/*! ./components/index */ "./resources/js/components/index.j
 
 /***/ }),
 
+/***/ "./resources/js/components/hooks/useModal.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/hooks/useModal.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+var useModal = function useModal() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      isShowing = _useState2[0],
+      setIsShowing = _useState2[1];
+
+  var toggle = function toggle() {
+    setIsShowing(!isShowing);
+  };
+
+  return [isShowing, toggle];
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useModal);
+
+/***/ }),
+
 /***/ "./resources/js/components/index.js":
 /*!******************************************!*\
   !*** ./resources/js/components/index.js ***!
@@ -182,6 +225,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _modals_main_page_register__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modals/main_page/register */ "./resources/js/components/modals/main_page/register.js");
+/* harmony import */ var _modals_main_page_login__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modals/main_page/login */ "./resources/js/components/modals/main_page/login.js");
+/* harmony import */ var _hooks_useModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./hooks/useModal */ "./resources/js/components/hooks/useModal.js");
 
 
 
@@ -209,16 +254,38 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 |
 | **************************************************************/
 
+/* 
+
+
+   <LoginModal
+        isShowing={isShowingLog}
+        hide={toggleLog}
+      />*/
+
+
+
 
 
 var MainPage = function MainPage() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      modalIsOpen = _useState2[0],
-      showModal = _useState2[1];
+  // const [isShowing, toggle] = useModal();
+  var _useModal = (0,_hooks_useModal__WEBPACK_IMPORTED_MODULE_4__.default)(),
+      _useModal2 = _slicedToArray(_useModal, 2),
+      isShowingReg = _useModal2[0],
+      toggleReg = _useModal2[1];
+
+  var _useModal3 = (0,_hooks_useModal__WEBPACK_IMPORTED_MODULE_4__.default)(),
+      _useModal4 = _slicedToArray(_useModal3, 2),
+      isShowingLog = _useModal4[0],
+      toggleLog = _useModal4[1];
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_modals_main_page_register__WEBPACK_IMPORTED_MODULE_2__.default, {}), modalIsOpen ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_modals_main_page_register__WEBPACK_IMPORTED_MODULE_2__.default, {}) : '', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("header", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_modals_main_page_register__WEBPACK_IMPORTED_MODULE_2__.default, {
+      isShowing: isShowingReg,
+      hide: toggleReg
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_modals_main_page_login__WEBPACK_IMPORTED_MODULE_3__.default, {
+      isShowing: isShowingLog,
+      hide: toggleLog
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("header", {
       className: "header",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
         className: "container",
@@ -270,9 +337,7 @@ var MainPage = function MainPage() {
                 className: "menu__list-item",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
                   className: "menu__list-link",
-                  onClick: function onClick() {
-                    return showModal(true);
-                  },
+                  onClick: toggleLog,
                   href: "#",
                   children: "Log in"
                 })
@@ -280,9 +345,7 @@ var MainPage = function MainPage() {
                 className: "menu__list-item",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
                   className: "header__try-button",
-                  onClick: function onClick() {
-                    return showModal(true);
-                  },
+                  onClick: toggleReg,
                   children: "Try Product"
                 })
               })]
@@ -886,6 +949,146 @@ var MainPage = function MainPage() {
 
 /***/ }),
 
+/***/ "./resources/js/components/modals/main_page/login.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/modals/main_page/login.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+
+/* *************************************************************
+|
+|
+|                      Register Modal file
+|
+|       *  Modal for registration a new user.
+|
+|      My page: https://andrewburw.github.io/personalpage/
+|
+|
+| **************************************************************/
+
+
+
+var Modal = function Modal(_ref) {
+  var isShowing = _ref.isShowing,
+      hide = _ref.hide;
+  return isShowing ? /*#__PURE__*/react_dom__WEBPACK_IMPORTED_MODULE_1__.createPortal( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: "modal",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        className: "modal-content",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "modal-reg__container",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            className: "modal-log__left-side",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+              className: "modal-reg__header",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", {
+                children: "Planify"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+              className: "modal-reg__headindn-cont",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", {
+                className: "modal-reg__heading-welcome",
+                children: "Welcome Back."
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", {
+                className: "modal-reg__heading-subwelcome",
+                children: "Ready to Login?"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+              className: "modal-reg__footer",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+                src: "images/social_icons/fbng1.png",
+                alt: "planify"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+                src: "images/social_icons/in.png",
+                alt: "planify"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+                src: "images/social_icons/insta.png",
+                alt: "planify"
+              })]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "modal-reg__right-side",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+              className: "modal-reg__right-container",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+                className: "modal-reg__right-close",
+                onClick: hide,
+                children: "\xD7"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                className: "modal-reg__right__logo",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+                  src: "images/big-logo_login.png",
+                  alt: "planify"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", {
+                className: "modal-log__right-form",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                  className: "modal-reg__form-group",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+                    htmlFor: "email",
+                    children: "EMAIL"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                    type: "email",
+                    className: "form-control",
+                    id: "email",
+                    placeholder: "Enter email"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("small", {
+                    className: "hide",
+                    children: "We'll never share your email with anyone else."
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                  className: "modal-reg__form-group",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+                    htmlFor: "pass1",
+                    children: "PSSWORD"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                    type: "password",
+                    className: "form-control",
+                    id: "pass1",
+                    placeholder: "Enter password"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("small", {
+                    className: "hide",
+                    children: "We'll never share your email with anyone else."
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                  className: "modal-log__right-form-footer",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+                    className: "modal-reg__right-buttn-reg",
+                    children: "Login"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+                    className: "modal-reg__right-f-f-registred",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+                      href: "#",
+                      children: "I am not a member"
+                    })
+                  })]
+                })]
+              })]
+            })
+          })]
+        })
+      })
+    })
+  }), document.body) : null;
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Modal);
+
+/***/ }),
+
 /***/ "./resources/js/components/modals/main_page/register.js":
 /*!**************************************************************!*\
   !*** ./resources/js/components/modals/main_page/register.js ***!
@@ -898,136 +1101,157 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 
 
-var Example = function Example() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-    id: "myModal",
-    className: "modal",
+/* *************************************************************
+|
+|
+|                      Register Modal file
+|
+|       *  Modal for registration a new user.
+|
+|      My page: https://andrewburw.github.io/personalpage/
+|
+|
+| **************************************************************/
+
+
+
+var Modal = function Modal(_ref) {
+  var isShowing = _ref.isShowing,
+      hide = _ref.hide;
+  return isShowing ? /*#__PURE__*/react_dom__WEBPACK_IMPORTED_MODULE_1__.createPortal( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-      className: "modal-content",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-        className: "modal-reg__container",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-          className: "modal-reg__left-side",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-            className: "modal-reg__header",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", {
-              children: "Planify"
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-            className: "modal-reg__headindn-cont",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", {
-              className: "modal-reg__heading-welcome",
-              children: "Welcome to Planify."
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", {
-              className: "modal-reg__heading-subwelcome",
-              children: "Ready to Join?"
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-            className: "modal-reg__footer",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-              src: "images/social_icons/fbng1.png",
-              alt: "planify"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-              src: "images/social_icons/in.png",
-              alt: "planify"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-              src: "images/social_icons/insta.png",
-              alt: "planify"
-            })]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-          className: "modal-reg__right-side",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-            className: "modal-reg__right-container",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-              className: "modal-reg__right-close",
-              children: "\xD7"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-              className: "modal-reg__right__logo",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-                src: "images/big-logo_login.png",
-                alt: "planify"
+      id: "myModal",
+      className: "modal",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        className: "modal-content",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "modal-reg__container",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            className: "modal-reg__left-side",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+              className: "modal-reg__header",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", {
+                children: "Planify"
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", {
-              className: "modal-reg__right-form",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                className: "modal-reg__form-group",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
-                  htmlFor: "username",
-                  children: "USERNAME"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
-                  type: "text",
-                  className: "form-control",
-                  id: "username",
-                  placeholder: "Enter username"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("small", {
-                  className: "",
-                  children: "We'll never share your email with anyone else."
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                className: "modal-reg__form-group",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
-                  htmlFor: "email",
-                  children: "EMAIL"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
-                  type: "email",
-                  className: "form-control",
-                  id: "email",
-                  placeholder: "Enter email"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("small", {
-                  className: "",
-                  children: "We'll never share your email with anyone else."
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                className: "modal-reg__form-group",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
-                  htmlFor: "pass1",
-                  children: "PSSWORD"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
-                  type: "password",
-                  className: "form-control",
-                  id: "pass1",
-                  placeholder: "Enter password"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("small", {
-                  className: "",
-                  children: "We'll never share your email with anyone else."
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                className: "modal-reg__form-group",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
-                  htmlFor: "pass2",
-                  children: "REAPEAT PASSWORD"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
-                  type: "password",
-                  className: "form-control",
-                  id: "pass2",
-                  placeholder: "Repeat password"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("small", {
-                  className: "",
-                  children: "We'll never share your email with anyone else."
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                className: "modal-reg__right-form-footer",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
-                  className: "modal-reg__right-buttn-reg",
-                  children: "Register"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
-                  className: "modal-reg__right-f-f-registred",
-                  children: "I am alredy a member"
-                })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+              className: "modal-reg__headindn-cont",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", {
+                className: "modal-reg__heading-welcome",
+                children: "Welcome to Planify."
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", {
+                className: "modal-reg__heading-subwelcome",
+                children: "Ready to Join?"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+              className: "modal-reg__footer",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+                src: "images/social_icons/fbng1.png",
+                alt: "planify"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+                src: "images/social_icons/in.png",
+                alt: "planify"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+                src: "images/social_icons/insta.png",
+                alt: "planify"
               })]
             })]
-          })
-        })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "modal-reg__right-side",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+              className: "modal-reg__right-container",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+                className: "modal-reg__right-close",
+                onClick: hide,
+                children: "\xD7"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                className: "modal-reg__right__logo",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+                  src: "images/big-logo_login.png",
+                  alt: "planify"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", {
+                className: "modal-reg__right-form",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                  className: "modal-reg__form-group",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+                    htmlFor: "username",
+                    children: "USERNAME"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                    type: "text",
+                    className: "form-control",
+                    id: "username",
+                    placeholder: "Enter username"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("small", {
+                    className: "",
+                    children: "We'll never share your email with anyone else."
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                  className: "modal-reg__form-group",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+                    htmlFor: "email",
+                    children: "EMAIL"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                    type: "email",
+                    className: "form-control",
+                    id: "email",
+                    placeholder: "Enter email"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("small", {
+                    className: "",
+                    children: "We'll never share your email with anyone else."
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                  className: "modal-reg__form-group",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+                    htmlFor: "pass1",
+                    children: "PSSWORD"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                    type: "password",
+                    className: "form-control",
+                    id: "pass1",
+                    placeholder: "Enter password"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("small", {
+                    className: "",
+                    children: "We'll never share your email with anyone else."
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                  className: "modal-reg__form-group",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+                    htmlFor: "pass2",
+                    children: "REAPEAT PASSWORD"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                    type: "password",
+                    className: "form-control",
+                    id: "pass2",
+                    placeholder: "Repeat password"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("small", {
+                    className: "",
+                    children: "We'll never share your email with anyone else."
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                  className: "modal-reg__right-form-footer",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+                    className: "modal-reg__right-buttn-reg",
+                    children: "Register"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+                    className: "modal-reg__right-f-f-registred",
+                    children: "I am alredy a member"
+                  })]
+                })]
+              })]
+            })
+          })]
+        })
       })
     })
-  });
+  }), document.body) : null;
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Example);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Modal);
 
 /***/ }),
 
