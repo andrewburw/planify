@@ -1,4 +1,15 @@
 
+/* *************************************************************
+|
+|
+|                     Month calendar file
+|
+|       *  Week calendar main file.
+|
+|      My page: https://andrewburw.github.io/personalpage/
+|
+|
+| **************************************************************/
 
 const  WeekCalendar = () => {
     return (

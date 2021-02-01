@@ -64,13 +64,19 @@
         padding-top: 10px;
         display: inline-block; 
         text-align: left; 
-        padding-left: 50px;
+        padding-left: 45px;
+       
     }
     &_p-list-item{
         @extend %rb-regular;
         font-size: 16px;
         line-height: 21px;
 
+    }
+    &_p-list-item:hover{
+      transform: translateX(-2px);
+      transition-duration: 0.4s;
+      text-decoration:underline;
     }
     &_p-list-item + .leftmenu_p-list-item{
         padding-top: 6px;
@@ -159,117 +165,3 @@
     }
   }
 
- /* A SIDE MENU */
- 
-.leftmenu{
-  background-color: #000000;
-  padding-top: 20px;
-  color:  #FFFFFF;
-  &__pages{
-    padding-top: 30px;
-   
-  }
-  &_p-header{
-      @extend %rb-regular;
-    
-      font-size: 20px;
-       line-height: 21px;
-  }
-  &_p-list{
-      padding-top: 10px;
-      display: inline-block; 
-      text-align: left; 
-      padding-left: 50px;
-  }
-  &_p-list-item{
-      @extend %rb-regular;
-      font-size: 16px;
-      line-height: 21px;
-
-  }
-  &_p-list-item + .leftmenu_p-list-item{
-      padding-top: 6px;
-  }
-}
-
-/*       NAV BAR      */
-
-.header_co{
-
-  &__inner{
-    display:flex;
-    justify-content: space-between;
-    
-  }
-  
-  &__leftside{
-      display:flex;
-  }
-  &__leftside-burgermenu{
-      padding-top: 12px;
-   }
-  &__leftside-clname{
-      padding-left: 50px;
-      @extend %rb-regular;
-      font-size: 18px;
-      
-      line-height: 50px;
-      letter-spacing: 0.155em;
-
-  }
-  &__rightside-menu{
-      display:flex;
-     
-  }
-  &__profile{
-      display: flex;
-      padding-left: 20px;
-  }
-
-  &__rside-menu-ddown{
-      padding-right: 10px;
-      display: flex;
-      line-height: 50px;
-  }
-  &__rside-menu-ddown p{
-      font-size: 14px;
-      @extend %rb-regular;
-   
-      color: #898787;
-
-  }
-
-  &__profile img{
-      padding-right: 10px;
-      padding-top: 10px;
-  }
-  &__profile-ddown{
-      font-size: 14px;
-      @extend %rb-Medium;
-      
-  }
-  &__profile{
-      line-height: 50px;
-  }
-
-}
-
-
-.main_co{
-  display: flex;
-  padding-top: 30px;
-   &__month-name{
-     text-align: center;
-   }
-   &__month-name{
-      @extend %rb-regular;
-      font-size: 16px;
-      line-height: 19px;
-   }
-   &__month-left{
-       padding-right: 15px;
-   }
-   &__month-right{
-      padding-left: 15px;
-  }
-}

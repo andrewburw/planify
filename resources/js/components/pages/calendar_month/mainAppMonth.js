@@ -1,13 +1,19 @@
 
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route
-  } from "react-router-dom";
 
+/* *************************************************************
+|
+|
+|                     Month calendar file
+|
+|       *  Month calendar main file.
+|
+|      My page: https://andrewburw.github.io/personalpage/
+|
+|
+| **************************************************************/
 const  MainApp = () => {
 
-  console.log('test')
+ 
     return (
          
         <div className="calendar_app">

@@ -1,4 +1,14 @@
-
+/* *************************************************************
+|
+|
+|                     Gant calendar file
+|
+|       *  Gat calendar main  file.
+|
+|      My page: https://andrewburw.github.io/personalpage/
+|
+|
+| **************************************************************/
 const  Gant = () => {
     return (
         <div className="cal_w_app">

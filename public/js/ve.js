@@ -1,52 +1,15 @@
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
 /******/ (() => { // webpackBootstrap
 /*!****************************!*\
   !*** ./resources/js/ve.js ***!
   \****************************/
-/***********************************************************************
-*
-* Site Visual Vannila JS effects
-*
-************************************************************************/
-window.onscroll = function () {
-  myFunction();
-};
-
-function myFunction() {
-  //nav bar change color on scroll function
-  var elem = document.querySelector(".header");
-
-  if (elem !== null) {
-    if (document.body.scrollTop >= 30 || document.documentElement.scrollTop >= 30) {
-      elem.style.backgroundColor = "black";
-      elem.style.top = "0px";
-    } else {
-      elem.style.top = "32px";
-      elem.style.backgroundColor = "transparent";
-    } // Animate second section cards
-
-
-    if (document.body.scrollTop > 550 || document.documentElement.scrollTop > 10) {
-      document.getElementById("first_card").className = "second__card animate";
-      document.getElementById("second_card").className = "second__card animate2";
-      document.getElementById("third_card").className = "second__card animate3";
-    } // Animate third section elements
-
-
-    if (document.body.scrollTop > 750 || document.documentElement.scrollTop > 800) {
-      document.getElementById("third_one").className = "third__info-text animate";
-      document.getElementById("third_two").className = "third__info-picture animate-right";
-    }
-
-    if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
-      document.getElementById("third_third").className = "third__info-picture2 animate";
-      document.getElementById("third_fourth").className = "third__info-text2 animate-right";
-    }
-
-    if (document.body.scrollTop > 1200 || document.documentElement.scrollTop > 1200) {
-      document.getElementById("third_fivth").className = "third__info-text animate";
-      document.getElementById("third_sixth").className = "third__info-picture3 animate-right";
-    }
-  }
-}
+eval("/***********************************************************************\r\n*\r\n* Site Visual Vannila JS effects\r\n*\r\n************************************************************************/\nwindow.onscroll = function () {\n  myFunction();\n};\n\nfunction myFunction() {\n  //nav bar change color on scroll function\n  var elem = document.querySelector(\".header\");\n\n  if (elem !== null) {\n    if (document.body.scrollTop >= 30 || document.documentElement.scrollTop >= 30) {\n      elem.style.backgroundColor = \"black\";\n      elem.style.top = \"0px\";\n    } else {\n      elem.style.top = \"32px\";\n      elem.style.backgroundColor = \"transparent\";\n    } // Animate second section cards\n\n\n    if (document.body.scrollTop > 550 || document.documentElement.scrollTop > 10) {\n      document.getElementById(\"first_card\").className = \"second__card animate\";\n      document.getElementById(\"second_card\").className = \"second__card animate2\";\n      document.getElementById(\"third_card\").className = \"second__card animate3\";\n    } // Animate third section elements\n\n\n    if (document.body.scrollTop > 750 || document.documentElement.scrollTop > 800) {\n      document.getElementById(\"third_one\").className = \"third__info-text animate\";\n      document.getElementById(\"third_two\").className = \"third__info-picture animate-right\";\n    }\n\n    if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {\n      document.getElementById(\"third_third\").className = \"third__info-picture2 animate\";\n      document.getElementById(\"third_fourth\").className = \"third__info-text2 animate-right\";\n    }\n\n    if (document.body.scrollTop > 1200 || document.documentElement.scrollTop > 1200) {\n      document.getElementById(\"third_fivth\").className = \"third__info-text animate\";\n      document.getElementById(\"third_sixth\").className = \"third__info-picture3 animate-right\";\n    }\n  }\n}//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvdmUuanM/ZDVlNCJdLCJuYW1lcyI6WyJ3aW5kb3ciLCJvbnNjcm9sbCIsIm15RnVuY3Rpb24iLCJlbGVtIiwiZG9jdW1lbnQiLCJxdWVyeVNlbGVjdG9yIiwiYm9keSIsInNjcm9sbFRvcCIsImRvY3VtZW50RWxlbWVudCIsInN0eWxlIiwiYmFja2dyb3VuZENvbG9yIiwidG9wIiwiZ2V0RWxlbWVudEJ5SWQiLCJjbGFzc05hbWUiXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFHQUEsTUFBTSxDQUFDQyxRQUFQLEdBQWtCLFlBQVk7QUFDMUJDLEVBQUFBLFVBQVU7QUFDWCxDQUZIOztBQUdFLFNBQVNBLFVBQVQsR0FBc0I7QUFDcEI7QUFDQSxNQUFJQyxJQUFJLEdBQUdDLFFBQVEsQ0FBQ0MsYUFBVCxDQUF1QixTQUF2QixDQUFYOztBQUVBLE1BQUdGLElBQUksS0FBSyxJQUFaLEVBQWlCO0FBQ2pCLFFBQ0VDLFFBQVEsQ0FBQ0UsSUFBVCxDQUFjQyxTQUFkLElBQTJCLEVBQTNCLElBQ0FILFFBQVEsQ0FBQ0ksZUFBVCxDQUF5QkQsU0FBekIsSUFBc0MsRUFGeEMsRUFHRTtBQUNBSixNQUFBQSxJQUFJLENBQUNNLEtBQUwsQ0FBV0MsZUFBWCxHQUE2QixPQUE3QjtBQUNBUCxNQUFBQSxJQUFJLENBQUNNLEtBQUwsQ0FBV0UsR0FBWCxHQUFpQixLQUFqQjtBQUNELEtBTkQsTUFNTztBQUNMUixNQUFBQSxJQUFJLENBQUNNLEtBQUwsQ0FBV0UsR0FBWCxHQUFpQixNQUFqQjtBQUNBUixNQUFBQSxJQUFJLENBQUNNLEtBQUwsQ0FBV0MsZUFBWCxHQUE2QixhQUE3QjtBQUNELEtBVmdCLENBV25COzs7QUFDRSxRQUFJTixRQUFRLENBQUNFLElBQVQsQ0FBY0MsU0FBZCxHQUEwQixHQUExQixJQUFpQ0gsUUFBUSxDQUFDSSxlQUFULENBQXlCRCxTQUF6QixHQUFxQyxFQUExRSxFQUE4RTtBQUMxRUgsTUFBQUEsUUFBUSxDQUFDUSxjQUFULENBQXdCLFlBQXhCLEVBQXNDQyxTQUF0QyxHQUFrRCxzQkFBbEQ7QUFDQVQsTUFBQUEsUUFBUSxDQUFDUSxjQUFULENBQXdCLGFBQXhCLEVBQXVDQyxTQUF2QyxHQUFtRCx1QkFBbkQ7QUFDQVQsTUFBQUEsUUFBUSxDQUFDUSxjQUFULENBQXdCLFlBQXhCLEVBQXNDQyxTQUF0QyxHQUFrRCx1QkFBbEQ7QUFDSCxLQWhCZ0IsQ0FtQmQ7OztBQUNILFFBQUlULFFBQVEsQ0FBQ0UsSUFBVCxDQUFjQyxTQUFkLEdBQTBCLEdBQTFCLElBQWlDSCxRQUFRLENBQUNJLGVBQVQsQ0FBeUJELFNBQXpCLEdBQXFDLEdBQTFFLEVBQStFO0FBQzNFSCxNQUFBQSxRQUFRLENBQUNRLGNBQVQsQ0FBd0IsV0FBeEIsRUFBcUNDLFNBQXJDLEdBQWlELDBCQUFqRDtBQUNBVCxNQUFBQSxRQUFRLENBQUNRLGNBQVQsQ0FBd0IsV0FBeEIsRUFBcUNDLFNBQXJDLEdBQWlELG1DQUFqRDtBQUNIOztBQUVELFFBQUlULFFBQVEsQ0FBQ0UsSUFBVCxDQUFjQyxTQUFkLEdBQTBCLElBQTFCLElBQWtDSCxRQUFRLENBQUNJLGVBQVQsQ0FBeUJELFNBQXpCLEdBQXFDLElBQTNFLEVBQWlGO0FBQzdFSCxNQUFBQSxRQUFRLENBQUNRLGNBQVQsQ0FBd0IsYUFBeEIsRUFBdUNDLFNBQXZDLEdBQW1ELDhCQUFuRDtBQUNBVCxNQUFBQSxRQUFRLENBQUNRLGNBQVQsQ0FBd0IsY0FBeEIsRUFBd0NDLFNBQXhDLEdBQW9ELGlDQUFwRDtBQUNIOztBQUNELFFBQUlULFFBQVEsQ0FBQ0UsSUFBVCxDQUFjQyxTQUFkLEdBQTBCLElBQTFCLElBQWtDSCxRQUFRLENBQUNJLGVBQVQsQ0FBeUJELFNBQXpCLEdBQXFDLElBQTNFLEVBQWlGO0FBQzdFSCxNQUFBQSxRQUFRLENBQUNRLGNBQVQsQ0FBd0IsYUFBeEIsRUFBdUNDLFNBQXZDLEdBQW1ELDBCQUFuRDtBQUNBVCxNQUFBQSxRQUFRLENBQUNRLGNBQVQsQ0FBd0IsYUFBeEIsRUFBdUNDLFNBQXZDLEdBQW1ELG9DQUFuRDtBQUNIO0FBRUY7QUFFRiIsInNvdXJjZXNDb250ZW50IjpbIi8qKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKlxyXG4qXHJcbiogU2l0ZSBWaXN1YWwgVmFubmlsYSBKUyBlZmZlY3RzXHJcbipcclxuKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqL1xyXG5cclxuXHJcbndpbmRvdy5vbnNjcm9sbCA9IGZ1bmN0aW9uICgpIHtcclxuICAgIG15RnVuY3Rpb24oKTtcclxuICB9O1xyXG4gIGZ1bmN0aW9uIG15RnVuY3Rpb24oKSB7XHJcbiAgICAvL25hdiBiYXIgY2hhbmdlIGNvbG9yIG9uIHNjcm9sbCBmdW5jdGlvblxyXG4gICAgdmFyIGVsZW0gPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKFwiLmhlYWRlclwiKTtcclxuICAgXHJcbiAgICBpZihlbGVtICE9PSBudWxsKXtcclxuICAgIGlmIChcclxuICAgICAgZG9jdW1lbnQuYm9keS5zY3JvbGxUb3AgPj0gMzAgfHxcclxuICAgICAgZG9jdW1lbnQuZG9jdW1lbnRFbGVtZW50LnNjcm9sbFRvcCA+PSAzMFxyXG4gICAgKSB7XHJcbiAgICAgIGVsZW0uc3R5bGUuYmFja2dyb3VuZENvbG9yID0gXCJibGFja1wiO1xyXG4gICAgICBlbGVtLnN0eWxlLnRvcCA9IFwiMHB4XCI7XHJcbiAgICB9IGVsc2Uge1xyXG4gICAgICBlbGVtLnN0eWxlLnRvcCA9IFwiMzJweFwiO1xyXG4gICAgICBlbGVtLnN0eWxlLmJhY2tncm91bmRDb2xvciA9IFwidHJhbnNwYXJlbnRcIjtcclxuICAgIH1cclxuICAvLyBBbmltYXRlIHNlY29uZCBzZWN0aW9uIGNhcmRzXHJcbiAgICBpZiAoZG9jdW1lbnQuYm9keS5zY3JvbGxUb3AgPiA1NTAgfHwgZG9jdW1lbnQuZG9jdW1lbnRFbGVtZW50LnNjcm9sbFRvcCA+IDEwKSB7XHJcbiAgICAgICAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoXCJmaXJzdF9jYXJkXCIpLmNsYXNzTmFtZSA9IFwic2Vjb25kX19jYXJkIGFuaW1hdGVcIjtcclxuICAgICAgICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcInNlY29uZF9jYXJkXCIpLmNsYXNzTmFtZSA9IFwic2Vjb25kX19jYXJkIGFuaW1hdGUyXCI7XHJcbiAgICAgICAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoXCJ0aGlyZF9jYXJkXCIpLmNsYXNzTmFtZSA9IFwic2Vjb25kX19jYXJkIGFuaW1hdGUzXCI7XHJcbiAgICB9IFxyXG4gICAgIFxyXG5cclxuICAgICAgIC8vIEFuaW1hdGUgdGhpcmQgc2VjdGlvbiBlbGVtZW50c1xyXG4gICAgaWYgKGRvY3VtZW50LmJvZHkuc2Nyb2xsVG9wID4gNzUwIHx8IGRvY3VtZW50LmRvY3VtZW50RWxlbWVudC5zY3JvbGxUb3AgPiA4MDApIHtcclxuICAgICAgICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcInRoaXJkX29uZVwiKS5jbGFzc05hbWUgPSBcInRoaXJkX19pbmZvLXRleHQgYW5pbWF0ZVwiO1xyXG4gICAgICAgIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwidGhpcmRfdHdvXCIpLmNsYXNzTmFtZSA9IFwidGhpcmRfX2luZm8tcGljdHVyZSBhbmltYXRlLXJpZ2h0XCI7XHJcbiAgICB9IFxyXG5cclxuICAgIGlmIChkb2N1bWVudC5ib2R5LnNjcm9sbFRvcCA+IDEwMDAgfHwgZG9jdW1lbnQuZG9jdW1lbnRFbGVtZW50LnNjcm9sbFRvcCA+IDEwMDApIHtcclxuICAgICAgICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcInRoaXJkX3RoaXJkXCIpLmNsYXNzTmFtZSA9IFwidGhpcmRfX2luZm8tcGljdHVyZTIgYW5pbWF0ZVwiO1xyXG4gICAgICAgIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwidGhpcmRfZm91cnRoXCIpLmNsYXNzTmFtZSA9IFwidGhpcmRfX2luZm8tdGV4dDIgYW5pbWF0ZS1yaWdodFwiO1xyXG4gICAgfSBcclxuICAgIGlmIChkb2N1bWVudC5ib2R5LnNjcm9sbFRvcCA+IDEyMDAgfHwgZG9jdW1lbnQuZG9jdW1lbnRFbGVtZW50LnNjcm9sbFRvcCA+IDEyMDApIHtcclxuICAgICAgICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcInRoaXJkX2ZpdnRoXCIpLmNsYXNzTmFtZSA9IFwidGhpcmRfX2luZm8tdGV4dCBhbmltYXRlXCI7XHJcbiAgICAgICAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoXCJ0aGlyZF9zaXh0aFwiKS5jbGFzc05hbWUgPSBcInRoaXJkX19pbmZvLXBpY3R1cmUzIGFuaW1hdGUtcmlnaHRcIjtcclxuICAgIH0gXHJcblxyXG4gIH1cclxuXHJcbn0iXSwiZmlsZSI6Ii4vcmVzb3VyY2VzL2pzL3ZlLmpzLmpzIiwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./resources/js/ve.js\n");
 /******/ })()
 ;

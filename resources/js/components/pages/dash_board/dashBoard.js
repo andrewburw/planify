@@ -7,6 +7,17 @@ import {
     Link
   } from "react-router-dom";
 
+/* *************************************************************
+|
+|
+|                     Month calendar file
+|
+|       *  Dash board file.
+|
+|      My page: https://andrewburw.github.io/personalpage/
+|
+|
+| **************************************************************/
 const  DashBoard = () => {
     return (
       <div>

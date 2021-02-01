@@ -14,6 +14,7 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/ve.js', 'public/js')
     .react()
-    .sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/sass/app.scss', 'public/css')
+    .sourceMaps();  // error source map not found solution
     
-mix.js('resources/js/app.js', 'public/js').sourceMaps();
+//mix.js('resources/js/app.js', 'public/js').sourceMaps();
