@@ -22,7 +22,7 @@ const  AsideMenu = () => {
         <div className="leftmenu">
         <div className="left_menu-container">
           <div className="leftmenu__logo">
-            <img src="images/logo.png" alt="" />
+            <img src="/images/logo.png" alt="" />
           </div>
           <div className="leftmenu__pages">
             <div className="leftmenu__pages-con">
@@ -37,9 +37,9 @@ const  AsideMenu = () => {
             <div className="leftmenu__pages-con">
               <h4 className="leftmenu_p-header">Calendars</h4>
               <ul className="leftmenu_p-list">
-              <Link to="/dashboard"> <li className="leftmenu_p-list-item">Undusted [gant]</li></Link>
-              <Link to="/dashboard"> <li className="leftmenu_p-list-item">Undusted [Month]</li></Link>
-              <Link to="/dashboard"> <li className="leftmenu_p-list-item">Undusted [week]</li></Link>
+              <Link to="/dashboard/gant"> <li className="leftmenu_p-list-item">Undusted [gant]</li></Link>
+              <Link to="/dashboard/month"> <li className="leftmenu_p-list-item">Undusted [Month]</li></Link>
+              <Link to="/dashboard/week"> <li className="leftmenu_p-list-item">Undusted [week]</li></Link>
    
               </ul>
             </div>

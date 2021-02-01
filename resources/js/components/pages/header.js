@@ -16,13 +16,13 @@ const  Header = () => {
           </div>
           <div className="header_co__rightside-menu">
             <div className="header_co__rside-menu-ddown">
-              <p>Menu <img className="header_co__rside-menu-d-img"src="images/arrow_down.png" /></p>
+              <p>Menu <img className="header_co__rside-menu-d-img"src="/images/arrow_down.png" /></p>
             </div>
            
             <div className="header_co__profile">
-              <img src="images/myself_1.png" height="40" width="40" width="40" alt="" />
+              <img src="/images/myself_1.png" height="40" width="40" width="40" alt="" />
               <div className="header_co__profile-ddown"> 
-                <p>Andrew B <img className="header_co__rside-menu-d-img"src="images/arrow_down_bw.png" /></p>
+                <p>Andrew B <img className="header_co__rside-menu-d-img"src="/images/arrow_down_bw.png" /></p>
               </div>
             </div>
           </div>

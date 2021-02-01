@@ -26,7 +26,7 @@ import {
 const  IndexPage = () => {
     return (
         <div>
-      <Router >
+      <Router basename={process.env.PUBLIC_URL}>
       <Switch>
       <Route exact path="/" component={MainPage} />
       <Route   path="/dashboard" component={MainApp} />
