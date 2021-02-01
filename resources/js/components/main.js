@@ -9,15 +9,7 @@
 |
 |
 | **************************************************************/
-
-/* 
-
-
-   <LoginModal
-        isShowing={isShowingLog}
-        hide={toggleLog}
-      />*/
-
+import { Link } from "react-router-dom";
 import React from 'react';
 import RegisterModal from "./modals/main_page/register";
 import LoginModal from "./modals/main_page/login";
@@ -58,7 +50,7 @@ const  MainPage = () => {
                 <a className="menu__list-link" onClick={ toggleLog} href="#">Log in</a>
               </li>
               <li className="menu__list-item">
-                <button className="header__try-button" onClick={ toggleReg}>Try Product</button>
+              <Link to="/dashboard"> <button className="header__try-button" >Try Product</button></Link>
               </li>
             </ul>
           </nav>

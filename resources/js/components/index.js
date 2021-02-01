@@ -15,20 +15,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import MainPage from './main';
 import MainApp from './pages/mainApp';
-
+import mainApp from './pages/mainApp'
 import {
     BrowserRouter as Router,
     Switch,
     Route
   } from "react-router-dom";
-
+//  <Router  basename={process.env.PUBLIC_URL}>
+// <Route   exact path="/main" component={MainApp} />
 const  IndexPage = () => {
     return (
-        <div className="App">
-      <Router  basename={process.env.PUBLIC_URL}>
+        <div>
+      <Router >
       <Switch>
       <Route exact path="/" component={MainPage} />
-      <Route  path="/main" component={MainApp} />
+      <Route   path="/dashboard" component={MainApp} />
       </Switch>
       </Router>
     </div>

@@ -11,6 +11,8 @@ window.onscroll = function () {
   function myFunction() {
     //nav bar change color on scroll function
     var elem = document.querySelector(".header");
+   
+    if(elem !== null){
     if (
       document.body.scrollTop >= 30 ||
       document.documentElement.scrollTop >= 30
@@ -46,4 +48,4 @@ window.onscroll = function () {
 
   }
 
-  
+}
