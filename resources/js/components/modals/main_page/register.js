@@ -63,6 +63,7 @@ const Modal = ({ isShowing, hide }) => {
                    type="text"
                    className="form-control"
                    id="username"
+                   name="username"
                    placeholder="Enter username"
                    onChange={handleInputChange}
                    value={inputs.userName}

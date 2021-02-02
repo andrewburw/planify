@@ -24,7 +24,7 @@ const useLoginRegister = (callback) => {
     event.persist();
     setInputs(inputs => ({...inputs, [event.target.name]: event.target.value}));
   
-    setValidation( event.target.value)
+    setValidation(event.target.name , event.target.value)
 
 
 }

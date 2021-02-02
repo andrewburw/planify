@@ -23,6 +23,7 @@
 
 import { useState } from 'react';
 
+import checkFormField from './custom_modules/checkFields';
 /* *************************************************************
 |
 |
@@ -35,12 +36,13 @@ import { useState } from 'react';
 |
 | **************************************************************/
 
-const useValidate = (callback) => {
+const useValidate = () => {
   //const [inputs, setInputs] = useState({});
- 
-  const setValidation = (value) => {
-    console.log(value)
-     valid = 'lol'
+  let valid = null;
+  const setValidation = (field,value) => {
+   
+    checkFormField.checkField(field,value) 
+    
   }
   
   return {
