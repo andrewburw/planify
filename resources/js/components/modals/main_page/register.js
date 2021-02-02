@@ -1,3 +1,9 @@
+
+import ReactDOM from 'react-dom';
+import React from 'react';
+
+import useSignUpForm from './../../hooks/useLoginRegister'
+
 /* *************************************************************
 |
 |
@@ -11,12 +17,19 @@
 | **************************************************************/
 
 
-import ReactDOM from 'react-dom';
-import React from 'react';
+//const {inputs, handleInputChange, handleSubmit} = useSignUpForm();
 
-
-
-const Modal = ({ isShowing, hide }) => isShowing ? ReactDOM.createPortal(
+const Modal = ({ isShowing, hide }) => {
+  
+  
+  const {inputs, handleInputChange, handleSubmit} = useSignUpForm();
+  
+  
+  
+  
+  
+  
+  return ReactDOM.createPortal(
   <React.Fragment>
   
       <div id="myModal" className="modal">
@@ -51,6 +64,8 @@ const Modal = ({ isShowing, hide }) => isShowing ? ReactDOM.createPortal(
                    className="form-control"
                    id="username"
                    placeholder="Enter username"
+                   onChange={handleInputChange}
+                   value={inputs.userName}
                  />
                  <small  className="">We'll never share your email with anyone else.</small>
                </div>
@@ -61,6 +76,8 @@ const Modal = ({ isShowing, hide }) => isShowing ? ReactDOM.createPortal(
                    className="form-control"
                    id="email"
                    placeholder="Enter email"
+                   onChange={handleInputChange}
+                   value={inputs.email}
                  />
                  <small  className="">We'll never share your email with anyone else.</small>
                </div>
@@ -71,6 +88,8 @@ const Modal = ({ isShowing, hide }) => isShowing ? ReactDOM.createPortal(
                    className="form-control"
                    id="pass1"
                    placeholder="Enter password"
+                   onChange={handleInputChange}
+                   value={inputs.password}
                  />
                <small  className="">We'll never share your email with anyone else.</small>
                </div>
@@ -81,6 +100,8 @@ const Modal = ({ isShowing, hide }) => isShowing ? ReactDOM.createPortal(
                    className="form-control"
                    id="pass2"
                    placeholder="Repeat password"
+                   onChange={handleInputChange}
+                   value={inputs.confirmPssword}
                  />
                   <small  className="">We'll never share your email with anyone else.</small>
                </div>
@@ -95,6 +116,6 @@ const Modal = ({ isShowing, hide }) => isShowing ? ReactDOM.createPortal(
      </div>
    </div> 
    </React.Fragment>, document.body
-) : null;
+) }
 
 export default Modal;
