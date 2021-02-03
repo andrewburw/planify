@@ -1,4 +1,4 @@
-import { useState ,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import useValidate from './useValidationFrom';
 /* *************************************************************
 |
@@ -15,29 +15,43 @@ import useValidate from './useValidationFrom';
 const useLoginRegister = () => {
   const [inputs, setInputs] = useState(
     {
-     username: '',
-     email: ''
-});
-  const {testResults,setValidation} = useValidate();
+      username: '',
+      email: '',
+      password1: '',
+      password2: ''
+    });
+  const [touched, setTouch] = useState(
+    {
+      username: false,
+      email: false,
+      password1: false,
+      password2: false
+    });
+
+  const { testResults, setValidation } = useValidate();
   const handleSubmit = (event) => {
     if (event) {
       event.preventDefault();
     }
   }
+
+
   const handleInputChange = (event) => {
     event.persist();
-    setInputs(inputs => ({...inputs, [event.target.name]: event.target.value}));
-    
-}
-  console.log('test',inputs)
+    setInputs(inputs => ({ ...inputs, [event.target.name]: event.target.value }));
+    setTouch(inputs => ({ ...inputs, [event.target.name]: true }));
 
-setValidation(inputs)
+  }
 
+
+  setValidation(inputs) // Outside hook for cotrol fields testing
+ // console.log(touched)
   return {
     handleSubmit,
     handleInputChange,
     inputs,
-    testResults
+    testResults,
+    touched
   };
 }
 

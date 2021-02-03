@@ -17,17 +17,79 @@ import useSignUpForm from './../../hooks/useCheckRegister'
 | **************************************************************/
 
 
-//const {inputs, handleInputChange, handleSubmit} = useSignUpForm();
 
 const Modal = ({ isShowing, hide }) => {
   
   
-  const {inputs, handleInputChange, handleSubmit, testResults} = useSignUpForm();
+  const {inputs, handleInputChange, handleSubmit, testResults,touched} = useSignUpForm();
+ // ********** Input msg error generator *******************
   
+ let generateMsg = (data) =>{
+ 
+     let error = data.eror ? 'is-error': 'no-error'; // Css class for errors color
+
+    return <small  className={error}>{data.msg}</small>;
+
+
+  }
+  //***********************************************************
+
+  let nameMsg = '';
+  let emailMsg = '';
+  let pass1Msg = '';
+  let pass2Msg = '';
+
   
+ // ------------------ NAME FIELD CHECK -----------------------
+  if (testResults.username && touched.username) {
+    nameMsg = generateMsg({eror:true,msg: 'Error in Name field.Please check field data.'});
+  }
+
+  if (!testResults.username  && touched.username) {
+    nameMsg = generateMsg({eror:false,msg: 'Good!'});
+  }
+
+ // ------------------ Email FIELD CHECK -----------------------
+
+   
+ if (testResults.email && touched.email) {
+  emailMsg = generateMsg({eror:true,msg: 'Error in Email field.Please check field data.'});
+ }
+
+ if (!testResults.email && touched.email) {
+  emailMsg = generateMsg({eror:false,msg: 'Good!'});
+ }
+
+ // ------------------ Password 1 FIELD CHECK -----------------------
   
-  console.log( testResults)
+ if (testResults.password1 && touched.password1 ){
+  pass1Msg  = generateMsg({eror:true,msg: 'Enter valid password.'});
+ }
+
+ if (!testResults.password1 && touched.password1) {
+  pass1Msg = generateMsg({eror:false,msg: 'Good!'});
+ }
+
+
+ // ------------------ Password 2 FIELD CHECK -----------------------
   
+ if (testResults.password2 && touched.password2 ){
+  pass2Msg  = generateMsg({eror:true,msg: 'Passwords must match.'});
+ }
+
+ if (!testResults.password2 && touched.password2) {
+  pass2Msg = generateMsg({eror:false,msg: 'Good!'});
+ }
+
+
+ // ------------------ BUTTON CHECK ----------------------- 
+ // If form has errors -> button is disabled
+   
+   let btnRegister = <button className="modal-reg__right-buttn-reg" disabled>Register</button>;
+  if (Object.values(testResults).every(x => (x === false))) {
+     // checks for errors in form 
+    btnRegister = <button className="modal-reg__right-buttn-reg">Register</button>
+  }
   
   return ReactDOM.createPortal(
   <React.Fragment>
@@ -67,8 +129,9 @@ const Modal = ({ isShowing, hide }) => {
                    placeholder="Enter username"
                    onChange={handleInputChange}
                    value={inputs.userName }
+                   maxLength="30"
                  />
-                 <small  className="">We'll never share your email with anyone else.</small>
+                {nameMsg}
                </div>
                <div className="modal-reg__form-group">
                  <label htmlFor="email">EMAIL</label>
@@ -80,8 +143,9 @@ const Modal = ({ isShowing, hide }) => {
                    placeholder="Enter email"
                    onChange={handleInputChange}
                    value={inputs.email }
+                   maxLength="30"
                  />
-                 <small  className="">We'll never share your email with anyone else.</small>
+                 {emailMsg}
                </div>
                <div className="modal-reg__form-group">
                  <label htmlFor="pass1">PSSWORD</label>
@@ -89,11 +153,13 @@ const Modal = ({ isShowing, hide }) => {
                    type="password"
                    className="form-control"
                    id="pass1"
+                   name="password1"
                    placeholder="Enter password"
                    onChange={handleInputChange}
                    value={inputs.password}
+                   maxLength="30"
                  />
-               <small  className="">We'll never share your email with anyone else.</small>
+                {pass1Msg}
                </div>
                <div className="modal-reg__form-group">
                  <label htmlFor="pass2">REAPEAT PASSWORD</label>
@@ -101,17 +167,24 @@ const Modal = ({ isShowing, hide }) => {
                    type="password"
                    className="form-control"
                    id="pass2"
+                   name="password2"
                    placeholder="Repeat password"
                    onChange={handleInputChange}
                    value={inputs.confirmPssword}
+                   maxLength="30"
                  />
-                  <small  className="">We'll never share your email with anyone else.</small>
+                   {pass2Msg}
+               </div>
+               <div className="modal-reg__right-server-err hide">
+                <p>SERVER ERROR: RESPONDED ERRROR</p>
                </div>
                <div className="modal-reg__right-form-footer">
-                 <button className="modal-reg__right-buttn-reg">Register</button>
+                 {btnRegister}
                  <p className="modal-reg__right-f-f-registred">I am alredy a member</p>
                </div>
+               
              </form>
+           
            </div>
          </div>
        </div>

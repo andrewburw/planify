@@ -114,6 +114,7 @@ button:focus {
   padding: 14px 40px;
   @extend %rb-bold;
   margin-right: 15px;
+
 }
 .white-btn {
   background-color: #fffafa;
@@ -121,6 +122,7 @@ button:focus {
 
 .white-btn:hover {
   background-color: $global-red;
+  
   color: #ffffff;
 }
 .btn:active {
@@ -262,9 +264,10 @@ button:focus {
   }
   &__right-form {
     padding-top: 10px;
+
   }
   &__right-form small {
-    color:red; /* Error msg for input */
+  
     @extend %rb-regular;
   }
   &__form-group {
@@ -322,9 +325,16 @@ button:focus {
   }
   &__right-buttn-reg:hover {
     background: #1b0101;
+    transform: translateY(2px);
   }
   &__right-buttn-reg:active {
     transform: translateY(4px);
+  }
+  &__right-buttn-reg:disabled {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+    transform: translateY(0px);
   }
   &__right-f-f-registred {
     padding-top: 15px;
@@ -333,6 +343,17 @@ button:focus {
     text-decoration-line: underline;
     @extend %rb-regular;
     color: #756f6f;
+  }
+  &__right-server-err{
+    border-radius: 8px;
+    background-color: red;
+
+  }
+  &__right-server-err p{
+    padding: 10px;
+    @extend %rb-regular;
+    color: white;
+    
   }
 }
 
@@ -377,9 +398,9 @@ button:focus {
   &__right-form {
     padding-top: 50px;
   }
+  
   &__right-form small {
-    color:red; /* Error msg for input */
-    @extend %rb-regular;
+       @extend %rb-regular; 
   }
   &__right-form-footer{
     display: flex;
@@ -387,4 +408,11 @@ button:focus {
     padding-top: 50px;
   }
 }
+/* FOr msg ERRO IN FIELD */
+.is-error {
+  color: red;
+}
 
+.no-error {
+  color: green;
+}

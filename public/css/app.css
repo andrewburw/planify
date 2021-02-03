@@ -1,4 +1,4 @@
-.footer_1cl_text, .fifth__accordion-hiddentext, .third__info-text-text, .second__card-text, .top__sub-title, .li-row-bars, .selected__user-time, .selected__user-name, .week__day_p, .main_co__month-name, .header_co__rside-menu-ddown p, .header_co__leftside-clname, .leftmenu_p-list-item, .leftmenu_p-header, .modal-log__right-form small, .modal-reg__right-f-f-registred, .modal-reg__form-group label, .modal-reg__right-form small, .modal-reg__heading-subwelcome, .modal-reg__heading-welcome, .section__header-subtext, body {
+.footer_1cl_text, .fifth__accordion-hiddentext, .third__info-text-text, .second__card-text, .top__sub-title, .li-row-bars, .selected__user-time, .selected__user-name, .week__day_p, .main_co__month-name, .header_co__rside-menu-ddown p, .header_co__leftside-clname, .leftmenu_p-list-item, .leftmenu_p-header, .modal-log__right-form small, .modal-reg__right-server-err p, .modal-reg__right-f-f-registred, .modal-reg__form-group label, .modal-reg__right-form small, .modal-reg__heading-subwelcome, .modal-reg__heading-welcome, .section__header-subtext, body {
   font-family: "Roboto-Regular";
   font-weight: 400;
 }
@@ -280,10 +280,6 @@ button:focus {
 .modal-reg__right-form {
   padding-top: 10px;
 }
-.modal-reg__right-form small {
-  color: red;
-  /* Error msg for input */
-}
 .modal-reg__form-group {
   padding-bottom: 20px;
 }
@@ -344,9 +340,16 @@ button:focus {
 }
 .modal-reg__right-buttn-reg:hover {
   background: #1b0101;
+  transform: translateY(2px);
 }
 .modal-reg__right-buttn-reg:active {
   transform: translateY(4px);
+}
+.modal-reg__right-buttn-reg:disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  transform: translateY(0px);
 }
 .modal-reg__right-f-f-registred {
   padding-top: 15px;
@@ -355,6 +358,14 @@ button:focus {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
   color: #756f6f;
+}
+.modal-reg__right-server-err {
+  border-radius: 8px;
+  background-color: red;
+}
+.modal-reg__right-server-err p {
+  padding: 10px;
+  color: white;
 }
 
 /* Add Animation */
@@ -394,14 +405,19 @@ button:focus {
 .modal-log__right-form {
   padding-top: 50px;
 }
-.modal-log__right-form small {
-  color: red;
-  /* Error msg for input */
-}
 .modal-log__right-form-footer {
   display: flex;
   justify-content: space-around;
   padding-top: 50px;
+}
+
+/* FOr msg ERRO IN FIELD */
+.is-error {
+  color: red;
+}
+
+.no-error {
+  color: green;
 }
 
 @font-face {
