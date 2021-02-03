@@ -14,22 +14,28 @@ let validate = {
     checkField : function(field,val){
        // *********** STARTER FUNCTION ******************
        // This function choose what field to check,
-       //  then takes this object function to check.
+       //  then takes this object function to check field.
+       //    TRUE = has errors in field
         switch(field) {
             case 'username':
-              this.name(val)
-              break;
+              return this.name(val)
+            
             case 'email':
-              // code block
-              break;
+              return this.email(val)
+           
             default:
              console.warn('Error in checkField -> Field test not found!')
           }
     },
  
     name: function(value){
+     
+      return !/^[a-zA-Z0-9.\-_$@*!]{3,30}$/.test(value);
+        
+    },
+    email: function(value){
 
-       console.log("name",value)
+      return true;
 
     }
 
@@ -37,3 +43,4 @@ let validate = {
 
 
 export default validate;
+

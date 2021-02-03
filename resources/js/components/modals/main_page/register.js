@@ -2,7 +2,7 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 
-import useSignUpForm from './../../hooks/useLoginRegister'
+import useSignUpForm from './../../hooks/useCheckRegister'
 
 /* *************************************************************
 |
@@ -22,11 +22,11 @@ import useSignUpForm from './../../hooks/useLoginRegister'
 const Modal = ({ isShowing, hide }) => {
   
   
-  const {inputs, handleInputChange, handleSubmit} = useSignUpForm();
+  const {inputs, handleInputChange, handleSubmit, testResults} = useSignUpForm();
   
   
   
-  
+  console.log( testResults)
   
   
   return ReactDOM.createPortal(
@@ -66,7 +66,7 @@ const Modal = ({ isShowing, hide }) => {
                    name="username"
                    placeholder="Enter username"
                    onChange={handleInputChange}
-                   value={inputs.userName}
+                   value={inputs.userName }
                  />
                  <small  className="">We'll never share your email with anyone else.</small>
                </div>
@@ -76,9 +76,10 @@ const Modal = ({ isShowing, hide }) => {
                    type="email"
                    className="form-control"
                    id="email"
+                   name="email"
                    placeholder="Enter email"
                    onChange={handleInputChange}
-                   value={inputs.email}
+                   value={inputs.email }
                  />
                  <small  className="">We'll never share your email with anyone else.</small>
                </div>
