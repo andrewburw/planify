@@ -88,7 +88,7 @@ const Modal = ({ isShowing, hide }) => {
    let btnRegister = <button className="modal-reg__right-buttn-reg" disabled>Register</button>;
   if (Object.values(testResults).every(x => (x === false))) {
      // checks for errors in form 
-    btnRegister = <button className="modal-reg__right-buttn-reg">Register</button>
+    btnRegister = <button className="modal-reg__right-buttn-reg" onClick={handleSubmit}>Register</button>
   }
   
   return ReactDOM.createPortal(

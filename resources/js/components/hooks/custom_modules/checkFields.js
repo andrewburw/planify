@@ -46,7 +46,7 @@ let validate = {
   },
   password1: function (value) {
     // /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
-    return true;
+    return  false;
 
   },
   password2: function (value1, obj) {

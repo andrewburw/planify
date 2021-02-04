@@ -33,6 +33,8 @@ const useLoginRegister = () => {
     if (event) {
       event.preventDefault();
     }
+
+    console.log(inputs)
   }
 
 
@@ -44,7 +46,7 @@ const useLoginRegister = () => {
   }
 
 
-  setValidation(inputs) // Outside hook for cotrol fields testing
+  setValidation(inputs) // Outside hook, for cotrol fields testing
  // console.log(touched)
   return {
     handleSubmit,
