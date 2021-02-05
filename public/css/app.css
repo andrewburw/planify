@@ -270,7 +270,7 @@ button:focus {
 }
 .modal-reg__right__logo {
   text-align: center;
-  padding-top: 30px;
+  padding-top: 20px;
   padding-bottom: 10px;
 }
 .modal-reg__right-container {
@@ -366,6 +366,9 @@ button:focus {
 .modal-reg__right-server-err p {
   padding: 10px;
   color: white;
+}
+.modal-reg__right-server-load object {
+  text-align: center;
 }
 
 /* Add Animation */

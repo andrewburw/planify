@@ -1,7 +1,7 @@
 
 import ReactDOM from 'react-dom';
 import React from 'react';
-
+import LoadingIMG from '/images/loading.svg';
 import useSignUpForm from './../../hooks/useCheckRegister'
 
 /* *************************************************************
@@ -21,7 +21,8 @@ import useSignUpForm from './../../hooks/useCheckRegister'
 const Modal = ({ isShowing, hide }) => {
   
   
-  const {inputs, handleInputChange, handleSubmit, testResults,touched} = useSignUpForm();
+  const {inputs, handleInputChange, handleSubmit,
+     testResults,touched,response,error,isLoading} = useSignUpForm();
  // ********** Input msg error generator *******************
   
  let generateMsg = (data) =>{
@@ -39,7 +40,8 @@ const Modal = ({ isShowing, hide }) => {
   let pass1Msg = '';
   let pass2Msg = '';
 
-  
+  // console.log(response)
+   console.log('isloading',error)
  // ------------------ NAME FIELD CHECK -----------------------
   if (testResults.username && touched.username) {
     nameMsg = generateMsg({eror:true,msg: 'Error in Name field.Please check field data.'});
@@ -90,8 +92,8 @@ const Modal = ({ isShowing, hide }) => {
      // checks for errors in form 
     btnRegister = <button className="modal-reg__right-buttn-reg" onClick={handleSubmit}>Register</button>
   }
-  
-  return ReactDOM.createPortal(
+  //isShowing ? ReactDOM.createPortal(
+  return  ReactDOM.createPortal(
   <React.Fragment>
   
       <div id="myModal" className="modal">
@@ -116,7 +118,12 @@ const Modal = ({ isShowing, hide }) => {
            <div className="modal-reg__right-container">
            <span className="modal-reg__right-close" onClick={hide}>&times;</span>
              <div className="modal-reg__right__logo">
-               <img src="images/big-logo_login.png" alt="planify" />
+             { isLoading !== true ?
+                  <img src="images/big-logo_login.png" alt="planify" /> :  <div className="modal-reg__right-server-load">
+                  <object data="/images/loading.svg" type="image/svg+xml"></object>
+               </div> 
+                }
+            
              </div>
              <form  className="modal-reg__right-form">
                <div className="modal-reg__form-group">
@@ -175,8 +182,14 @@ const Modal = ({ isShowing, hide }) => {
                  />
                    {pass2Msg}
                </div>
+   
+              
                <div className="modal-reg__right-server-err hide">
                 <p>SERVER ERROR: RESPONDED ERRROR</p>
+               </div>
+               <div>
+
+                 
                </div>
                <div className="modal-reg__right-form-footer">
                  {btnRegister}

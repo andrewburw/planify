@@ -30,18 +30,18 @@ const useLoginRegister = () => {
     });
 
   const { testResults, setValidation } = useValidate();
-  const { response, runFetch} = useFetch();
+  const { response, error, runFetch,isLoading} = useFetch();
 
 
   const handleSubmit = (event) => {
     if (event) {
       event.preventDefault();
     }
-    runFetch('https://jsonplaceholder.typicode.com/todos/1','get')
+    runFetch('https://jsonplaceholder.typicode.com/todos/1','get');
   
-    console.log( response)
+   
   }
-
+  
 
   const handleInputChange = (event) => {
     event.persist();
@@ -58,7 +58,10 @@ const useLoginRegister = () => {
     handleInputChange,
     inputs,
     testResults,
-    touched
+    touched,
+    response,
+    error,
+    isLoading
   };
 }
 

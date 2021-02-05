@@ -255,7 +255,7 @@ button:focus {
   }
   &__right__logo {
     text-align: center;
-    padding-top: 30px;
+    padding-top: 20px;
     padding-bottom: 10px;
   }
   &__right-container {
@@ -355,6 +355,12 @@ button:focus {
     color: white;
     
   }
+
+  &__right-server-load object{
+    text-align: center;
+  
+  }
+
 }
 
 /* Add Animation */
