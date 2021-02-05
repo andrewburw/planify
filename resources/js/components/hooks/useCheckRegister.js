@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import useValidate from './useValidationFrom';
+import useFetch from './useFetch';
 /* *************************************************************
 |
 |
@@ -29,12 +30,16 @@ const useLoginRegister = () => {
     });
 
   const { testResults, setValidation } = useValidate();
+  const { response, runFetch} = useFetch();
+
+
   const handleSubmit = (event) => {
     if (event) {
       event.preventDefault();
     }
-
-    console.log(inputs)
+    runFetch('https://jsonplaceholder.typicode.com/todos/1','get')
+  
+    console.log( response)
   }
 
 
