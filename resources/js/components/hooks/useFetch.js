@@ -41,18 +41,22 @@ const useFetch = () => {
         }
 
         let fetchBody = method.toLowerCase() === 'get' ? methodNoBody : methodWithBody;
-     
+             
          fetch(adress, fetchBody).then(response => response.json()
 
             ).then(data => {
-              
+           
+                setLoading(false);
+                setResponse(data);
+                setResponse(false);
+
                 if (data.serverError === true) {
                     setError(data);
                     setLoading(false);
                 } else {
     
-                    setResponse(data);
-                    setLoading(false);
+                 //   setResponse(data);
+                 //   setLoading(false);
                 }
     
             }).catch(err => {

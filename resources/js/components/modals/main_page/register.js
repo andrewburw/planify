@@ -40,8 +40,8 @@ const Modal = ({ isShowing, hide }) => {
   let pass1Msg = '';
   let pass2Msg = '';
 
-  // console.log(response)
-   console.log('isloading',error)
+   console.log(response)
+
  // ------------------ NAME FIELD CHECK -----------------------
   if (testResults.username && touched.username) {
     nameMsg = generateMsg({eror:true,msg: 'Error in Name field.Please check field data.'});
