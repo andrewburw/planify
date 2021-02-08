@@ -30,14 +30,14 @@ const useLoginRegister = () => {
     });
 
   const { testResults, setValidation } = useValidate();
-  const { response, runFetch} = useFetch();
+  const { response, runFetch,error} = useFetch();
 
 
   const handleSubmit = (event) => {
     if (event) {
       event.preventDefault();
     }
-    runFetch('api/test','post',inputs)
+    runFetch('api/test','post',inputs);
   
   
   }
@@ -51,15 +51,16 @@ const useLoginRegister = () => {
   }
 
 
-  setValidation(inputs) // Outside hook, for cotrol fields testing
- // console.log(touched)
+  setValidation(inputs) // Outside hook, for cotrol fields and testing.
+ 
   return {
     handleSubmit,
     handleInputChange,
     inputs,
     testResults,
     touched, 
-    response
+    response,
+    error
   };
 }
 

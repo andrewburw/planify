@@ -32,7 +32,7 @@ const useFetch = () => {
             },
             body: JSON.stringify(dataToSend)
         }
-
+            
         let methodNoBody = {
             method: method,
             headers: {
@@ -45,18 +45,16 @@ const useFetch = () => {
          fetch(adress, fetchBody).then(response => response.json()
 
             ).then(data => {
-           
-                setLoading(false);
-                setResponse(data);
-                setResponse(false);
-
+             
+            
                 if (data.serverError === true) {
+                   
                     setError(data);
                     setLoading(false);
                 } else {
-    
-                 //   setResponse(data);
-                 //   setLoading(false);
+                    setLoading(false);
+                    setResponse(data);
+                    setResponse(false);
                 }
     
             }).catch(err => {
