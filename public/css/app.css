@@ -1,4 +1,4 @@
-.footer_1cl_text, .fifth__accordion-hiddentext, .third__info-text-text, .second__card-text, .top__sub-title, .li-row-bars, .selected__user-time, .selected__user-name, .week__day_p, .main_co__month-name, .header_co__rside-menu-ddown p, .header_co__leftside-clname, .leftmenu_p-list-item, .leftmenu_p-header, .modal-log__right-form small, .modal-reg__right-server-err p, .modal-reg__right-f-f-registred, .modal-reg__form-group label, .modal-reg__right-form small, .modal-reg__heading-subwelcome, .modal-reg__heading-welcome, .section__header-subtext, body {
+.footer_1cl_text, .fifth__accordion-hiddentext, .third__info-text-text, .second__card-text, .top__sub-title, .li-row-bars, .selected__user-time, .selected__user-name, .week__day_p, .main_co__month-name, .header_co__rside-menu-ddown p, .header_co__leftside-clname, .leftmenu_p-list-item, .leftmenu_p-header, .modal-log__right-form small, .modal-reg__right-server-err div, .modal-reg__right-f-f-registred, .modal-reg__form-group label, .modal-reg__right-form small, .modal-reg__heading-subwelcome, .modal-reg__heading-welcome, .section__header-subtext, body {
   font-family: "Roboto-Regular";
   font-weight: 400;
 }
@@ -363,7 +363,7 @@ button:focus {
   border-radius: 8px;
   background-color: red;
 }
-.modal-reg__right-server-err p {
+.modal-reg__right-server-err div {
   padding: 10px;
   color: white;
 }

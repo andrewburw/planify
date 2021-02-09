@@ -37,7 +37,15 @@ const useLoginRegister = () => {
     if (event) {
       event.preventDefault();
     }
-    runFetch('api/test','post',inputs);
+
+    let fetchData = {
+      name: inputs.username,
+      email: inputs.email,
+      password: inputs.password1,
+      password_confirmation: inputs.password2
+
+  }
+    runFetch('api/test','post',fetchData);
   
   
   }
@@ -52,12 +60,19 @@ const useLoginRegister = () => {
 
 
   setValidation(inputs) // Outside hook, for cotrol fields and testing.
- 
+
+  /*  
+  
+      "testResults: is returned object to the register page with results:
+      If field pass tests or not (true/false) 
+      THEN: if one of field has FALSE value button(register) is disabled.
+
+  */
   return {
     handleSubmit,
     handleInputChange,
     inputs,
-    testResults,
+    testResults, 
     touched, 
     response,
     error

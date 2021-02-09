@@ -349,7 +349,7 @@ button:focus {
     background-color: red;
 
   }
-  &__right-server-err p{
+  &__right-server-err div{
     padding: 10px;
     @extend %rb-regular;
     color: white;

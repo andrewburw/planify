@@ -44,7 +44,7 @@ const  MainPage = () => {
                 <a className="menu__list-link" href="#">Learn More</a>
               </li>
               <li className="menu__list-item">
-                <a className="menu__list-link" href="#">Register</a>
+                <a className="menu__list-link" onClick={ toggleReg} href="#">Register</a>
               </li>
               <li className="menu__list-item">
                 <a className="menu__list-link" onClick={ toggleReg} href="#">Log in</a>

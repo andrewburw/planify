@@ -2,7 +2,7 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 import useSignUpForm from './../../hooks/useCheckRegister'
-import { forEach } from 'lodash';
+
 
 /* *************************************************************
 |
@@ -33,20 +33,34 @@ const Modal = ({ isShowing, hide }) => {
 
 
   }
-  //***********************************************************
+  //******************SERVER ERROR GENERATOR ********************
+  
   let generateErrorList = () => {
-  console.log('test')
-   
-      return ''
+    let result = [];
+    for (var prop in error.errors) {
+
+      result.push(error.errors[prop])
+
+    }
+    return result;
   }
-    //***********************************************************
+
+  //***********************************************************
   let nameMsg = '';
   let emailMsg = '';
   let pass1Msg = '';
   let pass2Msg = '';
 
   // console.log(response)
-  console.log( error !== null ? error.errors  : '')
+  //console.log( error !== null ? error.errors  : '')
+
+
+  /* 
+    testResults : is returned object with values true/false.
+    TRUE => passed validation,
+    FALSE => not passed validation
+
+  */
 
   // ------------------ NAME FIELD CHECK -----------------------
   if (testResults.username && touched.username) {
@@ -110,7 +124,7 @@ const Modal = ({ isShowing, hide }) => {
     showLogo = '';
   }
   //isShowing ? ReactDOM.createPortal(
-  return ReactDOM.createPortal(
+  return isShowing ? ReactDOM.createPortal(
     <React.Fragment>
 
       <div id="myModal" className="modal">
@@ -199,7 +213,8 @@ const Modal = ({ isShowing, hide }) => {
 
                   {error !== null && error.serverError === true ?
                     <div className="modal-reg__right-server-err">
-                        <p>SERVER ERROR: {generateErrorList()}</p>
+                        <div>SERVER ERROR: <ul>{generateErrorList().map((number,i) =>
+                                 <li key={i}>{number}</li>)}</ul></div>
                     </div> : ''}
 
 
@@ -220,7 +235,7 @@ const Modal = ({ isShowing, hide }) => {
         </div>
       </div>
     </React.Fragment>, document.body
-  )
+  ) : '';
 }
 
 export default Modal;

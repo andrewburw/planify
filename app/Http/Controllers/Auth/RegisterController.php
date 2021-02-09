@@ -53,8 +53,9 @@ class RegisterController extends Controller
     {
         
             $validator = Validator::make($request->all(), [
-                      'username' => ['required', 'int', 'max:255'],
-                      'email' => ['required', 'int', 'max:255']
+                      'name' => ['required', 'string', 'min:3','max:30'],
+                      'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                      'password' => ['required', 'string', 'min:6', 'confirmed']
             ]);
 
 
@@ -63,18 +64,12 @@ class RegisterController extends Controller
                 $err = array('serverError' => true,
                               'errors' => $validator->errors());
 
-                return response()->json(  $err);
+                return response()->json($err);
                 
+            } else {
+               return  $this->create($request->all());
             }
-       // $data = json_decode($request->data, true);
-      //    $test = array('username' => 'fddd');
-      //  return '{"lol":"' . $request->input('username') .'"}';
-        
-     //   return Validator::make($test, [
-      //      'username' => ['required', 'string', 'max:255']
-           // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-           // 'password' => ['required', 'string', 'min:8', 'confirmed'],
-     //   ]);  
+ 
     }
 
     /**
@@ -83,12 +78,28 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
+    protected function create($data)
     {
-        return User::create([
-            'username' => $data['name'],
+       
+        
+        $queryResult = User::create([
+            'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-        ]);
+        ]); 
+
+        if( $queryResult) {
+            // the query succeed
+         
+            return response()->json(array('serverError' => false,
+            'status' => 'ok')); 
+        } else {
+            // the query failed
+               // Not shore this works.
+            return response()->json(array('serverError' => false,
+            'errors' => '{"error":"error in post table"}')); 
+        }
+
+
     }
 }

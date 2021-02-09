@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 /* *************************************************************
 |
@@ -21,10 +22,14 @@ const useFetch = () => {
 
    useEffect( ()=>{
   // const runFetch = async (adress, method, data) => {
+     
         if (fetchFlag == 0) {
             // Run only after triggerFetch is called 
             return;
           }
+
+  
+
         let methodWithBody = {
             method: method,
             headers: {
@@ -32,13 +37,20 @@ const useFetch = () => {
             },
             body: JSON.stringify(dataToSend)
         }
-            
+           // console.log(fetchData)
+
+
+
         let methodNoBody = {
             method: method,
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
             }
         }
+
+
+
+
 
         let fetchBody = method.toLowerCase() === 'get' ? methodNoBody : methodWithBody;
              
@@ -52,6 +64,7 @@ const useFetch = () => {
                     setError(data);
                     setLoading(false);
                 } else {
+                    console.log(data)
                     setLoading(false);
                     setResponse(data);
                     setResponse(false);
