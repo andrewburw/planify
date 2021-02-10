@@ -1,5 +1,5 @@
 import generateCalendar from './../../custom_modules/generateMonthCalendar';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 /* *************************************************************
 |
 |
@@ -11,37 +11,47 @@ import React from 'react';
 |
 |
 | **************************************************************/
-const  MainApp = () => {
-  //console.log(generateCalendat)
+const MainApp = () => {
 
-    return (<div>
-      <div className="main_co__month-name">
-        
-          <h1> <span className="main_co__month-left"> &#10092; </span> September <span className="main_co__month-right"> &#10093; </span></h1>
-      
-           </div> 
-        <div className="calendar_app">
+  const [month, setMonth] = useState(0);
+
+  useEffect(() => {
+    if (month === 0) {
+      setMonth(generateCalendar.nowMonthNumber())
+    }
+  });
+
+
+  return (<div>
+    <div className="main_co__month-name">
+
+      <h1> <span onClick={() => setMonth(month - 1)} className="main_co__month-left"> &#10092; </span>
+
+        {generateCalendar.generateMonthName(month)} <span onClick={() => setMonth(month + 1)} className="main_co__month-right"> &#10093; </span></h1>
+
+    </div>
+    <div className="calendar_app">
       <div className="calendar_container">
         <div className="calendar__weekday-name">MON</div>
         <div className="calendar__weekday-name">TUE</div>
-        <div className="calendar__weekday-name">WED  </div>  
+        <div className="calendar__weekday-name">WED  </div>
         <div className="calendar__weekday-name">THU</div>
         <div className="calendar__weekday-name">FRI</div>
-        <div className="calendar__weekday-name">SAT</div>  
+        <div className="calendar__weekday-name">SAT</div>
         <div className="calendar__weekday-name">SUN</div>
 
-       {generateCalendar.renderMonth().map((item,i)=>{
-         
-        return <div key={i} className={item.class}>{item.val}</div>
-       })}
-        
-       
-      </div>
-      
+        {generateCalendar.renderMonth(month).map((item, i) => {
+
+          return <div key={i} className={item.class}>{item.val}</div>
+        })}
+
 
       </div>
+
+
     </div>
-    );
+  </div>
+  );
 }
 
-export default MainApp ;
+export default MainApp;

@@ -632,6 +632,12 @@ button:focus {
 .main_co__month-right {
   padding-left: 15px;
 }
+.main_co__month-right:hover {
+  cursor: pointer;
+}
+.main_co__month-left:hover {
+  cursor: pointer;
+}
 
 .calendar_container {
   display: grid;
@@ -1532,7 +1538,7 @@ for (let i = 0 ; i < 24; i++){
   grid-template-areas: "empty weekday1      weekday2 weekday3 weekday4 weekday5 weekday6 weekday7" "menu0 weekday1_main0 weekday2_main0 weekday3_main0 weekday4_main0  weekday5_main0 weekday6_main0  weekday7_main0" "menu1 weekday1_main1 weekday2_main1 weekday3_main1 weekday4_main1  weekday5_main1 weekday6_main1  weekday7_main1" "menu2 weekday1_main2 weekday2_main2 weekday3_main2 weekday4_main2  weekday5_main2 weekday6_main2  weekday7_main2" "menu3 weekday1_main3 weekday2_main3 weekday3_main3 weekday4_main3  weekday5_main3 weekday6_main3  weekday7_main3" "menu4 weekday1_main4 weekday2_main4 weekday3_main4 weekday4_main4  weekday5_main4 weekday6_main4  weekday7_main4" "menu5 weekday1_main5 weekday2_main5 weekday3_main5 weekday4_main5  weekday5_main5 weekday6_main5  weekday7_main5" "menu6 weekday1_main6 weekday2_main6 weekday3_main6 weekday4_main6  weekday5_main6 weekday6_main6  weekday7_main6" "menu7 weekday1_main7 weekday2_main7 weekday3_main7 weekday4_main7  weekday5_main7 weekday6_main7  weekday7_main7" "menu8 weekday1_main8 weekday2_main8 weekday3_main8 weekday4_main8  weekday5_main8 weekday6_main8  weekday7_main8" "menu9 weekday1_main9 weekday2_main9 weekday3_main9 weekday4_main9  weekday5_main9 weekday6_main9  weekday7_main9" "menu10 weekday1_main10 weekday2_main10 weekday3_main10 weekday4_main10  weekday5_main10 weekday6_main10  weekday7_main10" "menu11 weekday1_main11 weekday2_main11 weekday3_main11 weekday4_main11  weekday5_main11 weekday6_main11  weekday7_main11" "menu12 weekday1_main12 weekday2_main12 weekday3_main12 weekday4_main12  weekday5_main12 weekday6_main12  weekday7_main12" "menu13 weekday1_main13 weekday2_main13 weekday3_main13 weekday4_main13  weekday5_main13 weekday6_main13  weekday7_main13" "menu14 weekday1_main14 weekday2_main14 weekday3_main14 weekday4_main14  weekday5_main14 weekday6_main14  weekday7_main14" "menu15 weekday1_main15 weekday2_main15 weekday3_main15 weekday4_main15  weekday5_main15 weekday6_main15  weekday7_main15" "menu16 weekday1_main16 weekday2_main16 weekday3_main16 weekday4_main16  weekday5_main16 weekday6_main16  weekday7_main16" "menu17 weekday1_main17 weekday2_main17 weekday3_main17 weekday4_main17  weekday5_main17 weekday6_main17  weekday7_main17" "menu18 weekday1_main18 weekday2_main18 weekday3_main18 weekday4_main18  weekday5_main18 weekday6_main18  weekday7_main18" "menu19 weekday1_main19 weekday2_main19 weekday3_main19 weekday4_main19  weekday5_main19 weekday6_main19  weekday7_main19" "menu20 weekday1_main20 weekday2_main20 weekday3_main20 weekday4_main20  weekday5_main20 weekday6_main20  weekday7_main20" "menu21 weekday1_main21 weekday2_main21 weekday3_main21 weekday4_main21  weekday5_main21 weekday6_main21  weekday7_main21" "menu22 weekday1_main22 weekday2_main22 weekday3_main22 weekday4_main22  weekday5_main22 weekday6_main22  weekday7_main22" "menu23 weekday1_main23 weekday2_main23 weekday3_main23 weekday4_main23  weekday5_main23 weekday6_main23  weekday7_main23";
   grid-column-gap: 10px;
   padding: 5px;
-  height: 100vh;
+  height: 80vh;
 }
 
 .weekday1, .weekday2, .weekday3, .weekday4, .weekday5,

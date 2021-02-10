@@ -1,4 +1,5 @@
-
+import generateCalendar from './../../custom_modules/generateMonthCalendar';
+import React, { useState, useEffect } from 'react';
 /* *************************************************************
 |
 |
@@ -12,11 +13,26 @@
 | **************************************************************/
 
 const  WeekCalendar = () => {
+  const [month, setMonth] = useState(0);
+
+  useEffect(() => {
+    if (month === 0) {
+      setMonth(generateCalendar.nowMonthNumber())
+    }
+  });
+
+
+
+
+
+
     return (<div>
       <div className="main_co__month-name">
         
-      <h1> <span className="main_co__month-left"> &#10092; </span> September <span className="main_co__month-right"> &#10093; </span></h1>
-      
+
+      <h1> <span onClick={() => setMonth(month - 1)} className="main_co__month-left"> &#10092; </span>
+
+        {generateCalendar.generateMonthName(month)} - Week 1<span onClick={() => setMonth(month + 1)} className="main_co__month-right"> &#10093; </span></h1>      
   </div> 
         <div className="cal_w_app">
         <div className="grid-container3">

@@ -163,5 +163,11 @@
      &__month-right{
         padding-left: 15px;
     }
+    &__month-right:hover{
+     cursor: pointer;
+    }
+    &__month-left:hover{
+    cursor: pointer;
+    }
   }
 
