@@ -13,26 +13,28 @@ import React, { useState, useEffect } from 'react';
 | **************************************************************/
 
 const  WeekCalendar = () => {
-  const [month, setMonth] = useState(0);
 
+  const [day, setDay] = useState(1); //12 feb
+ 
+  /*
   useEffect(() => {
     if (month === 0) {
       setMonth(generateCalendar.nowMonthNumber())
     }
   });
+   */
+  let generate = generateCalendar.generateWeek(day);
 
 
-
-
-
+ // console.log(generate)
 
     return (<div>
       <div className="main_co__month-name">
         
 
-      <h1> <span onClick={() => setMonth(month - 1)} className="main_co__month-left"> &#10092; </span>
+      <h1> <span onClick={() => setDay(day - 7)} className="main_co__month-left"> &#10092; </span>
 
-        {generateCalendar.generateMonthName(month)} - Week 1<span onClick={() => setMonth(month + 1)} className="main_co__month-right"> &#10093; </span></h1>      
+        {generate.month} - Week {generate.week}<span onClick={() => setDay(day + 7)} className="main_co__month-right"> &#10093; </span></h1>      
   </div> 
         <div className="cal_w_app">
         <div className="grid-container3">
@@ -40,32 +42,32 @@ const  WeekCalendar = () => {
       
             <div className="weekday1">
               <h1 className="week__day_h">MON</h1>
-              <p className="week__day_p">20</p>
+              <p className="week__day_p">{generate['1']}</p>
             </div>
             <div className="weekday2"> 
               <h1 className="week__day_h">TUE</h1>
-              <p className="week__day_p">21</p>
+              <p className="week__day_p">{generate['2']}</p>
             
             </div>
             <div className="weekday3">
                <h1 className="week__day_h">WED</h1>
-              <p className="week__day_p">22</p>
+              <p className="week__day_p">{generate['3']}</p>
             </div>
             <div className="weekday4">
                <h1 className="week__day_h">THU</h1>
-              <p className="week__day_p">23</p>
+              <p className="week__day_p">{generate['4']}</p>
             </div>
             <div className="weekday5"> 
               <h1 className="week__day_h">FRI</h1>
-              <p className="week__day_p">24</p>
+              <p className="week__day_p">{generate['5']}</p>
             </div>
             <div className="weekday6">
                <h1 className="week__day_h">SAT</h1>
-              <p className="week__day_p">25</p>
+              <p className="week__day_p">{generate['6']}</p>
             </div>
             <div className="weekday7">
                <h1 className="week__day_h">SUN</h1>
-              <p className="week__day_p">26</p>
+              <p className="week__day_p">{generate['7']}</p>
             </div>
             
             <div className="menu0"><p className="menu__p ">00:00</p></div>
