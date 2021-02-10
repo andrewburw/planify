@@ -18,11 +18,7 @@ const  MainApp = () => {
       <Aside />
       <div className="main_co">
         <div className="container">
-        <div className="main_co__month-name">
-        
-        <h1> <span className="main_co__month-left"> &#10092; </span> September <span className="main_co__month-right"> &#10093; </span></h1>
-        
-    </div> 
+      
    
     <Switch>
     <Route  exact path="/dashboard" component={DashBoard} />

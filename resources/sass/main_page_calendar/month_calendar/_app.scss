@@ -45,7 +45,15 @@
     transition-duration: 0.4s;
     cursor: pointer;
   }
+  &__weekday-hidden {
+    background: transparent;
 
+  }
+  &__weekday-hidden:hover {
+    background-color:white;
+    transform: translateY(0px);
+
+  }
 }
 
 .today {

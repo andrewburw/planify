@@ -10,7 +10,12 @@
 |
 | **************************************************************/
 const  Gant = () => {
-    return (
+    return (<div>
+      <div className="main_co__month-name">
+        
+      <h1> <span className="main_co__month-left"> &#10092; </span> September <span className="main_co__month-right"> &#10093; </span></h1>
+      
+  </div> 
         <div className="cal_w_app">
         <div className="grid-container4">
           <div className="chart">
@@ -106,7 +111,7 @@ const  Gant = () => {
       
         </div>
         
-  
+        </div>
   
       </div>
     );

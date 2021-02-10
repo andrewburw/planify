@@ -676,6 +676,13 @@ button:focus {
   transition-duration: 0.4s;
   cursor: pointer;
 }
+.calendar__weekday-hidden {
+  background: transparent;
+}
+.calendar__weekday-hidden:hover {
+  background-color: white;
+  transform: translateY(0px);
+}
 
 .today {
   border: 4px solid black;
