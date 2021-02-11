@@ -1,4 +1,4 @@
-import {generateWeek,covertDataToDayOfYear} from './../../custom_modules/generateMonthCalendar';
+import {generateWeek,covertDataToDayOfYear,genrateDayM} from './../../custom_modules/generateMonthCalendar';
 import React, { useState, useEffect } from 'react';
 import {Link} from "react-router-dom";
 /* *************************************************************
@@ -12,12 +12,25 @@ import {Link} from "react-router-dom";
 |
 |
 | **************************************************************/
-
+let testData = [{
+  day:33,
+  data: [{
+      user: 'Den',
+      time:[{start:"08:00",end:"12:00"},{start:"13:00",end:"14:00"}],
+   },{
+     user: 'Andrew',
+     time:[{start:"14:00",end:"18:00"}]
+   },{
+     user: 'Abdul',
+     time:[{start:"18:00",end:"23:00"}]
+   }]
+}]
 const  WeekCalendar = (props) => {
 
   const [day, setDay] = useState(3); // day of year (dafault set to 3 (janvary 3th))
- 
-  
+  let generate = generateWeek(day);
+  let generateDay = genrateDayM(testData);
+
   useEffect(() => {
     const {month,day1} = props.location.state || {month: 0,day:0};
    if (day < day1) { // protect (without this protection not working PREV NEXT)
@@ -27,7 +40,7 @@ const  WeekCalendar = (props) => {
    
   });
    
-  let generate = generateWeek(day);
+ 
 
 
   //console.log(generate)
@@ -127,31 +140,16 @@ const  WeekCalendar = (props) => {
             <div className='weekday1_main22 cell__bg_color'><div className='weekday1_main22_inner selected_3'></div></div>
             <div className='weekday1_main23 cell__bg_color'><div className='weekday1_main23_inner selected_3'></div></div>
           
-            
-            <div className='weekday2_main0 cell__bg_color'><div className='weekday2_main0_inner'></div></div>
-  <div className='weekday2_main1 cell__bg_color'><div className='weekday2_main1_inner'></div></div>
-  <div className='weekday2_main2 cell__bg_color'><div className='weekday2_main2_inner'></div></div>
-  <div className='weekday2_main3 cell__bg_color'><div className='weekday2_main3_inner'></div></div>
-  <div className='weekday2_main4 cell__bg_color'><div className='weekday2_main4_inner'></div></div>
-  <div className='weekday2_main5 cell__bg_color'><div className='weekday2_main5_inner'></div></div>
-  <div className='weekday2_main6 cell__bg_color'><div className='weekday2_main6_inner'></div></div>
-  <div className='weekday2_main7 cell__bg_color'><div className='weekday2_main7_inner'></div></div>
-  <div className='weekday2_main8 cell__bg_color'><div className='weekday2_main8_inner'></div></div>
-  <div className='weekday2_main9 cell__bg_color'><div className='weekday2_main9_inner'></div></div>
-  <div className='weekday2_main10 cell__bg_color'><div className='weekday2_main10_inner'></div></div>
-  <div className='weekday2_main11 cell__bg_color'><div className='weekday2_main11_inner selected_2'><span className="selected__user-name">User 4</span></div></div>
-  <div className='weekday2_main12 cell__bg_color'><div className='weekday2_main12_inner selected_2'><span className="selected__user-time">00:00 - 12:00</span></div></div>
-  <div className='weekday2_main13 cell__bg_color'><div className='weekday2_main13_inner selected_2'></div></div>
-  <div className='weekday2_main14 cell__bg_color'><div className='weekday2_main14_inner selected_2'></div></div>
-  <div className='weekday2_main15 cell__bg_color'><div className='weekday2_main15_inner selected_2'></div></div>
-  <div className='weekday2_main16 cell__bg_color'><div className='weekday2_main16_inner selected_2'></div></div>
-  <div className='weekday2_main17 cell__bg_color'><div className='weekday2_main17_inner selected_2'></div></div>
-  <div className='weekday2_main18 cell__bg_color'><div className='weekday2_main18_inner selected_2'></div></div>
-  <div className='weekday2_main19 cell__bg_color'><div className='weekday2_main19_inner selected_2'></div></div>
-  <div className='weekday2_main20 cell__bg_color'><div className='weekday2_main20_inner selected_2'></div></div>
-  <div className='weekday2_main21 cell__bg_color'><div className='weekday2_main21_inner selected_2'></div></div>
-  <div className='weekday2_main22 cell__bg_color'><div className='weekday2_main22_inner selected_2'></div></div>
-  <div className='weekday2_main23 cell__bg_color'><div className='weekday2_main23_inner selected_2'></div></div>
+            {generateDay.map((item,i)=>{
+
+              return  <div key={i} className={item.class1}>
+                <div className={item.class2}>
+                
+                {item.spanclass !==null? <span className={item.spanclass}>{item.spandata}</span>:''}
+                
+                
+                </div></div>
+            })}
   
   
   <div className='weekday3_main0 cell__bg_color'><div className='weekday3_main0_inner'></div></div>

@@ -143,6 +143,7 @@ export function generateWeek(day) {
     let dateWorkWith = convertDayOfyear(day); // convert day of the year to day of month
     let day1 = dateWorkWith.getDate();
     let month = dateWorkWith.getMonth();
+
     let week = { //the monthday corresponds to the day of the week
         1: null,
         2: null,
@@ -215,4 +216,49 @@ export function generateWeek(day) {
     let result = { ...week, ...res }
     return result;
 }
+/*************************************************************** */
+/*************************************************************** */
+/*************************************************************** */
+/*************************************************************** */
+/*
+let testData = [{
+  day:33,
+  data: [{
+      user: 'Den',
+      time:[{start:"08:00",end:"12:00"},{start:"13:00",end:"14:00"}],
+   },{
+     user: 'Andrew',
+     time:[{start:"14:00",end:"18:00"}]
+   },{
+     user: 'Abdul',
+     time:[{start:"18:00",end:"23:00"}]
+   }]
+}] */
+export function genrateDayM(data) {
 
+    let result = [];
+
+
+    for (let i = 0; i <= 23; i++) {
+        if (i === 12) {
+
+            result.push({ class1: `weekday2_main${i} cell__bg_color`, class2: `weekday2_main${i}_inner selected_2`, spanclass: `selected__user-name`, spandata: 'Andrey' }) // heading cell
+
+        } else if (i === 13) {
+
+            result.push({ class1: `weekday2_main${i} cell__bg_color`, class2: `weekday2_main${i}_inner selected_2`, spanclass: `selected__user-time`, spandata: '12:00 - 20:00' }) // timing cell
+
+        } else if (i > 13 && i < 20) {
+
+            result.push({ class1: `weekday2_main${i} cell__bg_color`, class2: `weekday2_main${i}_inner selected_2`, spanclass: null, spandata: null }) // timing cell
+
+        } else {
+
+            result.push({ class1: `weekday2_main${i} cell__bg_color`, class2: `weekday2_main${i}_inner`, spanclass: null, spandata: null }) // clear cell
+
+        }
+
+
+    }
+    return result;
+}
