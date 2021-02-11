@@ -116,6 +116,16 @@ button:focus {
   margin-right: 15px;
 
 }
+.btn-sm {
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  padding: 7px 20px;
+  @extend %rb-bold;
+  margin-right: 5px;
+
+}
 .white-btn {
   background-color: #fffafa;
 }

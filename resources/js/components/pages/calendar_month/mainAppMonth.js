@@ -1,6 +1,5 @@
-import nowMonthNumber,{generateMonthName,renderMonth} from './../../custom_modules/generateMonthCalendar';
+import nowMonthNumber,{generateMonthName,renderMonth,today} from './../../custom_modules/generateMonthCalendar';
 import React, { useState, useEffect } from 'react';
-
 import {Link} from "react-router-dom";
 /* *************************************************************
 |
@@ -43,10 +42,10 @@ const MainApp = () => {
         <div className="calendar__weekday-name">SUN</div>
 
         {renderMonth(month).map((item, i) => {
-
-          return   <Link to={{ pathname: '/dashboard/week', state: { month: month,day: item.val} }} key={i} >  
+          return   <Link to={{ pathname: '/dashboard/week', state: { month: month,day1: item.val} }} key={i} >  
           
-          <div className={item.class}>{item.val}</div></Link>
+          <div className={`${item.class} ${today(month,item.val) ? ' today' : ''}`}>
+            {item.val}</div></Link>
         })}
 
 

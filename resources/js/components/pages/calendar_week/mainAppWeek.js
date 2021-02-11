@@ -1,5 +1,6 @@
-import {generateWeek,convertDayOfyear} from './../../custom_modules/generateMonthCalendar';
+import {generateWeek,covertDataToDayOfYear} from './../../custom_modules/generateMonthCalendar';
 import React, { useState, useEffect } from 'react';
+import {Link} from "react-router-dom";
 /* *************************************************************
 |
 |
@@ -14,25 +15,28 @@ import React, { useState, useEffect } from 'react';
 
 const  WeekCalendar = (props) => {
 
-  const [day, setDay] = useState(3); // day of year
+  const [day, setDay] = useState(3); // day of year (dafault set to 3 (janvary 3th))
  
   
   useEffect(() => {
-    const {foo} = props.location.state || 'null'
-   //  console.log(props.location.state) 
-   console.log( convertDayOfyear(2,4))
+    const {month,day1} = props.location.state || {month: 0,day:0};
+   if (day < day1) { // protect (without this protection not working PREV NEXT)
+    setDay(covertDataToDayOfYear(day1,month)); // day,month
+   }
+   
    
   });
    
   let generate = generateWeek(day);
 
 
- // console.log(generate)
+  //console.log(generate)
 
     return (<div>
+        <Link to="/dashboard/month"><button className="btn-sm white-btn">&#10092; Back</button></Link> 
       <div className="main_co__month-name">
         
-
+        
       <h1> <span onClick={() => setDay(day - 7)} className="main_co__month-left"> &#10092; </span>
 
         {generate.month} - Week {generate.week}<span onClick={() => setDay(day + 7)} className="main_co__month-right"> &#10093; </span></h1>      
@@ -41,32 +45,32 @@ const  WeekCalendar = (props) => {
         <div className="grid-container3">
           <div className="empty"></div>
       
-            <div className="weekday1">
+            <div className={`weekday1 ${generate.today[1]? 'today': ''}`}>
               <h1 className="week__day_h">MON</h1>
               <p className="week__day_p">{generate['1']}</p>
             </div>
-            <div className="weekday2"> 
+            <div className={`weekday2 ${generate.today[2]? 'today': ''}`}> 
               <h1 className="week__day_h">TUE</h1>
               <p className="week__day_p">{generate['2']}</p>
             
             </div>
-            <div className="weekday3">
-               <h1 className="week__day_h">WED</h1>
+            <div className={`weekday3 ${generate.today[3]? 'today': ''}`}>
+               <h1 className="week__day_h ">WED</h1>
               <p className="week__day_p">{generate['3']}</p>
             </div>
-            <div className="weekday4">
+            <div className={`weekday4 ${generate.today[4]? 'today': ''}`}>
                <h1 className="week__day_h">THU</h1>
               <p className="week__day_p">{generate['4']}</p>
             </div>
-            <div className="weekday5"> 
+            <div className={`weekday5 ${generate.today[5]? 'today': ''}`}> 
               <h1 className="week__day_h">FRI</h1>
               <p className="week__day_p">{generate['5']}</p>
             </div>
-            <div className="weekday6">
+            <div className={`weekday6 ${generate.today[6]? 'today': ''}`}>
                <h1 className="week__day_h">SAT</h1>
               <p className="week__day_p">{generate['6']}</p>
             </div>
-            <div className="weekday7">
+            <div className={`weekday7 ${generate.today[7]? 'today': ''}`}>
                <h1 className="week__day_h">SUN</h1>
               <p className="week__day_p">{generate['7']}</p>
             </div>

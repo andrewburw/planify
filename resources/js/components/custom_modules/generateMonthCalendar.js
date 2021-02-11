@@ -11,14 +11,23 @@
 | **************************************************************/
 
 export default function nowMonthNumber() {
-    let thisMonth = new Date();
+    const now = new Date();
 
-    return thisMonth.getMonth() + 1;
+    return now.getMonth() + 1;
 }
 
 /*************************************************************** */
 /*************************************************************** */
+export function today(month, day) {
+    // today yes no ? (return true false)
+    const now = new Date();
+    let recived = new Date(now.getFullYear(), month-1, day);
 
+    return now.toDateString() === recived.toDateString();
+}
+
+/*************************************************************** */
+/*************************************************************** */
 export function renderMonth(month) {
 
     let thisMonth = new Date();
@@ -38,7 +47,7 @@ export function renderMonth(month) {
 
             for (let a = 1; a <= 7; a++) {
                 if (a < date) {
-                    result.push({ class: "calendar__weekday calendar__weekday-hidden", val: null })
+                    result.push({ class: "calendar__weekday calendar__weekday-hidden", val: null }) // push => object div atributes
                 } else if (a >= date && a !== 7) {
                     dayInc++
                     result.push({ class: "calendar__weekday", val: dayInc });
@@ -100,7 +109,7 @@ export function genWeekOfMonth(month, day) {
 
 export function convertDayOfyear(day) {
     // converting day of year to date stamp
-    let thisMonth = new Date();
+    const thisMonth = new Date();
     let date = new Date(thisMonth.getFullYear(), 0); // initialize a date in `year-01-01`
     return new Date(date.setDate(day)); // add the number of days
 }
@@ -109,10 +118,16 @@ export function convertDayOfyear(day) {
 /*************************************************************** */
 
 export function covertDataToDayOfYear(day,month){
-    let thisMonth = new Date();
-    let date = new Date(thisMonth.getFullYear(), month , day); // initialize a date in `year-01-01`
-     
-    return Math.floor(date - new Date(thisMonth.getFullYear(), 0, 0) / (1000 * 60 * 60 * 24));
+    //converting day/month -> date of year
+    if (day === 0 && month === 0) {  return 1 }; // protection
+    if (day === undefined || month === undefined) {  return 1 }; // protection
+
+    const thisYear = new Date();
+    const myDate = new Date(thisYear.getFullYear(),month-1,day);
+    const firstJan = new Date(thisYear.getFullYear() , 0, 1);
+    const differenceInMillieSeconds = myDate - firstJan;
+   
+    return Math.round(differenceInMillieSeconds / (1000 * 60 * 60 * 24) + 1);
 }
 
 /*************************************************************** */
@@ -126,7 +141,7 @@ export function generateWeek(day) {
 
 
     let dateWorkWith = convertDayOfyear(day); // convert day of the year to day of month
-    let day1 = dateWorkWith.getDate()
+    let day1 = dateWorkWith.getDate();
     let month = dateWorkWith.getMonth();
     let week = { //the monthday corresponds to the day of the week
         1: null,
@@ -140,7 +155,7 @@ export function generateWeek(day) {
 
 
 
-    let thisMonth = new Date();
+    const thisMonth = new Date();
     let weekDay = new Date(thisMonth.getFullYear(), month, day1);
     let hManyDays = new Date(thisMonth.getFullYear(), month, 0).getDate(); // number of days in priv month
     let weekDayEurope = !weekDay.getDay() ? 7 : weekDay.getDay();
@@ -169,17 +184,35 @@ export function generateWeek(day) {
 
         }
 
+    } 
+// This part generates today
+
+    let weekisToday = { 
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: false, // if one of those is true (this is week with today)
+        6: false,
+        7: false,
     }
+    for (let i = 1; i <= 7; i++) {
+        if (today(month+1, week[i])) {
+            weekisToday[i] = true;  
+        }
+
+
+    }    
+
+
+//respond
 
     let res = {
         month: generateMonthName(month + 1),
-        week: genWeekOfMonth(month + 1, day1)
+        week: genWeekOfMonth(month + 1, day1),
+        today:weekisToday
     }
     let result = { ...week, ...res }
     return result;
 }
 
-
-
-
-//export default run;
