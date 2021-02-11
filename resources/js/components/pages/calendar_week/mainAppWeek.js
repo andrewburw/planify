@@ -1,4 +1,4 @@
-import generateCalendar from './../../custom_modules/generateMonthCalendar';
+import {generateWeek,convertDayOfyear} from './../../custom_modules/generateMonthCalendar';
 import React, { useState, useEffect } from 'react';
 /* *************************************************************
 |
@@ -12,18 +12,19 @@ import React, { useState, useEffect } from 'react';
 |
 | **************************************************************/
 
-const  WeekCalendar = () => {
+const  WeekCalendar = (props) => {
 
-  const [day, setDay] = useState(1); //12 feb
+  const [day, setDay] = useState(3); // day of year
  
-  /*
+  
   useEffect(() => {
-    if (month === 0) {
-      setMonth(generateCalendar.nowMonthNumber())
-    }
+    const {foo} = props.location.state || 'null'
+   //  console.log(props.location.state) 
+   console.log( convertDayOfyear(2,4))
+   
   });
-   */
-  let generate = generateCalendar.generateWeek(day);
+   
+  let generate = generateWeek(day);
 
 
  // console.log(generate)

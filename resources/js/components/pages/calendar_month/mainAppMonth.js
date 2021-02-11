@@ -1,5 +1,7 @@
-import generateCalendar from './../../custom_modules/generateMonthCalendar';
+import nowMonthNumber,{generateMonthName,renderMonth} from './../../custom_modules/generateMonthCalendar';
 import React, { useState, useEffect } from 'react';
+
+import {Link} from "react-router-dom";
 /* *************************************************************
 |
 |
@@ -17,7 +19,7 @@ const MainApp = () => {
 
   useEffect(() => {
     if (month === 0) {
-      setMonth(generateCalendar.nowMonthNumber())
+      setMonth(nowMonthNumber())
     }
   });
 
@@ -27,7 +29,7 @@ const MainApp = () => {
 
       <h1> <span onClick={() => setMonth(month - 1)} className="main_co__month-left"> &#10092; </span>
 
-        {generateCalendar.generateMonthName(month)} <span onClick={() => setMonth(month + 1)} className="main_co__month-right"> &#10093; </span></h1>
+        {generateMonthName(month)} <span onClick={() => setMonth(month + 1)} className="main_co__month-right"> &#10093; </span></h1>
 
     </div>
     <div className="calendar_app">
@@ -40,9 +42,11 @@ const MainApp = () => {
         <div className="calendar__weekday-name">SAT</div>
         <div className="calendar__weekday-name">SUN</div>
 
-        {generateCalendar.renderMonth(month).map((item, i) => {
+        {renderMonth(month).map((item, i) => {
 
-          return <div key={i} className={item.class}>{item.val}</div>
+          return   <Link to={{ pathname: '/dashboard/week', state: { month: month,day: item.val} }} key={i} >  
+          
+          <div className={item.class}>{item.val}</div></Link>
         })}
 
 
