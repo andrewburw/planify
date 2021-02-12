@@ -1,9 +1,9 @@
-.footer_1cl_text, .fifth__accordion-hiddentext, .third__info-text-text, .second__card-text, .top__sub-title, .li-row-bars, .selected__user-time, .selected__user-name, .week__day_p, .main_co__month-name, .header_co__rside-menu-ddown p, .header_co__leftside-clname, .leftmenu_p-list-item, .leftmenu_p-header, .modal-log__right-form small, .modal-reg__right-server-err div, .modal-reg__right-f-f-registred, .modal-reg__form-group label, .modal-reg__right-form small, .modal-reg__heading-subwelcome, .modal-reg__heading-welcome, .section__header-subtext, body {
+.footer_1cl_text, .fifth__accordion-hiddentext, .third__info-text-text, .second__card-text, .top__sub-title, .small__menu-body, .li-row-bars, .selected__user-time, .selected__user-name, .week__day_p, .main_co__month-name, .header_co__rside-menu-ddown p, .header_co__leftside-clname, .leftmenu_p-list-item, .leftmenu_p-header, .modal-log__right-form small, .modal-reg__right-server-err div, .modal-reg__right-f-f-registred, .modal-reg__form-group label, .modal-reg__right-form small, .modal-reg__heading-subwelcome, .modal-reg__heading-welcome, .section__header-subtext, body {
   font-family: "Roboto-Regular";
   font-weight: 400;
 }
 
-.fourth__card-plantitle, .third__info-text-title, .second__card-title, .top__title, .chart-row-item, .chart-period > span, .menu__p, .week__day_h, .calendar__weekday-name, .modal-reg__right-buttn-reg, .modal-reg__form-group input, .modal-reg__header h1, .btn-sm, .btn, .section__header-title, .title {
+.fourth__card-plantitle, .third__info-text-title, .second__card-title, .top__title, .small__menu-h-h, .chart-row-item, .chart-period > span, .menu__p, .week__day_h, .calendar__weekday-name, .modal-reg__right-buttn-reg, .modal-reg__form-group input, .modal-reg__header h1, .btn-sm, .btn, .section__header-title, .title {
   font-family: "Roboto-Bold";
   font-weight: bold;
 }
@@ -1725,6 +1725,61 @@ ul .chart-li-seven {
 
 .li__row-bars-text:hover {
   opacity: 1;
+}
+
+.small__menu {
+  position: absolute;
+  display: block;
+  z-index: 2000;
+}
+.small__menu-container {
+  width: 200px;
+  height: 220px;
+  background-color: #1E2B32;
+  border-radius: 10px 10px;
+}
+.small__menu-header {
+  border-radius: 10px 10px 0px 0px;
+  padding: 5px;
+  background-color: #2A3942;
+}
+.small__menu-h-h {
+  color: #FFFFFF;
+  padding-left: 10px;
+}
+.small__menu-body {
+  padding-left: 15px;
+  transition: 1s all;
+  font-size: 16px;
+  color: #fff;
+  display: block;
+}
+.small__menu-body li {
+  padding: 5px;
+}
+.small__menu-body li ul {
+  background: #1E2B32;
+  padding-top: 10px;
+}
+.small__menu-body li:hover {
+  transition: 1s all;
+  color: #2f89fc;
+  background-color: rgba(42, 56, 65, 0.82);
+  border-top-right-radius: 10px 10px;
+  border-bottom-right-radius: 10px 10px;
+  cursor: pointer;
+}
+.small__menu-body li:hover {
+  transition: 1s all;
+  color: #2f89fc;
+  background-color: rgba(42, 56, 65, 0.82);
+  border-top-right-radius: 10px 10px;
+  border-bottom-right-radius: 10px 10px;
+  cursor: pointer;
+}
+
+.icon {
+  margin-right: 8px;
 }
 
 /* IMPORT main page files */

@@ -3,7 +3,7 @@
 |
 |                     Month calendar generator file
 |
-|       *  This is custom module for working with calendar.
+|       *  This is custom module for working with week calendar.
 |
 |      My page: https://andrewburw.github.io/personalpage/
 |
@@ -21,7 +21,7 @@ export default function nowMonthNumber() {
 export function today(month, day) {
     // today yes no ? (return true false)
     const now = new Date();
-    let recived = new Date(now.getFullYear(), month-1, day);
+    let recived = new Date(now.getFullYear(), month - 1, day);
 
     return now.toDateString() === recived.toDateString();
 }
@@ -117,16 +117,16 @@ export function convertDayOfyear(day) {
 /*************************************************************** */
 /*************************************************************** */
 
-export function covertDataToDayOfYear(day,month){
+export function covertDataToDayOfYear(day, month) {
     //converting day/month -> date of year
-    if (day === 0 && month === 0) {  return 1 }; // protection
-    if (day === undefined || month === undefined) {  return 1 }; // protection
+    if (day === 0 && month === 0) { return 1 }; // protection
+    if (day === undefined || month === undefined) { return 1 }; // protection
 
     const thisYear = new Date();
-    const myDate = new Date(thisYear.getFullYear(),month-1,day);
-    const firstJan = new Date(thisYear.getFullYear() , 0, 1);
+    const myDate = new Date(thisYear.getFullYear(), month - 1, day);
+    const firstJan = new Date(thisYear.getFullYear(), 0, 1);
     const differenceInMillieSeconds = myDate - firstJan;
-   
+
     return Math.round(differenceInMillieSeconds / (1000 * 60 * 60 * 24) + 1);
 }
 
@@ -185,10 +185,10 @@ export function generateWeek(day) {
 
         }
 
-    } 
-// This part generates today
+    }
+    // This part generates today
 
-    let weekisToday = { 
+    let weekisToday = {
         1: false,
         2: false,
         3: false,
@@ -198,30 +198,126 @@ export function generateWeek(day) {
         7: false,
     }
     for (let i = 1; i <= 7; i++) {
-        if (today(month+1, week[i])) {
-            weekisToday[i] = true;  
+        if (today(month + 1, week[i])) {
+            weekisToday[i] = true;
         }
 
 
-    }    
+    }
 
 
-//respond
+    //respond
 
     let res = {
         month: generateMonthName(month + 1),
         monthNum: month,
         week: genWeekOfMonth(month + 1, day1),
-        today:weekisToday
+        today: weekisToday
     }
     let result = { ...week, ...res }
     return result;
 }
 /*************************************************************** */
 /*************************************************************** */
+
+export function genrateDayM(data) {
+    // this function generates all days in week
+    /*Recived data:
+    data = [
+      false,
+      (4) [{…}, {…}, {…}, {…}], // recived data -> [{start:"08:00",end:"12:00",name:"den"}, ... ]
+       false,
+       false,
+       false,
+       false,
+       false
+    ]
+    
+    
+    Output data (resultAll):
+    data = [
+      false,
+      (4) [{…}, {…}, {…}, {…}], // generated objects with div attributes
+       false,                  // if false value : renders Component <ClearDay /> 
+       false,
+       false,
+       false,
+       false
+    ]
+    
+    */
+  
+    let resultAll = [];
+
+    for (let a = 0; a <= data.length - 1; a++) {
+
+        if (data[a] === false) {
+
+            resultAll.push(false);
+
+        } else {
+        /*  
+           this part generates div attributes EXAMPLE:
+
+            <div className='weekday1_main0 cell__bg_color'>
+            <div className='weekday1_main0_inner selected_1'>
+            <span className="selected__user-name">Andrew</span></div></div> 
+
+        */
+
+            let result = [];
+            let elementWorkwith = false;
+            let start = undefined; // if set to false -> second "else if" triggered
+            let end = false;
+            let color = 0; // 1,2 or 3
+
+            for (let i = 0; i <= 23; i++) { // i === time form 0:00 to 23:00
+
+
+                elementWorkwith = data[a].find(elm => Number(elm.start.split(":")[0]) === i) || false;
+
+                if (elementWorkwith) {
+                    color++;
+                    if (color === 3) { color = 1 }; // only 3 colors avilible
+
+                    start = Number(elementWorkwith.start.split(":")[0]);
+                    end = Number(elementWorkwith.end.split(":")[0]);
+
+                }
+
+
+                if (i === start) {
+
+                    result.push({ class1: `weekday${a+1}_main${i} cell__bg_color`, class2: `weekday${a+1}_main${i}_inner selected_${color}`, spanclass: `selected__user-name`, spandata: elementWorkwith.name }) // heading cell
+
+                } else if (i === start + 1) {
+
+                    result.push({ class1: `weekday${a+1}_main${i} cell__bg_color`, class2: `weekday${a+1}_main${i}_inner selected_${color}`, spanclass: `selected__user-time`, spandata: start + ':00' + ' - ' + end + ':00' }) // timing cell
+
+                } else if (i > start + 1 && i < end) {
+
+                    result.push({ class1: `weekday${a+1}_main${i} cell__bg_color`, class2: `weekday${a+1}_main${i}_inner selected_${color}`, spanclass: null, spandata: null }) // colorized cell
+
+                } else {
+
+                    result.push({ class1: `weekday${a+1}_main${i} cell__bg_color`, class2: `weekday${a+1}_main${i}_inner`, spanclass: null, spandata: null }) // clear cell
+
+                }
+
+            }
+            resultAll.push(result);
+        }
+
+
+    }
+
+    return resultAll;
+}
 /*************************************************************** */
 /*************************************************************** */
+
 /*
+|               data variable:
 let testData = [{
   day:33,
   reserved:[{start:"08:00",end:"12:00",name:"den"},
@@ -230,82 +326,32 @@ let testData = [{
   {start:"18:00",end:"20:00",name:"abdul"}]
 }] 
 
-*/
-export function genrateDayM(data,weekDay) {
-      // this function generates only one day
-    let result = [];
-    let elementWorkwith = false;
-    let start = undefined; // if set to false -> second "else if" triggered
-    let end = false;
-    let color = 0; // 1,2 or 3
-  
-    for (let i = 0; i <= 23; i++) { // i === time form 0:00 to 23:00
-      
-         
-           elementWorkwith =  data[0].reserved.find(elm => Number(elm.start.split(":")[0]) === i ) || false;
-    
-           if (elementWorkwith) {
-            color = color +1
-              if (color===3) {color = 1} // only 3 colors avilible
-
-            start = Number(elementWorkwith.start.split(":")[0]);
-            end = Number(elementWorkwith.end.split(":")[0]);
-            
-           }
-        
-          
-        if (i === start ) {
-
-            result.push({ class1: `weekday2_main${i} cell__bg_color`, class2: `weekday2_main${i}_inner selected_${color}`, spanclass: `selected__user-name`, spandata:   elementWorkwith.name }) // heading cell
-
-        } else if (i === start+1 ) {
-
-            result.push({ class1: `weekday2_main${i} cell__bg_color`, class2: `weekday2_main${i}_inner selected_${color}`, spanclass: `selected__user-time`, spandata:  start + ':00' + ' - ' + end +':00'}) // timing cell
-
-        } else if (i > start+1 && i < end ) {
-
-            result.push({ class1: `weekday2_main${i} cell__bg_color`, class2: `weekday2_main${i}_inner selected_${color}`, spanclass: null, spandata: null }) // colorized cell
-
-        } else {
-
-            result.push({ class1: `weekday2_main${i} cell__bg_color`, class2: `weekday2_main${i}_inner`, spanclass: null, spandata: null }) // clear cell
-
-        }   
-     
-
-    }
-     
-
-    return result;
-}
-/*let testData = [{
-  day:33,
-  reserved:[{start:"08:00",end:"12:00",name:"den"},
-  {start:"13:00",end:"15:00",name:"den"},
-  {start:"15:00",end:"18:00",name:"andrew"},
-  {start:"18:00",end:"20:00",name:"abdul"}]
-}] 
-
+|               weekDays variable              
  week days  : {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, month: "February", week: 0, today: {…}}
 */
-export function genrateWeekAll(data,weekDays) {
 
-   let result = [];
-// elementWorkwith =  data[0].reserved.find(elm => Number(elm.start.split(":")[0]) === i ) || false;
- //covertDataToDayOfYear(day,month) returned month form 0
- console.log(weekDays.monthNum+1)
-   for (const key in weekDays) {
-       //
-       
-      console.log(covertDataToDayOfYear(key,weekDays.monthNum+1))
-   }
+export function genrateWeekAll(data, weekDays) {
+
+    let result = [];
 
 
+    for (const key in weekDays) {
+
+        if (key === 'month') {
+            break;
+        }
+
+        let check = data.find(elm => elm.day === covertDataToDayOfYear(weekDays[key], weekDays.monthNum + 1)) || false
+
+        if (check) {
+            result.push(check.reserved)
+        } else {
+            result.push(false)
+        }
+
+    }
 
 
-    
 
-      console.log(weekDays)
-
-     return genrateDayM(data)
- }
+    return genrateDayM(result);
+}

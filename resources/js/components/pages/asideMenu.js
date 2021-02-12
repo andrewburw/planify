@@ -28,8 +28,8 @@ const  AsideMenu = () => {
             <div className="leftmenu__pages-con">
               <h4 className="leftmenu_p-header">Pages</h4>
               <ul className="leftmenu_p-list">
-              <Link to="/dashboard"><li className="leftmenu_p-list-item">Main</li></Link>
-                <li className="leftmenu_p-list-item">Calendar</li>
+              <Link to="/dashboard"><li className="leftmenu_p-list-item"><i className="fas fa-home icon"></i>Main</li></Link>
+                <li className="leftmenu_p-list-item"><i className="fas fa-table icon"></i>Calendar</li>
               </ul>
             </div>
           </div>
