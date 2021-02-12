@@ -210,6 +210,7 @@ export function generateWeek(day) {
 
     let res = {
         month: generateMonthName(month + 1),
+        monthNum: month,
         week: genWeekOfMonth(month + 1, day1),
         today:weekisToday
     }
@@ -223,42 +224,88 @@ export function generateWeek(day) {
 /*
 let testData = [{
   day:33,
-  data: [{
-      user: 'Den',
-      time:[{start:"08:00",end:"12:00"},{start:"13:00",end:"14:00"}],
-   },{
-     user: 'Andrew',
-     time:[{start:"14:00",end:"18:00"}]
-   },{
-     user: 'Abdul',
-     time:[{start:"18:00",end:"23:00"}]
-   }]
-}] */
-export function genrateDayM(data) {
+  reserved:[{start:"08:00",end:"12:00",name:"den"},
+  {start:"13:00",end:"15:00",name:"den"},
+  {start:"15:00",end:"18:00",name:"andrew"},
+  {start:"18:00",end:"20:00",name:"abdul"}]
+}] 
 
+*/
+export function genrateDayM(data,weekDay) {
+      // this function generates only one day
     let result = [];
+    let elementWorkwith = false;
+    let start = undefined; // if set to false -> second "else if" triggered
+    let end = false;
+    let color = 0; // 1,2 or 3
+  
+    for (let i = 0; i <= 23; i++) { // i === time form 0:00 to 23:00
+      
+         
+           elementWorkwith =  data[0].reserved.find(elm => Number(elm.start.split(":")[0]) === i ) || false;
+    
+           if (elementWorkwith) {
+            color = color +1
+              if (color===3) {color = 1} // only 3 colors avilible
 
+            start = Number(elementWorkwith.start.split(":")[0]);
+            end = Number(elementWorkwith.end.split(":")[0]);
+            
+           }
+        
+          
+        if (i === start ) {
 
-    for (let i = 0; i <= 23; i++) {
-        if (i === 12) {
+            result.push({ class1: `weekday2_main${i} cell__bg_color`, class2: `weekday2_main${i}_inner selected_${color}`, spanclass: `selected__user-name`, spandata:   elementWorkwith.name }) // heading cell
 
-            result.push({ class1: `weekday2_main${i} cell__bg_color`, class2: `weekday2_main${i}_inner selected_2`, spanclass: `selected__user-name`, spandata: 'Andrey' }) // heading cell
+        } else if (i === start+1 ) {
 
-        } else if (i === 13) {
+            result.push({ class1: `weekday2_main${i} cell__bg_color`, class2: `weekday2_main${i}_inner selected_${color}`, spanclass: `selected__user-time`, spandata:  start + ':00' + ' - ' + end +':00'}) // timing cell
 
-            result.push({ class1: `weekday2_main${i} cell__bg_color`, class2: `weekday2_main${i}_inner selected_2`, spanclass: `selected__user-time`, spandata: '12:00 - 20:00' }) // timing cell
+        } else if (i > start+1 && i < end ) {
 
-        } else if (i > 13 && i < 20) {
-
-            result.push({ class1: `weekday2_main${i} cell__bg_color`, class2: `weekday2_main${i}_inner selected_2`, spanclass: null, spandata: null }) // timing cell
+            result.push({ class1: `weekday2_main${i} cell__bg_color`, class2: `weekday2_main${i}_inner selected_${color}`, spanclass: null, spandata: null }) // colorized cell
 
         } else {
 
             result.push({ class1: `weekday2_main${i} cell__bg_color`, class2: `weekday2_main${i}_inner`, spanclass: null, spandata: null }) // clear cell
 
-        }
-
+        }   
+     
 
     }
+     
+
     return result;
 }
+/*let testData = [{
+  day:33,
+  reserved:[{start:"08:00",end:"12:00",name:"den"},
+  {start:"13:00",end:"15:00",name:"den"},
+  {start:"15:00",end:"18:00",name:"andrew"},
+  {start:"18:00",end:"20:00",name:"abdul"}]
+}] 
+
+ week days  : {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, month: "February", week: 0, today: {…}}
+*/
+export function genrateWeekAll(data,weekDays) {
+
+   let result = [];
+// elementWorkwith =  data[0].reserved.find(elm => Number(elm.start.split(":")[0]) === i ) || false;
+ //covertDataToDayOfYear(day,month) returned month form 0
+ console.log(weekDays.monthNum+1)
+   for (const key in weekDays) {
+       //
+       
+      console.log(covertDataToDayOfYear(key,weekDays.monthNum+1))
+   }
+
+
+
+
+    
+
+      console.log(weekDays)
+
+     return genrateDayM(data)
+ }

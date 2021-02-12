@@ -1,4 +1,4 @@
-import {generateWeek,covertDataToDayOfYear,genrateDayM} from './../../custom_modules/generateMonthCalendar';
+import {generateWeek,covertDataToDayOfYear,genrateWeekAll} from './../../custom_modules/generateMonthCalendar';
 import React, { useState, useEffect } from 'react';
 import {Link} from "react-router-dom";
 /* *************************************************************
@@ -14,26 +14,22 @@ import {Link} from "react-router-dom";
 | **************************************************************/
 let testData = [{
   day:33,
-  data: [{
-      user: 'Den',
-      time:[{start:"08:00",end:"12:00"},{start:"13:00",end:"14:00"}],
-   },{
-     user: 'Andrew',
-     time:[{start:"14:00",end:"18:00"}]
-   },{
-     user: 'Abdul',
-     time:[{start:"18:00",end:"23:00"}]
-   }]
-}]
+  reserved:[{start:"08:00",end:"12:00",name:"den"},
+  {start:"02:00",end:"08:00",name:"den"},
+  {start:"15:00",end:"18:00",name:"andrew"},
+  {start:"18:00",end:"20:00",name:"abdul"}]
+}] 
 const  WeekCalendar = (props) => {
 
-  const [day, setDay] = useState(3); // day of year (dafault set to 3 (janvary 3th))
-  let generate = generateWeek(day);
-  let generateDay = genrateDayM(testData);
+  const [day, setDay] = useState(1); // day of year (dafault set to 1 (janvary 1th))
+  let generate = generateWeek(day); // returned object with weekDay:monthDay
+  let generateDay = genrateWeekAll(testData,generate);
 
   useEffect(() => {
     const {month,day1} = props.location.state || {month: 0,day:0};
+   
    if (day < day1) { // protect (without this protection not working PREV NEXT)
+  
     setDay(covertDataToDayOfYear(day1,month)); // day,month
    }
    
@@ -43,7 +39,7 @@ const  WeekCalendar = (props) => {
  
 
 
-  //console.log(generate)
+  //console.log(generateDay)
 
     return (<div>
         <Link to="/dashboard/month"><button className="btn-sm white-btn">&#10092; Back</button></Link> 
