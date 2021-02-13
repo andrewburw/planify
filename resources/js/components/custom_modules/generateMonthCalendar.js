@@ -331,7 +331,7 @@ let testData = [{
 */
 
 export function genrateWeekAll(data, weekDays) {
-
+  // renders "week calendar" -> all week days
     let result = [];
 
 

@@ -1,5 +1,5 @@
 import { generateWeek, covertDataToDayOfYear, genrateWeekAll } from './../../custom_modules/generateMonthCalendar';
-import React, { useState, useEffect ,useRef} from 'react';
+import React, { useState, useEffect } from 'react';
 import ClearDay from './blankDay';
 import { Link } from "react-router-dom";
 import TestMenu from './../../modals/menuSmallCalendar';
@@ -16,7 +16,7 @@ import useModal from "./../../hooks/useModal";
 |
 | **************************************************************/
 let testData = [{
-  day: 33,
+  day: 40,
   reserved: [{ start: "08:00", end: "12:00", name: "den" },
   { start: "02:00", end: "08:00", name: "den" },
   { start: "15:00", end: "18:00", name: "andrew" },
@@ -31,37 +31,42 @@ const WeekCalendar = (props) => {
   let generate = generateWeek(day); // returned object with {weekDay:monthDay}
   let generateDay = genrateWeekAll(testData, generate);
 
-  // MODAL CONTROL:
-  const searchBarReference = useRef();
+  // MODAL MENU CONTROL:
+
   const [isShowingReg,toggleMenu] = useModal();
-  const [position, setPosition] = useState();
+  const [position, setPosition] = useState(); // set position when meny triggered {x,y}
+  const [menu, setMenu] = useState();
+
 
   useEffect(() => {
     const { month, day1 } = props.location.state || { month: 0, day: 0 };
 
-    if (day < day1) { // protect (without this protection not working PREV NEXT)
+    if (day < day1) { // protect (without this protection not working PREV NEXT month)
 
-      setDay(covertDataToDayOfYear(day1, month)); // day,month
+      setDay(covertDataToDayOfYear(day1, month)); // (day,month)
     }
 
 
   });
 
 
-  const showRefPosition = () => {
-    toggleMenu( )
-    let xpos = searchBarReference.current.getBoundingClientRect().x;
-    let ypos = searchBarReference.current.getBoundingClientRect().y;
-     
-    setPosition({x:xpos,y:ypos})
-    console.log(xpos+' '+ ypos)
+  const showRefPosition = (e) => {
+     // On click menu
+    toggleMenu();
+  
+    setMenu(e.target.dataset.menu); // set if menu for free time or busy
+    let xpos = e.target.getBoundingClientRect().x;
+    let ypos = e.target.getBoundingClientRect().y;
+   
+    setPosition({x:xpos,y:ypos});
+   
   };
 
 
   //console.log(generateDay)
 
   return (<div> 
-       <TestMenu  isShowing={isShowingReg} hide={toggleMenu} position={position}/> 
+       <TestMenu  isShowing={isShowingReg} hide={toggleMenu} menu={menu} position={position}/> 
     <Link to="/dashboard/month"><button className="btn-sm white-btn">&#10092; Back</button></Link>
     <div className="main_co__month-name">
 
@@ -131,12 +136,18 @@ const WeekCalendar = (props) => {
         <div className="menu23"><p className="menu__p ">23:00</p></div>
         {generateDay.map((itm, a) => {
 
-          return itm === false ? <ClearDay key={a} val={a + 1} /> :
+          return itm === false ? <ClearDay clicked={showRefPosition} key={a} val={a + 1} /> :
 
             itm.map((item, i) => {
-
-              return <div key={i} className={item.class1} ref={searchBarReference} onClick={showRefPosition}>
-                <div className={item.class2}>
+             //    console.log(item)
+              return <div 
+              style={{cursor:'pointer'}}
+              key={i} 
+              data-menu="free" 
+              onClick={showRefPosition} 
+              className={item.class1} 
+               data-value={i} >
+                <div  className={item.class2} data-menu="busy" onClick={showRefPosition}>
 
                   {item.spanclass !== null ? <span className={item.spanclass}>{item.spandata}</span> : ''}
 

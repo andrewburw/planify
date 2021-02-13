@@ -1,36 +1,56 @@
-
 import React from 'react';
-
 import ReactDOM from 'react-dom';
 
+/* *************************************************************
+|
+|
+|                     Menu small calendar
+|
+|       *  Two menu values 1)menu for adding idle time 
+|                          2)menu for adding busy time
+|     
+|       My page: https://andrewburw.github.io/personalpage/
+|
+|
+| **************************************************************/
+
+
+
+const MenuSmallCalendar = ({ isShowing, hide ,position,menu}) => {
+  
+  
 
 
 
 
-const MenuSmallCalendar = ({ isShowing, hide ,position}) => isShowing ? ReactDOM.createPortal(
 
 
-      
+
+// ******* CHANGE MENU UI
 
 
- <React.Fragment><div className="small__menu" style={{top: `${position.y-300}px`,left:`${position.x}px`}}>
+ let menuBusy =  <ul>
+                    <li><i className="fas fa-home icon"></i>Change</li>
+                    <li><i className="fas fa-underline icon"></i>Delete</li>
+                 </ul>;
+
+
+let menuFree =  <ul>
+<li><i className="fas fa-home icon"></i>Add</li>
+</ul>;
+  
+  return isShowing ? ReactDOM.createPortal(
+
+ <React.Fragment><div className="small__menu" style={{top: `${position.y}px`,left:`${position.x}px`}}>
 <div className="small__menu-container">
   <div className="small__menu-header">
-    <h3 className="small__menu-h-h">Menu IU </h3>
+    <h3 className="small__menu-h-h">{menu === 'free'? 'Menu: Add':'Menu: Change'}</h3>
   </div>
   <div className="small__menu-body">
-    <ul>
-      <li><i className="fas fa-home icon"></i> Home</li>
-      <li><i className="fas fa-underline icon"></i> Tipography</li>
-      <li><i className="fas fa-boxes icon"></i> Widgets</li>
-      <li><i className="fas fa-table icon"></i> Tables</li>
-      <li><i className="fab fa-wpforms icon"></i> Forms
-         </li>
-      <li><i className="fas fa-chart-pie icon"></i> Charts</li>
-    </ul>
+    {menu === 'free'? menuFree: menuBusy}
   </div>
 </div>
 </div> </React.Fragment>, document.body
-) : null;
+) : null};
 
 export default MenuSmallCalendar;
