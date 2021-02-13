@@ -2,8 +2,9 @@ import { generateWeek, covertDataToDayOfYear, genrateWeekAll } from './../../cus
 import React, { useState, useEffect } from 'react';
 import ClearDay from './blankDay';
 import { Link } from "react-router-dom";
-import TestMenu from './../../modals/menuSmallCalendar';
+import SmallMenu from './../../modals/menuSmallCalendar';
 import useModal from "./../../hooks/useModal";
+import EditDeleteModal from './../../modals/menuModalAddEditShc';
 /* *************************************************************
 |
 |
@@ -15,6 +16,7 @@ import useModal from "./../../hooks/useModal";
 |
 |
 | **************************************************************/
+
 let testData = [{
   day: 40,
   reserved: [{ start: "08:00", end: "12:00", name: "den" },
@@ -27,15 +29,22 @@ let testData = [{
 
 const WeekCalendar = (props) => {
 
+  // RENDER CALENDAR:
+
   const [day, setDay] = useState(1); // day of year (dafault set to 1 (janvary 1th))
   let generate = generateWeek(day); // returned object with {weekDay:monthDay}
   let generateDay = genrateWeekAll(testData, generate);
 
-  // MODAL MENU CONTROL:
+  // SMALL MODAL MENU CONTROL:
 
-  const [isShowingReg,toggleMenu] = useModal();
-  const [position, setPosition] = useState(); // set position when meny triggered {x,y}
-  const [menu, setMenu] = useState();
+  const [isShowingReg, toggleMenu] = useModal();
+  const [position, setPosition] = useState(); // set position when and where menu triggered {x,y}
+  const [smallMenu, setMenu] = useState(); // set meny: b
+  
+  // MODAL ADD/EDIT CONTROL:
+
+  const [isShowingEdit, toggleEdit] = useModal();
+  const [editData, setEditData] = useState();
 
 
   useEffect(() => {
@@ -51,22 +60,33 @@ const WeekCalendar = (props) => {
 
 
   const showRefPosition = (e) => {
-     // On click menu
+    // On click small menu
     toggleMenu();
-  
-    setMenu(e.target.dataset.menu); // set if menu for free time or busy
+    setEditData(e.target.dataset.datause); // -> saved data and sened to modal edit
+   
+    setMenu(e.target.dataset.menu); // set menu for free time or busy
     let xpos = e.target.getBoundingClientRect().x;
     let ypos = e.target.getBoundingClientRect().y;
-   
-    setPosition({x:xpos,y:ypos});
-   
+
+    setPosition({ x: xpos, y: ypos });
+
   };
 
 
   //console.log(generateDay)
 
-  return (<div> 
-       <TestMenu  isShowing={isShowingReg} hide={toggleMenu} menu={menu} position={position}/> 
+  return (<div>
+        <EditDeleteModal isShowing={isShowingEdit} 
+                         hide={toggleEdit} 
+                         editData={editData} />
+
+    <SmallMenu isShowing={isShowingReg} 
+                hide={toggleMenu} 
+                menu={smallMenu} 
+                position={position} 
+                showModalEdit={toggleEdit}/>
+
+
     <Link to="/dashboard/month"><button className="btn-sm white-btn">&#10092; Back</button></Link>
     <div className="main_co__month-name">
 
@@ -76,7 +96,7 @@ const WeekCalendar = (props) => {
         {generate.month} - Week {generate.week}<span onClick={() => setDay(day + 7)} className="main_co__month-right"> &#10093; </span></h1>
     </div>
     <div className="cal_w_app">
- 
+
       <div className="grid-container3">
         <div className="empty"></div>
 
@@ -139,15 +159,18 @@ const WeekCalendar = (props) => {
           return itm === false ? <ClearDay clicked={showRefPosition} key={a} val={a + 1} /> :
 
             itm.map((item, i) => {
-             //    console.log(item)
-              return <div 
-              style={{cursor:'pointer'}}
-              key={i} 
-              data-menu="free" 
-              onClick={showRefPosition} 
-              className={item.class1} 
-               data-value={i} >
-                <div  className={item.class2} data-menu="busy" onClick={showRefPosition}>
+              //  console.log(item.time)
+              return <div
+                style={{ cursor: 'pointer' }}
+                key={i}
+                data-menu="free"
+                onClick={showRefPosition}
+                className={item.class1}
+                data-datause="null">
+              
+
+
+                <div className={item.class2} data-menu="busy" data-datause={item.time} onClick={showRefPosition}>
 
                   {item.spanclass !== null ? <span className={item.spanclass}>{item.spandata}</span> : ''}
 

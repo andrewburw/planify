@@ -149,8 +149,7 @@ const Modal = ({ isShowing, hide }) => {
               <div className="modal-reg__right-container">
                 <span className="modal-reg__right-close" onClick={hide}>&times;</span>
                 <div className="modal-reg__right__logo">
-                  {showLogo
-                  }
+                  {showLogo}
 
                 </div>
                 <form className="modal-reg__right-form">

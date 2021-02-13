@@ -8,6 +8,8 @@ import ReactDOM from 'react-dom';
 |
 |       *  Two menu values 1)menu for adding idle time 
 |                          2)menu for adding busy time
+|
+|       *Used in: mainAppWeek.js
 |     
 |       My page: https://andrewburw.github.io/personalpage/
 |
@@ -16,11 +18,7 @@ import ReactDOM from 'react-dom';
 
 
 
-const MenuSmallCalendar = ({ isShowing, hide ,position,menu}) => {
-  
-  
-
-
+const MenuSmallCalendar = ({ isShowing, hide ,position,menu,showModalEdit}) => {
 
 
 
@@ -30,7 +28,7 @@ const MenuSmallCalendar = ({ isShowing, hide ,position,menu}) => {
 
 
  let menuBusy =  <ul>
-                    <li><i className="fas fa-home icon"></i>Change</li>
+                    <li onClick={showModalEdit}><i className="fas fa-home icon"></i>Change</li>
                     <li><i className="fas fa-underline icon"></i>Delete</li>
                  </ul>;
 
@@ -44,7 +42,7 @@ let menuFree =  <ul>
  <React.Fragment><div className="small__menu" style={{top: `${position.y}px`,left:`${position.x}px`}}>
 <div className="small__menu-container">
   <div className="small__menu-header">
-    <h3 className="small__menu-h-h">{menu === 'free'? 'Menu: Add':'Menu: Change'}</h3>
+    <h3 className="small__menu-h-h">{ menu === 'free'? 'Menu: Add':'Menu: Change'}</h3>
   </div>
   <div className="small__menu-body">
     {menu === 'free'? menuFree: menuBusy}

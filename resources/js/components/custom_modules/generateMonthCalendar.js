@@ -260,8 +260,10 @@ export function genrateDayM(data) {
            this part generates div attributes EXAMPLE:
 
             <div className='weekday1_main0 cell__bg_color'>
-            <div className='weekday1_main0_inner selected_1'>
-            <span className="selected__user-name">Andrew</span></div></div> 
+              <div className='weekday1_main0_inner selected_1'>
+                <span className="selected__user-name">Andrew</span>
+              </div>
+            </div> 
 
         */
 
@@ -270,6 +272,8 @@ export function genrateDayM(data) {
             let start = undefined; // if set to false -> second "else if" triggered
             let end = false;
             let color = 0; // 1,2 or 3
+            let elementWorkwithSAVE = false; // this needed for not overwrite elementWorkwith when loop runed.
+                                             // used in result.push->time
 
             for (let i = 0; i <= 23; i++) { // i === time form 0:00 to 23:00
 
@@ -277,6 +281,7 @@ export function genrateDayM(data) {
                 elementWorkwith = data[a].find(elm => Number(elm.start.split(":")[0]) === i) || false;
 
                 if (elementWorkwith) {
+                    elementWorkwithSAVE = elementWorkwith
                     color++;
                     if (color === 3) { color = 1 }; // only 3 colors avilible
 
@@ -284,23 +289,38 @@ export function genrateDayM(data) {
                     end = Number(elementWorkwith.end.split(":")[0]);
 
                 }
-
-
+                
                 if (i === start) {
 
-                    result.push({ class1: `weekday${a+1}_main${i} cell__bg_color`, class2: `weekday${a+1}_main${i}_inner selected_${color}`, spanclass: `selected__user-name`, spandata: elementWorkwith.name }) // heading cell
+                    result.push({ class1: `weekday${a+1}_main${i} cell__bg_color`,  // heading cell
+                                  class2: `weekday${a+1}_main${i}_inner selected_${color}`, 
+                                  spanclass: `selected__user-name`, 
+                                  spandata: elementWorkwith.name,
+                                  time: elementWorkwithSAVE.start + '-'+ elementWorkwithSAVE.end}) 
 
                 } else if (i === start + 1) {
 
-                    result.push({ class1: `weekday${a+1}_main${i} cell__bg_color`, class2: `weekday${a+1}_main${i}_inner selected_${color}`, spanclass: `selected__user-time`, spandata: start + ':00' + ' - ' + end + ':00' }) // timing cell
+                    result.push({ class1: `weekday${a+1}_main${i} cell__bg_color`, // timing cell
+                                  class2: `weekday${a+1}_main${i}_inner selected_${color}`, 
+                                  spanclass: `selected__user-time`, 
+                                  spandata: start + ':00' + ' - ' + end + ':00',
+                                  time: elementWorkwithSAVE.start + '-'+ elementWorkwithSAVE.end}) 
 
                 } else if (i > start + 1 && i < end) {
 
-                    result.push({ class1: `weekday${a+1}_main${i} cell__bg_color`, class2: `weekday${a+1}_main${i}_inner selected_${color}`, spanclass: null, spandata: null }) // colorized cell
+                    result.push({ class1: `weekday${a+1}_main${i} cell__bg_color`, // colorized cell
+                                  class2: `weekday${a+1}_main${i}_inner selected_${color}`, 
+                                  spanclass: null, 
+                                  spandata: null ,
+                                  time: elementWorkwithSAVE.start + '-'+ elementWorkwithSAVE.end}) 
 
                 } else {
+                    elementWorkwithSAVE = false;    
 
-                    result.push({ class1: `weekday${a+1}_main${i} cell__bg_color`, class2: `weekday${a+1}_main${i}_inner`, spanclass: null, spandata: null }) // clear cell
+                    result.push({ class1: `weekday${a+1}_main${i} cell__bg_color`, // clear cell
+                                  class2: `weekday${a+1}_main${i}_inner`, 
+                                  spanclass: null, 
+                                  spandata: null }) 
 
                 }
 
