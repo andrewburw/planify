@@ -31,11 +31,11 @@ const Modal = ({ isShowing, hide, editData,allWeekData }) => {
 
 
     useEffect(() => {
-        let test = null
+        let test = null;
         if (editData !== undefined && editData !== 'null') {
             test = editData.split("-");
 
-            setInputs({ start: test[0], end: test[1] })
+            setInputs({ start: test[0], end: test[1] });
         }
 
 
@@ -45,12 +45,19 @@ const Modal = ({ isShowing, hide, editData,allWeekData }) => {
 
     const handleInputChange = (event) => {
         event.persist();
-        let validationResults = validation()
+      
         setInputs(inputs => ({ ...inputs, [event.target.name]: event.target.value }));
-
+     
     }
 
-   
+   const handelSubmit = (event) => {
+    if (event) {
+        event.preventDefault();
+      }
+    let validationResults = validation(inputs,allWeekData)
+
+
+   }
 
     return isShowing ? ReactDOM.createPortal(
         <React.Fragment>
@@ -83,7 +90,7 @@ const Modal = ({ isShowing, hide, editData,allWeekData }) => {
                             <div className="edit-modal-buttons">
 
                                 <button className="btn red-btn" onClick={hide}>Cancel</button>
-                                <button className="btn edit-modal-btn-save">Save</button>
+                                <button className="btn edit-modal-btn-save" onClick={handelSubmit}>Save</button>
                             </div>
                         </form>
                     </div>

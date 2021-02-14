@@ -15,8 +15,8 @@
 
 
 
-export default function validateTimeAndAll(){
-        console.log('working')
-
+export default function validateTimeAndAll(inputs,allData){
+        console.log(inputs)
+        console.log(allData)
        return "working"
 }

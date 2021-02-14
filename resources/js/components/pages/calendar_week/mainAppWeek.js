@@ -78,7 +78,8 @@ const WeekCalendar = (props) => {
   return (<div>
         <EditDeleteModal isShowing={isShowingEdit} 
                          hide={toggleEdit} 
-                         editData={editData} />
+                         editData={editData}
+                         allWeekData={testData} />
 
     <SmallMenu isShowing={isShowingReg} 
                 hide={toggleMenu} 
