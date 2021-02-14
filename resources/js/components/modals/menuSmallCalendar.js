@@ -24,7 +24,7 @@ const MenuSmallCalendar = ({ isShowing, hide ,position,menu,showModalEdit}) => {
 
 
 
-// ******* CHANGE MENU UI
+// ******* CHANGE/ADD MENU 
 
 
  let menuBusy =  <ul>
@@ -34,7 +34,7 @@ const MenuSmallCalendar = ({ isShowing, hide ,position,menu,showModalEdit}) => {
 
 
 let menuFree =  <ul>
-<li><i className="fas fa-home icon"></i>Add</li>
+<li onClick={showModalEdit}><i className="fas fa-home icon"></i>Add</li>
 </ul>;
   
   return isShowing ? ReactDOM.createPortal(

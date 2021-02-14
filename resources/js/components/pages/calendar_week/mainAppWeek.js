@@ -62,7 +62,7 @@ const WeekCalendar = (props) => {
   const showRefPosition = (e) => {
     // On click small menu
     toggleMenu();
-    setEditData(e.target.dataset.datause); // -> saved data and sened to modal edit
+    setEditData(e.target.dataset.datause); // -> saved data and sended to modal edit
    
     setMenu(e.target.dataset.menu); // set menu for free time or busy
     let xpos = e.target.getBoundingClientRect().x;

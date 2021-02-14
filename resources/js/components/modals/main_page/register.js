@@ -11,6 +11,11 @@ import useSignUpForm from './../../hooks/useCheckRegister'
 |
 |       *  Modal for registration a new user.
 |
+|      Concept: this input data passed to -> 
+|                useSignupForm(usless file): hendle all inputs and passed data to ->
+|                useValidationForm: send data to validation ->
+|                custom module checkField.js: data validation 
+|
 |      My page: https://andrewburw.github.io/personalpage/
 |
 |
