@@ -21,7 +21,7 @@ import validation from './../custom_modules/validateTime'
 |
 | **************************************************************/
 
-
+import  { useContext } from 'react';
 
 const Modal = ({ isShowing, hide, editData,allWeekData }) => {
     // editData -> recived string: "02:00-08:00" or "null" if taken free time
@@ -35,13 +35,14 @@ const Modal = ({ isShowing, hide, editData,allWeekData }) => {
         if (editData !== undefined && editData !== 'null') {
             test = editData.split("-");
 
-            setInputs({ start: test[0], end: test[1] });
+            setInputs({ start: test[0], end: test[1] ,day:test[2]});
         }
 
 
     },[editData]);
     
-   
+    const user = useContext({user:'zalupa'});
+    console.log(user )
 
     const handleInputChange = (event) => {
         event.persist();
@@ -55,7 +56,7 @@ const Modal = ({ isShowing, hide, editData,allWeekData }) => {
         event.preventDefault();
       }
     let validationResults = validation(inputs,allWeekData)
-
+   
 
    }
 

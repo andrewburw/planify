@@ -19,10 +19,17 @@ import EditDeleteModal from './../../modals/menuModalAddEditShc';
 
 let testData = [{
   day: 40,
-  reserved: [{ start: "08:00", end: "12:00", name: "den" },
-  { start: "02:00", end: "08:00", name: "den" },
-  { start: "15:00", end: "18:00", name: "andrew" },
-  { start: "18:00", end: "20:00", name: "abdul" }]
+  reserved: [{ start: "08:00", end: "12:00", name: "den" ,day: 40},
+  { start: "02:00", end: "08:00", name: "den" ,day: 40},
+  { start: "15:00", end: "18:00", name: "andrew" ,day: 40},
+  { start: "18:00", end: "20:00", name: "abdul",day: 40 }]
+},
+{
+  day: 42,
+  reserved: [{ start: "08:00", end: "12:00", name: "den",day: 42 },
+  { start: "02:00", end: "08:00", name: "den" ,day: 42},
+  { start: "15:00", end: "18:00", name: "andrew" ,day: 42},
+  { start: "18:00", end: "20:00", name: "abdul" ,day: 42}]
 }]
 
 

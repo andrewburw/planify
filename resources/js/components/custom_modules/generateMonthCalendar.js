@@ -221,7 +221,9 @@ export function generateWeek(day) {
 /*************************************************************** */
 
 export function genrateDayM(data) {
-    // this function generates all days in week
+   
+    // foundDay = number of day
+
     /*Recived data:
     data = [
       false,
@@ -266,6 +268,7 @@ export function genrateDayM(data) {
             </div> 
 
         */
+              
 
             let result = [];
             let elementWorkwith = false;
@@ -296,7 +299,7 @@ export function genrateDayM(data) {
                                   class2: `weekday${a+1}_main${i}_inner selected_${color}`, 
                                   spanclass: `selected__user-name`, 
                                   spandata: elementWorkwith.name,
-                                  time: elementWorkwithSAVE.start + '-'+ elementWorkwithSAVE.end}) 
+                                  time: elementWorkwithSAVE.start + '-'+ elementWorkwithSAVE.end+'-'+elementWorkwithSAVE.day}) 
 
                 } else if (i === start + 1) {
 
@@ -304,7 +307,7 @@ export function genrateDayM(data) {
                                   class2: `weekday${a+1}_main${i}_inner selected_${color}`, 
                                   spanclass: `selected__user-time`, 
                                   spandata: start + ':00' + ' - ' + end + ':00',
-                                  time: elementWorkwithSAVE.start + '-'+ elementWorkwithSAVE.end}) 
+                                  time: elementWorkwithSAVE.start + '-'+ elementWorkwithSAVE.end+'-'+elementWorkwithSAVE.day}) 
 
                 } else if (i > start + 1 && i < end) {
 
@@ -312,7 +315,7 @@ export function genrateDayM(data) {
                                   class2: `weekday${a+1}_main${i}_inner selected_${color}`, 
                                   spanclass: null, 
                                   spandata: null ,
-                                  time: elementWorkwithSAVE.start + '-'+ elementWorkwithSAVE.end}) 
+                                  time: elementWorkwithSAVE.start + '-'+ elementWorkwithSAVE.end+'-'+elementWorkwithSAVE.day}) 
 
                 } else {
                     elementWorkwithSAVE = false;    
@@ -353,6 +356,7 @@ let testData = [{
 export function genrateWeekAll(data, weekDays) {
   // renders "week calendar" -> all week days
     let result = [];
+  
 
 
     for (const key in weekDays) {
@@ -364,14 +368,20 @@ export function genrateWeekAll(data, weekDays) {
         let check = data.find(elm => elm.day === covertDataToDayOfYear(weekDays[key], weekDays.monthNum + 1)) || false
 
         if (check) {
-            result.push(check.reserved)
+                 /*
+            for (const key in check.reserved) { // adding to each scheldue day value
+
+                check.reserved[key]['day'] = check.day;
+
+            } */
+            result.push(check.reserved);
+                      
         } else {
-            result.push(false)
+            result.push(false);
         }
 
     }
 
-
-
+      
     return genrateDayM(result);
 }
