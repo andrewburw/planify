@@ -11,7 +11,7 @@
 |
 | **************************************************************/
 
-import React, { useContext } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import MainPage from './main';
 import MainApp from './pages/mainApp';
@@ -23,7 +23,7 @@ import {
 } from "react-router-dom";
 //  <Router  basename={process.env.PUBLIC_URL}>
 // <Route   exact path="/main" component={MainApp} />
-const UserContext = React.createContext({ user: 'andrew' });
+export const UserContext = React.createContext({ user: 'andrew' });
 
 
 const IndexPage = () => {
@@ -32,10 +32,8 @@ const IndexPage = () => {
       <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route exact path="/" component={MainPage} />
-          <UserContext.Provider value={{ user: 'andrew' }}>
-            <Route path="/dashboard" component={MainApp} />
-          </UserContext.Provider>
-        </Switch>
+           <Route path="/dashboard" component={MainApp} />
+          </Switch>
       </Router>
     </div>
   );

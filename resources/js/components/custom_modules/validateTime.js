@@ -33,7 +33,7 @@ let basicCompare = {
 }
 
 
-export default function validateTimeAndAll(inputs,allData){
+export default function validateTimeAndAll(inputs,allData,userLoggedIn){
            let result = {}
         
    /*

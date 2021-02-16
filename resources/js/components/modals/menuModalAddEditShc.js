@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import React, { useState ,useEffect} from 'react';
-import validation from './../custom_modules/validateTime'
+import validation from './../custom_modules/validateTime';
 
 /* *************************************************************
 |
@@ -22,13 +22,15 @@ import validation from './../custom_modules/validateTime'
 | **************************************************************/
 
 import  { useContext } from 'react';
+import {UserContext} from './../index'
+
 
 const Modal = ({ isShowing, hide, editData,allWeekData }) => {
     // editData -> recived string: "02:00-08:00" or "null" if taken free time
     // in first render recived undefined
    // allWeekData = > all data recived for week
     const [inputs, setInputs] = useState({ start: '', end: '' });
-
+    const {user} = useContext(UserContext);
 
     useEffect(() => {
         let test = null;
@@ -40,9 +42,6 @@ const Modal = ({ isShowing, hide, editData,allWeekData }) => {
 
 
     },[editData]);
-    
-    const user = useContext({user:'zalupa'});
-    console.log(user )
 
     const handleInputChange = (event) => {
         event.persist();
@@ -55,7 +54,7 @@ const Modal = ({ isShowing, hide, editData,allWeekData }) => {
     if (event) {
         event.preventDefault();
       }
-    let validationResults = validation(inputs,allWeekData)
+    let validationResults = validation(inputs,allWeekData,user) // user -> user Logged in
    
 
    }
