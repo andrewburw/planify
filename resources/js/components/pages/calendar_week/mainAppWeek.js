@@ -1,10 +1,11 @@
 import { generateWeek, covertDataToDayOfYear, genrateWeekAll } from './../../custom_modules/generateMonthCalendar';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useContext} from 'react';
 import ClearDay from './blankDay';
 import { Link } from "react-router-dom";
 import SmallMenu from './../../modals/menuSmallCalendar';
 import useModal from "./../../hooks/useModal";
 import EditDeleteModal from './../../modals/menuModalAddEditShc';
+import {UserContext} from './../../index';
 /* *************************************************************
 |
 |
@@ -47,7 +48,8 @@ const WeekCalendar = (props) => {
   const [isShowingReg, toggleMenu] = useModal();
   const [position, setPosition] = useState(); // set position when and where menu triggered {x,y}
   const [smallMenu, setMenu] = useState(); // set meny: b
-  
+  const {user} = useContext(UserContext); // logged in user
+
   // MODAL ADD/EDIT CONTROL:
 
   const [isShowingEdit, toggleEdit] = useModal();
@@ -68,14 +70,15 @@ const WeekCalendar = (props) => {
 
   const showRefPosition = (e) => {
     // On click small menu
-    toggleMenu();
-    setEditData(e.target.dataset.datause); // -> saved data and sended to modal edit
-   
-    setMenu(e.target.dataset.menu); // set menu for free time or busy
+
+    if (e.target.dataset.datauser !== user) return // can't use menu if user not as logged in
+      toggleMenu();
+      setEditData(e.target.dataset.datause); // -> saved data and sended to modal edit (date string)
+      setMenu(e.target.dataset.menu); // set menu for free time or busy
     let xpos = e.target.getBoundingClientRect().x;
     let ypos = e.target.getBoundingClientRect().y;
 
-    setPosition({ x: xpos, y: ypos });
+     setPosition({ x: xpos, y: ypos });
 
   };
 
@@ -167,7 +170,7 @@ const WeekCalendar = (props) => {
           return itm === false ? <ClearDay clicked={showRefPosition} key={a} val={a + 1} /> :
 
             itm.map((item, i) => {
-              //  console.log(item.time)
+               // console.log(item.userName)
               return <div
                 style={{ cursor: 'pointer' }}
                 key={i}
@@ -178,9 +181,13 @@ const WeekCalendar = (props) => {
               
 
 
-                <div className={item.class2} data-menu="busy" data-datause={item.time} onClick={showRefPosition}>
+                <div className={item.class2} 
+                     data-menu="busy" 
+                     data-datauser={item.userName} 
+                     data-datause={item.time} 
+                     onClick={showRefPosition}>
 
-                  {item.spanclass !== null ? <span className={item.spanclass}>{item.spandata}</span> : ''}
+                  {item.spanclass !== null ? <span  data-datauser={item.userName}  className={item.spanclass}>{item.spandata}</span> : ''}
 
 
                 </div></div>

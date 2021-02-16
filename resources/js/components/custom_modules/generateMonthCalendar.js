@@ -299,6 +299,7 @@ export function genrateDayM(data) {
                                   class2: `weekday${a+1}_main${i}_inner selected_${color}`, 
                                   spanclass: `selected__user-name`, 
                                   spandata: elementWorkwith.name,
+                                  userName:  elementWorkwithSAVE.name,
                                   time: elementWorkwithSAVE.start + '-'+ elementWorkwithSAVE.end+'-'+elementWorkwithSAVE.day}) 
 
                 } else if (i === start + 1) {
@@ -307,6 +308,7 @@ export function genrateDayM(data) {
                                   class2: `weekday${a+1}_main${i}_inner selected_${color}`, 
                                   spanclass: `selected__user-time`, 
                                   spandata: start + ':00' + ' - ' + end + ':00',
+                                  userName:  elementWorkwithSAVE.name,
                                   time: elementWorkwithSAVE.start + '-'+ elementWorkwithSAVE.end+'-'+elementWorkwithSAVE.day}) 
 
                 } else if (i > start + 1 && i < end) {
@@ -315,6 +317,7 @@ export function genrateDayM(data) {
                                   class2: `weekday${a+1}_main${i}_inner selected_${color}`, 
                                   spanclass: null, 
                                   spandata: null ,
+                                  userName:  elementWorkwithSAVE.name,
                                   time: elementWorkwithSAVE.start + '-'+ elementWorkwithSAVE.end+'-'+elementWorkwithSAVE.day}) 
 
                 } else {
@@ -323,7 +326,8 @@ export function genrateDayM(data) {
                     result.push({ class1: `weekday${a+1}_main${i} cell__bg_color`, // clear cell
                                   class2: `weekday${a+1}_main${i}_inner`, 
                                   spanclass: null, 
-                                  spandata: null }) 
+                                  spandata: null, 
+                                  userName: null}) 
 
                 }
 

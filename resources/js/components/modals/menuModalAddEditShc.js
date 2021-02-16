@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom';
-import React, { useState ,useEffect} from 'react';
+import React, { useState ,useEffect, useContext} from 'react';
 import validation from './../custom_modules/validateTime';
+import {UserContext} from './../index';
 
 /* *************************************************************
 |
@@ -13,16 +14,13 @@ import validation from './../custom_modules/validateTime';
 |
 |       Concept: recived data form mainAppWeek.js ->
 |                 if data is null/undefined it creates new record,
-|                 if data recived time sting: user can change it,
+|                 if data recived time string: user can change it,
 |                 if user chage data: new data validated in custom module "validateTime.js"
 |
 |      My page: https://andrewburw.github.io/personalpage/
 |
 |
 | **************************************************************/
-
-import  { useContext } from 'react';
-import {UserContext} from './../index'
 
 
 const Modal = ({ isShowing, hide, editData,allWeekData }) => {
