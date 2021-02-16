@@ -32,18 +32,18 @@ let basicCompare = {
         }
 }
 /* ************************************************************************* */
-   /*
-         allData = [{
-       day: 40,
-       reserved: [{ start: "08:00", end: "12:00", name: "den" ,day: 40},
-       { start: "02:00", end: "08:00", name: "den" ,day: 40},
-       { start: "15:00", end: "18:00", name: "andrew" ,day: 40},
-       { start: "18:00", end: "20:00", name: "abdul",day: 40 }]
-     }
-     
-     */
+/*
+      allData = [{
+    day: 40,
+    reserved: [{ start: "08:00", end: "12:00", name: "den" ,day: 40},
+    { start: "02:00", end: "08:00", name: "den" ,day: 40},
+    { start: "15:00", end: "18:00", name: "andrew" ,day: 40},
+    { start: "18:00", end: "20:00", name: "abdul",day: 40 }]
+  }
+  
+  */
 export default function validateTimeAndAll(inputs, allData, userLoggedIn) {
-     
+
         // inputs { start: "08:00", end: "12:00",day: 40}
         // basicCompare.morOrLess(inputs)
 
@@ -70,7 +70,7 @@ export default function validateTimeAndAll(inputs, allData, userLoggedIn) {
         });
 
 
-        
+
 
         const overlaps = dataInNumbers.some(range => // Main algorythm detects is selected data in busy range
                 (range.start < selected.start && range.end > selected.start) ||
