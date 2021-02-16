@@ -24,11 +24,10 @@ const useFetch = () => {
   // const runFetch = async (adress, method, data) => {
      
         if (fetchFlag == 0) {
-            // Run only after triggerFetch is called 
+       
             return;
+            
           }
-
-  
 
         let methodWithBody = {
             method: method,
@@ -37,9 +36,6 @@ const useFetch = () => {
             },
             body: JSON.stringify(dataToSend)
         }
-           // console.log(fetchData)
-
-
 
         let methodNoBody = {
             method: method,
@@ -47,10 +43,6 @@ const useFetch = () => {
                 'Content-Type': 'application/json;charset=utf-8'
             }
         }
-
-
-
-
 
         let fetchBody = method.toLowerCase() === 'get' ? methodNoBody : methodWithBody;
              
@@ -71,15 +63,13 @@ const useFetch = () => {
                 }
     
             }).catch(err => {
-                //console.error(err.toString())
+             
                 setError({error: err.toString()});
                 setLoading(false);
     
             });
 
-
-          
-  
+      
   //  };
 }, [fetchFlag,method,dataToSend,adress])
  
