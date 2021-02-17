@@ -70,16 +70,20 @@ const WeekCalendar = (props) => {
 
   const showRefPosition = (e) => {
     // On click small menu
+    
+     let xpos = e.target.getBoundingClientRect().x;
+     let ypos = e.target.getBoundingClientRect().y;
+   
+     if (e.target.dataset.datauser === user ) {
 
-    if (e.target.dataset.datauser !== user) return // can't use menu if user not as logged in
+      setPosition({ x: xpos, y: ypos });
       toggleMenu();
       setEditData(e.target.dataset.datause); // -> saved data and sended to modal edit (date string)
       setMenu(e.target.dataset.menu); // set menu for free time or busy
-    let xpos = e.target.getBoundingClientRect().x;
-    let ypos = e.target.getBoundingClientRect().y;
-
-     setPosition({ x: xpos, y: ypos });
-
+   
+    } else if( e.target.dataset.menu === 'free'){
+      console.log(e.target.dataset.datause)
+    }
   };
 
 
@@ -166,7 +170,7 @@ const WeekCalendar = (props) => {
         <div className="menu22"><p className="menu__p ">22:00</p></div>
         <div className="menu23"><p className="menu__p ">23:00</p></div>
         {generateDay.map((itm, a) => {
-
+       
           return itm === false ? <ClearDay clicked={showRefPosition} key={a} val={a + 1} /> :
 
             itm.map((item, i) => {
@@ -177,7 +181,7 @@ const WeekCalendar = (props) => {
                 data-menu="free"
                 onClick={showRefPosition}
                 className={item.class1}
-                data-datause="null">
+                data-datause={item.time}>
               
 
 

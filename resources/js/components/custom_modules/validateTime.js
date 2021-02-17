@@ -26,9 +26,11 @@ let basicCompare = {
 
                 // compare them
 
-                if (totalSeconds1 > totalSeconds2) { // etc...
-                        return false;
+                if (totalSeconds1 >= totalSeconds2) { // etc...
+                        return true;
                 }
+
+                return false;
         }
 }
 /* ************************************************************************* */
@@ -46,18 +48,18 @@ export default function validateTimeAndAll(inputs, allData, userLoggedIn) {
 
         // inputs { start: "08:00", end: "12:00",day: 40}
         // basicCompare.morOrLess(inputs)
-
-        let result = {}
+        console.log(inputs)
+         if (basicCompare.morOrLess(inputs)) {
+                return {error:"End can't be less then start or equal",status: true } 
+         }
         let selected = {
-                start: Number(inputsstart.split(":")[0]),
+                start: Number(inputs.start.split(":")[0]),
                 end: Number(inputs.end.split(":")[0])
-        }
-
-        let dataOfday = allData.find(x => x.day === 40).reserved; // find day work with
+        };
+     
+        let dataOfday = allData.find(x => x.day == Number(inputs.day)).reserved; // find day-data work with
         let filtredData = dataOfday.filter(x => x.name !== userLoggedIn); // "delete" logged in user data
         let dataInNumbers = []; // converted all data (start/end) to numbers
-
-
 
 
 
@@ -72,18 +74,13 @@ export default function validateTimeAndAll(inputs, allData, userLoggedIn) {
 
 
 
-        const overlaps = dataInNumbers.some(range => // Main algorythm detects is selected data in busy range
+        const overlaps = dataInNumbers.some(range => // Main algorythm detects if selected data is in busy range
                 (range.start < selected.start && range.end > selected.start) ||
-                (range.start < selected.end && range.end > selected.end) ||
+                (range.start < selected.end && range.end >= selected.end) ||
                 (range.start > selected.start && range.end < selected.end)
         );
 
-        console.log(overlaps ? 'NOT OK' : 'OK')
-
-
-
-
-
-        //console.log(allData)
-        return "working"
+       
+      
+        return overlaps ? {error:"This time is busy!",status: true } : {status:false};
 }

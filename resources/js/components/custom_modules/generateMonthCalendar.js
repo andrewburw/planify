@@ -227,7 +227,7 @@ export function genrateDayM(data) {
     /*Recived data:
     data = [
       false,
-      (4) [{…}, {…}, {…}, {…}], // recived data -> [{start:"08:00",end:"12:00",name:"den"}, ... ]
+      (4) [{…}, {…}, {…}, {…}], // recived data -> [{start:"08:00",end:"12:00",name:"den",day: 22}, ... ]
        false,
        false,
        false,
@@ -255,7 +255,7 @@ export function genrateDayM(data) {
 
         if (data[a] === false) {
 
-            resultAll.push(false);
+            resultAll.push(false); //week day has no data
 
         } else {
         /*  
@@ -268,20 +268,27 @@ export function genrateDayM(data) {
             </div> 
 
         */
-              
+            
 
             let result = [];
             let elementWorkwith = false;
             let start = undefined; // if set to false -> second "else if" triggered
             let end = false;
+            let testValue = false;
             let color = 0; // 1,2 or 3
             let elementWorkwithSAVE = false; // this needed for not overwrite elementWorkwith when loop runed.
                                              // used in result.push->time
-
+             testValue = data[a][0].day
+           //   console.log(testValue)
             for (let i = 0; i <= 23; i++) { // i === time form 0:00 to 23:00
-
-
+          
+                //elementWorkwith -> data[a] = recived data && a = week day , a = first for loop
+                //                   data = day with reserved time. 
+                //elementWorkwith -> data[a].find(...) = search for reserved time and save it to variable (then it renders)
                 elementWorkwith = data[a].find(elm => Number(elm.start.split(":")[0]) === i) || false;
+             
+
+
 
                 if (elementWorkwith) {
                     elementWorkwithSAVE = elementWorkwith
@@ -321,17 +328,21 @@ export function genrateDayM(data) {
                                   time: elementWorkwithSAVE.start + '-'+ elementWorkwithSAVE.end+'-'+elementWorkwithSAVE.day}) 
 
                 } else {
-                    elementWorkwithSAVE = false;    
+                   
+                //   console.log(elementWorkwithSAVE + ' '+elementWorkwithSAVE.day)
 
                     result.push({ class1: `weekday${a+1}_main${i} cell__bg_color`, // clear cell
                                   class2: `weekday${a+1}_main${i}_inner`, 
                                   spanclass: null, 
                                   spandata: null, 
-                                  userName: null}) 
-
+                                  userName: null,
+                                  time: "00:00-00:00-"+ testValue}) 
+                             //}) 
+                                  testValue = null
                 }
 
             }
+           // elementWorkwithSAVE = false;  
             resultAll.push(result);
         }
 
