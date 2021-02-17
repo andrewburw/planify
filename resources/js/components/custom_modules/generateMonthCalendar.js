@@ -220,8 +220,8 @@ export function generateWeek(day) {
 /*************************************************************** */
 /*************************************************************** */
 
-export function genrateDayM(data) {
-   
+export function genrateDayM(data, weekDays) {
+    // weekDays = Date of weekday => {1: 28, 2: 29, 3: 30, 4: 31, 5: 1, 6: 2, 7:...}
     // foundDay = number of day
 
     /*Recived data:
@@ -274,12 +274,10 @@ export function genrateDayM(data) {
             let elementWorkwith = false;
             let start = undefined; // if set to false -> second "else if" triggered
             let end = false;
-            let testValue = false;
+            let dateOfTheDay = weekDays[a] + 1;//  this is for pass day date to html element (for free time)
             let color = 0; // 1,2 or 3
             let elementWorkwithSAVE = false; // this needed for not overwrite elementWorkwith when loop runed.
-                                             // used in result.push->time
-             testValue = data[a][0].day
-           //   console.log(testValue)
+          
             for (let i = 0; i <= 23; i++) { // i === time form 0:00 to 23:00
           
                 //elementWorkwith -> data[a] = recived data && a = week day , a = first for loop
@@ -336,9 +334,9 @@ export function genrateDayM(data) {
                                   spanclass: null, 
                                   spandata: null, 
                                   userName: null,
-                                  time: "00:00-00:00-"+ testValue}) 
+                                  time: "00:00-00:00-"+ dateOfTheDay}) 
                              //}) 
-                                  testValue = null
+                                
                 }
 
             }
@@ -373,7 +371,6 @@ export function genrateWeekAll(data, weekDays) {
     let result = [];
   
 
-
     for (const key in weekDays) {
 
         if (key === 'month') {
@@ -398,5 +395,5 @@ export function genrateWeekAll(data, weekDays) {
     }
 
       
-    return genrateDayM(result);
+    return genrateDayM(result, weekDays);
 }

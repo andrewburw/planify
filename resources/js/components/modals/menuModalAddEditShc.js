@@ -70,12 +70,14 @@ const Modal = ({ isShowing, hide, editData, allWeekData }) => {
         //validationResults returns object : {error:"This time is busy!",status: true }
         // status -> true = has errors
 
-
-        if (validationResults.status) {
+            console.log(validationResults)
+        if (validationResults.status) { // true -> has errors
             setError(validationResults)
-        }
-        console.log(validationResults)
+        } else {
 
+            console.log('data sended')
+        }
+       
     }
   
     return isShowing ? ReactDOM.createPortal(
