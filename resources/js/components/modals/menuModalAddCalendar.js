@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom';
 import React, { useState, useEffect, useContext } from 'react';
 import checkField from './../hooks/custom_modules/checkFields';
 import { UserContext } from './../index';
-//import useFetch from './../hooks/useFetch';
+import useFetch from './../hooks/useFetch';
 /* *************************************************************
 |
 |
@@ -27,20 +27,23 @@ const Modal = ({ isShowing, hide }) => {
   const [inputs, setInputs] = useState({ calendarName: '', users: '' });
   const [error1, setError] = useState({ status: null });
   const { user } = useContext(UserContext);
-  /*    const { response, runFetch,error} = useFetch();
+     const { response, runFetch,error} = useFetch();
 
 
     useEffect(() => {
-        let test = null;
-        if (editData !== undefined && editData !== 'null') {
-            test = editData.split("-");
-            setError({ status: null })
-            setInputs({ start: test[0], end: test[1], day: test[2] });
-        }
+    
+    if (error.serverError === false ) { // Fetch error handler
+ 
+        window.location.reload()
 
+    } else {
 
-    }, [editData]);
-*/
+        console.log(error)
+    }
+      
+
+    }, [error]);
+
 
 
     const handleInputChange = (event) => {
@@ -61,8 +64,10 @@ const Modal = ({ isShowing, hide }) => {
             
             setError({status:true,error: "Please check fields!"})
         } else {
-
-            console.log({calendarName: inputs.calendarName,admin: user})
+           
+            runFetch('/api/newcalendar','post',{calendarName: inputs.calendarName,admin: user});
+            //due to the characteristics of the react the answer(is error or not) of fetch is handled in useEffect ;)
+           
         }
            
     }
