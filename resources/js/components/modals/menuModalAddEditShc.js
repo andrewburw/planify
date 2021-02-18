@@ -34,19 +34,28 @@ const Modal = ({ isShowing, hide, editData, allWeekData }) => {
     const [inputs, setInputs] = useState({ start: '', end: '' });
     const [error1, setError] = useState({ status: null });
     const { user } = useContext(UserContext);
-    const { response, runFetch,error} = useFetch();
+    const { runFetch,error} = useFetch();
 
 
     useEffect(() => {
         let test = null;
         if (editData !== undefined && editData !== 'null') {
+   
             test = editData.split("-");
             setError({ status: null })
             setInputs({ start: test[0], end: test[1], day: test[2] });
+     
         }
+        if (error.serverError === false ) { // Fetch error handler
+     
+            window.location.reload()
+    
+        } else {
 
-
-    }, [editData]);
+            console.log(error)
+        }
+          
+    }, [editData,error]);
 
 
 
@@ -56,8 +65,7 @@ const Modal = ({ isShowing, hide, editData, allWeekData }) => {
         setInputs(inputs => ({ ...inputs, [event.target.name]: event.target.value }));
 
     }
-
-
+ 
 
 
     const handelSubmit = (event) => {
@@ -77,9 +85,7 @@ const Modal = ({ isShowing, hide, editData, allWeekData }) => {
            // runFetch('api/test','post', data);
            let data = Object.assign({username: user}, inputs)
            runFetch('/api/newschedule','post',data);
-          //  console.log(Object.assign({username: user}, inputs))
-
-          console.log(error)
+           //due to the characteristics of the react the answer(is error or not) of fetch is handled in useEffect ;)
         }
        
     }
@@ -104,12 +110,12 @@ const Modal = ({ isShowing, hide, editData, allWeekData }) => {
                             <div className="edit-modal-f">
                                 <div className="edit-modal-f_group">
                                     <label htmlFor="appt">From:</label>
-                                    <input type="time" id="appt"  name="start" onChange={handleInputChange} value={inputs.start}
+                                    <input type="time"  className="edit-modal-input" name="start" onChange={handleInputChange} value={inputs.start}
                                         required />
                                 </div>
                                 <div className="edit-modal-f_group">
                                     <label htmlFor="appt">To:</label>
-                                    <input type="time" id="appt"  name="end" onChange={handleInputChange} value={inputs.end}
+                                    <input type="time"  className="edit-modal-input"  name="end" onChange={handleInputChange} value={inputs.end}
                                         required />
                                 </div>
                             </div>

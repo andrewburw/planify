@@ -12,13 +12,13 @@ import { useEffect, useState } from 'react';
 |
 | **************************************************************/
 const useFetch = () => {
-    const [response, setResponse] = useState(null);
-    const [method, setMethod] = useState(null);
+    const [response, setResponse] = useState('null');
+    const [method, setMethod] = useState('null');
     const [fetchFlag, setFetchFlag] = useState(0);
-    const [dataToSend, setDataToSend] = useState(null);
-    const [error, setError] = useState(null);
-    const [adress, setAdress] = useState(null);
-    const [isLoading, setLoading] = useState(null);
+    const [dataToSend, setDataToSend] = useState('null');
+    const [error, setError] = useState('null');
+    const [adress, setAdress] = useState('null');
+    const [isLoading, setLoading] = useState('null');
 
    useEffect( ()=>{
   // const runFetch = async (adress, method, data) => {
@@ -47,10 +47,9 @@ const useFetch = () => {
         let fetchBody = method.toLowerCase() === 'get' ? methodNoBody : methodWithBody;
       
          fetch(adress, fetchBody).then(response => response.json()
-
-            ).then(data => {
              
-            
+            ).then(data => {
+           
                 if (data.serverError === true) {
                    
                     setError(data);

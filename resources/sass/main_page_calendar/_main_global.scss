@@ -37,14 +37,6 @@
   margin: 0 auto;
 }
 
-.burger__menu-item{
-  width: 25px;
-  height: 4px;
-  background-color: black;
-  margin: 3px 0;  
-  border-radius: 3px;
-}
-
 
 .leftmenu{
     background-color: #000000;
@@ -98,7 +90,25 @@
     }
     &__leftside-burgermenu{
         padding-top: 12px;
+        cursor: pointer;
+  
      }
+    &__leftside-b__menu-item{
+      width: 25px;
+      height: 4px;
+      background-color: black;
+      margin: 3px 0;  
+      border-radius: 3px;
+
+
+    } 
+    &__leftside-burgermenu:hover .header_co__leftside-ddown-content {
+      display: block;
+    }
+    &__leftside-burgermenu:hover .header_co__leftside-b__menu-item {
+      background-color: rgb(99, 99, 99);
+    }
+  
     &__leftside-clname{
         padding-left: 50px;
         @extend %rb-regular;
