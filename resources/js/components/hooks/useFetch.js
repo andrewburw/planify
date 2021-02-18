@@ -43,9 +43,9 @@ const useFetch = () => {
                 'Content-Type': 'application/json;charset=utf-8'
             }
         }
-
-        let fetchBody = method.toLowerCase() === 'get' ? methodNoBody : methodWithBody;
              
+        let fetchBody = method.toLowerCase() === 'get' ? methodNoBody : methodWithBody;
+      
          fetch(adress, fetchBody).then(response => response.json()
 
             ).then(data => {

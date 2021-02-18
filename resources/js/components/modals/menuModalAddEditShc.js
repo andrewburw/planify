@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom';
 import React, { useState, useEffect, useContext } from 'react';
 import validation from './../custom_modules/validateTime';
 import { UserContext } from './../index';
-
+import useFetch from './../hooks/useFetch';
 /* *************************************************************
 |
 |
@@ -32,9 +32,9 @@ const Modal = ({ isShowing, hide, editData, allWeekData }) => {
 
 
     const [inputs, setInputs] = useState({ start: '', end: '' });
-    const [error, setError] = useState({ status: null });
+    const [error1, setError] = useState({ status: null });
     const { user } = useContext(UserContext);
-
+    const { response, runFetch,error} = useFetch();
 
 
     useEffect(() => {
@@ -69,13 +69,17 @@ const Modal = ({ isShowing, hide, editData, allWeekData }) => {
         let validationResults = validation(inputs, allWeekData, user) // user -> user Logged in
         //validationResults returns object : {error:"This time is busy!",status: true }
         // status -> true = has errors
-
-            console.log(validationResults)
+          
         if (validationResults.status) { // true -> has errors
             setError(validationResults)
         } else {
 
-            console.log('data sended')
+           // runFetch('api/test','post', data);
+           let data = Object.assign({username: user}, inputs)
+           runFetch('/api/newschedule','post',data);
+          //  console.log(Object.assign({username: user}, inputs))
+
+          console.log(error)
         }
        
     }
@@ -88,8 +92,8 @@ const Modal = ({ isShowing, hide, editData, allWeekData }) => {
                     <div className="edit-modal-container">
                         <span className="modal-reg__right-close" onClick={hide}>&times;</span>
                         <h1>Planify</h1>
-                        {error.status !== null ? <div className="modal-reg__right-server-err" >
-                            <div>Error:{error.error}</div>
+                        {error1.status !== null ? <div className="modal-reg__right-server-err" >
+                            <div>Error:{error1.error}</div>
                         </div> :
                             <div className="edit-modal-logo">
                                 <img src="/images/big-logo_login.png" alt="planify" />
@@ -100,12 +104,12 @@ const Modal = ({ isShowing, hide, editData, allWeekData }) => {
                             <div className="edit-modal-f">
                                 <div className="edit-modal-f_group">
                                     <label htmlFor="appt">From:</label>
-                                    <input type="time" id="appt" name="appt" name="start" onChange={handleInputChange} value={inputs.start}
+                                    <input type="time" id="appt"  name="start" onChange={handleInputChange} value={inputs.start}
                                         required />
                                 </div>
                                 <div className="edit-modal-f_group">
                                     <label htmlFor="appt">To:</label>
-                                    <input type="time" id="appt" name="appt" name="end" onChange={handleInputChange} value={inputs.end}
+                                    <input type="time" id="appt"  name="end" onChange={handleInputChange} value={inputs.end}
                                         required />
                                 </div>
                             </div>
