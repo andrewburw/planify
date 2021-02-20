@@ -20,6 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post( '/test', 'App\Http\Controllers\Auth\RegisterController@validator' );
 
-Route::post( '/newschedule', 'App\Http\Controllers\DataScheduleController@postData' );
+Route::post( '/newschedule', 'App\Http\Controllers\DataScheduleController@postCalendar' );
 
-Route::post( '/newcalendar', 'App\Http\Controllers\DataScheduleController@postData' );
+Route::post( '/newcalendar', 'App\Http\Controllers\DataScheduleController@postCalendar' );

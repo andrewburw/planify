@@ -95,7 +95,7 @@ class RegisterController extends Controller
             'status' => 'ok')); 
         } else {
             // the query failed
-               // Not shore this works.
+               // Not shore if this works.
             return response()->json(array('serverError' => false,
             'errors' => '{"error":"error in post table"}')); 
         }

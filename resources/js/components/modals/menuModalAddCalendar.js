@@ -62,10 +62,11 @@ const Modal = ({ isShowing, hide }) => {
 
         if (checkField.checkField('username',inputs.calendarName)) { // calendar name validation TRUE -> has errors
             
-            setError({status:true,error: "Please check fields!"})
+            setError({status:true,error: "Please check fields!"});
+
         } else {
-           
-            runFetch('/api/newcalendar','post',{calendarName: inputs.calendarName,admin: user});
+            console.log({calendar_name: inputs.calendarName,user_id: 1})
+            runFetch('/api/newcalendar','post',{calendar_name: inputs.calendarName,user_id: 1});
             //due to the characteristics of the react the answer(is error or not) of fetch is handled in useEffect ;)
            
         }
