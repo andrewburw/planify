@@ -25,8 +25,8 @@ import {
 // <Route   exact path="/main" component={MainApp} />
 export const UserContext = React.createContext({ user: 'andrew' });
 
-export const CalendarContext = React.createContext({ // I use this context in this project only for testing this react hook
-  calendar_id: "en",
+export const CalendarContext = React.createContext({ // I use this context in this project only for testing new react hook
+  calendar_id: null,
   setCalendar: () => {}
 });
 

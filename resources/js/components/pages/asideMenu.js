@@ -1,12 +1,12 @@
 import useFetch from './../hooks/useFetch';
-import React, {useEffect,useContext} from 'react';
-import {CalendarContext } from "../index";
+import React, { useEffect, useContext } from 'react';
+import { CalendarContext } from "../index";
 
 import {
-    BrowserRouter as Router,
-  
-    Link
-  } from "react-router-dom";
+  BrowserRouter as Router,
+
+  Link
+} from "react-router-dom";
 /* *************************************************************
 |
 |
@@ -19,71 +19,67 @@ import {
 |
 |
 | **************************************************************/
-const  AsideMenu = () => {
-  const { response, runFetch,error} = useFetch();
-  const { language, setCalendar } = useContext(CalendarContext );
+const AsideMenu = () => {
+  const { response, runFetch, error } = useFetch();
+  const { language, setCalendar } = useContext(CalendarContext);
 
   useEffect(() => {
-   runFetch('/api/usercalendars','get');
-   setCalendar("jp")
-
-    },[]);
-  
-    const setContextCalendarId = () => {
+    runFetch('/api/usercalendars', 'get');
 
 
-      // here
-    }
-    
+  }, []);
 
-    return (
-        <div className="leftmenu">
-        <div className="left_menu-container">
-          <div className="leftmenu__logo">
-            <img src="/images/logo.png" alt="" />
-          </div>
-          <div className="leftmenu__pages">
-            <div className="leftmenu__pages-con">
-              <h4 className="leftmenu_p-header">Pages</h4>
-              <ul className="leftmenu_p-list">
+  const setContextCalendarId = (e) => {
+    // set context for calendar id
+    setCalendar(e.target.dataset.id); ``
+
+  }
+
+
+  return (
+    <div className="leftmenu">
+      <div className="left_menu-container">
+        <div className="leftmenu__logo">
+          <img src="/images/logo.png" alt="" />
+        </div>
+        <div className="leftmenu__pages">
+          <div className="leftmenu__pages-con">
+            <h4 className="leftmenu_p-header">Pages</h4>
+            <ul className="leftmenu_p-list">
               <Link to="/dashboard"><li className="leftmenu_p-list-item"><i className="fas fa-home icon"></i>Main</li></Link>
-                <li className="leftmenu_p-list-item"><i className="fas fa-table icon"></i>Calendar</li>
-              </ul>
-            </div>
+              <li className="leftmenu_p-list-item"><i className="fas fa-table icon"></i>Calendar</li>
+            </ul>
           </div>
-          <div className="leftmenu__pages">
-            <div className="leftmenu__pages-con">
-              <h4 className="leftmenu_p-header">Calendars</h4>
-              <ul className="leftmenu_p-list">
+        </div>
+        <div className="leftmenu__pages">
+          <div className="leftmenu__pages-con">
+            <h4 className="leftmenu_p-header">Calendars</h4>
+            <ul className="leftmenu_p-list">
 
-                {response !== 'null' ? response.map((item,i)=>{
-                  return  <Link to="/dashboard/month" key={i}> <li className="leftmenu_p-list-item">{item.calendar_name}</li></Link>
-                }) : null}
+              {response !== 'null' ? response.map((item, i) => {
+                return <Link to="/dashboard/month" key={i}> <li data-id={item.id} onClick={setContextCalendarId} className="leftmenu_p-list-item">{item.calendar_name}</li></Link>
+              }) : null}
 
-
-
-
-
-                <br />
+              <br />
               <Link to="/dashboard/gant"> <li className="leftmenu_p-list-item">Undusted [gant]</li></Link>
               <Link to="/dashboard/month"> <li className="leftmenu_p-list-item">Undusted [Month]</li></Link>
               <Link to="/dashboard/week"> <li className="leftmenu_p-list-item">Undusted [week]</li></Link>
-   
-              </ul>
-            </div>
+
+            </ul>
           </div>
-          <div className="leftmenu__pages">
-            <div className="leftmenu__pages-con">
-              <h4 className="leftmenu_p-header">Users</h4>
-              <ul className="leftmenu_p-list">
-                <li className="leftmenu_p-list-item">User 1</li>
-                <li className="leftmenu_p-list-item">User 2</li>
-              </ul>
-            </div>
+        </div>
+        <div className="leftmenu__pages">
+          <div className="leftmenu__pages-con">
+            <h4 className="leftmenu_p-header">Users</h4>
+            <ul className="leftmenu_p-list">
+              <li className="leftmenu_p-list-item">User 1</li>
+              <li className="leftmenu_p-list-item">User 2</li>
+            </ul>
           </div>
         </div>
       </div>
-    );
+    </div>
+  );
 }
 
 export default AsideMenu;

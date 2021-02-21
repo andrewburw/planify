@@ -38,7 +38,7 @@ const Modal = ({ isShowing, hide }) => {
 
     } else {
 
-        console.log(error)
+       // console.log(error)
     }
       
 

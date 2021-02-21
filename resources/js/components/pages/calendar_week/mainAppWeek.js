@@ -1,4 +1,6 @@
-import { generateWeek, covertDataToDayOfYear, genrateWeekAll } from './../../custom_modules/generateMonthCalendar';
+import { generateWeek, 
+  covertDataToDayOfYear,
+   genrateWeekAll } from './../../custom_modules/generateMonthCalendar';
 import React, { useState, useEffect,useContext} from 'react';
 import ClearDay from './blankDay';
 import { Link } from "react-router-dom";
@@ -6,6 +8,7 @@ import SmallMenu from './../../modals/menuSmallCalendar';
 import useModal from "./../../hooks/useModal";
 import EditDeleteModal from './../../modals/menuModalAddEditShc';
 import {UserContext} from './../../index';
+import {CalendarContext } from "../../index";
 /* *************************************************************
 |
 |
@@ -36,6 +39,7 @@ let testData = [{
 
 
 const WeekCalendar = (props) => {
+  const {calendar_id} = useContext(CalendarContext); 
 
   // RENDER CALENDAR:
 
@@ -84,7 +88,7 @@ const WeekCalendar = (props) => {
 
   };
 
-
+  // console.log(calendar_id)
  // console.log(generate)
 
   return (<div>
