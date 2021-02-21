@@ -31,8 +31,8 @@ const Modal = ({ isShowing, hide }) => {
 
 
     useEffect(() => {
-    
-    if (error.serverError === false ) { // Fetch error handler
+   
+    if (response.serverError === false ) { // Fetch error handler
  
         window.location.reload()
 
@@ -42,9 +42,9 @@ const Modal = ({ isShowing, hide }) => {
     }
       
 
-    }, [error]);
+    }, [error,response]);
 
-
+         // console.log(response)
 
     const handleInputChange = (event) => {
         event.persist();
@@ -65,10 +65,10 @@ const Modal = ({ isShowing, hide }) => {
             setError({status:true,error: "Please check fields!"});
 
         } else {
-            console.log({calendar_name: inputs.calendarName,user_id: 1})
+           // console.log({calendar_name: inputs.calendarName,user_id: 1})
             runFetch('/api/newcalendar','post',{calendar_name: inputs.calendarName,user_id: 1});
             //due to the characteristics of the react the answer(is error or not) of fetch is handled in useEffect ;)
-           
+            
         }
            
     }

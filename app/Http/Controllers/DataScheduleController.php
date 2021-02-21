@@ -9,7 +9,16 @@ use App\Models\Calendar;
 class DataScheduleController extends Controller
 {
     
- 
+    protected function showCalendars(){
+        $table= Calendar::where('user_id',1)->get();
+            //$requests = Friend::where('friend_id', '=', Auth::user()->id)->where('accepted', '=', 0)->get();
+            return response()->json($table);
+    }
+
+
+    
+     // ************  Create a new Calendar  ************  \\ 
+     
 
     protected function postCalendar(Request $request)
     {
@@ -30,12 +39,20 @@ class DataScheduleController extends Controller
             return  $this->createCalendar($request->all());
         }
     }
+
+
+
+
+
     /**
      * Create a new Calendar after valid name.
      *
      * @param  array  $data
      * @return \App\Models\Calendar
      */
+
+
+
     protected function createCalendar($data)
     {
 

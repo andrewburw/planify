@@ -1,4 +1,5 @@
-
+import useFetch from './../hooks/useFetch';
+import React, {useEffect, useState} from 'react';
 import {
     BrowserRouter as Router,
     Switch,
@@ -18,6 +19,22 @@ import {
 |
 | **************************************************************/
 const  AsideMenu = () => {
+  const { response, runFetch,error} = useFetch();
+  const [calendars,setCalendarData] = useState();
+
+  useEffect(() => {
+   runFetch('/api/usercalendars','get');
+    // setCalendarData(response)
+    },[]);
+
+ console.log( response)
+
+
+
+
+
+
+
     return (
         <div className="leftmenu">
         <div className="left_menu-container">
@@ -37,6 +54,7 @@ const  AsideMenu = () => {
             <div className="leftmenu__pages-con">
               <h4 className="leftmenu_p-header">Calendars</h4>
               <ul className="leftmenu_p-list">
+                {response.map(i)}
               <Link to="/dashboard/gant"> <li className="leftmenu_p-list-item">Undusted [gant]</li></Link>
               <Link to="/dashboard/month"> <li className="leftmenu_p-list-item">Undusted [Month]</li></Link>
               <Link to="/dashboard/week"> <li className="leftmenu_p-list-item">Undusted [week]</li></Link>

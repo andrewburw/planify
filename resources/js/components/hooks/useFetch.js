@@ -45,7 +45,7 @@ const useFetch = () => {
         }
              
         let fetchBody = method.toLowerCase() === 'get' ? methodNoBody : methodWithBody;
-      
+       //   console.log('runed fethc')
          fetch(adress, fetchBody).then(response => response.json()
              
             ).then(data => {
@@ -54,11 +54,11 @@ const useFetch = () => {
                    
                     setError(data);
                     setLoading(false);
+                    setResponse(false);
                 } else {
-                    console.log(data)
                     setLoading(false);
                     setResponse(data);
-                    setResponse(false);
+                   // setResponse(false);
                 }
     
             }).catch(err => {

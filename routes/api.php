@@ -18,8 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post( '/test', 'App\Http\Controllers\Auth\RegisterController@validator' );
+Route::post( '/test', 'App\Http\Controllers\Auth\RegisterController@validator' ); // register user route
 
 Route::post( '/newschedule', 'App\Http\Controllers\DataScheduleController@postCalendar' );
+
+
+Route::get( '/usercalendars', 'App\Http\Controllers\DataScheduleController@showCalendars' ); // get users calendars
 
 Route::post( '/newcalendar', 'App\Http\Controllers\DataScheduleController@postCalendar' );
