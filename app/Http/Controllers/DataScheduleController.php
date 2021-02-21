@@ -11,7 +11,7 @@ class DataScheduleController extends Controller
     
     protected function showCalendars(){
         $table= Calendar::where('user_id',1)->get();
-            //$requests = Friend::where('friend_id', '=', Auth::user()->id)->where('accepted', '=', 0)->get();
+          
             return response()->json($table);
     }
 

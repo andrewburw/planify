@@ -1,9 +1,10 @@
 import useFetch from './../hooks/useFetch';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect,useContext} from 'react';
+import {CalendarContext } from "../index";
+
 import {
     BrowserRouter as Router,
-    Switch,
-    Route,
+  
     Link
   } from "react-router-dom";
 /* *************************************************************
@@ -20,20 +21,20 @@ import {
 | **************************************************************/
 const  AsideMenu = () => {
   const { response, runFetch,error} = useFetch();
-  const [calendars,setCalendarData] = useState();
+  const { language, setCalendar } = useContext(CalendarContext );
 
   useEffect(() => {
    runFetch('/api/usercalendars','get');
-    // setCalendarData(response)
+   setCalendar("jp")
+
     },[]);
-
- console.log( response)
-
-
+  
+    const setContextCalendarId = () => {
 
 
-
-
+      // here
+    }
+    
 
     return (
         <div className="leftmenu">
@@ -54,7 +55,16 @@ const  AsideMenu = () => {
             <div className="leftmenu__pages-con">
               <h4 className="leftmenu_p-header">Calendars</h4>
               <ul className="leftmenu_p-list">
-                {response.map(i)}
+
+                {response !== 'null' ? response.map((item,i)=>{
+                  return  <Link to="/dashboard/month" key={i}> <li className="leftmenu_p-list-item">{item.calendar_name}</li></Link>
+                }) : null}
+
+
+
+
+
+                <br />
               <Link to="/dashboard/gant"> <li className="leftmenu_p-list-item">Undusted [gant]</li></Link>
               <Link to="/dashboard/month"> <li className="leftmenu_p-list-item">Undusted [Month]</li></Link>
               <Link to="/dashboard/week"> <li className="leftmenu_p-list-item">Undusted [week]</li></Link>

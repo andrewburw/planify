@@ -11,7 +11,7 @@
 |
 | **************************************************************/
 
-import React from 'react';
+import React,{useState} from 'react';
 import ReactDOM from 'react-dom';
 import MainPage from './main';
 import MainApp from './pages/mainApp';
@@ -25,15 +25,25 @@ import {
 // <Route   exact path="/main" component={MainApp} />
 export const UserContext = React.createContext({ user: 'andrew' });
 
+export const CalendarContext = React.createContext({ // I use this context in this project only for testing this react hook
+  calendar_id: "en",
+  setCalendar: () => {}
+});
+
 
 const IndexPage = () => {
+  const [ calendar_id, setCalendar] = useState("en");
+  const value = { calendar_id, setCalendar };
+
   return (
     <div>
       <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route exact path="/" component={MainPage} />
-           <Route path="/dashboard" component={MainApp} />
-          </Switch>
+          <CalendarContext.Provider value={value}>
+            <Route path="/dashboard" component={MainApp} />
+          </CalendarContext.Provider>
+        </Switch>
       </Router>
     </div>
   );
