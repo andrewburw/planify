@@ -1,7 +1,7 @@
 import useFetch from './../hooks/useFetch';
 import React, { useEffect, useContext } from 'react';
 import { CalendarContext } from "../index";
-
+import Loading from './../../components/custom_modules/loading.svg'
 import {
   BrowserRouter as Router,
 
@@ -34,7 +34,8 @@ const AsideMenu = () => {
     setCalendar(e.target.dataset.id); 
 
   }
-
+// <Link to="/dashboard/month"> <li className="leftmenu_p-list-item">Undusted [Month]</li></Link>
+// <Link to="/dashboard/week"> <li className="leftmenu_p-list-item">Undusted [week]</li></Link>
 
   return (
     <div className="leftmenu">
@@ -48,6 +49,7 @@ const AsideMenu = () => {
             <ul className="leftmenu_p-list">
               <Link to="/dashboard"><li className="leftmenu_p-list-item"><i className="fas fa-home icon"></i>Main</li></Link>
               <li className="leftmenu_p-list-item"><i className="fas fa-table icon"></i>Calendar</li>
+              <Link to="/dashboard/gant"><li className="leftmenu_p-list-item"><i className="fas fa-table icon"> Cl [gant]</i></li></Link>
             </ul>
           </div>
         </div>
@@ -58,13 +60,11 @@ const AsideMenu = () => {
 
               {response !== 'null' ? response.map((item, i) => {
                 return <Link to="/dashboard/month" key={i}> <li data-id={item.id} onClick={setContextCalendarId} className="leftmenu_p-list-item">{item.calendar_name}</li></Link>
-              }) : null}
+              }) :  <img src={Loading} alt="Planify loading" />}
 
               <br />
-              <Link to="/dashboard/gant"> <li className="leftmenu_p-list-item">Undusted [gant]</li></Link>
-              <Link to="/dashboard/month"> <li className="leftmenu_p-list-item">Undusted [Month]</li></Link>
-              <Link to="/dashboard/week"> <li className="leftmenu_p-list-item">Undusted [week]</li></Link>
-
+           
+             
             </ul>
           </div>
         </div>

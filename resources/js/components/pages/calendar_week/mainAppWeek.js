@@ -22,7 +22,7 @@ import useFetch from './../../hooks/useFetch';
 |
 | **************************************************************/
 
-let testData = [{
+let testData1 = [{
   day: 40,
   reserved: [{ start: "08:00", end: "12:00", name: "den" ,day: 40},
   { start: "02:00", end: "08:00", name: "den" ,day: 40},
@@ -38,7 +38,7 @@ let testData = [{
 }]
 
 
-
+let testData = null
 const WeekCalendar = (props) => {
   // GET DATA: 
   const { response, runFetch,error} = useFetch();
@@ -48,7 +48,7 @@ const WeekCalendar = (props) => {
 
   const [day, setDay] = useState(1); // day of year (dafault set to 1 (janvary 1th))
   let generate = generateWeek(day); // returned object with {weekDay:monthDay}
-  let generateDay = genrateWeekAll(testData, generate);
+  let generateDay = genrateWeekAll(testData, generate) || [false,false,false,false,false,false,false];
 
   // SMALL MODAL MENU CONTROL:
 
@@ -72,12 +72,12 @@ const WeekCalendar = (props) => {
     }
 
 
-    runFetch('/api/monthdata','get');
+    runFetch('/api/allchedule','get');
 
   },[]);
 
   
-   console.log(error)
+   console.log(response)
 
   const showRefPosition = (e) => {
     // On click small menu

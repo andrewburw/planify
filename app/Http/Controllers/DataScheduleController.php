@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Calendar;
 use App\Models\DaySchedule;
+use App\Custom\CustomModule;
 
 class DataScheduleController extends Controller
 {
@@ -14,10 +16,18 @@ class DataScheduleController extends Controller
         // show user calendars
         $table= Calendar::where('user_id',1)->get();
           
-            return response()->json($table);
+        return response()->json($table);
+        
     }
 
+    protected function showWeekScheldues(Request $request){
+         // show user day schedules
+        $table= DaySchedule::where('calendar_id',1)->get();
+        $test = CustomModule::RedoData($table);
+      
+        return   $test;
 
+    }
     
      // ************  Create a new Calendar  ************  \\ 
      

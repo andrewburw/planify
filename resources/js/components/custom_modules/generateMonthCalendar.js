@@ -378,8 +378,9 @@ let testData = [{
 export function genrateWeekAll(data, weekDays) {
   // renders "week calendar" -> all week days
     let result = [];
-        
-
+      
+    if(data === null) return
+      
     for (const key in weekDays) {
 
         if (key === 'month') {
