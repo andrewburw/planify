@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import validation from './../custom_modules/validateTime';
 import { UserContext } from './../index';
 import useFetch from './../hooks/useFetch';
+import {CalendarContext } from "../index";
 /* *************************************************************
 |
 |
@@ -23,18 +24,18 @@ import useFetch from './../hooks/useFetch';
 | **************************************************************/
 
 
-const Modal = ({ isShowing, hide, editData, allWeekData }) => {
-
+const Modal = ({ isShowing, hide, editData, allWeekData ,month}) => {
+    const {calendar_id} = useContext(CalendarContext); // calendar id (global context)
 
     // editData -> recived string: "02:00-08:00" or "null" if taken free time
     // in first render recived undefined
     // allWeekData = > all data recived for week
-
+    
 
     const [inputs, setInputs] = useState({ start: '', end: '' });
     const [error1, setError] = useState({ status: null });
     const { user } = useContext(UserContext);
-    const { runFetch,error} = useFetch();
+    const { response,runFetch,error} = useFetch();
 
 
     useEffect(() => {
@@ -46,16 +47,16 @@ const Modal = ({ isShowing, hide, editData, allWeekData }) => {
             setInputs({ start: test[0], end: test[1], day: test[2] });
      
         }
-        if (error.serverError === false ) { // Fetch error handler
+        if (response.serverError === false ) { // Fetch error handler
      
-            window.location.reload()
+            hide();
     
         } else {
 
             console.log(error)
         }
           
-    }, [editData,error]);
+    }, [editData,response,error]);
 
 
 
@@ -63,7 +64,7 @@ const Modal = ({ isShowing, hide, editData, allWeekData }) => {
         event.persist();
 
         setInputs(inputs => ({ ...inputs, [event.target.name]: event.target.value }));
-
+       
     }
  
 
@@ -81,9 +82,8 @@ const Modal = ({ isShowing, hide, editData, allWeekData }) => {
         if (validationResults.status) { // true -> has errors
             setError(validationResults)
         } else {
-
-           // runFetch('api/test','post', data);
-           let data = Object.assign({username: user}, inputs)
+           
+           let data = Object.assign({username: user,calendar_id: calendar_id,month:month}, inputs)
            runFetch('/api/newschedule','post',data);
            //due to the characteristics of the react the answer(is error or not) of fetch is handled in useEffect ;)
         }

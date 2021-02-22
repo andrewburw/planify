@@ -22,8 +22,6 @@ const MenuSmallCalendar = ({ isShowing, hide ,position,menu,showModalEdit}) => {
 
 
 
-
-
 // ******* CHANGE/ADD MENU 
 
 

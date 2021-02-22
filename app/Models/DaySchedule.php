@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class DaySchedule extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'calendar_id',
+        'start',
+        'end',
+        'day',
+        'name'
+      
+    ];
 }

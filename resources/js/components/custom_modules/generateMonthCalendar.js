@@ -3,7 +3,7 @@
 |
 |                     Month calendar generator file
 |
-|       *  This is custom module for working with week calendar.
+|       *  This is custom module for working with week/month calendar.
 |
 |      My page: https://andrewburw.github.io/personalpage/
 |
@@ -118,6 +118,7 @@ export function convertDayOfyear(day) {
 /*************************************************************** */
 
 export function covertDataToDayOfYear(day, month) {
+ 
     //converting day/month -> date of year
     if (day === 0 && month === 0) { return 1 }; // protection
     if (day === undefined || month === undefined) { return 1 }; // protection
@@ -221,7 +222,15 @@ export function generateWeek(day) {
 /*************************************************************** */
 
 export function genrateDayM(data, weekDays) {
-    // weekDays = Date of weekday => {1: 28, 2: 29, 3: 30, 4: 31, 5: 1, 6: 2, 7:...}
+  /*
+
+
+|                 EMPTY DAYS RENDERED IN EMTY DAY COMPONENT
+
+
+|           This function renders if day has data
+  */
+    // weekDays = Date of weekday => {1: 28, 2: 29, 3: 30, 4: 31, 5: 1, 6: 2, 7:3, monthNum: 1 ,...}
     // foundDay = number of day
 
     /*Recived data:
@@ -297,7 +306,7 @@ export function genrateDayM(data, weekDays) {
                     end = Number(elementWorkwith.end.split(":")[0]);
 
                 }
-                
+                 
                 if (i === start) {
 
                     result.push({ class1: `weekday${a+1}_main${i} cell__bg_color`,  // heading cell
@@ -327,14 +336,14 @@ export function genrateDayM(data, weekDays) {
 
                 } else {
                    
-                //   console.log(elementWorkwithSAVE + ' '+elementWorkwithSAVE.day)
+               
 
                     result.push({ class1: `weekday${a+1}_main${i} cell__bg_color`, // clear cell
                                   class2: `weekday${a+1}_main${i}_inner`, 
                                   spanclass: null, 
                                   spandata: null, 
                                   userName: null,
-                                  time: "00:00-00:00-"+ dateOfTheDay}) 
+                                  time: "00:00-00:00-"+ covertDataToDayOfYear(dateOfTheDay, weekDays.monthNum+1)}) //covertDataToDayOfYear(day, month)
                              //}) 
                                 
                 }
@@ -369,7 +378,7 @@ let testData = [{
 export function genrateWeekAll(data, weekDays) {
   // renders "week calendar" -> all week days
     let result = [];
-  
+        
 
     for (const key in weekDays) {
 

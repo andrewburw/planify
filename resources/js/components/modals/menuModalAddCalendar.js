@@ -27,7 +27,7 @@ const Modal = ({ isShowing, hide }) => {
   const [inputs, setInputs] = useState({ calendarName: '', users: '' });
   const [error1, setError] = useState({ status: null });
   const { user } = useContext(UserContext);
-     const { response, runFetch,error} = useFetch();
+  const { response, runFetch,error} = useFetch();
 
 
     useEffect(() => {

@@ -17,13 +17,14 @@ class CreateDaySchedulesTable extends Migration
             $table->id();
             $table->string('start');
             $table->string('end');
-            $table->string('day');
+            $table->string('day');  // day of year
             $table->string('name');
-  /*          $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')
+            $table->string('month'); // month number
+            $table->unsignedBigInteger('calendar_id');
+            $table->foreign('calendar_id')
                     ->references('id')
-                    ->on('users')
-                    ->onDelete('cascade');  */
+                    ->on('calendars')
+                    ->onDelete('cascade');  
             $table->timestamps();
         });
     }

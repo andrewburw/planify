@@ -31,7 +31,7 @@ const AsideMenu = () => {
 
   const setContextCalendarId = (e) => {
     // set context for calendar id
-    setCalendar(e.target.dataset.id); ``
+    setCalendar(e.target.dataset.id); 
 
   }
 

@@ -8,7 +8,8 @@ import SmallMenu from './../../modals/menuSmallCalendar';
 import useModal from "./../../hooks/useModal";
 import EditDeleteModal from './../../modals/menuModalAddEditShc';
 import {UserContext} from './../../index';
-import {CalendarContext } from "../../index";
+import useFetch from './../../hooks/useFetch';
+
 /* *************************************************************
 |
 |
@@ -39,7 +40,9 @@ let testData = [{
 
 
 const WeekCalendar = (props) => {
-  const {calendar_id} = useContext(CalendarContext); 
+  // GET DATA: 
+  const { response, runFetch,error} = useFetch();
+
 
   // RENDER CALENDAR:
 
@@ -49,7 +52,7 @@ const WeekCalendar = (props) => {
 
   // SMALL MODAL MENU CONTROL:
 
-  const [isShowingReg, toggleMenu] = useModal();
+  const [isShowingSmall, toggleMenu] = useModal();
   const [position, setPosition] = useState(); // set position when and where menu triggered {x,y}
   const [smallMenu, setMenu] = useState(); // set meny: b
   const {user} = useContext(UserContext); // logged in user
@@ -64,13 +67,17 @@ const WeekCalendar = (props) => {
     const { month, day1 } = props.location.state || { month: 0, day: 0 };
 
     if (day < day1) { // protect (without this protection not working PREV NEXT month)
-
+    
       setDay(covertDataToDayOfYear(day1, month)); // (day,month)
     }
 
 
-  });
+    runFetch('/api/monthdata','get');
 
+  },[]);
+
+  
+   console.log(error)
 
   const showRefPosition = (e) => {
     // On click small menu
@@ -88,21 +95,27 @@ const WeekCalendar = (props) => {
 
   };
 
-  // console.log(calendar_id)
- // console.log(generate)
+   // render protection: do not reneder menus if it not toggled
+   let smMenu = isShowingSmall ?  <SmallMenu isShowing={isShowingSmall} 
+   hide={toggleMenu} 
+   menu={smallMenu} 
+   position={position} 
+   showModalEdit={toggleEdit}/> : '';
+
+
+  let edMenu = isShowingEdit ?  <EditDeleteModal isShowing={isShowingEdit} 
+  hide={toggleEdit} 
+  editData={editData}
+  allWeekData={testData}
+  month={generate.monthNum+1}
+  /> : '';
+
+
+
 
   return (<div>
-        <EditDeleteModal isShowing={isShowingEdit} 
-                         hide={toggleEdit} 
-                         editData={editData}
-                         allWeekData={testData} />
-
-    <SmallMenu isShowing={isShowingReg} 
-                hide={toggleMenu} 
-                menu={smallMenu} 
-                position={position} 
-                showModalEdit={toggleEdit}/>
-
+   {smMenu}
+   {edMenu}
 
     <Link to="/dashboard/month"><button className="btn-sm white-btn">&#10092; Back</button></Link>
     <div className="main_co__month-name">
@@ -172,8 +185,8 @@ const WeekCalendar = (props) => {
         <div className="menu22"><p className="menu__p ">22:00</p></div>
         <div className="menu23"><p className="menu__p ">23:00</p></div>
         {generateDay.map((itm, a) => {
-          
-          return itm === false ? <ClearDay day={generate[a+1]} clicked={showRefPosition} val={a+1} key={a} /> :
+           
+          return itm === false ? <ClearDay day={covertDataToDayOfYear(generate[a+1],generate.monthNum+1)} clicked={showRefPosition} val={a+1} key={a} /> :
 
             itm.map((item, i) => {
                // console.log(item.userName)
