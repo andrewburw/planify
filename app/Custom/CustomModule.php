@@ -1,17 +1,38 @@
 <?php
 namespace App\Custom;
 
-
-
-class CustomModule {
-
- static function RedoData($data){
+class CustomModule
+{
+    public static function RedoData($data)
+    {
+        $resultArray = json_decode(json_encode($data), true);
+        $result = array_filter(
+            $resultArray,
+            function ($value, $key) use ($resultArray) {
+          return $key === array_search($value["day"], array_column($resultArray, "day"));
+      },
+         ARRAY_FILTER_USE_BOTH
+        );
+  
+        $idDays = array_column($result, "day");
+        $newArr = array();
+  
+      foreach ($idDays as &$value1) {
+            array_push($newArr, array('day'=>$value1, 'reserved'=>array_values(array_filter(
+                $resultArray,
+                function ($value) use ($value1) {
+          return $value["day"] == $value1;
+      }))));
+      }
+  
+  
+        unset($value1);
+   
+  
  
-    $resultArray = json_decode(json_encode($data), true);
-      // dd($data);
-    return dd(  $resultArray );
-}
-
+        // dd($data);
+        return json_encode($newArr);
+    }
 }
 
 /*

@@ -1,15 +1,18 @@
-import { generateWeek, 
+import {
+  generateWeek,
   covertDataToDayOfYear,
-   genrateWeekAll } from './../../custom_modules/generateMonthCalendar';
-import React, { useState, useEffect,useContext} from 'react';
+  genrateWeekAll
+} from './../../custom_modules/generateMonthCalendar';
+import {Redirect} from "react-router-dom";
+import React, { useState, useEffect, useContext } from 'react';
 import ClearDay from './blankDay';
 import { Link } from "react-router-dom";
 import SmallMenu from './../../modals/menuSmallCalendar';
 import useModal from "./../../hooks/useModal";
 import EditDeleteModal from './../../modals/menuModalAddEditShc';
-import {UserContext} from './../../index';
+import { UserContext } from './../../index';
 import useFetch from './../../hooks/useFetch';
-
+import {CalendarContext } from "../../index";
 /* *************************************************************
 |
 |
@@ -21,41 +24,40 @@ import useFetch from './../../hooks/useFetch';
 |
 |
 | **************************************************************/
-
+/*
 let testData1 = [{
   day: 40,
-  reserved: [{ start: "08:00", end: "12:00", name: "den" ,day: 40},
-  { start: "02:00", end: "08:00", name: "den" ,day: 40},
-  { start: "15:00", end: "18:00", name: "andrew" ,day: 40},
-  { start: "18:00", end: "20:00", name: "abdul",day: 40 }]
+  reserved: [{ start: "08:00", end: "12:00", name: "den", day: 40 },
+  { start: "02:00", end: "08:00", name: "den", day: 40 },
+  { start: "15:00", end: "18:00", name: "andrew", day: 40 },
+  { start: "18:00", end: "20:00", name: "abdul", day: 40 }]
 },
 {
   day: 42,
-  reserved: [{ start: "08:00", end: "12:00", name: "den",day: 42 },
-  { start: "02:00", end: "08:00", name: "den" ,day: 42},
-  { start: "15:00", end: "18:00", name: "andrew" ,day: 42},
-  { start: "18:00", end: "20:00", name: "abdul" ,day: 42}]
+  reserved: [{ start: "08:00", end: "12:00", name: "den", day: 42 },
+  { start: "02:00", end: "08:00", name: "den", day: 42 },
+  { start: "15:00", end: "18:00", name: "andrew", day: 42 },
+  { start: "18:00", end: "20:00", name: "abdul", day: 42 }]
 }]
 
-
-let testData = null
+*/
 const WeekCalendar = (props) => {
   // GET DATA: 
-  const { response, runFetch,error} = useFetch();
-
-
+  const { response, runFetch, error } = useFetch('');
+  const [recivedData,setData] = useState(null);
+  const {calendar_id} = useContext(CalendarContext); // calendar id (global context)
   // RENDER CALENDAR:
 
   const [day, setDay] = useState(1); // day of year (dafault set to 1 (janvary 1th))
   let generate = generateWeek(day); // returned object with {weekDay:monthDay}
-  let generateDay = genrateWeekAll(testData, generate) || [false,false,false,false,false,false,false];
+  let generateDay = genrateWeekAll(recivedData, generate) || [false, false, false, false, false, false, false];
 
   // SMALL MODAL MENU CONTROL:
 
   const [isShowingSmall, toggleMenu] = useModal();
   const [position, setPosition] = useState(); // set position when and where menu triggered {x,y}
   const [smallMenu, setMenu] = useState(); // set meny: b
-  const {user} = useContext(UserContext); // logged in user
+  const { user } = useContext(UserContext); // logged in user
 
   // MODAL ADD/EDIT CONTROL:
 
@@ -67,55 +69,65 @@ const WeekCalendar = (props) => {
     const { month, day1 } = props.location.state || { month: 0, day: 0 };
 
     if (day < day1) { // protect (without this protection not working PREV NEXT month)
-    
+
       setDay(covertDataToDayOfYear(day1, month)); // (day,month)
     }
+    runFetch('/api/allchedule', 'get');
+
+    
+  }, []);
+   
+  if(response !== 'null' && recivedData === null) {
+    
+    setData(response)
 
 
-    runFetch('/api/allchedule','get');
+  }
+     setTimeout(() => {
+    //  setData(testData1 )
+     }, 20000);
+   console.log( calendar_id === false)
 
-  },[]);
-
-  
-   console.log(response)
-
+    if ( calendar_id === false) {
+     return <Redirect to='/dashboard'></Redirect>
+    }
   const showRefPosition = (e) => {
     // On click small menu
-   
+
     if (e.target.dataset.datauser !== user && e.target.dataset.menu === 'busy') return
-     let xpos = e.target.getBoundingClientRect().x;
-     let ypos = e.target.getBoundingClientRect().y;
-     
-     
-     setPosition({ x: xpos, y: ypos });
-     toggleMenu();
-     setEditData(e.target.dataset.datause); // -> saved data and sended to modal edit (date string)
-     setMenu(e.target.dataset.menu); // set menu for free time or busy
+    let xpos = e.target.getBoundingClientRect().x;
+    let ypos = e.target.getBoundingClientRect().y;
+
+
+    setPosition({ x: xpos, y: ypos });
+    toggleMenu();
+    setEditData(e.target.dataset.datause); // -> saved data and sended to modal edit (date string)
+    setMenu(e.target.dataset.menu); // set menu for free time or busy
 
 
   };
 
-   // render protection: do not reneder menus if it not toggled
-   let smMenu = isShowingSmall ?  <SmallMenu isShowing={isShowingSmall} 
-   hide={toggleMenu} 
-   menu={smallMenu} 
-   position={position} 
-   showModalEdit={toggleEdit}/> : '';
+  // render protection: do not reneder menus if it not toggled
+  let smMenu = isShowingSmall ? <SmallMenu isShowing={isShowingSmall}
+    hide={toggleMenu}
+    menu={smallMenu}
+    position={position}
+    showModalEdit={toggleEdit} /> : '';
 
 
-  let edMenu = isShowingEdit ?  <EditDeleteModal isShowing={isShowingEdit} 
-  hide={toggleEdit} 
-  editData={editData}
-  allWeekData={testData}
-  month={generate.monthNum+1}
+  let edMenu = isShowingEdit ? <EditDeleteModal isShowing={isShowingEdit}
+    hide={toggleEdit}
+    editData={editData}
+    allWeekData={recivedData}
+    month={generate.monthNum + 1}
   /> : '';
 
 
 
 
   return (<div>
-   {smMenu}
-   {edMenu}
+    {smMenu}
+    {edMenu}
 
     <Link to="/dashboard/month"><button className="btn-sm white-btn">&#10092; Back</button></Link>
     <div className="main_co__month-name">
@@ -185,11 +197,11 @@ const WeekCalendar = (props) => {
         <div className="menu22"><p className="menu__p ">22:00</p></div>
         <div className="menu23"><p className="menu__p ">23:00</p></div>
         {generateDay.map((itm, a) => {
-           
-          return itm === false ? <ClearDay day={covertDataToDayOfYear(generate[a+1],generate.monthNum+1)} clicked={showRefPosition} val={a+1} key={a} /> :
+
+          return itm === false ? <ClearDay day={covertDataToDayOfYear(generate[a + 1], generate.monthNum + 1)} clicked={showRefPosition} val={a + 1} key={a} /> :
 
             itm.map((item, i) => {
-               // console.log(item.userName)
+              // console.log(item.userName)
               return <div
                 style={{ cursor: 'pointer' }}
                 key={i}
@@ -197,16 +209,16 @@ const WeekCalendar = (props) => {
                 onClick={showRefPosition}
                 className={item.class1}
                 data-datause={item.time}>
-              
 
 
-                <div className={item.class2} 
-                     data-menu="busy" 
-                     data-datauser={item.userName} 
-                     data-datause={item.time} 
-                     onClick={showRefPosition}>
 
-                  {item.spanclass !== null ? <span data-menu="busy" data-datauser={item.userName}  className={item.spanclass}>{item.spandata}</span> : ''}
+                <div className={item.class2}
+                  data-menu="busy"
+                  data-datauser={item.userName}
+                  data-datause={item.time}
+                  onClick={showRefPosition}>
+
+                  {item.spanclass !== null ? <span data-menu="busy" data-datauser={item.userName} className={item.spanclass}>{item.spandata}</span> : ''}
 
 
                 </div></div>

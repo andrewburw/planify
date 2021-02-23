@@ -32,7 +32,7 @@ export const CalendarContext = React.createContext({ // I use this context in th
 
 
 const IndexPage = () => {
-  const [ calendar_id, setCalendar] = useState('');
+  const [ calendar_id, setCalendar] = useState(false);
   const value = { calendar_id, setCalendar };
 
   return (

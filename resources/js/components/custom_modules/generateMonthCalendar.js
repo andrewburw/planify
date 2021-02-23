@@ -378,16 +378,16 @@ let testData = [{
 export function genrateWeekAll(data, weekDays) {
   // renders "week calendar" -> all week days
     let result = [];
-      
-    if(data === null) return
-      
+   
+    if(data == null) return
+    if(data == 'null') return
     for (const key in weekDays) {
 
         if (key === 'month') {
             break;
         }
 
-        let check = data.find(elm => elm.day === covertDataToDayOfYear(weekDays[key], weekDays.monthNum + 1)) || false
+        let check = data.find(elm => Number(elm.day) === covertDataToDayOfYear(weekDays[key], weekDays.monthNum + 1)) || false
 
         if (check) {
                  /*

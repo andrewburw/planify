@@ -47,33 +47,38 @@ let basicCompare = {
 export default function validateTimeAndAll(inputs, allData, userLoggedIn) {
 
         // inputs { start: "08:00", end: "12:00",day: 40}
-             
+     
         if (basicCompare.morOrLess(inputs)) {
                 // if basic test not pased return error
                 return { error: "End can't be less then start or equal", status: true };
         }
-       
-        if (allData.find(x => x.day == Number(inputs.day)) === undefined) {
+        if (allData === null) {
                 // little crutch :) : if this validation function (this) is triggered on emty day ->
                 //    and basicCompare has no errors return no errors
                 return { status: false };
+        }
+         
+        if (allData.find(x => x.day == Number(inputs.day)) === undefined) {
+                  // little crutch :) : if this validation function (this) is triggered on emty day ->
+                  //    and basicCompare has no errors return no errors
+                  return { status: false };
         } 
-
-
-
+  
+     
+   
         let selected = {
                 start: Number(inputs.start.split(":")[0]),
                 end: Number(inputs.end.split(":")[0])
         };
 
-        let dataOfday = allData.find(x => x.day == Number(inputs.day)).reserved; // find day-data work with
+        let dataOfday = allData.find(x => Number(x.day) == Number(inputs.day)).reserved; // find day-data work with
         let filtredData = dataOfday.filter(x => x.name !== userLoggedIn); // "delete" logged in user data
         let dataInNumbers = []; // converted all data (start/end) to numbers
 
 
 
         filtredData.forEach((item) => {
-             // convert all data (start/end) to numbers
+                // convert all data (start/end) to numbers
                 dataInNumbers.push({
                         start: Number(item.start.split(":")[0]),
                         end: Number(item.end.split(":")[0])
