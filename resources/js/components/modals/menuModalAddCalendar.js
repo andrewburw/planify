@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import React, { useState, useEffect, useContext } from 'react';
 import checkField from './../hooks/custom_modules/checkFields';
-import { UserContext } from './../index';
+import { UserContext } from './../mainContext';
 import useFetch from './../hooks/useFetch';
 /* *************************************************************
 |

@@ -22,7 +22,9 @@ class DataScheduleController extends Controller
 
     protected function showWeekScheldues(Request $request){
          // show user day schedules
-        $table= DaySchedule::where('calendar_id',1)->get();
+   
+        $id = $request->all();
+        $table= DaySchedule::where('calendar_id',$id['calendar_id'])->get();
         $test = CustomModule::RedoData($table);
       
         return   $test;

@@ -35,4 +35,4 @@ Route::post( '/newcalendar', 'App\Http\Controllers\DataScheduleController@postCa
 // DAY SHCHEDULE:
 
 Route::post( '/newschedule', 'App\Http\Controllers\DataScheduleController@addDaySchedule' ); // post new schedule
-Route::get( '/allchedule', 'App\Http\Controllers\DataScheduleController@showWeekScheldues' ); // get scheldues schedule
+Route::post( '/allchedule', 'App\Http\Controllers\DataScheduleController@showWeekScheldues' ); // get scheldues schedule

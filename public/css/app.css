@@ -432,6 +432,11 @@ button:focus {
   color: green;
 }
 
+/* ============== FULL PAGE LOADING ==================== */
+.full__page__loading {
+  margin-top: 200px;
+}
+
 @font-face {
   font-family: "Roboto-Bold";
   src: url("/fonts/Roboto-Bold.woff") format("woff");
@@ -1563,6 +1568,10 @@ for (let i = 0 ; i < 24; i++){
   font-size: 15px;
   width: 120px;
   height: 60px;
+}
+
+.cal_w_app {
+  padding-top: 30px;
 }
 
 .week__day_h {

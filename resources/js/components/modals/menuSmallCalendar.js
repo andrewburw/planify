@@ -18,7 +18,7 @@ import ReactDOM from 'react-dom';
 
 
 
-const MenuSmallCalendar = ({ isShowing, hide ,position,menu,showModalEdit}) => {
+const MenuSmallCalendar = ({ isShowing,position,menu,showModalEdit,showModalDelete}) => {
 
 
 
@@ -27,7 +27,7 @@ const MenuSmallCalendar = ({ isShowing, hide ,position,menu,showModalEdit}) => {
 
  let menuBusy =  <ul>
                     <li onClick={showModalEdit}><i className="fas fa-home icon"></i>Change</li>
-                    <li><i className="fas fa-underline icon"></i>Delete</li>
+                    <li onClick={showModalDelete}><i className="fas fa-underline icon"></i>Delete</li>
                  </ul>;
 
 

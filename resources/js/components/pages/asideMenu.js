@@ -1,6 +1,7 @@
 import useFetch from './../hooks/useFetch';
 import React, { useEffect, useContext } from 'react';
-import { CalendarContext } from "../index";
+import { CalendarContext } from "../mainContext";
+import { CalendarNameContext } from "../mainContext";
 import Loading from './../../components/custom_modules/loading.svg'
 import {
   BrowserRouter as Router,
@@ -22,6 +23,8 @@ import {
 const AsideMenu = () => {
   const { response, runFetch, error } = useFetch();
   const { language, setCalendar } = useContext(CalendarContext);
+  const { language1, setCalendarName } = useContext(CalendarNameContext);
+
 
   useEffect(() => {
     runFetch('/api/usercalendars', 'get');
@@ -30,12 +33,14 @@ const AsideMenu = () => {
   }, []);
 
   const setContextCalendarId = (e) => {
-    // set context for calendar id
+    // set context for calendar id / calendar name
+  
     setCalendar(e.target.dataset.id); 
+    setCalendarName(e.target.dataset.name);
 
   }
-// <Link to="/dashboard/month"> <li className="leftmenu_p-list-item">Undusted [Month]</li></Link>
-// <Link to="/dashboard/week"> <li className="leftmenu_p-list-item">Undusted [week]</li></Link>
+// <Link to="/dashboard/month"> <li className="leftmenu_p-list-item">Test [Month]</li></Link>
+// <Link to="/dashboard/week"> <li className="leftmenu_p-list-item">Test [week]</li></Link>
 
   return (
     <div className="leftmenu">
@@ -59,7 +64,7 @@ const AsideMenu = () => {
             <ul className="leftmenu_p-list">
 
               {response !== 'null' ? response.map((item, i) => {
-                return <Link to="/dashboard/month" key={i}> <li data-id={item.id} onClick={setContextCalendarId} className="leftmenu_p-list-item">{item.calendar_name}</li></Link>
+                return <Link to="/dashboard/month" key={i}> <li data-id={item.id} data-name={item.calendar_name} onClick={setContextCalendarId} className="leftmenu_p-list-item">{item.calendar_name}</li></Link>
               }) :  <img src={Loading} alt="Planify loading" />}
 
               <br />

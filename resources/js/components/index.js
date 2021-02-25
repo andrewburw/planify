@@ -15,7 +15,8 @@ import React,{useState} from 'react';
 import ReactDOM from 'react-dom';
 import MainPage from './main';
 import MainApp from './pages/mainApp';
-
+import {CalendarContext} from './mainContext';
+import {CalendarNameContext} from './mainContext';
 import {
   BrowserRouter as Router,
   Switch,
@@ -23,26 +24,24 @@ import {
 } from "react-router-dom";
 //  <Router  basename={process.env.PUBLIC_URL}>
 // <Route   exact path="/main" component={MainApp} />
-export const UserContext = React.createContext({ user: 'andrew' });
-
-export const CalendarContext = React.createContext({ // I use this context in this project only for testing new react hook
-  calendar_id: null,
-  setCalendar: () => {}
-});
-
 
 const IndexPage = () => {
   const [ calendar_id, setCalendar] = useState(false);
   const value = { calendar_id, setCalendar };
+  const [ calendarName, setCalendarName] = useState(false);
+  const value1 = { calendarName, setCalendarName };
+
 
   return (
     <div>
       <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route exact path="/" component={MainPage} />
+          <CalendarNameContext.Provider value={value1}>
           <CalendarContext.Provider value={value}>
             <Route path="/dashboard" component={MainApp} />
           </CalendarContext.Provider>
+          </CalendarNameContext.Provider>
         </Switch>
       </Router>
     </div>

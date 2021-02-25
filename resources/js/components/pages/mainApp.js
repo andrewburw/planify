@@ -1,3 +1,5 @@
+
+import React,{useState} from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,27 +12,45 @@ import WeekMainApp from './calendar_week/mainAppWeek';
 import WeekMainGant from './calendar_gant/mainAppGant';
 import DashBoard from './dash_board/dashBoard';
 
-// <Route  exact path="/dashboard" component={MonthMainApp} />
-const  MainApp = () => {
-    return (
-      <div className="grid-container">
-      <Header />
+/* *************************************************************
+|
+|
+|                     Main APP constructor component
+|
+|     
+|
+|      My page: https://andrewburw.github.io/personalpage/
+|
+|
+| **************************************************************/
+
+
+
+
+const MainApp = () => {
+ 
+
+
+  return (
+    <div className="grid-container">
+       <Header />
+     
       <Aside />
       <div className="main_co">
         <div className="container">
-      
-   
-    <Switch>
-    <Route  exact path="/dashboard" component={DashBoard} />
-      <Route path="/dashboard/month" component={MonthMainApp} />
-      <Route path="/dashboard/week" component={WeekMainApp} />
-      <Route path="/dashboard/gant" component={WeekMainGant} />
-    </Switch>
-   
+
+
+          <Switch>
+            <Route exact path="/dashboard" component={DashBoard} />
+            <Route path="/dashboard/month" component={MonthMainApp} />
+            <Route path="/dashboard/week" component={WeekMainApp} />
+            <Route path="/dashboard/gant" component={WeekMainGant} />
+          </Switch>
+
+        </div>
+      </div>
     </div>
-    </div>
-    </div>
-    );
+  );
 }
 
 export default MainApp;

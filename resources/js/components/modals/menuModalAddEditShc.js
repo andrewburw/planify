@@ -1,9 +1,9 @@
 import ReactDOM from 'react-dom';
 import React, { useState, useEffect, useContext } from 'react';
 import validation from './../custom_modules/validateTime';
-import { UserContext } from './../index';
+import { UserContext } from './../mainContext';
 import useFetch from './../hooks/useFetch';
-import {CalendarContext } from "../index";
+import {CalendarContext } from "../mainContext";
 /* *************************************************************
 |
 |

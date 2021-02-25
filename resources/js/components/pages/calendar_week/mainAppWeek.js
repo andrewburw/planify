@@ -10,9 +10,12 @@ import { Link } from "react-router-dom";
 import SmallMenu from './../../modals/menuSmallCalendar';
 import useModal from "./../../hooks/useModal";
 import EditDeleteModal from './../../modals/menuModalAddEditShc';
-import { UserContext } from './../../index';
+import { UserContext } from './../../mainContext';
 import useFetch from './../../hooks/useFetch';
-import {CalendarContext } from "../../index";
+import {CalendarContext } from "../../mainContext";
+import Loading from './../../custom_modules/loading_white_full.svg';
+import DeleteMenu from './../../modals/dialogAsk';
+
 /* *************************************************************
 |
 |
@@ -64,6 +67,9 @@ const WeekCalendar = (props) => {
   const [isShowingEdit, toggleEdit] = useModal();
   const [editData, setEditData] = useState();
 
+   // MODAL DELETE CONTROL:
+  const [isShowingDeletDialog, toggleDelete] = useModal();
+
 
   useEffect(() => {
     const { month, day1 } = props.location.state || { month: 0, day: 0 };
@@ -72,25 +78,23 @@ const WeekCalendar = (props) => {
 
       setDay(covertDataToDayOfYear(day1, month)); // (day,month)
     }
-    runFetch('/api/allchedule', 'get');
+    runFetch('/api/allchedule', 'post',{calendar_id:calendar_id});
 
     
   }, []);
    
-  if(response !== 'null' && recivedData === null) {
+  if(response !== 'null' && recivedData === null) { // infinite loop protetion
     
-    setData(response)
-
+    setData(response);
 
   }
-     setTimeout(() => {
-    //  setData(testData1 )
-     }, 20000);
-   console.log( calendar_id === false)
+   
 
-    if ( calendar_id === false) {
-     return <Redirect to='/dashboard'></Redirect>
+    if ( calendar_id === false) { // if page refresh pressed
+   //  return <Redirect to='/dashboard'></Redirect>;
     }
+
+
   const showRefPosition = (e) => {
     // On click small menu
 
@@ -107,13 +111,27 @@ const WeekCalendar = (props) => {
 
   };
 
+  const deleteData = () =>{
+   // function trrigered from DeleteMenu component
+   toggleDelete()
+    let day = editData.split("-")[2];
+    let del = recivedData.find(val => val === day)
+   // console.log(del)
+   // console.log(recivedData)
+   // console.log(editData)
+   // let test = testData1.find(val => val.day === 40 ).reserved
+
+   // console.log(test.find(val => val.start === "02:00"  ).id)
+  }
+  
   // render protection: do not reneder menus if it not toggled
   let smMenu = isShowingSmall ? <SmallMenu isShowing={isShowingSmall}
     hide={toggleMenu}
     menu={smallMenu}
     position={position}
+    showModalDelete={toggleDelete} 
     showModalEdit={toggleEdit} /> : '';
-
+    
 
   let edMenu = isShowingEdit ? <EditDeleteModal isShowing={isShowingEdit}
     hide={toggleEdit}
@@ -122,23 +140,26 @@ const WeekCalendar = (props) => {
     month={generate.monthNum + 1}
   /> : '';
 
+  let delMenu = isShowingDeletDialog ? <DeleteMenu isShowing={isShowingDeletDialog}
+   result={deleteData}
+   hide={toggleDelete} 
+   msg={'Are you shore, delete this schedule ?'} /> :'';
 
 
-
-  return (<div>
+  return recivedData !== null ? (<div>
     {smMenu}
     {edMenu}
-
+    {delMenu}
     <Link to="/dashboard/month"><button className="btn-sm white-btn">&#10092; Back</button></Link>
     <div className="main_co__month-name">
-
-
+  
       <h1> <span onClick={() => setDay(day - 7)} className="main_co__month-left"> &#10092; </span>
 
         {generate.month} - Week {generate.week}<span onClick={() => setDay(day + 7)} className="main_co__month-right"> &#10093; </span></h1>
     </div>
-    <div className="cal_w_app">
 
+    <div className="cal_w_app">
+  
       <div className="grid-container3">
         <div className="empty"></div>
 
@@ -196,35 +217,36 @@ const WeekCalendar = (props) => {
         <div className="menu21"><p className="menu__p ">21:00</p></div>
         <div className="menu22"><p className="menu__p ">22:00</p></div>
         <div className="menu23"><p className="menu__p ">23:00</p></div>
+       
         {generateDay.map((itm, a) => {
 
-          return itm === false ? <ClearDay day={covertDataToDayOfYear(generate[a + 1], generate.monthNum + 1)} clicked={showRefPosition} val={a + 1} key={a} /> :
+return itm === false ? <ClearDay day={covertDataToDayOfYear(generate[a + 1], generate.monthNum + 1)} clicked={showRefPosition} val={a + 1} key={a} /> :
 
-            itm.map((item, i) => {
-              // console.log(item.userName)
-              return <div
-                style={{ cursor: 'pointer' }}
-                key={i}
-                data-menu="free"
-                onClick={showRefPosition}
-                className={item.class1}
-                data-datause={item.time}>
-
-
-
-                <div className={item.class2}
-                  data-menu="busy"
-                  data-datauser={item.userName}
-                  data-datause={item.time}
-                  onClick={showRefPosition}>
-
-                  {item.spanclass !== null ? <span data-menu="busy" data-datauser={item.userName} className={item.spanclass}>{item.spandata}</span> : ''}
+  itm.map((item, i) => {
+ 
+    return <div
+      style={{ cursor: 'pointer' }}
+      key={i}
+      data-menu="free"
+      onClick={showRefPosition}
+      className={item.class1}
+      data-datause={item.time}>
 
 
-                </div></div>
-            })
 
-        })}
+      <div className={item.class2}
+        data-menu="busy"
+        data-datauser={item.userName}
+        data-datause={item.time}
+        onClick={showRefPosition}>
+
+        {item.spanclass !== null ? <span data-menu="busy" data-datauser={item.userName} className={item.spanclass}>{item.spandata}</span> : ''}
+
+
+      </div></div>
+  })
+
+})}
 
 
 
@@ -234,7 +256,7 @@ const WeekCalendar = (props) => {
     </div>
 
   </div>
-  );
+  ): <div className="full__page__loading"><img src={Loading} /></div>;
 }
 
 export default WeekCalendar;

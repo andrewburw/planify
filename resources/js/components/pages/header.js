@@ -1,15 +1,26 @@
-
+import {useContext} from 'react';
 import AddCalendar from './../modals/menuModalAddCalendar';
 import useModal from "./../hooks/useModal";
+import {CalendarNameContext} from "./../mainContext";
 
 
+/* *************************************************************
+|
+|
+|                    Header of main APP
+|
+|      
+|
+|      My page: https://andrewburw.github.io/personalpage/
+|
+|
+| **************************************************************/
 
 const Header = () => {
-
+  const { calendarName} = useContext(CalendarNameContext); // calendar id (global context)
   const [isShowingAdd, toggleAdd] = useModal();
 
-
-
+ 
   return ( <>
           <AddCalendar isShowing={isShowingAdd} 
                          hide={toggleAdd} />
@@ -29,7 +40,7 @@ const Header = () => {
              
               </div>
             </div>
-            <h1 className="header_co__leftside-clname">Calendar Name</h1>
+            <h1 className="header_co__leftside-clname">{calendarName !== 'null' ? calendarName : ''}</h1>
           </div>
           <div className="header_co__rightside-menu">
             <div className="header_co__rside-menu-ddown">
