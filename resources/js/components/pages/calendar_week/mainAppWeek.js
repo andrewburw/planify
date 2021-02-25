@@ -49,6 +49,7 @@ const WeekCalendar = (props) => {
   const { response, runFetch, error } = useFetch('');
   const [recivedData,setData] = useState(null);
   const {calendar_id} = useContext(CalendarContext); // calendar id (global context)
+
   // RENDER CALENDAR:
 
   const [day, setDay] = useState(1); // day of year (dafault set to 1 (janvary 1th))
@@ -70,7 +71,11 @@ const WeekCalendar = (props) => {
    // MODAL DELETE CONTROL:
   const [isShowingDeletDialog, toggleDelete] = useModal();
 
+   const test  = () => {
 
+    runFetch('/api/allchedule', 'post',{calendar_id:calendar_id});
+
+   }
   useEffect(() => {
     const { month, day1 } = props.location.state || { month: 0, day: 0 };
 
@@ -78,20 +83,20 @@ const WeekCalendar = (props) => {
 
       setDay(covertDataToDayOfYear(day1, month)); // (day,month)
     }
-    runFetch('/api/allchedule', 'post',{calendar_id:calendar_id});
+     test()
 
     
   }, []);
    
   if(response !== 'null' && recivedData === null) { // infinite loop protetion
-    
+    console.log('trigger')
     setData(response);
 
   }
    
 
-    if ( calendar_id === false) { // if page refresh pressed
-   //  return <Redirect to='/dashboard'></Redirect>;
+    if ( calendar_id === false) { // if page refresh pressed and id not recived
+     //return <Redirect to='/dashboard'></Redirect>;
     }
 
 
@@ -111,19 +116,36 @@ const WeekCalendar = (props) => {
 
   };
 
+  
+
   const deleteData = () =>{
    // function trrigered from DeleteMenu component
-   toggleDelete()
-    let day = editData.split("-")[2];
-    let del = recivedData.find(val => val === day)
-   // console.log(del)
-   // console.log(recivedData)
-   // console.log(editData)
-   // let test = testData1.find(val => val.day === 40 ).reserved
+   // editDtata : 01:00-15:00-54
+   if (recivedData === 'null' || recivedData === false) return // protection
 
-   // console.log(test.find(val => val.start === "02:00"  ).id)
+    let dataToDel = editData.split("-");
+    let del = recivedData.find(val => val.day ===  dataToDel[2]).reserved;
+    let idToDel = del.find(val => val.start === dataToDel[0]).id;
+
+    runFetch('/api/delschedule', 'delete',{scId:idToDel});
+       
+      toggleDelete();
+    
   }
-  
+
+  const [forceRerender, setForceRerender] = useState(true);
+
+
+   if (response.serverError === false && forceRerender !== false) {
+    setForceRerender(!forceRerender);
+    setData('null');
+    test()
+
+
+
+
+   }
+    console.log('test')
   // render protection: do not reneder menus if it not toggled
   let smMenu = isShowingSmall ? <SmallMenu isShowing={isShowingSmall}
     hide={toggleMenu}

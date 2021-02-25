@@ -55,8 +55,6 @@ const Modal = ({ isShowing, hide }) => {
   let pass1Msg = '';
   let pass2Msg = '';
 
-  // console.log(response)
-  //console.log( error !== null ? error.errors  : '')
 
 
   /* 

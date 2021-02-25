@@ -27,12 +27,13 @@ Route::post( '/test', 'App\Http\Controllers\Auth\RegisterController@validator' )
 
 // CALENDAR:
 
-Route::get( '/usercalendars', 'App\Http\Controllers\DataScheduleController@showCalendars' ); // get users calendars
-Route::post( '/newcalendar', 'App\Http\Controllers\DataScheduleController@postCalendar' ); // post new calendar 
+Route::get( '/usercalendars', 'App\Http\Controllers\DataCalendarController@showCalendars' ); // get users calendars
+Route::post( '/newcalendar', 'App\Http\Controllers\DataCalendarController@postCalendar' ); // post new calendar 
 
 
 
 // DAY SHCHEDULE:
 
 Route::post( '/newschedule', 'App\Http\Controllers\DataScheduleController@addDaySchedule' ); // post new schedule
+Route::delete( '/delschedule', 'App\Http\Controllers\DataScheduleController@deleteScheldule' ); // post new schedule
 Route::post( '/allchedule', 'App\Http\Controllers\DataScheduleController@showWeekScheldues' ); // get scheldues schedule

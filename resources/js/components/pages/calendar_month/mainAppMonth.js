@@ -1,6 +1,7 @@
 import nowMonthNumber,{generateMonthName,renderMonth,today} from './../../custom_modules/generateMonthCalendar';
 import React, { useState, useEffect ,useContext} from 'react';
-import {Link} from "react-router-dom";
+import {Link,Redirect} from "react-router-dom";
+import {CalendarContext } from "../../mainContext";
 
 /* *************************************************************
 |
@@ -16,14 +17,17 @@ import {Link} from "react-router-dom";
 const MainApp = () => {
 
   const [month, setMonth] = useState(0);
-  
+  const {calendar_id} = useContext(CalendarContext); // calendar id (global context)
+
   useEffect(() => {
   
     if (month === 0) {
       setMonth(nowMonthNumber())
     }
   });
-
+  if ( calendar_id === false) { // if page refresh pressed and id not recived
+    return <Redirect to='/dashboard'></Redirect>;
+   }
 
   return (<div>
     <div className="main_co__month-name">
