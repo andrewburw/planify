@@ -2,7 +2,7 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 import useSignUpForm from './../../hooks/useCheckRegister';
-
+import Loading from './../../custom_modules/loading_white_full.svg'
 /* *************************************************************
 |
 |
@@ -119,7 +119,7 @@ const Modal = ({ isShowing, hide }) => {
   let showLogo = <img src="images/big-logo_login.png" alt="planify" />;
   if (isLoading === true) {
   
-    showLogo = <div className="modal-reg__right-server-load"><object data="/images/loading.svg" type="image/svg+xml"></object></div>
+    showLogo = <div className="modal-reg__right-server-load"><img src={Loading} /></div>
   
   } else if (error !== null && error.serverError === true) {
 

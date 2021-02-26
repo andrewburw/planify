@@ -20,8 +20,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 // USERS:
-Route::post( '/test', 'App\Http\Controllers\Auth\RegisterController@validator' ); // register user route
+Route::post( '/register', 'App\Http\Controllers\Auth\RegisterController@validator' ); // register user route
+Route::post('/login', function () {
+    $err = array('serverError' => true,
+    'errors' => "error");
 
+return response()->json($err);
+});
 //Route::post( '/newschedule', 'App\Http\Controllers\DataScheduleController@postCalendar' );
 
 

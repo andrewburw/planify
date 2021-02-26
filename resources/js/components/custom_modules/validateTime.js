@@ -73,12 +73,18 @@ export default function validateTimeAndAll(inputs, allData, userLoggedIn) {
         };
 
         let dataOfday = allData.find(x => Number(x.day) == Number(inputs.day)).reserved; // find day-data work with
-        let filtredData = dataOfday.filter(x => x.name !== userLoggedIn); // "delete" logged in user data
+      //  let filtredData = dataOfday.filter(x => x.name !== userLoggedIn); // "delete" logged in user data
+
+
+
+        
+
+
         let dataInNumbers = []; // converted all data (start/end) to numbers
 
        
 
-        filtredData.forEach((item) => {
+        dataOfday.forEach((item) => {
                 // convert all data (start/end) to numbers
                 dataInNumbers.push({
                         start: Number(item.start.split(":")[0]),

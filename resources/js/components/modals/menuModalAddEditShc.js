@@ -78,7 +78,7 @@ const Modal = ({ isShowing, hide, hideSmMenu, editData, allWeekData ,month}) => 
         let validationResults = validation(inputs, allWeekData, user) // user -> user Logged in
         //validationResults returns object : {error:"This time is busy!",status: true }
         // status -> true = has errors
-          console.log(validationResults)
+       
         if (validationResults.status) { // true -> has errors
             setError(validationResults);
         } else {
