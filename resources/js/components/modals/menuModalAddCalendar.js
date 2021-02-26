@@ -26,6 +26,7 @@ const Modal = ({ isShowing, hide }) => {
 
   const [inputs, setInputs] = useState({ calendarName: '', users: '' });
   const [error1, setError] = useState({ status: null });
+  const [buttonProtect, setProtect] = useState(false); // Button protection to not press multiply time
   const { user } = useContext(UserContext);
   const { response, runFetch,error} = useFetch();
 
@@ -49,7 +50,7 @@ const Modal = ({ isShowing, hide }) => {
     const handleInputChange = (event) => {
         event.persist();
           
-        setInputs(inputs => ({ ...inputs, [event.target.name]: event.target.value }));
+        setInputs(inputs => ({ ...inputs, [event.target.name]: event.target.value.trim() }));
 
     }
 
@@ -66,6 +67,7 @@ const Modal = ({ isShowing, hide }) => {
 
         } else {
            // console.log({calendar_name: inputs.calendarName,user_id: 1})
+           setProtect(true)
             runFetch('/api/newcalendar','post',{calendar_name: inputs.calendarName,user_id: 1});
             //due to the characteristics of the react the answer(is error or not) of fetch is handled in useEffect ;)
             
@@ -107,7 +109,13 @@ const Modal = ({ isShowing, hide }) => {
                             <div className="edit-modal-buttons">
 
                                 <button className="btn red-btn" onClick={hide}>Cancel</button>
-                                <button className="btn edit-modal-btn-save" onClick={handelSubmit}>Save</button>
+
+                              {!buttonProtect ? <button className="btn edit-modal-btn-save" onClick={handelSubmit}>Save</button> :
+                              
+                              <button className="btn edit-modal-btn-save" disabled>Save</button>
+                              
+                              } 
+
                             </div>
                         </form>
                     </div>

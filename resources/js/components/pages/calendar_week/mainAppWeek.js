@@ -9,7 +9,7 @@ import ClearDay from './blankDay';
 import { Link } from "react-router-dom";
 import SmallMenu from './../../modals/menuSmallCalendar';
 import useModal from "./../../hooks/useModal";
-import EditDeleteModal from './../../modals/menuModalAddEditShc';
+import EditAddModal from './../../modals/menuModalAddEditShc';
 import { UserContext } from './../../mainContext';
 import useFetch from './../../hooks/useFetch';
 import {CalendarContext } from "../../mainContext";
@@ -71,11 +71,7 @@ const WeekCalendar = (props) => {
    // MODAL DELETE CONTROL:
   const [isShowingDeletDialog, toggleDelete] = useModal();
 
-   const test  = () => {
 
-    runFetch('/api/allchedule', 'post',{calendar_id:calendar_id});
-
-   }
   useEffect(() => {
     const { month, day1 } = props.location.state || { month: 0, day: 0 };
 
@@ -83,17 +79,16 @@ const WeekCalendar = (props) => {
 
       setDay(covertDataToDayOfYear(day1, month)); // (day,month)
     }
-     test()
-
+    runFetch('/api/allchedule', 'post',{calendar_id:calendar_id});
     
   }, []);
    
-  if(response !== 'null' && recivedData === null) { // infinite loop protetion
-    console.log('trigger')
-    setData(response);
+  if(response !== 'null' && recivedData === null) { // infinite loop proteсtion
+   
+    setData(response.data);
 
   }
-   
+  
 
     if ( calendar_id === false) { // if page refresh pressed and id not recived
      //return <Redirect to='/dashboard'></Redirect>;
@@ -117,6 +112,7 @@ const WeekCalendar = (props) => {
   };
 
   
+  const [forceRerender, setForceRerender] = useState(false);
 
   const deleteData = () =>{
    // function trrigered from DeleteMenu component
@@ -128,24 +124,30 @@ const WeekCalendar = (props) => {
     let idToDel = del.find(val => val.start === dataToDel[0]).id;
 
     runFetch('/api/delschedule', 'delete',{scId:idToDel});
-       
+    setForceRerender(!forceRerender)
+  
       toggleDelete();
+      toggleMenu();
+
     
   }
 
-  const [forceRerender, setForceRerender] = useState(true);
 
 
-   if (response.serverError === false && forceRerender !== false) {
-    setForceRerender(!forceRerender);
-    setData('null');
-    test()
-
-
-
+    if (response.serverError === false && forceRerender === true) {
+      // re render component after delete data
+     setData(null);
+     setForceRerender(!forceRerender);
+     runFetch('/api/allchedule', 'post',{calendar_id:calendar_id});
 
    }
-    console.log('test')
+
+    
+
+ 
+
+
+  // console.log('test')
   // render protection: do not reneder menus if it not toggled
   let smMenu = isShowingSmall ? <SmallMenu isShowing={isShowingSmall}
     hide={toggleMenu}
@@ -155,8 +157,9 @@ const WeekCalendar = (props) => {
     showModalEdit={toggleEdit} /> : '';
     
 
-  let edMenu = isShowingEdit ? <EditDeleteModal isShowing={isShowingEdit}
+  let edMenu = isShowingEdit ? <EditAddModal isShowing={isShowingEdit}
     hide={toggleEdit}
+    hideSmMenu={()=>{toggleMenu();     setForceRerender(!forceRerender)    }}
     editData={editData}
     allWeekData={recivedData}
     month={generate.monthNum + 1}

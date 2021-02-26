@@ -17,7 +17,7 @@ class DataScheduleController extends Controller
         $table= DaySchedule::where('calendar_id', $id['calendar_id'])->get();
         $test = CustomModule::RedoData($table);
       
-        return   $test;
+        return   response()->json(array('serverError'=>false,'data'=>$test));
     }
     
     protected function deleteScheldule(Request $request)
@@ -42,7 +42,8 @@ class DataScheduleController extends Controller
             'start' => ['required', 'string', 'min:3', 'max:30'],
             'end' => ['required', 'string', 'min:3', 'max:30'],
             'day' => ['required', 'string', 'min:1', 'max:3'],
-            'username'=> ['required', 'string', 'min:3', 'max:30']
+            'username'=> ['required', 'string', 'min:3', 'max:30'],
+            'month'=> ['required', 'string', 'min:1', 'max:2']
 
         ]);
 
@@ -78,7 +79,8 @@ class DataScheduleController extends Controller
             'end' => $data['end'],
             'day' => $data['day'],
             'name' => $data['username'],
-            'calendar_id' => $data['calendar_id']
+            'calendar_id' => $data['calendar_id'],
+            'month' => $data['month']
 
         ]);
 

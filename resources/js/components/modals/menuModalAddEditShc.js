@@ -24,7 +24,7 @@ import {CalendarContext } from "../mainContext";
 | **************************************************************/
 
 
-const Modal = ({ isShowing, hide, editData, allWeekData ,month}) => {
+const Modal = ({ isShowing, hide, hideSmMenu, editData, allWeekData ,month}) => {
     const {calendar_id} = useContext(CalendarContext); // calendar id (global context)
 
     // editData -> recived string: "02:00-08:00" or "null" if taken free time
@@ -48,12 +48,12 @@ const Modal = ({ isShowing, hide, editData, allWeekData ,month}) => {
      
         }
         if (response.serverError === false ) { // Fetch error handler
-     
+            hideSmMenu();
             hide();
     
         } else {
 
-            console.log(error)
+          // console.log(error)
         }
           
     }, [editData,response,error]);
@@ -78,12 +78,12 @@ const Modal = ({ isShowing, hide, editData, allWeekData ,month}) => {
         let validationResults = validation(inputs, allWeekData, user) // user -> user Logged in
         //validationResults returns object : {error:"This time is busy!",status: true }
         // status -> true = has errors
-          
+          console.log(validationResults)
         if (validationResults.status) { // true -> has errors
-            setError(validationResults)
+            setError(validationResults);
         } else {
            
-           let data = Object.assign({username: user,calendar_id: calendar_id,month:month}, inputs)
+           let data = Object.assign({username: user,calendar_id: calendar_id,month:month.toString()}, inputs)
            runFetch('/api/newschedule','post',data);
            //due to the characteristics of the react the answer(is error or not) of fetch is handled in useEffect ;)
         }

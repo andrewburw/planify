@@ -47,16 +47,17 @@ let basicCompare = {
 export default function validateTimeAndAll(inputs, allData, userLoggedIn) {
 
         // inputs { start: "08:00", end: "12:00",day: 40}
-     
+        
         if (basicCompare.morOrLess(inputs)) {
                 // if basic test not pased return error
                 return { error: "End can't be less then start or equal", status: true };
         }
+    
         if (allData === null) {
                 // little crutch :) : if this validation function (this) is triggered on emty day ->
                 //    and basicCompare has no errors return no errors
                 return { status: false };
-        }
+        } 
          
         if (allData.find(x => x.day == Number(inputs.day)) === undefined) {
                   // little crutch :) : if this validation function (this) is triggered on emty day ->
@@ -75,7 +76,7 @@ export default function validateTimeAndAll(inputs, allData, userLoggedIn) {
         let filtredData = dataOfday.filter(x => x.name !== userLoggedIn); // "delete" logged in user data
         let dataInNumbers = []; // converted all data (start/end) to numbers
 
-
+       
 
         filtredData.forEach((item) => {
                 // convert all data (start/end) to numbers

@@ -13,7 +13,8 @@ class DaySchedule extends Model
         'start',
         'end',
         'day',
-        'name'
+        'name', 
+        'month'
       
     ];
 }

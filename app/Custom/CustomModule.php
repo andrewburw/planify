@@ -31,7 +31,7 @@ class CustomModule
   
  
         // dd($data);
-        return json_encode($newArr);
+        return $newArr;
     }
 }
 

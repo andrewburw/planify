@@ -20,8 +20,8 @@ const useFetch = () => {
     const [adress, setAdress] = useState('null');
     const [isLoading, setLoading] = useState('null');
 
-   useEffect( ()=>{
-  // const runFetch = async (adress, method, data) => {
+   useEffect(()=>{
+   const runFetch2 = async () => {
      
         if (fetchFlag == 0) {
        
@@ -45,22 +45,24 @@ const useFetch = () => {
         }
              
         let fetchBody = method.toLowerCase() === 'get' ? methodNoBody : methodWithBody;
-       //   console.log('runed fethc')
-         fetch(adress, fetchBody).then(response => response.json()
+      
+       await  fetch(adress, fetchBody).then(response => response.json()
              
             ).then(data => {
            
                 if (data.serverError === true) {
-                   
+                
                     setError(data);
                     setLoading(false);
-                    setResponse(false);
+                    
                 } else {
+                
+                 
                     setLoading(false);
                     setResponse(data);
-                   // setResponse(false);
+                    
                 }
-    
+             
             }).catch(err => {
              
                 setError({error: err.toString()});
@@ -69,12 +71,15 @@ const useFetch = () => {
             });
 
       
-  //  };
+   };
+
+   runFetch2()
 }, [fetchFlag,method,dataToSend,adress])
  
 
 function runFetch(adress,method,dataToSend) {
     // Set fetchFlag to indirectly trigger the useEffect above
+    setResponse('null');
     setFetchFlag(Math.random());
     setDataToSend(dataToSend);
     setMethod(method);
