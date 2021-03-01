@@ -42,7 +42,6 @@ class DataScheduleController extends Controller
             'start' => ['required', 'string', 'min:3', 'max:30'],
             'end' => ['required', 'string', 'min:3', 'max:30'],
             'day' => ['required', 'string', 'min:1', 'max:3'],
-            'username'=> ['required', 'string', 'min:3', 'max:30'],
             'month'=> ['required', 'string', 'min:1', 'max:2']
 
         ]);
@@ -78,7 +77,7 @@ class DataScheduleController extends Controller
             'start' => $data['start'],
             'end' => $data['end'],
             'day' => $data['day'],
-            'name' => $data['username'],
+            'name' => auth('api')->user()->name,
             'calendar_id' => $data['calendar_id'],
             'month' => $data['month']
 

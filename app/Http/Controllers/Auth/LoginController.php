@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Cookie;
+
 
 class LoginController extends Controller
 {
@@ -30,31 +32,38 @@ class LoginController extends Controller
      *
      * @var string
      */
+
     protected $redirectTo = RouteServiceProvider::HOME;
 
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
     /**
-     * Create a new controller instance.
+     *  LOGIN USER FUNCION
      *
      * @return void
      */
-    public function loginUser (Request $request) {
+    public function loginUser(Request $request)
+    {
         $validator = Validator::make($request->all(), [
              'email' => ['required', 'string', 'email', 'max:255'],
                       'password' => ['required', 'string', 'min:6']
         ]);
-        if ($validator->fails())
-        {
+        if ($validator->fails()) {
             return response(['errors'=>$validator->errors()->all()], 422);
         }
         $user = User::where('email', $request->email)->first();
+
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
                 $token = $user->createToken('Laravel Password Grant Undust')->accessToken;
-                $response = ['token' => $token];
-                return response($response, 200);
+              
+                
+                return response('{"serverError":false}')->cookie('token', $token, 100000);
             } else {
-                $err = array('serverError' => true,
-                'errors' =>"Password mismatch");
+                $err = ['serverError' => true,
+                'errors' =>"Password mismatch"];
 
                 return response()->json($err);
             }
@@ -63,8 +72,23 @@ class LoginController extends Controller
             return response($response, 422);
         }
     }
-    public function __construct()
+
+     /**
+     *  LOGOUT USER FUNCION
+     *
+     * @return void
+     */
+
+    public function logoutUser(Request $request)
     {
-        $this->middleware('guest')->except('logout');
+       
+         //$token = $request->user()->token();
+         // $token->revoke();
+
+         $cookie = Cookie::forget('token');
+
+        $response = ['message' => 'You have been successfully logged out!'];
+        return response('{"serverError":false}')->cookie($cookie);
     }
+
 }

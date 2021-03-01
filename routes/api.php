@@ -21,19 +21,26 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // USERS:
 Route::post( '/register', 'App\Http\Controllers\Auth\RegisterController@validator' ); // register user route
-Route::post('/login',  'App\Http\Controllers\Auth\LoginController@loginUser');
-//Route::post( '/newschedule', 'App\Http\Controllers\DataScheduleController@postCalendar' );
-
-
-// CALENDAR:
-
-Route::get( '/usercalendars', 'App\Http\Controllers\DataCalendarController@showCalendars' ); // get users calendars
-Route::post( '/newcalendar', 'App\Http\Controllers\DataCalendarController@postCalendar' ); // post new calendar 
+Route::post('/login',  'App\Http\Controllers\Auth\LoginController@loginUser');   // login user
+Route::get('/logout',  'App\Http\Controllers\Auth\LoginController@logoutUser'); // log out user 
 
 
 
-// DAY SHCHEDULE:
 
-Route::post( '/newschedule', 'App\Http\Controllers\DataScheduleController@addDaySchedule' ); // post new schedule
-Route::delete( '/delschedule', 'App\Http\Controllers\DataScheduleController@deleteScheldule' ); // post new schedule
-Route::post( '/allchedule', 'App\Http\Controllers\DataScheduleController@showWeekScheldues' ); // get scheldues schedule
+Route::middleware('auth:api')->group(function () {
+
+  
+
+    // CALENDAR:
+
+    Route::post( '/newschedule', 'App\Http\Controllers\DataScheduleController@addDaySchedule' ); // post new schedule
+    Route::delete( '/delschedule', 'App\Http\Controllers\DataScheduleController@deleteScheldule' ); // post new schedule
+    Route::post( '/allchedule', 'App\Http\Controllers\DataScheduleController@showWeekScheldues' ); // get scheldues schedule
+  
+    
+
+    // our routes to be protected will go in here
+    Route::get( '/usercalendars', 'App\Http\Controllers\DataCalendarController@showCalendars' );
+    Route::post( '/newcalendar', 'App\Http\Controllers\DataCalendarController@postCalendar' ); // post new calendar 
+});
+

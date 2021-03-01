@@ -9,7 +9,7 @@ class DataCalendarController extends Controller
 {
     protected function showCalendars(){
         // show user calendars
-        $table= Calendar::where('user_id',1)->get();
+        $table= Calendar::where('user_id',auth('api')->user()['id'])->get();
           
         return response()->json($table);
         
@@ -20,8 +20,9 @@ class DataCalendarController extends Controller
     protected function postCalendar(Request $request)
     {
          // dd($request);
+       
         $validator = Validator::make($request->all(), [
-            'calendar_name' => ['required', 'string', 'min:3', 'max:30']
+            'calendar_name' => ['required', 'string', 'min:3']
 
         ]);
 
@@ -47,12 +48,11 @@ class DataCalendarController extends Controller
 
     protected function createCalendar($data)
     {
-
+        $user =  auth()->user()->id;
 
         $queryResult = Calendar::create([
             'calendar_name' => $data['calendar_name'],
-            'user_id' => $data['user_id']
-
+            'user_id' =>  $user 
 
         ]);
 

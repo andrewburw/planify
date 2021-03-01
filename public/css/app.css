@@ -1,4 +1,4 @@
-.footer_1cl_text, .fifth__accordion-hiddentext, .third__info-text-text, .second__card-text, .top__sub-title, .add-modal__f-group label, .edit-modal-f_group label, .small__menu-body, .li-row-bars, .selected__user-time, .selected__user-name, .week__day_p, .main_co__month-name, .header_co__rside-menu-ddown p, .header_co__leftside-clname, .leftmenu_p-list-item, .leftmenu_p-header, .modal-log__right-form small, .modal-reg__right-server-err div, .modal-reg__right-f-f-registred, .modal-reg__form-group label, .modal-reg__right-form small, .modal-reg__heading-subwelcome, .modal-reg__heading-welcome, .section__header-subtext, body {
+.footer_1cl_text, .fifth__accordion-hiddentext, .third__info-text-text, .second__card-text, .top__sub-title, .header_co__profile-d-content, .add-modal__f-group label, .edit-modal-f_group label, .small__menu-body, .li-row-bars, .selected__user-time, .selected__user-name, .week__day_p, .main_co__month-name, .header_co__rside-menu-ddown p, .header_co__leftside-clname, .leftmenu_p-list-item, .leftmenu_p-header, .modal-log__right-form small, .modal-reg__right-server-err div, .modal-reg__right-f-f-registred, .modal-reg__form-group label, .modal-reg__right-form small, .modal-reg__heading-subwelcome, .modal-reg__heading-welcome, .section__header-subtext, body {
   font-family: "Roboto-Regular";
   font-weight: 400;
 }
@@ -578,6 +578,10 @@ button:focus {
 }
 
 /*       NAV BAR      */
+.header_co {
+  /* LEFT BURGER MENU HOVER */
+  /* RIGHT MENU HOVER */
+}
 .header_co__inner {
   display: flex;
   justify-content: space-between;
@@ -600,6 +604,12 @@ button:focus {
   display: block;
 }
 .header_co__leftside-burgermenu:hover .header_co__leftside-b__menu-item {
+  background-color: #636363;
+}
+.header_co__profile:hover .header_co__profile-d-content {
+  display: block;
+}
+.header_co___profile:hover .header_co__profile-d-content {
   background-color: #636363;
 }
 .header_co__leftside-clname {
@@ -1978,6 +1988,33 @@ ul .chart-li-seven {
   display: block;
 }
 .header_co__leftside-ddown-content p:hover {
+  background-color: #f1f1f1;
+}
+
+/* HEADER MENU User drop down*/
+.header_co__profile {
+  cursor: pointer;
+}
+.header_co__profile-d-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  z-index: 10;
+  right: 30px;
+  font-size: 15px;
+  line-height: normal !important;
+}
+.header_co__profile-d-content p {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+.header_co__profile-d-content p:hover {
   background-color: #f1f1f1;
 }
 

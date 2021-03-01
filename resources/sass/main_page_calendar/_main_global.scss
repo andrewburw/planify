@@ -103,6 +103,9 @@
 
 
     } 
+
+    /* LEFT BURGER MENU HOVER */
+
     &__leftside-burgermenu:hover .header_co__leftside-ddown-content {
       display: block;
     }
@@ -110,6 +113,17 @@
       background-color: rgb(99, 99, 99);
     }
   
+  /* RIGHT MENU HOVER */
+
+  &__profile:hover .header_co__profile-d-content {
+    display: block;
+  }
+  &___profile:hover .header_co__profile-d-content {
+    background-color: rgb(99, 99, 99);
+  }
+
+
+
     &__leftside-clname{
         padding-left: 50px;
         @extend %rb-regular;

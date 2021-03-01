@@ -1,7 +1,6 @@
 import ReactDOM from 'react-dom';
 import React, { useState, useEffect, useContext } from 'react';
 import checkField from './../hooks/custom_modules/checkFields';
-import { UserContext } from './../mainContext';
 import useFetch from './../hooks/useFetch';
 /* *************************************************************
 |
@@ -27,7 +26,6 @@ const Modal = ({ isShowing, hide }) => {
   const [inputs, setInputs] = useState({ calendarName: '', users: '' });
   const [error1, setError] = useState({ status: null });
   const [buttonProtect, setProtect] = useState(false); // Button protection to not press multiply time
-  const { user } = useContext(UserContext);
   const { response, runFetch,error} = useFetch();
 
 
@@ -68,7 +66,7 @@ const Modal = ({ isShowing, hide }) => {
         } else {
            // console.log({calendar_name: inputs.calendarName,user_id: 1})
            setProtect(true)
-            runFetch('/api/newcalendar','post',{calendar_name: inputs.calendarName,user_id: 1});
+            runFetch('/api/newcalendar','post',{calendar_name: inputs.calendarName});
             //due to the characteristics of the react the answer(is error or not) of fetch is handled in useEffect ;)
             
         }

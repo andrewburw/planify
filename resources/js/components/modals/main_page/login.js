@@ -1,4 +1,4 @@
-
+import {Redirect} from 'react-router-dom'
 import ReactDOM from 'react-dom';
 import React, { useState } from 'react';
 import useValidate from './../../hooks/useValidationFrom'
@@ -51,13 +51,15 @@ const Modal = ({ isShowing, hide }) => {
 
     }
     runFetch('api/login', 'post', fetchData);
-
-
+    // token saved to cookie no localstorage here ;)
+   
   }
-
+ 
   setValidation(inputs); // Outside hook, for cotrol fields and testing.
 
-
+   if (error === null || response.serverError === false) { // if autentification is success redirect to dashboard
+      return     <Redirect to="/dashboard" />;
+   }
 
   let generateMsg = (data) => {
 
@@ -147,7 +149,7 @@ const Modal = ({ isShowing, hide }) => {
                       id="email"
                       name="email"
                       placeholder="Enter email"
-                      autoComplete="off"
+                   
                       value={inputs.email}
                       onChange={handleInputChange}
                     />
