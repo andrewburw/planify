@@ -22,15 +22,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // USERS:
 Route::post( '/register', 'App\Http\Controllers\Auth\RegisterController@validator' ); // register user route
 Route::post('/login',  'App\Http\Controllers\Auth\LoginController@loginUser');   // login user
-Route::get('/logout',  'App\Http\Controllers\Auth\LoginController@logoutUser'); // log out user 
-
-
 
 
 Route::middleware('auth:api')->group(function () {
 
-  
-
+    Route::get('/logout',  'App\Http\Controllers\Auth\LogoutController@logoutUser1'); // log out user 
+ //   Route::get('/check',  'App\Http\Controllers\Auth\LogoutController@check');   // login user
     // CALENDAR:
 
     Route::post( '/newschedule', 'App\Http\Controllers\DataScheduleController@addDaySchedule' ); // post new schedule

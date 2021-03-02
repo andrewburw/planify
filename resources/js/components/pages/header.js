@@ -23,7 +23,7 @@ const Header = () => {
 
   const logOut = () => {
     runFetch('api/logout', 'get');
-     console.log('triggered')
+    
   }
 
   return (<>

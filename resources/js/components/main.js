@@ -1,3 +1,10 @@
+import { Link } from "react-router-dom";
+import React from 'react';
+import RegisterModal from "./modals/main_page/register";
+import LoginModal from "./modals/main_page/login";
+import useModal from "./hooks/useModal";
+
+
 /* *************************************************************
 |
 |
@@ -9,11 +16,6 @@
 |
 |
 | **************************************************************/
-import { Link } from "react-router-dom";
-import React from 'react';
-import RegisterModal from "./modals/main_page/register";
-import LoginModal from "./modals/main_page/login";
-import useModal from "./hooks/useModal";
 
 const  MainPage = () => {
  // const [isShowing, toggle] = useModal();

@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Cookie;
 
-
 class LoginController extends Controller
 {
     /*
@@ -72,23 +71,5 @@ class LoginController extends Controller
             return response($response, 422);
         }
     }
-
-     /**
-     *  LOGOUT USER FUNCION
-     *
-     * @return void
-     */
-
-    public function logoutUser(Request $request)
-    {
-       
-         //$token = $request->user()->token();
-         // $token->revoke();
-
-         $cookie = Cookie::forget('token');
-
-        $response = ['message' => 'You have been successfully logged out!'];
-        return response('{"serverError":false}')->cookie($cookie);
-    }
-
+  
 }

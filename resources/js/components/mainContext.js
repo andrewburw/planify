@@ -24,4 +24,3 @@ export const CalendarNameContext = React.createContext({ // I use this context i
     calendarName: 'sdfsdf',
     setCalendarName: () => {}
   });
-  
