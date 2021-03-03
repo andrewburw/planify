@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom';
 import React, { useState, useEffect, useContext } from 'react';
 import checkField from './../hooks/custom_modules/checkFields';
 import useFetch from './../hooks/useFetch';
+import CalendarContext from './../mainContext';
 /* *************************************************************
 |
 |
@@ -23,8 +24,8 @@ const Modal = ({ isShowing, hide }) => {
 
  
 
-  const [inputs, setInputs] = useState({ calendarName: '', users: '' });
-  const [error1, setError] = useState({ status: null });
+  const [inputs, setInputs] = useState({ userName: ''});
+  const [error1, setError] = useState({ serverError: null });
   const [buttonProtect, setProtect] = useState(false); // Button protection to not press multiply time
   const { response, runFetch,error} = useFetch();
 
@@ -33,17 +34,18 @@ const Modal = ({ isShowing, hide }) => {
    
     if (response.serverError === false ) { // Fetch error handler
  
-        window.location.reload()
+       // window.location.reload()
 
-    } else {
-
-       // console.log(error)
+    } else if (error.serverError === true) {
+  
+       setError({serverError:true,error: "No user found"})
+   
     }
       
 
     }, [error,response]);
 
-         // console.log(response)
+        
 
     const handleInputChange = (event) => {
         event.persist();
@@ -59,14 +61,14 @@ const Modal = ({ isShowing, hide }) => {
 
         event.preventDefault();
 
-        if (checkField.checkField('username',inputs.calendarName)) { // calendar name validation TRUE -> has errors
+        if (checkField.checkField('email',inputs.userName)) { // calendar name validation TRUE -> has errors
             
-            setError({status:true,error: "Please check fields!"});
+            setError({errorStatus:true,error: "Please check fields!"});
 
         } else {
            // console.log({calendar_name: inputs.calendarName,user_id: 1})
-           setProtect(true)
-            runFetch('/api/newcalendar','post',{calendar_name: inputs.calendarName});
+          // setProtect(true)
+           runFetch('/api/share','post',{email: inputs.userName});
             //due to the characteristics of the react the answer(is error or not) of fetch is handled in useEffect ;)
             
         }
@@ -80,38 +82,28 @@ const Modal = ({ isShowing, hide }) => {
                 <div className="modal-content add-modal">
                     <div className="add-modal-container">
                         <span className="modal-reg__right-close" onClick={hide}>&times;</span>
-                        <h1>Palanify</h1>
-                        <span style={{color: '#a3a1a1',fontWeight: 'normal',fontSize: '12px'}}>Add Calendar</span>
-                        {error1.status !== null ? <div className="modal-reg__right-server-err" >
+                        <h1>Planify</h1>
+                        <span style={{color: '#a3a1a1',fontWeight: 'normal',fontSize: '12px'}}>Add User</span>
+                        {error1.serverError !== null ? <div className="modal-reg__right-server-err" >
                             <div>Error:{error1.error}</div>
                         </div> :
                             <div className="edit-modal-logo">
                                 <img src="/images/big-logo_login.png" alt="planify" />
-                              
                             </div>
-                            
                         }
 
                         <form className="add-modal__form">
-                            
                             <div className="add-modal-f">
                                 <div className="add-modal__f-group">
-                                    <label htmlFor="appt">Calendar name:</label>
-                                    <input type="text" name="calendarName" onChange={handleInputChange} value={inputs.calendarName}
-                                      placeholder="Add calendar name"   required />
+                                    <label htmlFor="appt">Add user:</label>
+                                    <input type="text" name="userName" onChange={handleInputChange} value={inputs.userName}
+                                      placeholder="Eneter friend email"   required />
                                 </div>
-                                <div className="add-modal__f-group">
-                                    <label htmlFor="appt">Calendar type:</label>
-                                    <select type="select" name="users" placeholder="Add users"  disabled>
-                                        <option value="def">Select...</option>
-                                        <option value="ganth">Ganth</option>
-                                        <option value="regular">Regular</option>
-                                    </select>
-                                </div>
+                                
                             </div>
 
 
-                            <div className="edit-modal-buttons">
+                            <div className="edit-modal-buttons" style={{paddingTop: '50px'}}>
 
                                 <button className="btn red-btn" onClick={hide}>Cancel</button>
 

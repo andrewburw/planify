@@ -50,7 +50,7 @@ const Modal = ({ isShowing, hide }) => {
       password: inputs.password1,
 
     }
-    runFetch('api/login', 'post', fetchData);
+    runFetch('/api/auth/login', 'post', fetchData);
     // token saved to cookie no localstorage here ;)
    
   }

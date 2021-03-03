@@ -35,11 +35,11 @@ class LogoutController extends Controller
         *
         * @return void
         */ 
-        /*
+        
         public function check(Request $request)
         {
             $response = ["auth" =>true];
     
             return response()->json($response);
-        }  */
+        }  
 }             

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Calendar;
+use App\Models\CalendarAuthors;
 use Illuminate\Http\Request;
 
 class DataCalendarController extends Controller
@@ -50,13 +51,13 @@ class DataCalendarController extends Controller
     {
         $user =  auth()->user()->id;
 
-        $queryResult = Calendar::create([
+        $calendarQueryResult = Calendar::create([
             'calendar_name' => $data['calendar_name'],
-            'user_id' =>  $user 
+            'user_id' =>  $user //admin 
 
         ]);
-
-        if ($queryResult) {
+            
+        if ($calendarQueryResult) {
             // the query succeed
 
             return response()->json(array(
@@ -67,8 +68,8 @@ class DataCalendarController extends Controller
             // the query failed
             // Not shore if this works.
             return response()->json(array(
-                'serverError' => false,
-                'errors' => '{"error":"error in post table"}'
+                'serverError' => true,
+                'errors' =>'Error in post'
             ));
         }
     }

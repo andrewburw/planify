@@ -45,7 +45,7 @@ const useFetch = () => {
         }
              
         let fetchBody = method.toLowerCase() === 'get' ? methodNoBody : methodWithBody;
-      
+     
        await  fetch(adress, fetchBody).then(response => response.json()
              
             ).then(data => {

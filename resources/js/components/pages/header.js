@@ -1,5 +1,7 @@
 import { useContext } from 'react';
 import AddCalendar from './../modals/menuModalAddCalendar';
+import AddUser from './../modals/menuModalAddUser';
+import Dialog from './../modals/dialogAsk';
 import useModal from "./../hooks/useModal";
 import { CalendarNameContext } from "./../mainContext";
 import useFetch from './../hooks/useFetch';
@@ -18,17 +20,41 @@ import useFetch from './../hooks/useFetch';
 
 const Header = () => {
   const { calendarName } = useContext(CalendarNameContext); // calendar id (global context)
-  const [isShowingAdd, toggleAdd] = useModal();
-  const {runFetch} = useFetch();
+  const [isShowingAdd, toggleAdd] = useModal();            // Create calendar
+  const [isShowingAddUser, toggleAddUser] = useModal();   // Add user
+  const [isShowingDialog, toggleDialog] = useModal();    // Dialog if toggled add user but calendar not selected
+
+  const { runFetch } = useFetch();
 
   const logOut = () => {
-    runFetch('api/logout', 'get');
-    
+    runFetch('/api/login/logout', 'get');
+
+  }
+  let showAddCl = isShowingAdd ? showAddCl = <AddCalendar isShowing={isShowingAdd} hide={toggleAdd} /> : ''; // rendered only when called
+  let showAddUser = isShowingAddUser ? showAddUser = <AddUser isShowing={isShowingAddUser} hide={toggleAddUser} /> : '' // rendered only when called
+  let dialog = isShowingDialog ?
+  
+  <Dialog isShowing={isShowingDialog} result={toggleDialog}
+    hide={toggleDialog}
+    msg={'Please select calendar!'} /> : '';
+
+
+
+
+
+  if (calendarName === false && isShowingAddUser) {// if calendar not selected toggled dialog "please select calendar"
+
+    toggleAddUser();
+    toggleDialog();
+
   }
 
+
+
   return (<>
-    <AddCalendar isShowing={isShowingAdd}
-      hide={toggleAdd} />
+    {dialog}
+    {showAddCl}
+    {showAddUser}
     <div className="header_co">
       <div className="container">
         <div className="header_co__inner">
@@ -40,7 +66,7 @@ const Header = () => {
               <div className="header_co__leftside-ddown-content">
 
                 <p onClick={() => toggleAdd()}>Create new Calendar</p>
-                <p>Link 2</p>
+                <p onClick={() => toggleAddUser()}>Add Users</p>
                 <p>Link 3</p>
 
               </div>

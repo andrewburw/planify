@@ -149,7 +149,7 @@
     border: 1px solid #ddd;
   }
   &-buttons{
-    padding-top: 30px;
+    padding-top: 15px;
     float: right;
   }
   &-btn-save{
@@ -181,7 +181,7 @@
     opacity: 1;
   }
 }
-/* ********* MODAL ADD ****************/
+/* ********* MODAL ADD CALENDAR ****************/
 
 
 .add-modal{
@@ -216,6 +216,20 @@
   padding-bottom: 6px;
   padding-left: 15px;
 }
+&__f-group  select{
+  border: none;
+  border-bottom: 1px solid #a3a1a1;
+  width: 90%;
+  transition-duration: 0.4s;
+  font-size: 14px;
+  line-height: 16px;
+  @extend %rb-bold;
+  color: #756f6f;
+  background-color: #FFFFFF;
+  padding-bottom: 6px;
+  padding-left: 15px;
+}
+
 &__f-group  input::placeholder {
   font-size: 14px;
   line-height: 16px;

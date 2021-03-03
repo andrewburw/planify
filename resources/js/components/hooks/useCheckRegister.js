@@ -45,7 +45,7 @@ const useLoginRegister = () => {
       password_confirmation: inputs.password2
 
   }
-    runFetch('api/register','post',fetchData);
+    runFetch('/api/auth/register','post',fetchData);
   
   
   }

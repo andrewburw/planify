@@ -9,7 +9,9 @@ html {
 *::after {
   box-sizing: inherit;
 }
-
+*,*:focus,*:hover{
+  outline:none;
+}
 a {
   text-decoration: none;
   color: inherit;
