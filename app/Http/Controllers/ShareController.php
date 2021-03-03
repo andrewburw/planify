@@ -31,12 +31,12 @@ class ShareController extends Controller
             $data = $request->all();
             $table = User::where('email', $data['email'])->get();
             
-            if ($table ->isEmpty()) {  //|| $table->id !== $logedUser
+            if ($table ->isEmpty() || $table[0]['id'] === $logedUser) { // do not add admin to admin calendar :)
 
                 return response()->json(['serverError'=>true,'error' => 'not found']);
 
             } else {
-                return response()->json(['test' => $table]);
+                return response()->json( $table[0]['id']);
             }
         }
     }
