@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom';
 import React, { useState, useEffect, useContext } from 'react';
 import checkField from './../hooks/custom_modules/checkFields';
 import useFetch from './../hooks/useFetch';
-import CalendarContext from './../mainContext';
+import {CalendarContext } from './../mainContext';
 /* *************************************************************
 |
 |
@@ -23,7 +23,7 @@ const Modal = ({ isShowing, hide }) => {
 
 
  
-
+  const {calendar_id } = useContext(CalendarContext)
   const [inputs, setInputs] = useState({ userName: ''});
   const [error1, setError] = useState({ serverError: null });
   const [buttonProtect, setProtect] = useState(false); // Button protection to not press multiply time
@@ -34,7 +34,7 @@ const Modal = ({ isShowing, hide }) => {
    
     if (response.serverError === false ) { // Fetch error handler
  
-       // window.location.reload()
+        window.location.reload()
 
     } else if (error.serverError === true) {
   
@@ -66,11 +66,11 @@ const Modal = ({ isShowing, hide }) => {
             setError({errorStatus:true,error: "Please check fields!"});
 
         } else {
-           // console.log({calendar_name: inputs.calendarName,user_id: 1})
-          // setProtect(true)
-           runFetch('/api/share','post',{email: inputs.userName});
+         
+           setProtect(true);
+           runFetch('/api/share','post',{email: inputs.userName,calendar_id: calendar_id});
             //due to the characteristics of the react the answer(is error or not) of fetch is handled in useEffect ;)
-            
+           
         }
            
     }

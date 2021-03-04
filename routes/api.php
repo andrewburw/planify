@@ -46,7 +46,7 @@ Route::middleware('auth:api')->group(function () {
    
     // USER SHARE:
 
-    Route::post( '/share', 'App\Http\Controllers\ShareController@shareCalendar' ); // post new calendar 
+    Route::post( '/share', 'App\Http\Controllers\ShareController@shareCalendar' ); // add user to calendar
 
 });
 
