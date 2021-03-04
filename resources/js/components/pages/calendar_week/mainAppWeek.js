@@ -3,7 +3,6 @@ import {
   covertDataToDayOfYear,
   genrateWeekAll
 } from './../../custom_modules/generateMonthCalendar';
-import {Redirect} from "react-router-dom";
 import React, { useState, useEffect, useContext } from 'react';
 import ClearDay from './blankDay';
 import { Link } from "react-router-dom";
@@ -142,12 +141,7 @@ const WeekCalendar = (props) => {
 
    }
 
-    
 
- 
-
-
-  // console.log('test')
   // render protection: do not reneder menus if it not toggled
   let smMenu = isShowingSmall ? <SmallMenu isShowing={isShowingSmall}
     hide={toggleMenu}

@@ -13,7 +13,10 @@ import React from 'react';
 | **************************************************************/
 
 
-export const UserContext = React.createContext({ user: 'andrew' });
+export const UserContext = React.createContext({ // I use this context in this project only for testing new react hook
+  user_name: null,
+  setUserName: () => {}
+});
 
 export const CalendarContext = React.createContext({ // I use this context in this project only for testing new react hook
   calendar_id: null,

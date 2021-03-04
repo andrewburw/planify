@@ -5,7 +5,7 @@ import Dialog from './../modals/dialogAsk';
 import useModal from "./../hooks/useModal";
 import { CalendarNameContext } from "./../mainContext";
 import useFetch from './../hooks/useFetch';
-
+import { UserContext } from "./../mainContext";
 /* *************************************************************
 |
 |
@@ -23,13 +23,15 @@ const Header = () => {
   const [isShowingAdd, toggleAdd] = useModal();            // Create calendar
   const [isShowingAddUser, toggleAddUser] = useModal();   // Add user
   const [isShowingDialog, toggleDialog] = useModal();    // Dialog if toggled add user but calendar not selected
-
+  const {user_name} = useContext(UserContext);
   const { runFetch } = useFetch();
 
   const logOut = () => {
     runFetch('/api/login/logout', 'get');
-
+    window.location.reload();
   }
+
+
   let showAddCl = isShowingAdd ? showAddCl = <AddCalendar isShowing={isShowingAdd} hide={toggleAdd} /> : ''; // rendered only when called
   let showAddUser = isShowingAddUser ? showAddUser = <AddUser isShowing={isShowingAddUser} hide={toggleAddUser} /> : '' // rendered only when called
   let dialog = isShowingDialog ?
@@ -37,9 +39,6 @@ const Header = () => {
   <Dialog isShowing={isShowingDialog} result={toggleDialog}
     hide={toggleDialog}
     msg={'Please select calendar!'} /> : '';
-
-
-
 
 
   if (calendarName === false && isShowingAddUser) {// if calendar not selected toggled dialog "please select calendar"
@@ -82,7 +81,7 @@ const Header = () => {
               <img src="/images/myself_1.png" height="40" width="40" width="40" alt="" />
               <div className="header_co__profile-ddown">
                 <div className="header_co___profile-loginmenu">
-                  <p>Andrew B <img className="header_co__rside-menu-d-img" src="/images/arrow_down_bw.png" /></p>
+                  <p>{user_name !== undefined ? user_name : ''} <img className="header_co__rside-menu-d-img" src="/images/arrow_down_bw.png" /></p>
                   <div className="header_co__profile-d-content">
 
                     <p onClick={() => logOut()}>Logout</p>

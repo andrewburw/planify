@@ -1,6 +1,6 @@
 
 import ReactDOM from 'react-dom';
-import React from 'react';
+import React, { useEffect } from 'react';
 import useSignUpForm from './../../hooks/useCheckRegister';
 import Loading from './../../custom_modules/loading_white_full.svg'
 /* *************************************************************
@@ -55,10 +55,17 @@ const Modal = ({ isShowing, hide }) => {
   let pass1Msg = '';
   let pass2Msg = '';
 
+ useEffect(()=>{
+  if (response.serverError === false) {
+    hide();
+  }
 
 
+ },[response])
+
+  console.log('test')
   /* 
-    testResults : is returned object with values true/false.
+    testResults :  returned object with values true/false.
     TRUE => passed validation,
     FALSE => not passed validation
 

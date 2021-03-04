@@ -18,15 +18,18 @@ import useModal from "./hooks/useModal";
 | **************************************************************/
 
 const  MainPage = () => {
- // const [isShowing, toggle] = useModal();
+ 
   const [isShowingReg, toggleReg] = useModal();
   const [isShowingLog, toggleLog] = useModal();
 
+   let reg = isShowingReg ?  <RegisterModal isShowing={isShowingReg} hide={toggleReg} /> : '';
+   let log = isShowingLog ?  <LoginModal    isShowing={isShowingLog} hide={toggleLog} /> : '';
+
+
     return (
         <div>
-          <RegisterModal isShowing={isShowingReg} hide={toggleReg} />
-          <LoginModal    isShowing={isShowingLog} hide={toggleLog} />
-  
+         {reg}
+          {log}  
               <header className="header">
       <div className="container">
         <div className="header__inner">

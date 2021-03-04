@@ -11,12 +11,13 @@
 |
 | **************************************************************/
 
-import React,{useEffect, useState} from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import MainPage from './main';
 import MainApp from './pages/mainApp';
-import {CalendarContext} from './mainContext';
-import {CalendarNameContext} from './mainContext';
+import { CalendarContext } from './mainContext';
+import { CalendarNameContext } from './mainContext';
+import { UserContext } from './mainContext';
 
 import {
   BrowserRouter as Router,
@@ -27,11 +28,13 @@ import ProtectedRoute from './protectedRoute';
 
 
 const IndexPage = () => {
-  const [ calendar_id, setCalendar] = useState(false);
+  const [calendar_id, setCalendar] = useState(false);
   const value = { calendar_id, setCalendar };
-  const [ calendarName, setCalendarName] = useState(false);
+  const [calendarName, setCalendarName] = useState(false);
   const value1 = { calendarName, setCalendarName };
-  
+
+  const [user_name, setUserName] = useState(false);
+  const value2 = { user_name, setUserName };
 
   return (
     <div>
@@ -39,11 +42,11 @@ const IndexPage = () => {
         <Switch>
           <Route exact path="/" component={MainPage} />
           <CalendarNameContext.Provider value={value1}>
-          <CalendarContext.Provider value={value}>
-          
-            <ProtectedRoute path="/dashboard" component={MainApp} />
-        
-          </CalendarContext.Provider>
+            <CalendarContext.Provider value={value}>
+              <UserContext.Provider value={value2}>
+                <ProtectedRoute path="/dashboard" component={MainApp} />
+              </UserContext.Provider>
+            </CalendarContext.Provider>
           </CalendarNameContext.Provider>
         </Switch>
       </Router>
