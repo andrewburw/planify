@@ -21,8 +21,6 @@ import {CalendarContext } from './../mainContext';
 
 const Modal = ({ isShowing, hide }) => {
 
-
- 
   const {calendar_id } = useContext(CalendarContext)
   const [inputs, setInputs] = useState({ userName: ''});
   const [error1, setError] = useState({ serverError: null });

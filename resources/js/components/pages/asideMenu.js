@@ -24,14 +24,19 @@ const AsideMenu = () => {
   const { response, runFetch, error } = useFetch();
   const { language, setCalendar } = useContext(CalendarContext);
   const { language1, setCalendarName } = useContext(CalendarNameContext);
-
+  const  useData = useFetch();
 
   useEffect(() => {
     runFetch('/api/usercalendars', 'get');
-
+   
 
   }, []);
 
+  useEffect(() => {
+   
+    useData.runFetch('/api/showshare', 'get');
+
+  }, []);
   const setContextCalendarId = (e) => {
     // set context for calendar id / calendar name
   
@@ -65,6 +70,22 @@ const AsideMenu = () => {
 
               {response !== 'null' ? response.map((item, i) => {
                 return <Link to="/dashboard/month" key={i}> <li data-id={item.id} data-name={item.calendar_name} onClick={setContextCalendarId} className="leftmenu_p-list-item">{item.calendar_name}</li></Link>
+              }) :  <img src={Loading} alt="Planify loading" />}
+
+              <br />
+           
+             
+            </ul>
+          </div>
+        </div>
+        <div className="leftmenu__pages">
+          <div className="leftmenu__pages-con">
+            <h4 className="leftmenu_p-header">Shared calendars</h4>
+            <ul className="leftmenu_p-list">
+
+              {useData.response !== 'null' ? useData.response.map((item, i) => {
+            
+                return <Link to="/dashboard/month" key={i}> <li data-id={item.calendar_id} data-name={item.calendar_name} onClick={setContextCalendarId} className="leftmenu_p-list-item">{item.calendar_name}</li></Link>
               }) :  <img src={Loading} alt="Planify loading" />}
 
               <br />

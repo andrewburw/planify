@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Calendar;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -10,15 +11,36 @@ use App\Models\CalendarAuthors;
 
 class ShareController extends Controller
 {
-    //
+    
+    public function showSharedCalendars(Request $request)
+    {
+     // get user shared calendars
+        $logedUser =  auth()->user()->id;  // logged in user id
+        $data = $request->all();
+        /*                     ___________________________
+          CalendarAuthors =>  | user_id  | calendar_id   |
+      
+        */
+
+
+        $result = Calendar::select('calendar_name','calendar_id')
+        ->join('calendar_authors', 'calendar_authors.calendar_id', '=', 'calendars.id')
+        ->where('calendar_authors.user_id', $logedUser)
+        ->get();
+
+
+        return response()->json($result);
+
+
+
+    }
+
 
     public function shareCalendar(Request $request)
     {
         $validator = Validator::make($request->all(), [
         'calendar_id' => ['required', 'string','max:255'],
-        'email' => ['required', 'string', 'email', 'max:255']
-      
-]);
+        'email' => ['required', 'string', 'email', 'max:255']]);
      
 
         
