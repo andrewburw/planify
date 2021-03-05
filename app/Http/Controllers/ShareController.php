@@ -12,14 +12,18 @@ use App\Models\CalendarAuthors;
 class ShareController extends Controller
 {
     public function showSharedUsers(Request $request)
-    { 
+    {
         // get user shared calendars
 
         $validator = Validator::make($request->all(), [
             'calendar_id' => ['required', 'string','max:255']
            ]);
 
+        if ($validator->fails()) {
+            // if validation not pased return errors
 
+            return response()->json([ 'serverError'=>true, 'error' => $validator->errors()]);
+        }
 
 
         
@@ -27,15 +31,23 @@ class ShareController extends Controller
         $data = $request->all();
         /*                     ___________________________
           CalendarAuthors =>  | user_id  | calendar_id   |
-      
+
         */
 
-     
-      $result = CalendarAuthors::select('name')
+        $tableAdmin = Calendar::select('name')  // get calendar authors name
+        ->join('users', 'users.id', '=', 'user_id')
+        ->where('calendars.id', $data['calendar_id'])
+        ->get();
+        //['name' => $tableAdmin['name'] . "[admin]"]
+
+        $calendarAdmin = ['name' => $tableAdmin[0]['name'] . " [admin]"];
+
+        $result = CalendarAuthors::select('name')
       ->join('users', 'users.id', '=', 'user_id')
       ->where('calendar_authors.calendar_id', $data['calendar_id'])
       ->get();
-        return response()->json($result);
+      
+       return response()->json( $result->push(['name'  => $tableAdmin[0]['name'] . " [admin]"]));
 
     }
 
@@ -53,20 +65,17 @@ class ShareController extends Controller
         $data = $request->all();
         /*                     ___________________________
           CalendarAuthors =>  | user_id  | calendar_id   |
-      
+
         */
 
 
-        $result = Calendar::select('calendar_name','calendar_id')
+        $result = Calendar::select('calendar_name', 'calendar_id')
         ->join('calendar_authors', 'calendar_authors.calendar_id', '=', 'calendars.id')
         ->where('calendar_authors.user_id', $logedUser)
         ->get();
 
 
         return response()->json($result);
-
-
-
     }
     /**
      * Main share controller function.
@@ -99,22 +108,19 @@ class ShareController extends Controller
        
 
         if ($logedUser !==  $tableOwner[0]['user_id']) {
-        // PROTECTION:  If you are not table admin return error.
+            // PROTECTION:  If you are not table admin return error.
 
-           return response()->json(['serverError'=>true,'error' => 'You are not calendar owner!']);
-
+            return response()->json(['serverError'=>true,'error' => 'You are not calendar owner!']);
         }
       
-        // *******************************************************************  
+        // *******************************************************************
 
         if ($table ->isEmpty() || $table[0]['id'] === $logedUser) { // do not add admin to admin calendar :)
 
             return response()->json(['serverError'=>true,'error' => 'User not found']);
-
         } else {
-
-           return $this->postData($table[0]['id'],$data['calendar_id']);
-           // return response()->json($data);
+            return $this->postData($table[0]['id'], $data['calendar_id']);
+            // return response()->json($data);
         }
     }
 

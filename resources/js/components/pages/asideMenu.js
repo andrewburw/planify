@@ -22,8 +22,8 @@ import {
 | **************************************************************/
 const AsideMenu = () => {
   const { response, runFetch, error } = useFetch();
-  const { language, setCalendar } = useContext(CalendarContext);
-  const { language1, setCalendarName } = useContext(CalendarNameContext);
+  const {setCalendar } = useContext(CalendarContext);
+  const {setCalendarName } = useContext(CalendarNameContext);
   const  useData = useFetch();
   const  useGetUsers = useFetch();
 
@@ -60,8 +60,7 @@ const AsideMenu = () => {
             <h4 className="leftmenu_p-header">Pages</h4>
             <ul className="leftmenu_p-list">
               <Link to="/dashboard"><li className="leftmenu_p-list-item"><i className="fas fa-home icon"></i>Main</li></Link>
-              <li className="leftmenu_p-list-item"><i className="fas fa-table icon"></i>Calendar</li>
-              <Link to="/dashboard/gant"><li className="leftmenu_p-list-item"><i className="fas fa-table icon"> Cl [gant]</i></li></Link>
+              <Link to="/dashboard/gant"><li className="leftmenu_p-list-item"><i className="fas fa-table icon"></i> Cl [gant]</li></Link>
             </ul>
           </div>
         </div>
@@ -71,7 +70,7 @@ const AsideMenu = () => {
             <ul className="leftmenu_p-list">
 
               {response !== 'null' ? response.map((item, i) => {
-                return <Link to="/dashboard/month" key={i}> <li data-id={item.id} data-name={item.calendar_name} onClick={setContextCalendarId} className="leftmenu_p-list-item">{item.calendar_name}</li></Link>
+                return <Link to="/dashboard/month" key={i}> <li data-id={item.id} data-name={item.calendar_name} onClick={setContextCalendarId} className="leftmenu_p-list-item"><i className="fas fa-table icon"></i> {item.calendar_name}</li></Link>
               }) :  <img src={Loading} alt="Planify loading" />}
 
               <br />
@@ -87,14 +86,13 @@ const AsideMenu = () => {
 
               {useData.response !== 'null' ? useData.response.map((item, i) => {
             
-                return <Link to="/dashboard/month" key={i}> <li data-id={item.calendar_id} data-name={item.calendar_name} onClick={setContextCalendarId} className="leftmenu_p-list-item">{item.calendar_name}</li></Link>
+                return <Link to="/dashboard/month" key={i}> <li data-id={item.calendar_id} data-name={item.calendar_name} onClick={setContextCalendarId} className="leftmenu_p-list-item"><i className="fas fa-table icon"></i> {item.calendar_name}</li></Link>
               }) :  <img src={Loading} alt="Planify loading" />}
 
               <br />
            
              
-            </ul>
-          </div>
+            </ul>          </div>
         </div>
         <div className="leftmenu__pages">
           <div className="leftmenu__pages-con">
@@ -102,7 +100,7 @@ const AsideMenu = () => {
             <ul className="leftmenu_p-list">
             {useGetUsers.response !== 'null' ? useGetUsers.response.map((item, i) => {
             
-            return  <li key={i} className="leftmenu_p-list-item">{item.name}</li>
+            return  <li key={i} className="leftmenu_p-list-item"><i className="fas fa-user"></i> {item.name}</li>
           }) :  ''}
             </ul>
           </div>

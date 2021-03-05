@@ -610,7 +610,7 @@ button:focus {
   margin: 3px 0;
   border-radius: 3px;
 }
-.header_co__leftside-burgermenu:hover .header_co__leftside-ddown-content {
+.header_co__rside-menu-ddown:hover .header_co__rside-ddown-content {
   display: block;
 }
 .header_co__leftside-burgermenu:hover .header_co__leftside-b__menu-item {
@@ -637,7 +637,6 @@ button:focus {
 }
 .header_co__rside-menu-ddown {
   padding-right: 10px;
-  display: flex;
   line-height: 50px;
 }
 .header_co__rside-menu-ddown p {
@@ -1994,7 +1993,10 @@ ul .chart-li-seven {
 }
 
 /* HEADER MENU add calendar drop down*/
-.header_co__leftside-ddown-content {
+.header_co__rside {
+  cursor: pointer;
+}
+.header_co__rside-ddown-content {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
@@ -2002,15 +2004,17 @@ ul .chart-li-seven {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   padding: 12px 16px;
   z-index: 10;
+  line-height: normal !important;
 }
-.header_co__leftside-ddown-content p {
+.header_co__rside-ddown-content p {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
-.header_co__leftside-ddown-content p:hover {
+.header_co__rside-ddown-content p:hover {
   background-color: #f1f1f1;
+  cursor: pointer;
 }
 
 /* HEADER MENU User drop down*/

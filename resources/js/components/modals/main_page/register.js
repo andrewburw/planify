@@ -63,7 +63,7 @@ const Modal = ({ isShowing, hide }) => {
 
  },[response])
 
-  console.log('test')
+
   /* 
     testResults :  returned object with values true/false.
     TRUE => passed validation,

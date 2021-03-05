@@ -106,7 +106,7 @@
 
     /* LEFT BURGER MENU HOVER */
 
-    &__leftside-burgermenu:hover .header_co__leftside-ddown-content {
+    &__rside-menu-ddown:hover .header_co__rside-ddown-content {
       display: block;
     }
     &__leftside-burgermenu:hover .header_co__leftside-b__menu-item {
@@ -145,7 +145,7 @@
 
     &__rside-menu-ddown{
         padding-right: 10px;
-        display: flex;
+     
         line-height: 50px;
     }
     &__rside-menu-ddown p{

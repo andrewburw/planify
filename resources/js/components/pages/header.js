@@ -23,7 +23,7 @@ const Header = () => {
   const [isShowingAdd, toggleAdd] = useModal();            // Create calendar
   const [isShowingAddUser, toggleAddUser] = useModal();   // Add user
   const [isShowingDialog, toggleDialog] = useModal();    // Dialog if toggled add user but calendar not selected
-  const {user_name} = useContext(UserContext);
+  const { user_name } = useContext(UserContext);
   const { runFetch } = useFetch();
 
   const logOut = () => {
@@ -35,10 +35,10 @@ const Header = () => {
   let showAddCl = isShowingAdd ? showAddCl = <AddCalendar isShowing={isShowingAdd} hide={toggleAdd} /> : ''; // rendered only when called
   let showAddUser = isShowingAddUser ? showAddUser = <AddUser isShowing={isShowingAddUser} hide={toggleAddUser} /> : '' // rendered only when called
   let dialog = isShowingDialog ?
-  
-  <Dialog isShowing={isShowingDialog} result={toggleDialog}
-    hide={toggleDialog}
-    msg={'Please select calendar!'} /> : '';
+
+    <Dialog isShowing={isShowingDialog} result={toggleDialog}
+      hide={toggleDialog}
+      msg={'Please select calendar!'} /> : '';
 
 
   if (calendarName === false && isShowingAddUser) {// if calendar not selected toggled dialog "please select calendar"
@@ -62,19 +62,22 @@ const Header = () => {
               <div className="header_co__leftside-b__menu-item"></div>
               <div className="header_co__leftside-b__menu-item"></div>
               <div className="header_co__leftside-b__menu-item"></div>
-              <div className="header_co__leftside-ddown-content">
 
-                <p onClick={() => toggleAdd()}>Create new Calendar</p>
-                <p onClick={() => toggleAddUser()}>Add Users</p>
-                <p>Link 3</p>
-
-              </div>
             </div>
             <h1 className="header_co__leftside-clname">{calendarName !== 'null' ? calendarName : ''}</h1>
           </div>
+
+          
           <div className="header_co__rightside-menu">
             <div className="header_co__rside-menu-ddown">
-              <p>Menu <img className="header_co__rside-menu-d-img" src="/images/arrow_down.png" /></p>
+              <p>Calndar Menu <img className="header_co__rside-menu-d-img" src="/images/arrow_down.png" /></p>
+              <div className="header_co__rside-ddown-content">
+
+                <p onClick={() => toggleAdd()}>Create new Calendar</p>
+                <p onClick={() => toggleAddUser()}>Add Users to calendar</p>
+                <p>Link 3</p>
+
+              </div>
             </div>
 
             <div className="header_co__profile">

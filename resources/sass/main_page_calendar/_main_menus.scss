@@ -235,7 +235,9 @@
 
 /* HEADER MENU add calendar drop down*/
 
-.header_co__leftside {
+.header_co__rside {
+   
+    cursor: pointer;
     &-ddown-content {
         display: none;
         position: absolute;
@@ -244,6 +246,7 @@
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         padding: 12px 16px;
         z-index: 10;
+        line-height: normal !important;
     }
     &-ddown-content p {
         color: black;
@@ -253,6 +256,7 @@
     }
     &-ddown-content p:hover {
         background-color: #f1f1f1;
+        cursor: pointer;
     }
 }
 
