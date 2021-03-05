@@ -18,12 +18,13 @@ export const UserContext = React.createContext({ // I use this context in this p
   setUserName: () => {}
 });
 
-export const CalendarContext = React.createContext({ // I use this context in this project only for testing new react hook
+export const CalendarContext = React.createContext({ 
   calendar_id: null,
   setCalendar: () => {}
 });
 
-export const CalendarNameContext = React.createContext({ // I use this context in this project only for testing new react hook
+export const CalendarNameContext = React.createContext({ 
     calendarName: 'sdfsdf',
     setCalendarName: () => {}
-  });
+});
+

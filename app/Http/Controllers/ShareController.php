@@ -11,9 +11,43 @@ use App\Models\CalendarAuthors;
 
 class ShareController extends Controller
 {
-    
+    public function showSharedUsers(Request $request)
+    { 
+        // get user shared calendars
+
+        $validator = Validator::make($request->all(), [
+            'calendar_id' => ['required', 'string','max:255']
+           ]);
+
+
+
+
+        
+        $logedUser =  auth()->user()->id;  // logged in user id
+        $data = $request->all();
+        /*                     ___________________________
+          CalendarAuthors =>  | user_id  | calendar_id   |
+      
+        */
+
+     
+      $result = CalendarAuthors::select('name')
+      ->join('users', 'users.id', '=', 'user_id')
+      ->where('calendar_authors.calendar_id', $data['calendar_id'])
+      ->get();
+        return response()->json($result);
+
+    }
+
+    /**
+     * Show calendars shared calendars.
+     *
+     *
+     */
+
     public function showSharedCalendars(Request $request)
     {
+
      // get user shared calendars
         $logedUser =  auth()->user()->id;  // logged in user id
         $data = $request->all();
@@ -34,7 +68,11 @@ class ShareController extends Controller
 
 
     }
-
+    /**
+     * Main share controller function.
+     *
+     *
+     */
 
     public function shareCalendar(Request $request)
     {
@@ -55,13 +93,25 @@ class ShareController extends Controller
         $logedUser =  auth()->user()->id;  // logged in user id
         $data = $request->all();
         $table = User::where('email', $data['email'])->get();
-            
+        $tableOwner = Calendar::where('id', $data['calendar_id'])->get();
+
+
+       
+
+        if ($logedUser !==  $tableOwner[0]['user_id']) {
+        // PROTECTION:  If you are not table admin return error.
+
+           return response()->json(['serverError'=>true,'error' => 'You are not calendar owner!']);
+
+        }
+      
+        // *******************************************************************  
+
         if ($table ->isEmpty() || $table[0]['id'] === $logedUser) { // do not add admin to admin calendar :)
 
             return response()->json(['serverError'=>true,'error' => 'User not found']);
+
         } else {
-
-
 
            return $this->postData($table[0]['id'],$data['calendar_id']);
            // return response()->json($data);

@@ -25,6 +25,7 @@ const AsideMenu = () => {
   const { language, setCalendar } = useContext(CalendarContext);
   const { language1, setCalendarName } = useContext(CalendarNameContext);
   const  useData = useFetch();
+  const  useGetUsers = useFetch();
 
   useEffect(() => {
     runFetch('/api/usercalendars', 'get');
@@ -39,13 +40,14 @@ const AsideMenu = () => {
   }, []);
   const setContextCalendarId = (e) => {
     // set context for calendar id / calendar name
-  
+
+    useGetUsers.runFetch('/api/showshareusers', 'post', {calendar_id: e.target.dataset.id});
+
     setCalendar(e.target.dataset.id); 
     setCalendarName(e.target.dataset.name);
 
   }
-// <Link to="/dashboard/month"> <li className="leftmenu_p-list-item">Test [Month]</li></Link>
-// <Link to="/dashboard/week"> <li className="leftmenu_p-list-item">Test [week]</li></Link>
+
 
   return (
     <div className="leftmenu">
@@ -98,8 +100,10 @@ const AsideMenu = () => {
           <div className="leftmenu__pages-con">
             <h4 className="leftmenu_p-header">Users</h4>
             <ul className="leftmenu_p-list">
-              <li className="leftmenu_p-list-item">User 1</li>
-              <li className="leftmenu_p-list-item">User 2</li>
+            {useGetUsers.response !== 'null' ? useGetUsers.response.map((item, i) => {
+            
+            return  <li key={i} className="leftmenu_p-list-item">{item.name}</li>
+          }) :  ''}
             </ul>
           </div>
         </div>
