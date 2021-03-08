@@ -70,12 +70,12 @@ const Header = () => {
           
           <div className="header_co__rightside-menu">
             <div className="header_co__rside-menu-ddown">
-              <p>Calndar Menu <img className="header_co__rside-menu-d-img" src="/images/arrow_down.png" /></p>
+              <p>Calendar Menu <img className="header_co__rside-menu-d-img" src="/images/arrow_down.png" /></p>
               <div className="header_co__rside-ddown-content">
 
-                <p onClick={() => toggleAdd()}>Create new Calendar</p>
-                <p onClick={() => toggleAddUser()}>Add Users to calendar</p>
-                <p>Link 3</p>
+                <p onClick={() => toggleAdd()}>Create new calendar</p>
+                <p onClick={() => toggleAddUser()}>Add users to calendar</p>
+                <p>Delete this calendar</p>
 
               </div>
             </div>
@@ -89,7 +89,7 @@ const Header = () => {
 
                     <p onClick={() => logOut()}>Logout</p>
                     <p>Profile</p>
-                    <p>Link 3</p>
+                   
 
                   </div>
                 </div>

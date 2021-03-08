@@ -36,7 +36,7 @@ const Modal = ({ isShowing, hide }) => {
 
     } else if (error.serverError === true) {
   
-       setError({serverError:true,error: "No user found"})
+       setError({serverError:true,error: error.error})
    
     }
       
