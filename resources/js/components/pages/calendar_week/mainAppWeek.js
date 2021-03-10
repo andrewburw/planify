@@ -74,14 +74,14 @@ const WeekCalendar = (props) => {
 
   useEffect(() => {
     const { month, day1 } = props.location.state || { month: 0, day: 0 };
-
+    let dayOfYear = covertDataToDayOfYear(day1, month);// (day,month)
     if (day < day1) { // protect (without this protection not working PREV NEXT month)
 
-      setDay(covertDataToDayOfYear(day1, month)); // (day,month)
+      setDay(dayOfYear); // (day,month)
     }
 
-    console.log(day1)
-    runFetch('/api/allchedule', 'post', { calendar_id: calendar_id , day: day1});
+     
+    runFetch('/api/allchedule', 'post', { calendar_id: calendar_id , day: dayOfYear});
 
   }, []);
 
@@ -127,7 +127,7 @@ const WeekCalendar = (props) => {
     let del = recivedData.find(val => val.day === dataToDel[2]).reserved;
     let idToDel = del.find(val => val.start === dataToDel[0]).id;
 
-    runFetch('/api/delschedule', 'delete', { scId: idToDel });
+    runFetch('/api/delschedule', 'delete', { scId: idToDel ,day:0});
     setForceRerender(!forceRerender)
 
     toggleDelete();
@@ -142,7 +142,7 @@ const WeekCalendar = (props) => {
     // re render component after delete data
     setData(null);
     setForceRerender(!forceRerender);
-    runFetch('/api/allchedule', 'post', { calendar_id: calendar_id });
+    runFetch('/api/allchedule', 'post', { calendar_id: calendar_id ,day: 1});
 
   }
 

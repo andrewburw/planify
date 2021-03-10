@@ -15,9 +15,14 @@ class DataScheduleController extends Controller
     {
         // show user day schedules
 
+        $id = $request->all();
+        $user =  auth()->user()->name;  // user name 
+
+
 
         $validator = Validator::make($request->all(), [
-            'calendar_id' => ['required', 'string', 'min:1', 'max:30']
+            'calendar_id' => ['required', 'string', 'min:1', 'max:30'],
+            'day' => ['required', 'integer', 'min:1', 'max:400']
            
         ]);
 
@@ -25,11 +30,7 @@ class DataScheduleController extends Controller
             return response()->json(['serverError' => true, 'errors' => $validator->errors()]);
         }
 
-
-
-        $id = $request->all();
-        $user =  auth()->user()->name;  // user name 
-
+          
         if ($user === 'guest') {
             // GUEST USER DATA is generated automaticly and it's fake data :)
             $generatedData = GuestController::generate($id['day']);
@@ -89,6 +90,8 @@ class DataScheduleController extends Controller
 
     protected function addDaySchedule(Request $request)
     {
+        $user =  auth()->user()->name;  // user name 
+      
         $validator = Validator::make($request->all(), [
             'start' => ['required', 'string', 'min:3', 'max:30'],
             'end' => ['required', 'string', 'min:3', 'max:30'],
@@ -107,7 +110,15 @@ class DataScheduleController extends Controller
 
             return response()->json($err);
         } else {
-            return  $this->createDaySchedule($request->all());
+            if ($user === 'guest') {
+         
+               return  GuestController::createDaySchedule($request->all(),true,true,false);
+         
+            } else {
+                return  $this->createDaySchedule($request->all());
+            }
+
+
             // return dd($request);
         }
     }

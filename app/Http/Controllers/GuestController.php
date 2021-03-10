@@ -9,26 +9,25 @@ use App\Models\GuestSchedules;
 class GuestController extends Controller
 {
     //
-    public static function generate()
+    public static function generate($day)
     {
-        $data = CustomModuleGenerateSchedules::generateData();
         $today = date("m.d.y");
         $genDay = GuestSchedules::select('gen_date')->first();
         
 
         
         if (!$genDay) {
-            # protection if table is empty
+            # protection: if table is empty run generate
             $genDay = [['gen_date'=> 'sdf']];
         } else {
             $genDay = $genDay->get();
-
         }
          
 
         if ($genDay[0]['gen_date'] !==  $today) {
             // check if day of generation is not today generate new data
-            
+
+            $data = CustomModuleGenerateSchedules::generateData($day);
             GuestSchedules::whereNotNull('id')->delete();// delete all data in table
          
          
@@ -41,10 +40,9 @@ class GuestController extends Controller
         return true;
     }
 
-    public static function delete( $id )
+    public static function delete($id)
     {
-
-        $table= GuestSchedules::where('id',  $id )->delete();
+        $table= GuestSchedules::where('id', $id)->delete();
 
        
         if ($table) {
@@ -61,16 +59,33 @@ class GuestController extends Controller
        *
        */
 
-    public static function createDaySchedule($data)
-    {
+    public static function createDaySchedule($data,$name = null,$genDate = null,$auto = true)
+    {     
+        // $auto = auto generated data. If true - not running query for checking size of table.
+
+        if (!$auto) {
+           // checking size of a table, must be less then 65 rows.
+            
+           $result = GuestSchedules::select('id')->get()->count();
+          
+           if ( $result >= 65 ){
+            return response()->json(array(
+                'serverError' => true,
+                'errors' => 'Server error : Record limit for guests achived.'
+            ));
+           }
+           
+
+        }
+
         $queryResult = GuestSchedules::create([
             'start' => $data['start'],
             'end' => $data['end'],
             'day' => $data['day'],
-            'name' => $data['name'],
+            'name' => $name === null ? $data['name'] :  auth('api')->user()->name,
             'calendar_id' => $data['calendar_id'],
             'month' => $data['month'],
-            'gen_date' => $data['gen_date']
+            'gen_date' => $genDate === null ? $data['gen_date'] : date("m.d.y")
 
         ]);
 

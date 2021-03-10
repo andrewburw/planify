@@ -51,11 +51,14 @@ const Modal = ({ isShowing, hide, hideSmMenu, editData, allWeekData ,month}) => 
             hideSmMenu();
             hide();
     
-        } else {
-
-          // console.log(error)
+        } 
+        
+        if (error.serverError) {
+            setError({status: true, error: error.errors});
         }
-          
+        
+      
+      
     }, [editData,response,error]);
 
 
