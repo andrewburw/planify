@@ -14,13 +14,25 @@ class DataScheduleController extends Controller
     protected function showWeekScheldues(Request $request)
     {
         // show user day schedules
-   
+
+
+        $validator = Validator::make($request->all(), [
+            'calendar_id' => ['required', 'string', 'min:1', 'max:30']
+           
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['serverError' => true, 'errors' => $validator->errors()]);
+        }
+
+
+
         $id = $request->all();
         $user =  auth()->user()->name;  // user name 
 
         if ($user === 'guest') {
             // GUEST USER DATA is generated automaticly and it's fake data :)
-            $generatedData = GuestController::generate();
+            $generatedData = GuestController::generate($id['day']);
             $table= GuestSchedules::where('calendar_id', $id['calendar_id'])->get();
             $test = CustomModule::RedoData($table);
 
@@ -44,13 +56,26 @@ class DataScheduleController extends Controller
     protected function deleteScheldule(Request $request)
     {
         // show user day schedules
-  
+      
         $id = $request->all();
-        $table= DaySchedule::where('id', $id['scId'])->delete();
-        if ($table) {
-            return   response()->json(array('serverError'=>false));
+        $user =  auth()->user()->name;  // user name 
+        $table = false;
+        $deleteData = false;
+
+
+        if ($user === 'guest') {
+            $deleteData = GuestController::delete($id);
+         
         } else {
-            return   response()->json(array('serverError'=>true));
+            $table = DaySchedule::where('id', $id['scId'])->delete();
+        }
+
+         
+
+        if ($table || $deleteData) {
+            return   response()->json(array('serverError'=>false,'test'=> $deleteData));
+        } else {
+            return   response()->json(array('serverError'=>true,'test'=> $deleteData));
         }
        
     }

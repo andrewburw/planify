@@ -14,7 +14,8 @@ class GuestSchedules extends Model
         'end',
         'day',
         'name', 
-        'month'
+        'month',
+        'gen_date'
       
     ];
 }

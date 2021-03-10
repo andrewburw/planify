@@ -79,7 +79,9 @@ const WeekCalendar = (props) => {
 
       setDay(covertDataToDayOfYear(day1, month)); // (day,month)
     }
-    runFetch('/api/allchedule', 'post', { calendar_id: calendar_id });
+
+    console.log(day1)
+    runFetch('/api/allchedule', 'post', { calendar_id: calendar_id , day: day1});
 
   }, []);
 

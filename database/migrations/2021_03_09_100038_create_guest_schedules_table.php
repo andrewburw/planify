@@ -20,6 +20,7 @@ class CreateGuestSchedulesTable extends Migration
             $table->string('day');  // day of year
             $table->string('name');
             $table->string('month'); // month number
+            $table->string('gen_date'); //generation date
             $table->unsignedBigInteger('calendar_id');
             $table->foreign('calendar_id')
                     ->references('id')
