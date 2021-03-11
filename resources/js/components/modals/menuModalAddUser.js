@@ -47,7 +47,7 @@ const Modal = ({ isShowing, hide }) => {
 
     const handleInputChange = (event) => {
         event.persist();
-          
+        setProtect(false);
         setInputs(inputs => ({ ...inputs, [event.target.name]: event.target.value.trim() }));
 
     }

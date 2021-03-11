@@ -2431,3 +2431,14 @@ ul .chart-li-seven {
     height: 40vh;
   }
 }
+@media only screen and (max-width: 900px) {
+  /* ******************** FIFTH SECTION ********************/
+  .fifth_w_spon-row_1 {
+    display: block;
+  }
+
+  /* ******************** SIXTH SECTION ********************/
+  .sixth__main-img img {
+    width: 100%;
+  }
+}

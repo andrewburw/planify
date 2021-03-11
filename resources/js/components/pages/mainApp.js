@@ -1,5 +1,5 @@
 
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -24,18 +24,32 @@ import DashBoard from './dash_board/dashBoard';
 |
 | **************************************************************/
 
+let gird = {
+  // by default with aside. Here without aside.
+  display: 'grid',
+  height: '100vh',
+  gridTemplateAreas: `
+    'header header header header header'
+    'main main main main main'
+    'main main main main main'`,
+  gridTemplateColumns: '220px',
+  gridTemplateRows: '50px'
 
+}
 
 
 const MainApp = () => {
- 
+  const [aside, setAside] = useState(true);
+
+
 
 
   return (
-    <div className="grid-container">
-       <Header />
-     
-      <Aside />
+    <div className="grid-container" style={aside ? {} : gird}>
+      <Header hideShowAside={() => setAside(!aside)} />
+
+      <Aside visible={aside} />
+
       <div className="main_co">
         <div className="container">
 

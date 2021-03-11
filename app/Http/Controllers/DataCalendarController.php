@@ -21,28 +21,35 @@ class DataCalendarController extends Controller
     protected function postCalendar(Request $request)
     {
          // dd($request);
-       
+        $user =  auth()->user()->name;
         $validator = Validator::make($request->all(), [
             'calendar_name' => ['required', 'string', 'min:3']
 
         ]);
+        if ($user === 'guest') {
+
+            return response()->json(['serverError' => true,'errors' => 'Guest not allowed to add new calendars.']);
+            
+        }
 
         if ($validator->fails()) {
-            $err = array(
-                'serverError' => true,
-                'errors' => $validator->errors()
-            );
+      
+            return response()->json(['serverError' => true,'errors' => $validator->errors()]);
 
-            return response()->json($err);
         } else {
             return  $this->createCalendar($request->all());
         }
     }
+
+
+
+
+
+
      /**
      * Create (POST) a new Calendar after valid name.
      *
-     * @param  array  $data
-     * @return \App\Models\Calendar
+     *
      */
 
 

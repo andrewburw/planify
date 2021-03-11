@@ -100,11 +100,16 @@ class ShareController extends Controller
         //*****************  VALIDATION HAS PASED ******************************/
 
         $logedUser =  auth()->user()->id;  // logged in user id
+        $logeedUserName =  auth()->user()->name;  
         $data = $request->all();
         $table = User::where('email', $data['email'])->get();
         $tableOwner = Calendar::where('id', $data['calendar_id'])->get();
 
+        if ($logeedUserName === 'guest') {
 
+            return response()->json(['serverError' => true,'error' => 'Guest not allowed to add users.']);
+            
+        }
        
 
         if ($logedUser !==  $tableOwner[0]['user_id']) {

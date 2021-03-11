@@ -35,16 +35,16 @@ const Modal = ({ isShowing, hide }) => {
  
         window.location.reload()
 
-    } else {
-
-       // console.log(error)
+    }  
+    
+    if (error.serverError) {
+        setError({status: true, error: error.errors});
     }
       
 
     }, [error,response]);
 
-         // console.log(response)
-
+         
     const handleInputChange = (event) => {
         event.persist();
           

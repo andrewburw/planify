@@ -18,7 +18,7 @@ import { UserContext } from "./../mainContext";
 |
 | **************************************************************/
 
-const Header = () => {
+const Header = ({hideShowAside}) => {
   const { calendarName } = useContext(CalendarNameContext); // calendar id (global context)
   const [isShowingAdd, toggleAdd] = useModal();            // Create calendar
   const [isShowingAddUser, toggleAddUser] = useModal();   // Add user
@@ -30,7 +30,6 @@ const Header = () => {
     runFetch('/api/login/logout', 'get');
     window.location.reload();
   }
-
 
   let showAddCl = isShowingAdd ? showAddCl = <AddCalendar isShowing={isShowingAdd} hide={toggleAdd} /> : ''; // rendered only when called
   let showAddUser = isShowingAddUser ? showAddUser = <AddUser isShowing={isShowingAddUser} hide={toggleAddUser} /> : '' // rendered only when called
@@ -58,7 +57,7 @@ const Header = () => {
       <div className="container">
         <div className="header_co__inner">
           <div className="header_co__leftside">
-            <div className="header_co__leftside-burgermenu">
+            <div className="header_co__leftside-burgermenu" onClick={()=> hideShowAside()}>
               <div className="header_co__leftside-b__menu-item"></div>
               <div className="header_co__leftside-b__menu-item"></div>
               <div className="header_co__leftside-b__menu-item"></div>

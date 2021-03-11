@@ -20,7 +20,7 @@ import {
 |
 |
 | **************************************************************/
-const AsideMenu = () => {
+const AsideMenu = ({visible}) => {
   const { response, runFetch, error } = useFetch();
   const {setCalendar } = useContext(CalendarContext);
   const {setCalendarName } = useContext(CalendarNameContext);
@@ -47,10 +47,9 @@ const AsideMenu = () => {
     setCalendarName(e.target.dataset.name);
 
   }
-
-
+  
   return (
-    <div className="leftmenu">
+    <div className="leftmenu" style={visible ? {display:'block'}:{display: 'none'}}>
       <div className="left_menu-container">
         <div className="leftmenu__logo">
           <img src="/images/logo.png" alt="" />

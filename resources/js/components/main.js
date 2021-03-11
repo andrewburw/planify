@@ -1,9 +1,8 @@
-import { Link } from "react-router-dom";
-import React from 'react';
+import { Redirect } from "react-router-dom";
 import RegisterModal from "./modals/main_page/register";
 import LoginModal from "./modals/main_page/login";
 import useModal from "./hooks/useModal";
-
+import useFetch from './hooks/useFetch';
 
 /* *************************************************************
 |
@@ -21,11 +20,37 @@ const  MainPage = () => {
  
   const [isShowingReg, toggleReg] = useModal();
   const [isShowingLog, toggleLog] = useModal();
+  const { response, runFetch, error } = useFetch('');
+
+
+
+  const loginGuest = () => {
+   // Auto login guest user
+    // yP284phX?4?X
+    let fetchData = {
+      email: 'guest@mail.com',
+      password: 'yP284phX?4?X'
+    }
+    runFetch('/api/auth/login', 'post', fetchData);
+    // token saved to cookie no localstorage here ;)
+
+
+  }
+
+
+  if (error === null || response.serverError === false) { // if autentification is success redirect to dashboard
+    return     <Redirect to="/dashboard" />;
+  }
+
+
+
+
 
    let reg = isShowingReg ?  <RegisterModal isShowing={isShowingReg} hide={toggleReg} /> : '';
    let log = isShowingLog ?  <LoginModal    isShowing={isShowingLog} hide={toggleLog} /> : '';
 
 
+ 
     return (
         <div>
          {reg}
@@ -55,7 +80,7 @@ const  MainPage = () => {
                 <a className="menu__list-link" onClick={ toggleLog} href="#">Log in</a>
               </li>
               <li className="menu__list-item">
-              <Link to="/dashboard"> <button className="header__try-button" >Try Product</button></Link>
+           <button className="header__try-button" onClick={loginGuest}>Try Product</button>
               </li>
             </ul>
           </nav>
