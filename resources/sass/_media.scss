@@ -1,54 +1,187 @@
-@media screen and (min-width: 1400px) {
-    .page__section-onehalf {
-        
-        height: 100vh;
-       
-      }
-
-    .fourth{
-     
-        height: 70vh;
-
-    }
-    .fifth {
-        height: 70vh;
-
-    }
-    .sixth{
-        height: 70vh;
-
-    }
-    .footer{
-        height: 40vh;
-    }
+@media screen and (min-width: 1000px) {
+  .page__section-onehalf {
+    
+    height: 100vh;
+   
   }
 
+.fourth{
+ 
+    height: 70vh;
 
+}
+.fifth {
+    height: 70vh;
 
-  @media only screen and (max-width: 900px) {
+}
+.sixth{
+    height: 70vh;
 
+}
+.footer{
+    height: 40vh;
+} 
+}
 
+@media only screen and (max-width: 900px) {
+.page__section {
+    height: 100%;
+}
+.page__section-half {
+    height: 100%;
+}
+.page__section-onehalf {
+    height: 100%;
+}
+/* *************************** HEADER ********************************/
+.header__inner {
+    padding: 10px;
+}
+.menu i {
+    color: white;
+}
+.menu__list {
+    display: none;
+}
 
-  /* ******************** FIFTH SECTION ********************/  
-  .fifth {
-    &_w_spon-row_1 {
-      
+/* *************************** NAV MENU ********************************/
+.burger_nav{
+    display: block;
+}
+.overlay {
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover,
+.overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+/* *************************** SECOND SECTION ************************/
+.second {
+    height: 100%;
+    &__inner {
         display: block;
-        
     }
 
-  }
-  /* ******************** SIXTH SECTION ********************/  
-  .sixth {
-   
-    &__main-img img{
-     width: 100%;
-
+    &__card {
+        margin-bottom: 20px;
     }
-   
-  }
+}
+/* *************************** THIRD SECTION ************************/
+.third {
+    height: 100%;
 
+    &__info-picture {
+        padding-right: 0px;
+    }
+    &__info-card {
+        display: block;
+        padding: 10px;
+    }
+    &__info-picture {
+        text-align: center;
+    }
+    &__info-picture2 {
+        display: none;
+    }
+    &__info-picture3 {
+        padding-right: 0px;
+        text-align: center;
+    }
+    &__info-text2 {
+        display: none;
+    }
+    &__info-text {
+        padding-top: 0px;
+        padding-left: 0px;
+    }
+}
+/* *************************** FOURTH SECTION ************************/
+.fourth {
+    &__text-subtext {
+        padding: 10px;
+    }
+    &__cards-container {
+        display: block;
+        padding-top: 0px;
+    }
+    &__card {
+        margin-bottom: 20px;
+    }
+}
+/* *************************** FIFTH SECTION ************************/
 
+.fifth {
+    &_w_spon-row_1 {
+        display: block;
+    }
+    &_w_spon-row_2 {
+        display: block;
+    }
+}
 
-
-  }
+/* *************************** SIXTH SECTION ***********************/
+.sixth {
+    &__main-img img {
+        width: 100%;
+    }
+}
+/* *************************** FOOTER *****************************/
+.footer {
+    height: 100%;
+    &__inner {
+        display: block;
+    }
+    &__end-inner {
+        display: block;
+    }
+    &__end_r_item + .footer__end_r_item {
+        padding-left: 2px;
+    }
+    &__column_2 {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    &__column_3 {
+        display: none;
+    }
+    &__column_4 {
+        display: none;
+    }
+}
+}

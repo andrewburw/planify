@@ -2083,6 +2083,10 @@ ul .chart-li-seven {
   background-color: transparent;
 }
 
+.burger_nav {
+  display: none;
+}
+
 .menu__list-item {
   display: inline-block;
   color: white;
@@ -2410,7 +2414,7 @@ ul .chart-li-seven {
   padding-left: 40px;
 }
 
-@media screen and (min-width: 1400px) {
+@media screen and (min-width: 1000px) {
   .page__section-onehalf {
     height: 100vh;
   }
@@ -2432,13 +2436,165 @@ ul .chart-li-seven {
   }
 }
 @media only screen and (max-width: 900px) {
-  /* ******************** FIFTH SECTION ********************/
-  .fifth_w_spon-row_1 {
+  .page__section {
+    height: 100%;
+  }
+
+  .page__section-half {
+    height: 100%;
+  }
+
+  .page__section-onehalf {
+    height: 100%;
+  }
+
+  /* *************************** HEADER ********************************/
+  .header__inner {
+    padding: 10px;
+  }
+
+  .menu i {
+    color: white;
+  }
+
+  .menu__list {
+    display: none;
+  }
+
+  /* *************************** NAV MENU ********************************/
+  .burger_nav {
     display: block;
   }
 
-  /* ******************** SIXTH SECTION ********************/
+  .overlay {
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    background-color: black;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+  }
+
+  .overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+
+  .overlay a:hover,
+.overlay a:focus {
+    color: #f1f1f1;
+  }
+
+  .overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+  }
+
+  /* *************************** SECOND SECTION ************************/
+  .second {
+    height: 100%;
+  }
+  .second__inner {
+    display: block;
+  }
+  .second__card {
+    margin-bottom: 20px;
+  }
+
+  /* *************************** THIRD SECTION ************************/
+  .third {
+    height: 100%;
+  }
+  .third__info-picture {
+    padding-right: 0px;
+  }
+  .third__info-card {
+    display: block;
+    padding: 10px;
+  }
+  .third__info-picture {
+    text-align: center;
+  }
+  .third__info-picture2 {
+    display: none;
+  }
+  .third__info-picture3 {
+    padding-right: 0px;
+    text-align: center;
+  }
+  .third__info-text2 {
+    display: none;
+  }
+  .third__info-text {
+    padding-top: 0px;
+    padding-left: 0px;
+  }
+
+  /* *************************** FOURTH SECTION ************************/
+  .fourth__text-subtext {
+    padding: 10px;
+  }
+  .fourth__cards-container {
+    display: block;
+    padding-top: 0px;
+  }
+  .fourth__card {
+    margin-bottom: 20px;
+  }
+
+  /* *************************** FIFTH SECTION ************************/
+  .fifth_w_spon-row_1 {
+    display: block;
+  }
+  .fifth_w_spon-row_2 {
+    display: block;
+  }
+
+  /* *************************** SIXTH SECTION ***********************/
   .sixth__main-img img {
     width: 100%;
+  }
+
+  /* *************************** FOOTER *****************************/
+  .footer {
+    height: 100%;
+  }
+  .footer__inner {
+    display: block;
+  }
+  .footer__end-inner {
+    display: block;
+  }
+  .footer__end_r_item + .footer__end_r_item {
+    padding-left: 2px;
+  }
+  .footer__column_2 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .footer__column_3 {
+    display: none;
+  }
+  .footer__column_4 {
+    display: none;
   }
 }

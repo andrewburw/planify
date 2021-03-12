@@ -2,21 +2,29 @@
 /* *************************************************************
 |
 |
-|                     Month calendar file
+|                    Profile component
 |
-|       *  Dash board file.
+|     
 |
 |      My page: https://andrewburw.github.io/personalpage/
 |
 |
 | **************************************************************/
-const  DashBoard = () => {
-    return (
-      <div>
-          <h1>DashBOard</h1>
-        
-    </div>
-    );
-}
 
-export default DashBoard;
+
+
+const Profile= () => {
+ 
+
+
+
+
+    return (
+      <div >
+       
+       <h1>Profile Settings</h1>
+      </div>
+    );
+  }
+  
+  export default Profile;

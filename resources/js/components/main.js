@@ -20,6 +20,7 @@ const  MainPage = () => {
  
   const [isShowingReg, toggleReg] = useModal();
   const [isShowingLog, toggleLog] = useModal();
+  const [isShowingMob, toggleMob] = useModal();
   const { response, runFetch, error } = useFetch('');
 
 
@@ -49,12 +50,24 @@ const  MainPage = () => {
    let reg = isShowingReg ?  <RegisterModal isShowing={isShowingReg} hide={toggleReg} /> : '';
    let log = isShowingLog ?  <LoginModal    isShowing={isShowingLog} hide={toggleLog} /> : '';
 
-
+   let mobileNav = (  <div id="myNav" className="overlay">
+   <a href="#" className="closebtn" onClick={toggleMob}>&times;</a>
+   <div className="overlay-content">
+     <a href="#product" onClick={toggleMob}>Product </a>
+     <a href="#pricing" onClick={toggleMob}>Pricing</a>
+     <a href="#larn" onClick={toggleMob}>Learn More</a>
+     <a href="#" onClick={ toggleLog}>Log in</a>
+   
+     <button className="header__try-button" onClick={loginGuest}>Try Product</button>
+   </div>
+ </div>)
  
     return (
         <div>
          {reg}
           {log}  
+           {isShowingMob ? mobileNav : ''}
+         
               <header className="header">
       <div className="container">
         <div className="header__inner">
@@ -65,24 +78,25 @@ const  MainPage = () => {
           <nav className="menu">
             <ul className="menu__list">
               <li className="menu__list-item">
-                <a className="menu__list-link" href="#">Product </a>
+                <a className="menu__list-link" href="#product">Product </a>
               </li>
               <li className="menu__list-item">
-                <a className="menu__list-link" href="#">Pricing</a>
+                <a className="menu__list-link" href="#pricing">Pricing</a>
               </li>
               <li className="menu__list-item">
-                <a className="menu__list-link" href="#">Learn More</a>
+                <a className="menu__list-link" href="#larn">Learn More</a>
               </li>
               <li className="menu__list-item">
-                <a className="menu__list-link" onClick={ toggleReg} href="#">Register</a>
+                <a className="menu__list-link" onClick={toggleReg} href="#">Register</a>
               </li>
               <li className="menu__list-item">
-                <a className="menu__list-link" onClick={ toggleLog} href="#">Log in</a>
+                <a className="menu__list-link" onClick={toggleLog} href="#">Log in</a>
               </li>
               <li className="menu__list-item">
            <button className="header__try-button" onClick={loginGuest}>Try Product</button>
               </li>
             </ul>
+            <div className="burger_nav"><i className="fa fa-2x fa-bars" onClick={toggleMob}></i></div> 
           </nav>
         </div>
       </div>
@@ -94,22 +108,21 @@ const  MainPage = () => {
             <div className="top__logo">
               <img src="images/big-logo.png" alt="Planify big  logo" />
             </div>
-            <h1 className="top__title">Lorem Ipsum is simply dummy text</h1>
+            <h1 className="top__title">Planify is simple and perfect.</h1>
             <h4 className="top__sub-title">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley
+            Planify is interactive calendar.You can create and share calendars. You can share the time with friends or colleagues.
+             You can set the time for using things (scooter, bike, etc.). Planning with Planify is simple and perfect.
             </h4>
             <div className="top__buttons">
-              <button className="page__first-sec-btn btn white-btn">Join</button>
-              <button className="page__first-sec-btn btn white-btn">Try</button>
+              <button className="page__first-sec-btn btn white-btn"onClick={ toggleReg} >Join</button>
+              <button className="page__first-sec-btn btn white-btn" onClick={loginGuest} >Try</button>
             </div>
           </div>
         </div>
       </div>
     </section>
    
-    <section className="page__section-half second">
+    <section id="product" className="page__section-half second">
       <div className="container">
         <div className="second__inner">
           <div id="first_card" className="second__card ">
@@ -157,7 +170,7 @@ const  MainPage = () => {
       </div>
     </section>
   
-    <section className="page__section-onehalf">
+    <section id="learn" className="page__section-onehalf">
       <div className="container">
         <div className="third__inner">
           <div className="third__info-card">
@@ -208,7 +221,7 @@ const  MainPage = () => {
       </div>
     </section>
   
-    <section className="page__section fourth">
+    <section id="pricing" className="page__section fourth">
       <div className="container">
         <div className="fourth__inner">
           <div className="section-header">
@@ -371,7 +384,7 @@ const  MainPage = () => {
           <img src="images/planify_inv.png" alt="planiify" />
         </div>
         <div className="sixth__main-button">
-          <button className="fourth__btn-try btn red-btn">Try</button>
+          <button className="fourth__btn-try btn red-btn"onClick={ toggleReg}  >Try</button>
         </div>
       </div>
     </section>
@@ -385,43 +398,42 @@ const  MainPage = () => {
                 <img src="images/small_dark_logo.png" alt="planify" />
               </div>
               <p className="footer_1cl_text">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s,
+              Planify is interactive calendar.You can create and share calendars. 
+              You can share the time with friends or colleagues.
+             You can set the time for using things (scooter, bike, etc.).
+          
               </p>
             </div>
             <div className="footer__column_2">
               <h4 className="footer__title">Useful Links</h4>
               <ul className="footer__list-links">
-                <li className="footer__l_links-item">About us</li>
-                <li className="footer__l_links-item">Our services</li>
-                <li className="footer__l_links-item">Our Team</li>
-                <li className="footer__l_links-item">Testimonials</li>
+                <li className="footer__l_links-item"><a href="https://andrewburw.github.io/personalpage/">About us</a></li>
+                <li className="footer__l_links-item"><a href="https://andrewburw.github.io/personalpage/">Our services</a>
+                </li>
+                <li className="footer__l_links-item"><a href="https://andrewburw.github.io/personalpage/">Our Team</a></li>
+                <li className="footer__l_links-item"><a href="https://andrewburw.github.io/personalpage/">Testimonials</a>
+                </li>
               </ul>
             </div>
             <div className="footer__column_3">
               <h4 className="footer__title">Useful Links</h4>
               <ul className="footer__list-links">
-                <li className="footer__l_links-item"><a href="">About us</a></li>
-                <li className="footer__l_links-item">
-                  <a href="">Our services</a>
+                <li className="footer__l_links-item"><a href="https://andrewburw.github.io/personalpage/">About us</a></li>
+                <li className="footer__l_links-item"><a href="https://andrewburw.github.io/personalpage/">Our services</a>
                 </li>
-                <li className="footer__l_links-item"><a href="">Our Team</a></li>
-                <li className="footer__l_links-item">
-                  <a href="">Testimonials</a>
+                <li className="footer__l_links-item"><a href="https://andrewburw.github.io/personalpage/">Our Team</a></li>
+                <li className="footer__l_links-item"><a href="https://andrewburw.github.io/personalpage/">Testimonials</a>
                 </li>
               </ul>
             </div>
             <div className="footer__column_4">
               <h4 className="footer__title">Useful Links</h4>
               <ul className="footer__list-links">
-                <li className="footer__l_links-item"><a href="">About us</a></li>
-                <li className="footer__l_links-item">
-                  <a href="">Our services</a>
+                <li className="footer__l_links-item"><a href="https://andrewburw.github.io/personalpage/">About us</a></li>
+                <li className="footer__l_links-item"><a href="https://andrewburw.github.io/personalpage/">Our services</a>
                 </li>
-                <li className="footer__l_links-item"><a href="">Our Team</a></li>
-                <li className="footer__l_links-item">
-                  <a href="">Testimonials</a>
+                <li className="footer__l_links-item"><a href="https://andrewburw.github.io/personalpage/">Our Team</a></li>
+                <li className="footer__l_links-item"><a href="https://andrewburw.github.io/personalpage/">Testimonials</a>
                 </li>
               </ul>
             </div>

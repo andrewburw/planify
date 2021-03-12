@@ -41,6 +41,9 @@
 .header {
   background-color: transparent;
 }
+.burger_nav{
+  display: none;
+}
 .menu {
   &__list-item {
     display: inline-block;

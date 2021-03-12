@@ -6,6 +6,7 @@ import useModal from "./../hooks/useModal";
 import { CalendarNameContext } from "./../mainContext";
 import useFetch from './../hooks/useFetch';
 import { UserContext } from "./../mainContext";
+import {Link} from "react-router-dom";
 /* *************************************************************
 |
 |
@@ -75,6 +76,7 @@ const Header = ({hideShowAside}) => {
                 <p onClick={() => toggleAdd()}>Create new calendar</p>
                 <p onClick={() => toggleAddUser()}>Add users to calendar</p>
                 <p>Delete this calendar</p>
+                <Link to="/dashboard/help"><p>Help</p></Link>
 
               </div>
             </div>
@@ -87,7 +89,7 @@ const Header = ({hideShowAside}) => {
                   <div className="header_co__profile-d-content">
 
                     <p onClick={() => logOut()}>Logout</p>
-                    <p>Profile</p>
+                    <Link to="/dashboard/profile"><p>Profile</p></Link>
                    
 
                   </div>

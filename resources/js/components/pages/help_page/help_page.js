@@ -2,21 +2,29 @@
 /* *************************************************************
 |
 |
-|                     Month calendar file
+|                    Help Page component
 |
-|       *  Dash board file.
+|     
 |
 |      My page: https://andrewburw.github.io/personalpage/
 |
 |
 | **************************************************************/
-const  DashBoard = () => {
-    return (
-      <div>
-          <h1>DashBOard</h1>
-        
+
+
+
+const HelpPage = () => {
+ 
+
+
+
+
+  return (
+    <div >
+     
+     <h1>HELP</h1>
     </div>
-    );
+  );
 }
 
-export default DashBoard;
+export default HelpPage;

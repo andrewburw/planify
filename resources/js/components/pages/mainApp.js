@@ -11,7 +11,8 @@ import MonthMainApp from './calendar_month/mainAppMonth';
 import WeekMainApp from './calendar_week/mainAppWeek';
 import WeekMainGant from './calendar_gant/mainAppGant';
 import DashBoard from './dash_board/dashBoard';
-
+import HelpPage from './help_page/help_page';
+import ProfileSettings from './settings/profile';
 /* *************************************************************
 |
 |
@@ -59,6 +60,8 @@ const MainApp = () => {
             <Route path="/dashboard/month" component={MonthMainApp} />
             <Route path="/dashboard/week" component={WeekMainApp} />
             <Route path="/dashboard/gant" component={WeekMainGant} />
+            <Route path="/dashboard/help" component={HelpPage } />
+            <Route path="/dashboard/profile" component={ProfileSettings } />
           </Switch>
 
         </div>
