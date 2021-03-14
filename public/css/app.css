@@ -643,9 +643,17 @@ button:focus {
   font-size: 14px;
   color: #898787;
 }
-.header_co__profile img {
-  padding-right: 10px;
+.header_co__profilepicture {
   padding-top: 10px;
+  padding-right: 10px;
+}
+.header_co__profile canvas {
+  border-radius: 50%;
+  background-color: #C4C4C4;
+}
+.header_co__avatar {
+  height: 35px;
+  width: 35px;
 }
 .header_co__profile-ddown {
   font-size: 14px;
@@ -1759,6 +1767,13 @@ ul .chart-li-seven {
 
 .li__row-bars-text:hover {
   opacity: 1;
+}
+
+#canvas {
+  background-color: #C4C4C4;
+  height: 145px;
+  width: 145px;
+  border-radius: 50%;
 }
 
 /* *************************************************************

@@ -3,10 +3,10 @@ import AddCalendar from './../modals/menuModalAddCalendar';
 import AddUser from './../modals/menuModalAddUser';
 import Dialog from './../modals/dialogAsk';
 import useModal from "./../hooks/useModal";
-import { CalendarNameContext } from "./../mainContext";
+import { CalendarNameContext, UserContext, AvatarContext } from "./../mainContext";
 import useFetch from './../hooks/useFetch';
-import { UserContext } from "./../mainContext";
-import {Link} from "react-router-dom";
+
+import { Link } from "react-router-dom";
 /* *************************************************************
 |
 |
@@ -19,12 +19,13 @@ import {Link} from "react-router-dom";
 |
 | **************************************************************/
 
-const Header = ({hideShowAside}) => {
+const Header = ({ hideShowAside }) => {
   const { calendarName } = useContext(CalendarNameContext); // calendar id (global context)
   const [isShowingAdd, toggleAdd] = useModal();            // Create calendar
   const [isShowingAddUser, toggleAddUser] = useModal();   // Add user
   const [isShowingDialog, toggleDialog] = useModal();    // Dialog if toggled add user but calendar not selected
   const { user_name } = useContext(UserContext);
+  const { avatar } = useContext(AvatarContext);
   const { runFetch } = useFetch();
 
   const logOut = () => {
@@ -32,6 +33,23 @@ const Header = ({hideShowAside}) => {
     window.location.reload();
   }
 
+  const showAvatar = (data) => {
+    // generate avatar picture
+    let canvas = document.getElementById("header__avatar");
+    let ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#4AA7FD";
+
+    data.forEach((item) => {
+      if (item.run) {
+        ctx.fillRect(item.a, item.b, item.c, item.d);
+        ctx.fillRect(280 - (item.a), item.b, 20, 20);
+      }
+
+    })
+
+  }
+
+  avatar !== undefined ? showAvatar(JSON.parse(avatar)) : '';
   let showAddCl = isShowingAdd ? showAddCl = <AddCalendar isShowing={isShowingAdd} hide={toggleAdd} /> : ''; // rendered only when called
   let showAddUser = isShowingAddUser ? showAddUser = <AddUser isShowing={isShowingAddUser} hide={toggleAddUser} /> : '' // rendered only when called
   let dialog = isShowingDialog ?
@@ -58,7 +76,7 @@ const Header = ({hideShowAside}) => {
       <div className="container">
         <div className="header_co__inner">
           <div className="header_co__leftside">
-            <div className="header_co__leftside-burgermenu" onClick={()=> hideShowAside()}>
+            <div className="header_co__leftside-burgermenu" onClick={() => hideShowAside()}>
               <div className="header_co__leftside-b__menu-item"></div>
               <div className="header_co__leftside-b__menu-item"></div>
               <div className="header_co__leftside-b__menu-item"></div>
@@ -67,7 +85,7 @@ const Header = ({hideShowAside}) => {
             <h1 className="header_co__leftside-clname">{calendarName !== 'null' ? calendarName : ''}</h1>
           </div>
 
-          
+
           <div className="header_co__rightside-menu">
             <div className="header_co__rside-menu-ddown">
               <p>Calendar Menu <img className="header_co__rside-menu-d-img" src="/images/arrow_down.png" /></p>
@@ -82,7 +100,10 @@ const Header = ({hideShowAside}) => {
             </div>
 
             <div className="header_co__profile">
-              <img src="/images/myself_1.png" height="40" width="40" width="40" alt="" />
+              <div className="header_co__profilepicture">
+                <canvas className="header_co__avatar" id="header__avatar">
+                </canvas>
+              </div>
               <div className="header_co__profile-ddown">
                 <div className="header_co___profile-loginmenu">
                   <p>{user_name !== undefined ? user_name : ''} <img className="header_co__rside-menu-d-img" src="/images/arrow_down_bw.png" /></p>
@@ -90,7 +111,7 @@ const Header = ({hideShowAside}) => {
 
                     <p onClick={() => logOut()}>Logout</p>
                     <Link to="/dashboard/profile"><p>Profile</p></Link>
-                   
+
 
                   </div>
                 </div>

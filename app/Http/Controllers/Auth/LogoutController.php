@@ -39,9 +39,9 @@ class LogoutController extends Controller
         public function check(Request $request)
         {
            
-          $token =  auth()->user()->name;
+          $token =  auth()->user();
 
-          return response()->json(["auth" => true,'user' => $token]);
+          return response()->json(["auth" => true,'user' => $token->name,'avatar'=> $token->avatar]);
 
         }  
 }             

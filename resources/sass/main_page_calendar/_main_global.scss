@@ -155,10 +155,19 @@
         color: #898787;
 
     }
- 
-    &__profile img{
-        padding-right: 10px;
-        padding-top: 10px;
+    &__profilepicture{
+      padding-top: 10px;
+      padding-right: 10px;
+    }
+    &__profile canvas{
+       
+        border-radius: 50%;
+        background-color: #C4C4C4;
+    }
+    &__avatar{
+        height: 35px;
+        width: 35px;
+
     }
     &__profile-ddown{
         font-size: 14px;

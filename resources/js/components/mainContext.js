@@ -17,6 +17,10 @@ export const UserContext = React.createContext({ // I use this context in this p
   user_name: null,
   setUserName: () => {}
 });
+export const AvatarContext = React.createContext({ 
+ avatar: null,
+  setAvatar: () => {}
+});
 
 export const CalendarContext = React.createContext({ 
   calendar_id: null,

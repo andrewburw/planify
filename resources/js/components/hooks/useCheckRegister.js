@@ -1,6 +1,7 @@
 import { useState} from 'react';
 import useValidate from './useValidationFrom';
 import useFetch from './useFetch';
+import GeneretAvatar from './../custom_modules/generateAvatar';
 /* *************************************************************
 |
 |
@@ -42,11 +43,13 @@ const useLoginRegister = () => {
       name: inputs.username,
       email: inputs.email,
       password: inputs.password1,
-      password_confirmation: inputs.password2
+      password_confirmation: inputs.password2,
+      avatar: JSON. stringify(GeneretAvatar.generate())
 
   }
-    runFetch('/api/auth/register','post',fetchData);
   
+    runFetch('/api/auth/register','post',fetchData);
+  //  console.log(fetchData.avatar.length)
   
   }
 

@@ -2,7 +2,7 @@
 import { Redirect, Route } from 'react-router-dom';
 import React,{useEffect,useContext} from 'react';
 import useFetch from './hooks/useFetch';
-import {UserContext} from './mainContext';
+import {UserContext,AvatarContext} from './mainContext';
 /* *************************************************************
 |
 |
@@ -21,19 +21,19 @@ import {UserContext} from './mainContext';
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const {runFetch,response} = useFetch();
   const {setUserName} = useContext(UserContext);
-
+  const {setAvatar} = useContext(AvatarContext);
 
 useEffect(()=>{
 
 
   runFetch('/api/login/check', 'get');
- // setUserName(response.user)
+ 
 
 },[])
 useEffect(()=>{
 
   setUserName(response.user); // Global state => used in header where logout menu
-
+  setAvatar(response.avatar); // Global state => used in header where logout menu
 },[response])
 
 
