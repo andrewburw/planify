@@ -28,7 +28,7 @@ class DataCalendarController extends Controller
         ]);
         if ($user === 'guest') {
 
-            return response()->json(['serverError' => true,'errors' => 'Guest not allowed to add new calendars.']);
+         //   return response()->json(['serverError' => true,'errors' => 'Guest not allowed to add new calendars.']);
             
         }
 

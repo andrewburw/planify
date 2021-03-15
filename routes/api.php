@@ -53,5 +53,6 @@ Route::middleware('auth:api')->group(function () {
     // USER 
 
     Route::get( '/userinfo', 'App\Http\Controllers\UserProfileController@getUserInfo' ); // get user info for profile page
+    
 });
 

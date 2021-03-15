@@ -1,9 +1,9 @@
-.footer_1cl_text, .fifth__accordion-hiddentext, .third__info-text-text, .second__card-text, .top__sub-title, .header_co__profile-d-content, .add-modal__f-group label, .edit-modal-f_group label, .small__menu-body, .li-row-bars, .selected__user-time, .selected__user-name, .week__day_p, .main_co__month-name, .header_co__rside-menu-ddown p, .header_co__leftside-clname, .leftmenu_p-list-item, .leftmenu_p-header, .modal-log__right-form small, .modal-reg__right-server-err div, .modal-reg__right-f-f-registred, .modal-reg__form-group label, .modal-reg__right-form small, .modal-reg__heading-subwelcome, .modal-reg__heading-welcome, .section__header-subtext, body {
+.footer_1cl_text, .fifth__accordion-hiddentext, .third__info-text-text, .second__card-text, .top__sub-title, .header_co__profile-d-content, .add-modal__f-group label, .edit-modal-f_group label, .small__menu-body, .profile__rside-news-header span, .profile__rside-p-item p, .profile__rside-p-item h4, .profile__lside-edit, .li-row-bars, .selected__user-time, .selected__user-name, .week__day_p, .main_co__month-name, .header_co__rside-menu-ddown p, .header_co__leftside-clname, .leftmenu_p-list-item, .leftmenu_p-header, .modal-log__right-form small, .modal-reg__right-server-err div, .modal-reg__right-f-f-registred, .modal-reg__form-group label, .modal-reg__right-form small, .modal-reg__heading-subwelcome, .modal-reg__heading-welcome, .section__header-subtext, body {
   font-family: "Roboto-Regular";
   font-weight: 400;
 }
 
-.fourth__card-plantitle, .third__info-text-title, .second__card-title, .top__title, .add-modal__f-group select, .add-modal__f-group input, .edit-modal-container h1, .small__menu-h-h, .chart-row-item, .chart-period > span, .menu__p, .week__day_h, .calendar__weekday-name, .modal-reg__right-buttn-reg, .modal-reg__form-group input, .modal-reg__header h1, .btn-sm, .btn, .section__header-title, .title {
+.fourth__card-plantitle, .third__info-text-title, .second__card-title, .top__title, .add-modal__f-group select, .add-modal__f-group input, .edit-modal-container h1, .small__menu-h-h, .profile__lside-username, .chart-row-item, .chart-period > span, .menu__p, .week__day_h, .calendar__weekday-name, .modal-reg__right-buttn-reg, .modal-reg__form-group input, .modal-reg__header h1, .btn-sm, .btn, .section__header-title, .title {
   font-family: "Roboto-Bold";
   font-weight: bold;
 }
@@ -1769,11 +1769,154 @@ ul .chart-li-seven {
   opacity: 1;
 }
 
-#canvas {
-  background-color: #C4C4C4;
-  height: 145px;
-  width: 145px;
+/*#canvas {
+
+    background-color: #C4C4C4;
+    height: 145px;
+    width: 145px;
+    border-radius: 50%;
+} */
+.profile__container {
+  display: flex;
+  width: 100%;
+}
+
+.profile__lside {
+  flex: 1;
+  height: 80vh;
+}
+.profile__lside-avatar {
+  padding-top: 60px;
+}
+.profile__lside-username {
+  padding-top: 15px;
+  padding-right: 80px;
+  font-size: 16px;
+}
+.profile__lside-buttons {
+  padding-top: 20px;
+}
+.profile__lside-edit {
+  border-radius: 8px;
+  border: 1px solid #0370d6;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  padding: 11px 40px;
+}
+.profile__lside-edit:hover {
+  background-color: #0370d6;
+  color: white;
+}
+.profile__lside-canvas {
   border-radius: 50%;
+  background-color: #c4c4c4;
+  height: 150px;
+  width: 150px;
+}
+
+.profile__rside {
+  flex: 2;
+  width: 60vw;
+}
+.profile__rside-header {
+  padding-top: 20px;
+}
+.profile__rside-menu {
+  display: flex;
+}
+.profile__rside-menu-item {
+  padding-right: 20px;
+  cursor: pointer;
+}
+.profile__rside-hr {
+  border: 1px solid #a3a1a1;
+}
+.profile__rside-menu-item:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  margin-top: 10px;
+  background: #0370d6;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+.profile__rside-menu-item:hover:after {
+  width: 100%;
+  left: 0;
+}
+.profile__rside-menu-item:first-child:after {
+  content: "";
+  margin-top: 10px;
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid #0370d6;
+}
+.profile__rside-pined {
+  padding-top: 10px;
+  text-align: left;
+}
+.profile__rside-p-container {
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.profile__rside-p-item {
+  flex: 45%;
+  background-color: black;
+  color: white;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  border-radius: 8px;
+  height: 80px;
+  display: grid;
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+.profile__rside-p-item:hover {
+  transform: translateX(4px);
+}
+.profile__rside-p-item h4 {
+  text-align: left;
+  font-size: 14px;
+  padding: 5px;
+}
+.profile__rside-p-item p {
+  text-align: left;
+  font-size: 14px;
+  color: #4aa7fd;
+  padding: 5px;
+  align-self: end;
+}
+.profile__rside-news-cont {
+  padding-top: 20px;
+}
+.profile__rside-news-header {
+  text-align: left;
+  border-bottom: 1px solid #a3a1a1;
+  height: 10px;
+}
+.profile__rside-news-header span {
+  background-color: whitesmoke;
+  padding-right: 10px;
+  font-size: 14px;
+}
+.profile__rside-time-line {
+  border-left: 1px solid #a3a1a1;
+  float: left;
+  padding-top: 10px;
+  padding-left: 20px;
+}
+.profile__rside-tl-header {
+  font-size: 15px;
+}
+.profile__rside-tl-item {
+  padding-left: 40px;
+}
+.profile__rside-tl-item span {
+  color: #0370d6;
 }
 
 /* *************************************************************

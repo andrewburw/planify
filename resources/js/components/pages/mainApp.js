@@ -61,7 +61,7 @@ const MainApp = () => {
             <Route path="/dashboard/week" component={WeekMainApp} />
             <Route path="/dashboard/gant" component={WeekMainGant} />
             <Route path="/dashboard/help" component={HelpPage } />
-            <Route path="/dashboard/profile" component={ProfileSettings } />
+            <Route path="/dashboard/profileupdate" component={ProfileSettings } />
           </Switch>
 
         </div>
