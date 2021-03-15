@@ -1,7 +1,7 @@
 import { useEffect, useContext, useState } from "react";
 import useFetch from './../../hooks/useFetch';
-import { AvatarContext, UserContext } from './../../mainContext';
-import { Link } from 'react-router-dom';
+import { AvatarContext, UserContext,CalendarNameContext, CalendarContext} from './../../mainContext';
+import { Link ,Redirect } from 'react-router-dom';
 import Loading from './../../custom_modules/loading_white_full.svg';
 /* *************************************************************
 |
@@ -18,16 +18,22 @@ import Loading from './../../custom_modules/loading_white_full.svg';
 const DashBoard = () => {
   const { response, runFetch, error } = useFetch();
   const [recivedData, setData] = useState(null);
+  const [redirect , setRedirect] = useState(false)
   const { avatar } = useContext(AvatarContext); // getting avatar object
   const { user_name } = useContext(UserContext); // getting user name
+  const {setCalendar } = useContext(CalendarContext);
+  const {setCalendarName } = useContext(CalendarNameContext);
   useEffect(() => {
 
     runFetch('/api/userinfo', 'get');
 
   }, [])
   const showCalendar = (e) => {
+  
+    setCalendar(e.target.dataset.id); 
+    setCalendarName(e.target.dataset.name);
+    setRedirect(true);
 
-    
   }
   const showAvatar = (data) => {
 
@@ -46,11 +52,15 @@ const DashBoard = () => {
     })
 
   }
+  if (redirect) { // redirect to month calendar
+    return <Redirect to='/dashboard/month'></Redirect>;
+  }
+
 
   if (response !== 'null' && recivedData === null) { // infinite loop proteсtion
 
-    setData(response.data);
-    console.log(response.data)
+    setData(response);
+   
     setTimeout(() => {
       /*
 
@@ -62,6 +72,9 @@ const DashBoard = () => {
     }, 10);
 
   }
+  const date = new Date(); 
+  const month = date.toLocaleString('default', { month: 'long' });
+  const year = date.getFullYear();
 
   return recivedData !== null ? (
     <>
@@ -99,12 +112,12 @@ const DashBoard = () => {
 
                 <div className="profile__rside-p-container">
 
-                  {recivedData !== 'null' ? recivedData.map((item, i) => {
-                    return  <div key={i} className="profile__rside-p-item" onClick={showCalendar}>
-                      <h4 className="profile__rside-item-header">
-                        <i className="far fa-address-card"></i> {item.calendar_name}
-                                </h4>
-                      <p className="profile__rside-item-users">2 users</p>
+                  {recivedData !== 'null' ? recivedData.dataCalendars.map((item, i) => {
+                    return  <div key={i} className="profile__rside-p-item" data-id={item.id} data-name={item.calendar_name} onClick={showCalendar}>
+                      <h4  data-id={item.id} data-name={item.calendar_name} className="profile__rside-item-header">
+                        <i  data-id={item.id} data-name={item.calendar_name} className="far fa-address-card"></i> {item.calendar_name}
+                      </h4>
+                      <p  data-id={item.id} data-name={item.calendar_name} className="profile__rside-item-users">2 users</p>
                     </div>
                    
                   }) : <img src={Loading} alt="Planify loading" />}
@@ -115,28 +128,22 @@ const DashBoard = () => {
                 <h3 className="profile__rside-pined">Activity</h3>
                 <div className="profile__rside-news-cont">
                   <h3 className="profile__rside-news-header">
-                    <span>March 2021</span>
+                    <span>{month} {year}</span>
                   </h3>
                   <div className="profile__rside-time-line">
                     <h3 className="profile__rside-tl-header">
-                      Crated 12 updates in 2 calendar
+                      Crated 9 updates in 2 calendar
                     </h3>
                     <ul className="profile__rside-tl-list">
-                      <li className="profile__rside-tl-item">
-                        <span>Undusted</span> 1 - updates 03.03.21
-                      </li>
-                      <li className="profile__rside-tl-item">
-                        <span>Undusted</span> 2 - updates 03.03.21
-                      </li>
-                      <li className="profile__rside-tl-item">
-                        <span>Undusted</span> 3 - updates 03.03.21
-                      </li>
-                      <li className="profile__rside-tl-item">
-                        <span>Undusted</span> 4 - updates 03.03.21
-                      </li>
-                      <li className="profile__rside-tl-item">
-                        <span>Undusted</span> 5 - updates 03.03.21
-                      </li>
+
+                    {recivedData !== 'null' ? recivedData.dataNews.map((item, i) => {
+                    return   <li key={i} className="profile__rside-tl-item">
+                    <span>{item.calendar_name}</span> {i+1} - updated at {item.updated_at.split("T")[0]}
+                  </li>
+                   
+                  }) : <img src={Loading} alt="Planify loading" />}
+
+                   
                     </ul>
                   </div>
                 </div>

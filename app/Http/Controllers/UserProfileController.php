@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Calendar;
+use App\Models\GuestSchedules;
+use App\Models\DaySchedules;
 
 class UserProfileController extends Controller
 {
-    public function getUserInfo(Request $request)
+    public function getUserInfo()
     {
         $logedUser =  auth()->user();  // logged in user id
         
@@ -15,6 +16,37 @@ class UserProfileController extends Controller
           
        
        
-        return response()->json([ 'serverError'=>false, 'data' =>  $table]);
+        return response()->json([ 'serverError'=>false, 'dataCalendars' =>  $table, 'dataNews'=> $this->getNews()]);
+    }
+    public function getNews()
+    {
+        // get latest records as news
+        $logeedUserName=  auth()->user()->name;
+
+        if ($logeedUserName === 'guest') {
+
+            return  GuestSchedules::select('*')  // get latest records
+            ->leftjoin('calendars', 'calendars.id', '=', 'calendar_id')
+            ->orderBy('guest_schedules.id', 'desc')->take(9)->get();
+            
+        }
+
+
+      $result = DaySchedules::select('*')  // get latest records
+        ->leftjoin('calendars', 'calendars.id', '=', 'calendar_id')
+        ->orderBy('guest_schedules.id', 'desc')->take(9)->get();
+       
+         
+
+
+       return $result;
+
+
+
+
+
+
+
+
     }
 }
