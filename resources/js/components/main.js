@@ -108,7 +108,7 @@ const  MainPage = () => {
             <div className="top__logo">
               <img src="images/big-logo.png" alt="Planify big  logo" />
             </div>
-            <h1 className="top__title">Planify is simple and perfect.</h1>
+            <h1 className="top__title">Planify is simple and perfect</h1>
             <h4 className="top__sub-title">
             Planify is interactive calendar.You can create and share calendars. You can share the time with friends or colleagues.
              You can set the time for using things (scooter, bike, etc.). Planning with Planify is simple and perfect.
@@ -129,10 +129,9 @@ const  MainPage = () => {
             <div className="second__card-logoimg">
               <img src="images/card_image_1.png" alt="card logo" />
             </div>
-            <h1 className="second__card-title ">Lorem Ipsum</h1>
+            <h1 className="second__card-title ">Fast</h1>
             <p className="second__card-text">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's
+            Our application differs from others in its speed of work. The speed of completing the assigned tasks.
             </p>
             <div className="second__card-href">
               <a href="#" className="second__crd-href">View More &gt; </a>
@@ -143,10 +142,9 @@ const  MainPage = () => {
             <div className="second__card-logoimg">
               <img src="images/card_image_2.png" alt="card logo" />
             </div>
-            <h1 className="second__card-title">Lorem Ipsum</h1>
+            <h1 className="second__card-title">Simple</h1>
             <p className="second__card-text">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's
+            Our application is very simple. Any user can understand the control interface.Simple and perfect.
             </p>
             <div className="second__card-href">
               <a href="#" className="second__crd-href">View More &gt; </a>
@@ -157,10 +155,9 @@ const  MainPage = () => {
             <div className="second__card-logoimg">
               <img src="images/card_image_3.png" alt="card logo" />
             </div>
-            <h1 className="second__card-title">Lorem Ipsum</h1>
+            <h1 className="second__card-title">Quality</h1>
             <p className="second__card-text">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's
+            Our application was written by the best engineers, stability and safety of work is guaranteed.
             </p>
             <div className="second__card-href">
               <a href="#" className="second__crd-href">View More &gt; </a>
@@ -171,8 +168,13 @@ const  MainPage = () => {
     </section>
   
     <section id="learn" className="page__section-onehalf">
+      
       <div className="container">
         <div className="third__inner">
+        <div className="section-header">
+            <h1 className="section__header-title">Why choose Planify ?</h1>
+          
+          </div>
           <div className="third__info-card">
             <div id="third_one" className="third__info-text hide">
               <h1 className="third__info-text-title">Lorem Ipsum</h1>
@@ -227,8 +229,7 @@ const  MainPage = () => {
           <div className="section-header">
             <h1 className="section__header-title">Afforable Pricing</h1>
             <p className="fourth__text-subtext section__header-subtext">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
+                    Everything You Need to Power Your Website
             </p>
           </div>
         </div>
@@ -236,54 +237,57 @@ const  MainPage = () => {
         <div className="fourth__cards-container">
           <div className="fourth__card">
             <div className="fourth__card-tittle">
-              <h4 className="fourth__card-title">Lorem Ipsum</h4>
+              <h4 className="fourth__card-title">Plan</h4>
             </div>
             <hr />
             <h1 className="fourth__card-plantitle">Free</h1>
+            <p>Ideal solution for beginners</p>
             <ul className="fourth__price-benefits">
               <li className="fourth__price-ben-item">Unlimited Acces</li>
-              <li className="fourth__price-ben-item">Free setup</li>
-              <li className="fourth__price-ben-item">Unlimited Acces</li>
+              <li className="fourth__price-ben-item">No shared calendars</li>
+              <li className="fourth__price-ben-item">Limited Acces</li>
               <li className="fourth__price-ben-item">No API</li>
-              <li className="fourth__price-ben-item">Unlimeted support</li>
+              <li className="fourth__price-ben-item">Limeted support</li>
             </ul>
             <div className="fourth__btns">
-              <button className="fourth__btn-try btn red-btn">Join</button>
+              <button className="fourth__btn-try btn red-btn" onClick={ toggleReg} >Join</button>
             </div>
           </div>
           <div className="fourth__card">
             <div className="fourth__card-tittle">
-              <h4 className="fourth__card-title">Lorem Ipsum</h4>
+              <h4 className="fourth__card-title">Plan</h4>
             </div>
             <hr />
-            <h1 className="fourth__card-plantitle">Free</h1>
+            <h1 className="fourth__card-plantitle">Basic</h1>
+            <p>Perfect package for personal buisness</p>
             <ul className="fourth__price-benefits">
               <li className="fourth__price-ben-item">Unlimited Acces</li>
               <li className="fourth__price-ben-item">Free setup</li>
-              <li className="fourth__price-ben-item">Unlimited Acces</li>
+              <li className="fourth__price-ben-item">3 Users</li>
               <li className="fourth__price-ben-item">No API</li>
               <li className="fourth__price-ben-item">Unlimeted support</li>
             </ul>
             <div className="fourth__btns">
-              <button className="fourth__btn-try btn red-btn">Join</button>
+              <button className="fourth__btn-try btn red-btn" onClick={ toggleReg}>Join</button>
             </div>
           </div>
 
           <div className="fourth__card">
             <div className="fourth__card-tittle">
-              <h4 className="fourth__card-title">Lorem Ipsum</h4>
+              <h4 className="fourth__card-title">Plan</h4>
             </div>
             <hr />
-            <h1 className="fourth__card-plantitle">Free</h1>
+            <h1 className="fourth__card-plantitle">Large</h1>
+            <p>Optimized for large businesses</p>
             <ul className="fourth__price-benefits">
               <li className="fourth__price-ben-item">Unlimited Acces</li>
               <li className="fourth__price-ben-item">Free setup</li>
-              <li className="fourth__price-ben-item">Unlimited Acces</li>
-              <li className="fourth__price-ben-item">No API</li>
+              <li className="fourth__price-ben-item">Unlimited Users</li>
+              <li className="fourth__price-ben-item">API</li>
               <li className="fourth__price-ben-item">Unlimeted support</li>
             </ul>
             <div className="fourth__btns">
-              <button className="fourth__btn-try btn red-btn">Join</button>
+              <button className="fourth__btn-try btn red-btn" onClick={ toggleReg}>Join</button>
             </div>
           </div>
         </div>
