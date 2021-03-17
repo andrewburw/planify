@@ -20,10 +20,15 @@ const HelpPage = () => {
 
 
   return (
-    <div >
-     
-     <h1>HELP</h1>
-    </div>
+    <>
+      <div className="main_co">
+        <div className="container">
+          <div className="main_co__month-name">
+            <h1>Profile</h1>
+          </div>
+        </div>
+      </div>    
+    </>
   );
 }
 
