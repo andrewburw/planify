@@ -56,7 +56,8 @@ const  MainPage = () => {
      <a href="#product" onClick={toggleMob}>Product </a>
      <a href="#pricing" onClick={toggleMob}>Pricing</a>
      <a href="#larn" onClick={toggleMob}>Learn More</a>
-     <a href="#" onClick={ toggleLog}>Log in</a>
+     <a href="#larn" onClick={()=>{toggleReg();toggleMob() }}>Register</a>
+     <a href="#" onClick={ ()=>{toggleLog(); toggleMob()} }>Log in</a>
    
      <button className="header__try-button" onClick={loginGuest}>Try Product</button>
    </div>
