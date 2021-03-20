@@ -1,9 +1,9 @@
-.footer_1cl_text, .fifth__accordion-hiddentext, .third__info-text-text, .second__card-text, .top__sub-title, .header_co__profile-d-content, .add-modal__f-group label, .edit-modal-f_group label, .small__menu-body, .profile__rside-news-header span, .profile__rside-p-item p, .profile__rside-p-item h4, .profile__lside-edit, .li-row-bars, .selected__user-time, .selected__user-name, .week__day_p, .main_co__month-name, .header_co__rside-menu-ddown p, .header_co__leftside-clname, .leftmenu_p-list-item, .leftmenu_p-header, .modal-log__right-form small, .modal-reg__right-server-err div, .modal-reg__right-f-f-registred, .modal-reg__form-group label, .modal-reg__right-form small, .modal-reg__heading-subwelcome, .modal-reg__heading-welcome, .section__header-subtext, body {
+.footer_1cl_text, .fifth__accordion-hiddentext, .third__info-text-text, .second__card-text, .top__sub-title, .header_co__profile-d-content, .add-modal__f-group label, .edit-modal-f_group label, .small__menu-body, .psettings__rside-from-update, .psettings__lside-edit, .profile__rside-news-header span, .profile__rside-p-item p, .profile__rside-p-item h4, .profile__lside-edit, .li-row-bars, .selected__user-time, .selected__user-name, .week__day_p, .main_co__month-name, .header_co__rside-menu-ddown p, .header_co__leftside-clname, .leftmenu_p-list-item, .leftmenu_p-header, .modal-log__right-form small, .modal-reg__right-server-err div, .modal-reg__right-f-f-registred, .modal-reg__form-group label, .modal-reg__right-form small, .modal-reg__heading-subwelcome, .modal-reg__heading-welcome, .section__header-subtext, body {
   font-family: "Roboto-Regular";
   font-weight: 400;
 }
 
-.fourth__card-plantitle, .third__info-text-title, .second__card-title, .top__title, .add-modal__f-group select, .add-modal__f-group input, .edit-modal-container h1, .small__menu-h-h, .profile__lside-username, .chart-row-item, .chart-period > span, .menu__p, .week__day_h, .calendar__weekday-name, .modal-reg__right-buttn-reg, .modal-reg__form-group input, .modal-reg__header h1, .btn-sm, .btn, .section__header-title, .title {
+.fourth__card-plantitle, .third__info-text-title, .second__card-title, .top__title, .add-modal__f-group select, .add-modal__f-group input, .edit-modal-container h1, .small__menu-h-h, .psettings__lside-username, .profile__lside-username, .chart-row-item, .chart-period > span, .menu__p, .week__day_h, .calendar__weekday-name, .modal-reg__right-buttn-reg, .modal-reg__form-group input, .modal-reg__header h1, .btn-sm, .btn, .section__header-title, .title {
   font-family: "Roboto-Bold";
   font-weight: bold;
 }
@@ -1917,6 +1917,101 @@ ul .chart-li-seven {
 }
 .profile__rside-tl-item span {
   color: #0370d6;
+}
+
+.psettings__container {
+  display: flex;
+  width: 100%;
+}
+
+.psettings__lside {
+  flex: 1;
+  height: 80vh;
+  text-align: center;
+}
+.psettings__lside-avatar {
+  padding-top: 60px;
+}
+.psettings__lside-username {
+  padding-top: 15px;
+  padding-right: 80px;
+  font-size: 16px;
+}
+.psettings__lside-buttons {
+  padding-top: 20px;
+}
+.psettings__lside-edit {
+  border-radius: 8px;
+  border: 1px solid #0370d6;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  padding: 11px 40px;
+}
+.psettings__lside-edit:hover {
+  background-color: #0370d6;
+  color: white;
+}
+.psettings__lside-canvas {
+  border-radius: 50%;
+  background-color: #c4c4c4;
+  height: 150px;
+  width: 150px;
+}
+
+.psettings__rside {
+  flex: 2;
+  width: 60vw;
+}
+.psettings__rside-header {
+  padding-top: 20px;
+}
+.psettings__rside-hr {
+  border: 1px solid #a3a1a1;
+}
+.psettings__rside form {
+  padding-left: 70px;
+  padding-right: 200px;
+}
+.psettings__rside-form-control {
+  width: 100%;
+  background: #ececec;
+  border: 1px solid #a3a1a1;
+  height: 30px;
+  border-radius: 5px;
+}
+.psettings__rside-form-c-textarea {
+  width: 100%;
+  background: #ececec;
+  border: 1px solid #a3a1a1;
+  height: 50px;
+  border-radius: 5px;
+}
+.psettings__rside-form-group {
+  padding-top: 20px;
+}
+.psettings__rside-form-group label {
+  padding-bottom: 5px;
+  font-size: 16px;
+  line-height: 19px;
+  color: #000000;
+}
+.psettings__rside-form-text {
+  padding-top: 10px;
+  color: #a3a1a1;
+}
+.psettings__rside-from-buttons {
+  padding-top: 20px;
+}
+.psettings__rside-from-update {
+  border-radius: 8px;
+  border: 1px solid #0370d6;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  padding: 11px 40px;
+}
+.psettings__rside-from-update:hover {
+  background-color: #0370d6;
+  color: white;
 }
 
 /* *************************************************************

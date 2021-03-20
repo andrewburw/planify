@@ -110,7 +110,7 @@ const Header = ({ hideShowAside }) => {
                   <div className="header_co__profile-d-content">
 
                     <p onClick={() => logOut()}>Logout</p>
-                    <Link to="/dashboard/profile"><p>Profile</p></Link>
+                    <Link to="/dashboard/profileupdate"><p>Profile</p></Link>
 
 
                   </div>

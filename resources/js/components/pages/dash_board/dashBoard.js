@@ -78,9 +78,7 @@ const DashBoard = () => {
 
   return recivedData !== null ? (
     <>
-      <div className="main_co">
-        <div className="container">
-          <div className="main_co__month-name">
+               <div className="main_co__month-name">
             <h1>Profile</h1>
             <div className="profile__container">
               <div className="profile__lside">
@@ -92,7 +90,7 @@ const DashBoard = () => {
                   <Link to="/dashboard/profileupdate"><button className="profile__lside-edit">Edit profile</button></Link>
                 </div>
               </div>
-              <div className="profile__rside">
+              <div className="profile__rside" >
                 <div className="profile__rside-header">
                   <ul className="profile__rside-menu">
                     <li className="profile__rside-menu-item">
@@ -150,8 +148,7 @@ const DashBoard = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+    
     </>
   ) : <div className="full__page__loading"><img src={Loading} /></div>;;
 }
