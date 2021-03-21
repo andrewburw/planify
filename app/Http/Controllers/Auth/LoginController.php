@@ -46,30 +46,30 @@ class LoginController extends Controller
     public function loginUser(Request $request)
     {
         $validator = Validator::make($request->all(), [
-             'email' => ['required', 'string', 'email', 'max:255'],
-                      'password' => ['required', 'string', 'min:6']
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['required', 'string', 'min:6']
         ]);
         if ($validator->fails()) {
-            return response(['errors'=>$validator->errors()->all()], 422);
+            return response()->json(['serverError' => true, 'errors' => $validator->errors()->all()]);
+            //return response(['errors'=>$validator->errors()->all()], 422);
+
         }
         $user = User::where('email', $request->email)->first();
 
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
                 $token = $user->createToken('Laravel Password Grant Undust')->accessToken;
-              
-                
-                return response('{"serverError":false}')->cookie('token', $token, 100000);
-            } else {
-                $err = ['serverError' => true,
-                'errors' =>"Password mismatch"];
 
-                return response()->json($err);
+
+                return response('{"serverError":false}')->cookie('token', $token, 100000);
+                
+            } else {
+
+                return response()->json(['serverError' => true, 'errors' => 'Error please try again']);
             }
         } else {
-            $response = ["message" =>'User does not exist'];
-            return response($response, 422);
+
+            return response()->json(['serverError' => true, 'errors' => 'Error please try again']);
         }
     }
-  
 }

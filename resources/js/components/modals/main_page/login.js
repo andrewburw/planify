@@ -176,7 +176,7 @@ const Modal = ({ isShowing, hide }) => {
 
                   <div className="modal-log__right-form-footer">
                     {btnLogin}
-                    <p className="modal-reg__right-f-f-registred"><a href="#">I am not a member</a></p>
+                    <p className="modal-reg__right-f-f-registred"><a href="#" onClick={hide}>I am not a member</a></p>
                   </div>
                 </form>
               </div>

@@ -446,13 +446,13 @@ button:focus {
 
 .full__page__loading{
   margin-top: 200px;
-
+  transition-duration: 0.5s;
   display: block;
   margin: auto;
-  width: 20%;
+  width: 40%;
   margin-top: 40vh;
    &-loading{
-
+    
     text-align: center;
    }
 
