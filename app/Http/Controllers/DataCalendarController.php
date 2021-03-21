@@ -26,11 +26,11 @@ class DataCalendarController extends Controller
             'calendar_name' => ['required', 'string', 'min:3']
 
         ]);
-        if ($user === 'guest') {
+       // if ($user === 'guest') {
 
-            return response()->json(['serverError' => true,'errors' => 'Guest not allowed to add new calendars.']);
+      //      return response()->json(['serverError' => true,'errors' => 'Guest not allowed to add new calendars.']);
             
-        }
+      //  }
 
         if ($validator->fails()) {
       

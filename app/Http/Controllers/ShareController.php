@@ -105,11 +105,11 @@ class ShareController extends Controller
         $table = User::where('email', $data['email'])->get();
         $tableOwner = Calendar::where('id', $data['calendar_id'])->get();
 
-        if ($logeedUserName === 'guest') {
+     //   if ($logeedUserName === 'guest') {
 
-            return response()->json(['serverError' => true,'error' => 'Guest not allowed to add users.']);
+        //    return response()->json(['serverError' => true,'error' => 'Guest not allowed to add users.']);
             
-        }
+       // }
        
 
         if ($logedUser !==  $tableOwner[0]['user_id']) {
