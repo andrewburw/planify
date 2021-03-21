@@ -39,6 +39,7 @@ const Modal = ({ isShowing, hide }) => {
     
     if (error.serverError) {
         setError({status: true, error: error.errors});
+        setProtect(false);
     }
       
 
@@ -98,7 +99,7 @@ const Modal = ({ isShowing, hide }) => {
                                 <div className="add-modal__f-group">
                                     <label htmlFor="appt">Calendar name:</label>
                                     <input type="text" name="calendarName" onChange={handleInputChange} value={inputs.calendarName}
-                                      placeholder="Add calendar name"   required />
+                                      placeholder="Add calendar name" autoComplete="off"  required />
                                 </div>
                                 <div className="add-modal__f-group">
                                     <label htmlFor="appt">Calendar type:</label>

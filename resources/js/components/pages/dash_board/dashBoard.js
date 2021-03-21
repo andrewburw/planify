@@ -106,7 +106,7 @@ const DashBoard = () => {
                 </div>
                 <hr className="profile__rside-hr" />
 
-                <h3 className="profile__rside-pined">Pinned</h3>
+                <h3 className="profile__rside-pined">Last 4</h3>
 
                 <div className="profile__rside-p-container">
 

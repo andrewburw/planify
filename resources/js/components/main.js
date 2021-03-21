@@ -1,9 +1,10 @@
 import { Redirect } from "react-router-dom";
 import RegisterModal from "./modals/main_page/register";
 import LoginModal from "./modals/main_page/login";
+import {useState} from 'react';
 import useModal from "./hooks/useModal";
 import useFetch from './hooks/useFetch';
-
+import Loading from './custom_modules/loading_white_full.svg';
 /* *************************************************************
 |
 |
@@ -17,7 +18,7 @@ import useFetch from './hooks/useFetch';
 | **************************************************************/
 
 const  MainPage = () => {
- 
+  const [loaded, setLoaded] = useState(false); // full page loading
   const [isShowingReg, toggleReg] = useModal();
   const [isShowingLog, toggleLog] = useModal();
   const [isShowingMob, toggleMob] = useModal();
@@ -63,12 +64,13 @@ const  MainPage = () => {
    </div>
  </div>)
  
-    return (
+    return loaded  ?(
         <div>
          {reg}
           {log}  
            {isShowingMob ? mobileNav : ''}
          
+
               <header className="header">
       <div className="container">
         <div className="header__inner">
@@ -465,7 +467,12 @@ const  MainPage = () => {
       </div>
     </section>
         </div>
-    );
+    ) : <div className="full__page__loading">
+          <img src="/images/main-background.jpg"   onLoad={() => setLoaded(true)} alt="Planify"   style={loaded ? { display: 'none' } : {}} />
+      <div><img src="/images/logo.png" alt="Planify" /></div>
+      <div className="full__page__loading-loading"><img src={Loading} /></div>
+      
+      </div>;
 }
 
 export default MainPage;

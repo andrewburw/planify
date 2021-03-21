@@ -446,7 +446,15 @@ button:focus {
 
 .full__page__loading{
   margin-top: 200px;
-  
+
+  display: block;
+  margin: auto;
+  width: 20%;
+  margin-top: 40vh;
+   &-loading{
+
+    text-align: center;
+   }
 
 }
 

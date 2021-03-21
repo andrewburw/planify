@@ -12,7 +12,7 @@ class UserProfileController extends Controller
     {
         $logedUser =  auth()->user();  // logged in user id
         
-        $table= Calendar::where('user_id',auth('api')->user()['id'])->get();
+        $table= Calendar::where('user_id',auth('api')->user()['id'])->orderBy('created_at', 'desc')->take(4)->get();
           
        
        
@@ -34,7 +34,7 @@ class UserProfileController extends Controller
 
       $result = DaySchedules::select('*')  // get latest records
         ->leftjoin('calendars', 'calendars.id', '=', 'calendar_id')
-        ->orderBy('guest_schedules.id', 'desc')->take(9)->get();
+        ->orderBy('day_schedules.id', 'desc')->take(9)->get();
        
          
 

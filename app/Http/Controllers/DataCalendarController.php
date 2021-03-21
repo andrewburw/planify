@@ -23,21 +23,22 @@ class DataCalendarController extends Controller
          // dd($request);
         $user =  auth()->user()->name;
         $validator = Validator::make($request->all(), [
-            'calendar_name' => ['required', 'string', 'min:3']
+            'calendar_name' => ['required', 'string', 'min:3','unique:calendars']
 
         ]);
-       // if ($user === 'guest') {
+        if ($user === 'guest') {
 
-      //      return response()->json(['serverError' => true,'errors' => 'Guest not allowed to add new calendars.']);
+           return response()->json(['serverError' => true,'errors' => 'Guest not allowed to add new calendars.']);
             
-      //  }
+        }
 
         if ($validator->fails()) {
-      
-            return response()->json(['serverError' => true,'errors' => $validator->errors()]);
+            $error = $validator->errors()->first();
+            return response()->json(['serverError' => true,'errors' =>  $error]);
 
         } else {
             return  $this->createCalendar($request->all());
+            //return response()->json(['serverError' => true,'errors' => 'test']);
         }
     }
 
