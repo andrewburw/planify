@@ -5,11 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Custom\CustomModuleGenerateSchedules;
 use App\Models\GuestSchedules;
+use App\Models\CalendarAuthors;
+
+
+/* *************************************************************
+|
+|
+|                     Guest Controller
+|
+|       *  This file generates data for guest user and posts data to guestschedules DB.
+|
+|      My page: https://andrewburw.github.io/personalpage/
+|
+|
+| **************************************************************/
 
 class GuestController extends Controller
 {
     //
-    public static function generate($day)
+    public static function generate($day,$calendarId)
     {
         $today = date("m.d.y");
         $genDay = GuestSchedules::select('gen_date')->first();
@@ -27,9 +41,9 @@ class GuestController extends Controller
         if ($genDay[0]['gen_date'] !==  $today) {
             // check if day of generation is not today generate new data
 
-            $data = CustomModuleGenerateSchedules::generateData($day);
+            $data = CustomModuleGenerateSchedules::generateData($day,$calendarId);
             GuestSchedules::whereNotNull('id')->delete();// delete all data in table
-         
+            self::postFakeAuthors($calendarId);
          
             foreach ($data as &$value) {
                 self::createDaySchedule($value);
@@ -39,7 +53,7 @@ class GuestController extends Controller
        
         return true;
     }
-
+ // ***************************************************************************************************
     public static function delete($id)
     {
         $table= GuestSchedules::where('id', $id)->delete();
@@ -51,7 +65,23 @@ class GuestController extends Controller
             return   false;
         }
     }
+
     // ***************************************************************************************************
+  
+    public static function postFakeAuthors($calendarId)
+    {  // post fake calendar users
+        $queryResult = CalendarAuthors::create([
+            'user_id' => 3,
+            'calendar_id' => $calendarId
+           
+        ]); 
+
+        $queryResul1 = CalendarAuthors::create([
+            'user_id' => 4,
+            'calendar_id' => $calendarId
+           
+        ]); 
+    }
     // ***************************************************************************************************
     /**
        * Create (POST) a new day GUEST Schedule.

@@ -33,9 +33,9 @@ class DataScheduleController extends Controller
           
         if ($user === 'guest') {
             // GUEST USER DATA is generated automaticly and it's fake data :)
-            $generatedData = GuestController::generate($id['day']);
-            $table= GuestSchedules::where('calendar_id', $id['calendar_id'])->get();
-            $test = CustomModule::RedoData($table);
+            $generatedData = GuestController::generate($id['day'],$id['calendar_id']);
+            $table= GuestSchedules::where('calendar_id', $id['calendar_id'])->get(); // table for fake guest control
+            $test = CustomModule::RedoData($table); // prepare right data format for frontend
 
             return   response()->json(array('serverError'=>false,'data'=>$test));
     

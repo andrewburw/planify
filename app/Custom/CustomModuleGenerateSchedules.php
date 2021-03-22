@@ -6,7 +6,7 @@ namespace App\Custom;
 |
 |                     Generate Schedules file
 |
-|       *  This file generates data for guest user and posts data to guestschedules DB.
+|       *  This file generates data for guest user 
 |
 |      My page: https://andrewburw.github.io/personalpage/
 |
@@ -14,7 +14,7 @@ namespace App\Custom;
 | **************************************************************/
 class CustomModuleGenerateSchedules
 {
-    public static function generateData($day){
+    public static function generateData($day,$calendarId){
 
         $testData = [];
        
@@ -23,13 +23,13 @@ class CustomModuleGenerateSchedules
 
         for ($i = 0; $i <= 8; $i++) {
 
-            array_push($testData, ['start'=>'8:00','end'=>'12:00','day' => $day+$i,'name'=>'Andris','calendar_id'=>1,'month'=> $month,'gen_date' => $today]);
-            array_push($testData, ['start'=>'12:00','end'=>'18:00','day' => $day+$i,'name'=>'guest','calendar_id'=>1,'month'=> $month,'gen_date' => $today]);
-            array_push($testData, ['start'=>'18:00','end'=>'20:00','day' => $day+$i,'name'=>'Jhon','calendar_id'=>1,'month'=> $month,'gen_date' => $today]);
+            array_push($testData, ['start'=>'8:00','end'=>'12:00','day' => $day+$i,'name'=>'Andris','calendar_id'=>$calendarId,'month'=> $month,'gen_date' => $today]);
+            array_push($testData, ['start'=>'12:00','end'=>'18:00','day' => $day+$i,'name'=>'guest','calendar_id'=>$calendarId,'month'=> $month,'gen_date' => $today]);
+            array_push($testData, ['start'=>'18:00','end'=>'20:00','day' => $day+$i,'name'=>'Jhon','calendar_id'=>$calendarId,'month'=> $month,'gen_date' => $today]);
        
-            array_push($testData, ['start'=>'8:00','end'=>'12:00','day' => $day-$i,'name'=>'Andris','calendar_id'=>1,'month'=> $month,'gen_date' => $today]);
-            array_push($testData, ['start'=>'12:00','end'=>'18:00','day' => $day-$i,'name'=>'guest','calendar_id'=>1,'month'=> $month,'gen_date' => $today]);
-            array_push($testData, ['start'=>'18:00','end'=>'20:00','day' => $day-$i,'name'=>'Jhon','calendar_id'=>1,'month'=> $month,'gen_date' => $today]);
+            array_push($testData, ['start'=>'8:00','end'=>'12:00','day' => $day-$i,'name'=>'Andris','calendar_id'=>$calendarId,'month'=> $month,'gen_date' => $today]);
+            array_push($testData, ['start'=>'12:00','end'=>'18:00','day' => $day-$i,'name'=>'guest','calendar_id'=>$calendarId,'month'=> $month,'gen_date' => $today]);
+            array_push($testData, ['start'=>'18:00','end'=>'20:00','day' => $day-$i,'name'=>'Jhon','calendar_id'=>$calendarId,'month'=> $month,'gen_date' => $today]);
            
         }
 
