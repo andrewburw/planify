@@ -1,6 +1,7 @@
 {
     "name": "Planify",
-    "short_name": "Planify",
+    "short_name": "Pl",
+    "start_url": "/",
     "icons": [
         {
             "src": "/android-chrome-96x96.png",
