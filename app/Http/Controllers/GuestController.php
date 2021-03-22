@@ -71,13 +71,13 @@ class GuestController extends Controller
     public static function postFakeAuthors($calendarId)
     {  // post fake calendar users
         $queryResult = CalendarAuthors::create([
-            'user_id' => 3,
+            'user_id' => 2,
             'calendar_id' => $calendarId
            
         ]); 
 
         $queryResul1 = CalendarAuthors::create([
-            'user_id' => 4,
+            'user_id' => 3,
             'calendar_id' => $calendarId
            
         ]); 
