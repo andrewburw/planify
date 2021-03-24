@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 use App\Custom\CustomModuleGenerateSchedules;
 use App\Models\GuestSchedules;
 
 class GuestController extends Controller
 {
-    //
+    
     public static function generate($day)
     {
         $today = date("m.d.y");
