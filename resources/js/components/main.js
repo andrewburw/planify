@@ -468,7 +468,7 @@ const  MainPage = () => {
     </section>
         </div>
     ) : <div className="full__page__loading">
-          <img src="/images/main-background.jpg"   onLoad={() => setLoaded(true)} alt="Planify"   style={loaded ? { display: 'none' } : {}} />
+          <img src="/images/main-background.jpg"  height="1" width="1" onLoad={() => setLoaded(true)} alt="Planify"   style={loaded ? { display: 'none' } : {}} />
       <div><img src="/images/panify_black.png" alt="Planify" /></div>
       <div className="full__page__loading-loading"><img src={Loading} /></div>
       

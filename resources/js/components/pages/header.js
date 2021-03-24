@@ -94,7 +94,7 @@ const Header = ({ hideShowAside }) => {
                 <p onClick={() => toggleAdd()}>Create new calendar</p>
                 <p onClick={() => toggleAddUser()}>Add users to calendar</p>
                 <p>Delete this calendar</p>
-                <Link to="/dashboard/help"><p>Help</p></Link>
+                <p>Help</p>
 
               </div>
             </div>

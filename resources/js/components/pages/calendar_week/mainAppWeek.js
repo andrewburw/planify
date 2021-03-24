@@ -105,7 +105,7 @@ const WeekCalendar = (props) => {
 
     let xpos = e.target.getBoundingClientRect().x;
     let ypos = e.target.getBoundingClientRect().y;
-
+    
 
     setPosition({ x: xpos, y: ypos });
     toggleMenu();
@@ -264,7 +264,10 @@ const WeekCalendar = (props) => {
                   data-datause={item.time}
                   onClick={showRefPosition}>
 
-                  {item.spanclass !== null ? <span data-menu="busy" data-datauser={item.userName} className={item.spanclass}>{item.spandata}</span> : ''}
+                  {item.spanclass !== null ? <span data-menu="busy"   
+                                                   data-datause={item.time} 
+                                                   data-datauser={item.userName}
+                                                    className={item.spanclass}>{item.spandata}</span> : ''}
 
 
                 </div></div>
